@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        ul,
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        ul {
+            height: 40px;
+            border-bottom: 5px solid red;
+            width: 500px;
+            margin: 100px auto;
+        }
+
+        ul li {
+            float: left;
+            width: 100px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+        }
+
+        ul li a {
+            /* 行高可以撑开块级元素的高度，但是不能改变行内元素的高度 */
+            display: block;
+        }
+
+        /* 开始状态把英文的隐藏 */
+        ul li .yingwen {
+            display: none;
+            text-transform: uppercase;
+        }
+
+        /* 鼠标滑过li的时候把中文的标签隐藏掉 */
+        ul li:hover .zhongwen {
+            display: none;
+        }
+
+        /* 鼠标滑过li的时候把英文的标签显示出来 */
+        ul li:hover .yingwen {
+            display: block;
+        }
+
+        /* p {
+            font-size: 16px;
+            line-height: 16px;
+        }
+
+        span {
+            font-size: 16px;
+            line-height: 16px;
+            float: left;
+        } */
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li>
+            <a href="" class="zhongwen">首页</a>
+            <a href="" class="yingwen">home</a>
+        </li>
+        <li>
+            <a href="" class="zhongwen">服务</a>
+            <a href="" class="yingwen">services</a>
+        </li>
+        <li>
+            <a href="" class="zhongwen">作品</a>
+            <a href="" class="yingwen">work</a>
+        </li>
+        <li>
+            <a href="" class="zhongwen">运维</a>
+            <a href="" class="yingwen">operation</a>
+        </li>
+    </ul>
+    <!-- <p>很多事</p>
+    <span>很多事</span> -->
+
+</body>
+
+</html>
