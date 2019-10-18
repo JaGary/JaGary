@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>07制作跟随鼠标移动提示框</title>
+    <style>
+        
+        .details {
+            display: none;
+            position: absolute;
+            padding: 10px;
+            width: 200px;
+            border: 1px solid #f60;
+            background-color: #ffc;
+        }
+
+        .details::before,
+        .details::after {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 15px;
+            border: 10px solid transparent;
+            border-bottom-color: #f60;
+        }
+
+        .details::after {
+            top: -18px;
+            border-bottom-color: #ffc;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1>新闻提示信息</h1>
+    <ul class="newslist" id="newslist">
+        <li><a href="#" data-index="0" title="小明由于调戏女老师再次被滚粗教室">教室文化</a></li>
+        <li><a href="#" data-index="1" title="iPhone10发布,屏幕高度亮瞎了所有小伙伴">iphone10发布会</a></li>
+        <li><a href="#" data-index="2" title="为了弘扬乐于助人的精神，中国人大开会决定授予老王“中国好邻居”称号">关于老王</a></li>
+    </ul>
+    <div class="details" id="details"></div>
+</body>
+<script src="../common.js"></script>
+<script>
+
+    (function () {
+
+        //找节点
+        var newslist = document.getElementById('newslist');
+        var aBtns = newslist.getElementsByTagName('a');//新闻列表
+        var details = document.getElementById('details');//提示框
+
+        /*
+            需求：
+                * 鼠标移入li的时候，出现提示框
+                * 把当前li的title值放到提示框里面,清除title值
+                * 移出隐藏提示框
+                * 滑动的过程：提示框跟着光标走
+        */
+
+        //事件委托
+        newslist.onmouseover = function (ev) {
+
+            if (ev.target.tagName == 'A') {
+                // console.log(ev.target.dataset.index);
+                css(details, 'display', 'block');
+                details.innerHTML = ev.target.title;
+                ev.target.dataset.title = ev.target.title;//data-title == title值
+                ev.target.title = '';
+            }
+        }
+
+        newslist.onmouseout = function (ev) {
+            if (ev.target.tagName == 'A') {
+                // console.log(ev.target.dataset.index);
+                css(details, 'display', 'none');
+                ev.target.title = ev.target.dataset.title;
+            }
+        }
+
+        newslist.onmousemove = function (ev) {
+            if (ev.target.tagName == 'A') {
+                var iLeft = ev.pageX;//获取光标离文档的距离
+                var iTop = ev.pageY;
+                css(details, 'left', iLeft - 20 + 'px');
+                css(details, 'top', iTop + 30 + 'px');
+            }
+        }
+
+    })();
+</script>
+
+</html>

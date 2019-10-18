@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>数组的使用</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    //变量:只能存储一个数据
+    var num = 123;
+    num = 567;
+    console.log(num);//567
+
+    //结构化的数据：学生 ：学号、姓名、性别、年龄、家庭、联系方式
+    /*
+        数据类型：
+            * 基本类型：string/number/boolean/null/undefined
+            * 引用类型：array(数组)/object(对象)
+
+        数组：
+            * 声明
+                * 字面量：最常用的方式
+                    var arr = [1,2,3];
+                * 构造函数
+                    var arr = new Array(1,2,3);
+            * 数组：下标，通过下标：增、删、改、查
+            * 属性：长度 length，可读可写
+            * 方法 ：
+    */
+
+    //字面量方式
+    var arr = [1, 2, 3];//下标从0开始，0-2
+    console.log(arr);
+
+    //构造函数方式
+    // var data = new Array(13, 23, 33);//声明一个数组，里面有三个数据
+    var data = new Array(2);//如果传一个参数的时候，这个数据代表长度，创建一个空数组，长度为2
+    data[0] = '婧婧';
+    data[1] = '田田';
+    console.log(data);
+
+    //读取内容
+    console.log(arr[2]);
+
+    //增：插入数据:用下标的方式只能插入到末尾
+    arr[3] = 666;
+    arr[arr.length] = 777;// [1, 2, 3, 666, 777]
+    console.log(arr);
+
+    //改
+    arr[1] = '塞班岛';
+    console.log(arr);//[1, "塞班岛", 3, 666, 777]
+
+    //删除
+    arr[2] = '';
+    console.log(arr);//[1, "塞班岛", "", 666, 777]
+    arr.length = 2;
+    arr.length = 0;//快速清空数组，但是数组还在
+    console.log(arr);
+
+    //题目：
+    var arr2 = [11, 22, 33];//0-2
+    arr2[7] = 44;
+    //arr2的长度是多少？
+    console.log(arr2);
+    console.log(arr2.length);//5
+
+
+</script>
+
+</html>

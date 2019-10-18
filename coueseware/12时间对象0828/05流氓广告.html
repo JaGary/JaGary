@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>08倒计时广告</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 400px;
+            height: 200px;
+            border: 1px solid #000000;
+            /*margin: 0 auto;*/
+            position: absolute;
+            top: 50%;
+            margin-top: -100px;
+            left: 50%;
+            margin-left: -200px;
+        }
+
+        #close {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>11倒计时广告</h1>
+    <div id="box">
+        <p id="time">5秒</p>
+        <p id="close">X</p>
+    </div>
+</body>
+<script>
+    (function () {
+        //知识点
+        // window.open('http://meituan.com');//新窗口打开 a target="_blank"
+        // location.href = 'http://meituan.com';//原窗口打开
+
+        var box = document.getElementById('box');
+        var close = document.getElementById('close');
+        var time = document.getElementById('time');
+        var timer = null;//空对象（定时器是一个对象）
+
+        var num = 5;
+        function show() {
+            num--;
+            if (num < 0) {//5秒后消失
+                clearInterval(timer);
+                box.style.display = 'none';
+            }
+            time.innerHTML = num + '秒';
+        }
+        timer = setInterval(show, 1000);
+
+        //款式一：正常广告
+        // close.onclick = function () {
+        //     clearInterval(timer);
+        //     box.style.display = 'none';
+        // }
+
+        //款式二：流氓广告，点击实际是跳转
+        // close.onclick = function () {
+        //     //跳转页面
+            // window.open('http://meituan.com');//新窗口打开  a target="_blank"
+            // location.href = 'http://meituan.com';//原窗口打开
+        // }
+
+        //款式二：流氓广告，点击关闭后，1秒又跳出来
+        close.onclick = function () {
+            //跳转页面
+            num = 6;
+            show();
+            clearInterval(timer);
+            box.style.display = 'none';
+            setTimeout(function () {
+                box.style.display = 'block';
+                timer = setInterval(show, 1000);
+            }, 1000);
+        }
+
+
+    })();
+</script>
+
+</html>

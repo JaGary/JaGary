@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>表格</title>
+    <style>
+        #output {
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table td {
+            height: 20px;
+            border: 1px solid #ccc;
+            text-align: center;
+            line-height: 28px;
+        }
+
+        table tr:nth-child(2n) {
+            background: #58bc58;
+        }
+
+        table tr:nth-child(2n+1) {
+            background: pink;
+        }
+        tr td:nth-last-child(1) {
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>动态表格</h1>
+    <label for="">行:</label><input type="text" id="row">
+    <label for="">列:</label><input type="text" id="col">
+    <input type="button" value="点击" id="btn">
+    <div id="output">
+        <!-- <table>
+            <tr>
+                <td>111</td>
+                <td>111</td>
+                <td>111</td>
+            </tr>
+            <tr>
+                <td>222</td>
+                <td>222</td>
+                <td>222</td>
+            </tr>
+        </table> -->
+        <!-- <a href="">删除</a> -->
+    </div>
+
+</body>
+<script>
+    var rows = document.getElementById('row');
+    var cells = document.getElementById('col');
+    var btn = document.getElementById('btn');
+    var output1 = document.getElementById('output');
+
+    btn.onclick = function () {
+        var _rows = rows.value;
+        var _cells = cells.value;
+
+        var html = '<table>';
+        if (_rows && _cells) {
+            for (var i = 0; i < _rows; i++) { //行
+                html += '<tr><td>' + (i + 1) + '</td>';
+                for (var j = 0; j < _cells; j++) { //列
+                    html += '<td>'+'第'+(i+1) +'行' +'第' + (j+1) +'列' + '</td>';
+                }
+                html += '<td><a href="###">删除</a>&nbsp;&nbsp;' +
+                '<a href="###">修改</a>&nbsp;&nbsp;' +
+                '<a href="###">复制</a></td>'
+                '</tr>'
+            }
+        }
+        html += '</table>'
+        console.log(html);
+        output1.innerHTML = html;
+    }
+</script>
+
+</html>

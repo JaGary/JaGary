@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>登陆页面</title>
+</head>
+
+<body>
+    <form id="login" action="" method="post">
+        用户名：<input type="text" placeholder="写邮箱" id="mail" /><span id="inf1"></span><br />
+        密码：<input type="text" placeholder="写密码" id="psw" /><span id="inf2"></span><br />
+        <input type="button" value="登陆" id="btn" />
+    </form>
+</body>
+<script src="common.js"></script>
+<script>
+    (function () {
+
+        /*
+            需求：
+                * 验证用户名是否存在：select
+                * 不存在就可以注册：insert
+                * 注册成功可以登陆(存cookie) : select
+                * 登陆成功跳转页面，可以退出(查cookie是否含有该用户)
+                    * 如果本来就是在登陆页登陆：跳转首页 : window.open(url) location.href=url
+                    * 如果是非登陆页登陆的，跳转回上一页(localstorage存上一页路径)
+        */
+
+        let mail = document.getElementById('mail');
+        let psw = document.getElementById('psw');
+        let btn = document.getElementById('btn');
+        let inf1 = document.getElementById('inf1');
+        let inf2 = document.getElementById('inf2');
+
+        btn.onclick = () => {
+            let name = mail.value.trim();
+            let password = psw.value.trim();
+            let usn = getcookie('username');
+            if (usn) {
+                //登陆
+                alert('你已经登陆了');
+            } else {
+                //未登录
+                ajax({
+                    type: 'post',
+                    // url: 'api/03login.php',
+                    url: 'api/jiekou.php',
+                    data: {
+                        name,
+                        password,
+                        type: 'login'
+                    },
+                    success: str => {
+                        console.log(str);
+                        //存cookie
+                        if (str == 'no') {
+                            alert('登陆成功');
+                            setdata();
+                            let url = getcookie('url');
+                            if (url) {
+                                //查找，证明是有上一页，登陆成功一律回到上一页
+                                location.href = url;
+                            } else {
+                                //注册页、首页、登陆页跳到登陆页的，登陆成功一律回到首页
+                                location.href = '04main.html';
+                            }
+                        }
+                    }
+                });
+            }
+
+        }
+
+        function setdata() {
+            setcookie('username', mail.value.trim(), 10);
+        }
+
+
+
+    })();
+</script>
+
+</html>

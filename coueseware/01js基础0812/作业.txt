@@ -1,0 +1,9 @@
+
+1.申请码云账号：加入组织
+
+https://gitee.com/organizations/html1909/invite?invite=43fa492fb6c8586ea9295c7cf66bf33a2cac0d12600fc14be78f6b3918623204a71bf2b0d7712cb763ce7e16acfba504
+
+2.安装软件：GitHubDesktop.exe
+
+3.预习第一天内容：
+

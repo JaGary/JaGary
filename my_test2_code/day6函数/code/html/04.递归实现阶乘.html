@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>请用递归实现阶乘</title>
+</head>
+
+<body>
+    <input type="text" id="num">
+    <input type="button" value="计算" id="btn">
+    <p id="p1"></p>
+    <script>
+        (function () {
+            var num = document.getElementById('num');
+            var btn = document.getElementById('btn');
+            var p1 = document.getElementById('p1');
+
+            function fn(n) {
+                if (n <= 1) {
+                    return 1;
+                }
+                return (n * fn(n - 1));
+            }
+            console.log(fn(4));
+            // p1.innerHTML =fn(4);
+            btn.onclick = function () {
+                
+                var res = num.value;
+                var aa = fn(res);
+                p1.innerHTML = aa;
+            }
+        })();
+    </script>
+</body>
+
+</html>

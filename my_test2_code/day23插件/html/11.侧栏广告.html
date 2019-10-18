@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>侧栏广告</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            background: #ccc;
+            position: fixed;
+            width: 200px;
+            height: 100px;
+            right: -200px;
+            top: 50%;
+            /* 居中关键 */
+            transform: translateY(-50%);
+        }
+        .box1{
+            position: absolute;
+            width: 30px;
+            height: 50px;
+            left: -30px;
+            top: 50%;
+            background: red;
+            /* 居中关键 */
+            transform: translateY(-50%);
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div class="box1"></div>
+    </div>
+</body>
+<script src="../js/common.js"></script>
+<script src="../js/sideAds.js"></script>
+<script>
+    sideAds({
+        ele:'box',
+    })
+</script>
+</html>

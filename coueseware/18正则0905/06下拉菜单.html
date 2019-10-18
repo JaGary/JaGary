@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>下拉菜单</title>
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+            background: lightblue;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="button" id="btn" value="下拉菜单">
+    <div id="box"></div>
+</body>
+<script>
+    (function () {
+
+        var btn = document.getElementById('btn');
+        var box = document.getElementById('box');
+
+        //下拉菜单
+        var istrue = true;
+        btn.onclick = function (ev) {
+            if (istrue) {
+                box.style.display = 'block';
+            } else {
+                box.style.display = 'none';
+            }
+            istrue = !istrue;
+            ev.stopPropagation();//这种情况，事件冒泡会影响我们想要的效果，事件冒泡就要被阻止
+        }
+
+        //点击空白处隐藏
+        document.onclick = function () {
+            box.style.display = 'none';
+            istrue = true;
+        }
+    })();
+</script>
+
+</html>

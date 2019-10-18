@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>生成验证码</title>
+    <style>
+        #box {
+            width: 80px;
+            height: 30px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        #box span {
+            font-size: 20px;
+            margin-left: 6px;
+        }
+
+        #box span:nth-child(1) {
+            color: blue;
+            font-style: italic;
+        }
+
+        #box span:nth-child(2) {
+            color: purple;
+            font-style: italic;
+        }
+
+        #box span:nth-child(3) {
+            color: yellow;
+            font-style: italic;
+        }
+
+        #box span:nth-child(4) {
+            color: red;
+            font-style: normal;
+        }
+    </style>
+</head>
+    
+<body>
+    <h1>验证码：大小写字母和数字的组合，长度为4</h1>
+    请输入验证码：<input type="text" id="num">
+    <div id="box">
+        <!-- <span>1</span>
+        <span>2</span>
+        <span>3</span>
+        <span>4</span> -->
+    </div>
+    <input type="button" id="btn" value="提交">
+    <span id="inform"></span>
+</body>
+<script src="../js/randomCode.js"></script>
+<script>
+    ranCode({
+        ele:'box',
+        length:4,
+    })
+</script>
+</html>

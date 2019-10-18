@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="box">
+        <!-- <h1>茶叶罐</h1>
+        <ul>
+            <li>铁观音</li>
+            <li>龙井</li>
+        </ul> -->
+
+    </div>
+</body>
+<script>
+    var box = document.getElementById('box');
+    var arr = [
+        {
+            sid: 1,
+            sname: '茶叶罐',
+            goodslist: [
+                {
+                    gid: 1,
+                    gname: '铁观音'
+                }, {
+                    gid: 2,
+                    gname: '龙井'
+                }
+
+            ]
+        }, {
+            sid: 2,
+            sname: '甜品窝',
+            goodslist: [
+                {
+                    gid: 4,
+                    gname: '蛋黄酥'
+                }
+
+            ]
+        }, {
+            sid: 3,
+            sname: '爱衣服',
+            goodslist: [
+                {
+                    gid: 6,
+                    gname: '连衣裙'
+                }
+            ]
+        }
+    ]
+
+    var str = arr.map(item => {
+        var html = item.goodslist.map(data => {
+            return `<li>${data.gname}</li>`;
+        }).join('');
+        return `<h1 data-sid="${item.sid}">${item.sname}</h1>
+                <ul>
+                   ${html}
+                </ul>`;
+    }).join('');
+
+    box.innerHTML = str;
+</script>
+
+</html>

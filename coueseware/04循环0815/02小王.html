@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>小王入职薪水10K，每年涨幅5%，10年后工资多少？</title>
+</head>
+
+<body>
+    <h1>小王入职薪水10K，每年涨幅5%，10年后工资多少？</h1>
+    月薪：<input type="text" name="" id="tex1">
+    涨幅:<input type="text" name="" id="tex2">
+    年份：<input type="text" name="" id="tex3">
+    <input type="button" value="计算" id="btn">
+    <div id="box">
+
+    </div>
+</body>
+<script>
+
+    /*
+        小王入职薪水10K，每年涨幅5%，10年后工资多少？
+            已知条件：月薪10k  年薪：10k * 12   涨幅5%,求第2-10年间的数据，循环9次
+            求：
+                * 十年后的月薪？
+                * 十年总共赚了多少？
+
+            第二年：
+                * 月薪:  10k + 10k*5% = 10k* (1 + 5%) = 10k * 1.05
+                * 年薪：(10k * 1.05) * 12
+        
+        知识点：
+            * 保留两位小数  num.toFixed(2)
+
+    */
+
+    // var money = 10000;//月薪
+    // var total = money * 12;//第一年的年薪
+    // for (var i = 0; i < 9; i++) {//i=0 i<n n次循环  i=1 i<=n n次循环
+    //     // money = money + money * 0.05;
+    //     // money = money * 1.05;
+    //     money *= 1.05;
+    //     // total = total + money * 12;
+    //     total += money * 12;
+    // }
+
+    // var str = '十年后的月薪:' + money.toFixed(2) + '<br>十年总共赚了多少:' + total.toFixed(2);
+    // document.write(str);
+
+    //需求：点击的时候动态获取到月薪、涨幅、年份，计算n年后月薪
+    var money = document.getElementById('tex1');//月薪
+    var scal = document.getElementById('tex2');//涨幅
+    var year = document.getElementById('tex3');//年份 5
+    var btn = document.getElementById('btn');
+    var box = document.getElementById('box');//显示
+
+    // var _money = money.value;//null
+    btn.onclick = function () {//点击的时候再获取内容，拿到内容才进行运算
+        var _money = money.value;
+        var _scal = scal.value;
+        var _year = year.value;
+        //非空判断
+        if (_money && _scal && _year) {
+            //计算
+            var yuexin = _money;//第一年月薪
+            var total = yuexin * 12;//第一年的年薪
+            for (var i = 0; i < _year - 1; i++) {
+                yuexin *= 1 + _scal / 100;
+                total += yuexin * 12;
+            }
+            var str = '十年后的月薪:' + yuexin.toFixed(2) + '<br>十年总共赚了多少:' + total.toFixed(2);
+            box.innerHTML = str;//普通的节点内容设置
+        } else {
+            alert('请填写完所有的数据');
+        }
+        // console.log(_money, _scal, _year);
+    }
+
+</script>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>for of</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    /*
+            循环：
+                * for：什么都可以遍历(除了对象之外) break continue return  节点、数组、字符串、set合集、map合集
+                * forEach：数组、set合集专用，里面不能break、continue和return语句
+                * for in：可以遍历数组、对象、字符串；不能遍历节点集合，可以break、continue和return语句
+                * for of：可以遍历数组、字符串、节点、set合集、map合集(除了对象之外),可以break、continue和return语句
+
+                
+    */
+
+    let arr = [1, 2, 3];
+    // for (let i in arr) {
+    //     // console.log(i);//下标
+    //     console.log(arr[i]);
+    // }
+    for (let val of arr) {
+        console.log(val);
+    }
+
+    //如果是在循环里面：break(跳出循环，终止循环)
+    //如果是在普通函数中：return
+</script>
+
+</html>

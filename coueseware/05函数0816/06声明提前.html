@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>06声明提前:面试题</title>
+</head>
+
+<body>
+    <h1>06声明提前:面试题</h1>
+</body>
+<script>
+    // function show() {//函数的声明提前,系统自动处理工作，内存中声明了
+    //     console.log('声明式show');
+    // }
+    // var sum;变量的声明提前
+    /*
+        * 声明：
+                * 声明式
+                    function 函数名() {
+                        //代码块
+                    }
+                * 赋值式
+                    var show = function () {
+                        //代码块
+                    }
+                * 区别：
+                    * 声明式：入口可以写在任意地方
+                    * 赋值式：入口只能写在声明体下面：先声明 后调用 sum is not a function
+                * 声明提前：变量或函数的提升
+                    * 系统会自动帮你把函数和变量声明提前
+    */
+
+    show();
+    console.log(sum);//?undefined 声明未赋值；sum is not defined该变量还没有声明
+    sum();//sum is not a function
+
+    //声明式
+    function show() {
+        console.log('声明式show');
+    }
+
+    //赋值式
+    var sum = function () {
+        console.log('赋值式sum');
+    }
+
+
+</script>
+
+</html>

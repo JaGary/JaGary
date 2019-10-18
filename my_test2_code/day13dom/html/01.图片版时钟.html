@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>01.图片版时钟</title>
+    <style>
+        body {
+            background: #000;
+            color: #fff;
+            font-size: 60px;
+        }
+
+        #img img {
+            padding: 0 5px;
+        }
+
+        #img img:nth-child(4) {
+            margin-right: 10px;
+        }
+
+        #img img:nth-child(6) {
+            margin-right: 10px;
+        }
+
+        #img img:nth-child(8) {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<script src="../common.js"></script>
+
+<body>
+    <box id="img">
+        <!-- <img src="../images/0.png" alt=""> -->
+    </box>
+</body>
+<script>
+    (function () {
+        /*需求：
+
+            获取系统时间：
+            用图片替代数字
+            显示图片
+        */
+        var imgTime = document.getElementById('img');
+
+        function getTime() {
+
+            var time = new Date();
+            var year = time.getFullYear();
+            var month = time.getMonth() + 1;
+            var today = time.getDate();
+
+            var hour = time.getHours();
+            var min = time.getMinutes();
+            var sec = time.getSeconds();
+
+
+            var html = year + size(month) + size(today) + size(hour) + size(min) + size(sec);
+
+            // imgTime.innerHTML = html;
+            var res = '';
+            var num = 0; //计数器
+            for (i = 0; i < html.length; i++) {
+                res += `<img src="../images/${html.charAt(i)}.png" alt="">`;
+                num++;
+                if (num > 8 && num % 2 == 0) { //
+                    res += ':';
+                }
+                if (num == 4 || num == 6) { //判断
+                    res += '-';
+                }
+            }
+            imgTime.innerHTML = res.slice(0, -1); //渲染和切割掉倒数第一位后面的':'
+        }
+        setInterval(getTime, 1000); //定时器
+    })();
+</script>
+
+</html>

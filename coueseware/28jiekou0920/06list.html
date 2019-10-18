@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>足迹-列表页</title>
+</head>
+
+<body>
+    <ul id="list">
+        <!-- <li>
+            <img src="http://img10.yiguoimg.com/d/items/2018/180807/9288727883523335_300.jpg" alt="">
+            <p>原膳澳洲和牛西冷牛排</p>
+        </li> -->
+    </ul>
+</body>
+<script>
+    (function () {
+
+        /*
+            需求：足迹
+                * 未登录
+                    * 数据保存在本地：localstorage
+                        * 数据渲染
+                        * 点击某个商品的时候，跳转到详情页，把id带到详情页
+                        * 把浏览记录存到本地
+                * 登陆:存到数据库里面
+                    * 点击列表页数据：
+                        * 查
+                            * 找到：删了，最新存到末尾
+                            * 找不到：存进去
+        */
+        let list = document.getElementById('list');
+        let arr = [
+            {
+                gid: 1,
+                title: '原膳澳洲和牛西冷牛排',
+                url: 'http://img10.yiguoimg.com/d/items/2018/180807/9288727883523335_300.jpg'
+            }, {
+                gid: 2,
+                title: '星享米其澳洲F2和牛甄选牛排礼包',
+                url: 'http://img10.yiguoimg.com/d/items/2019/190822/9288738893506326_300.jpg'
+            }, {
+                gid: 3,
+                title: '星享米其和牛上脑牛排',
+                url: 'http://img10.yiguoimg.com/d/items/2018/180808/9288728030323976_300.jpg'
+            }
+        ];
+
+        //数据渲染
+        let html = arr.map(item => {
+            return `<li data-id="${item.gid}">
+                        <img src="${item.url}" alt="">
+                        <p><a href="###">${item.title}</a></p>
+                    </li>`;
+        }).join('');
+
+        list.innerHTML = html;
+
+        //点击可以跳转
+        list.onclick = ev => {
+            if (ev.target.tagName == 'A') {
+                let id = ev.target.parentNode.parentNode.dataset.id;
+                zuji(id);
+                window.open('07page.html?' + id);
+            }
+        }
+
+        // let hh = '3&';
+        // let arr2 = hh.split('&');
+        // console.log(arr2);
+
+        function zuji(id) {
+            let goodlist = localStorage.goodlist;
+            // console.log(goodlist);
+            if (goodlist) {
+                //证明有足迹
+                // console.log(goodlist);
+                let arr = goodlist.split('&');
+                // console.log(arr);
+                let index = arr.indexOf(id);//-1没有，直接把id拼接在后面；非-1,有，去掉旧的id，再把新的id放到末尾
+                // console.log(arr);
+                // console.log(index);
+                let str = '';
+                if (index >= 0) {//我的错，小心
+                    //有
+                    arr.splice(index, 1);
+                    arr.push(id);
+                    str = arr.join('&');
+                } else {
+                    //没有
+                    str = goodlist + '&' + id;
+                }
+                // let str = goodlist + '&' + id;
+                localStorage.goodlist = str;
+            } else {
+                //没有足迹
+                localStorage.goodlist = id;
+            }
+        }
+
+    })();
+</script>
+
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>03json对象</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    /*
+        json对象的方法：
+            * JSON.parse(text)：将json字符串转换成对象/数组
+            * JSON.stringify(value)：将数组/对象转换成标准的json字符串
+        
+        面试题：怎么对一个对象深度拷贝
+    */
+    var obj = {
+        name: '星语星愿',
+        age: 10,
+        other: {
+            movie: '东成西就',
+            type: '搞笑片',
+            arr: [1, 2, 3, 4]
+        }
+    }
+    var obj2 = obj;//拷贝？ 对象的引用
+    obj.nvshen = '张柏芝';
+    console.log(obj, obj2);
+
+    //需求：把对象转成字符串
+    var str = JSON.stringify(obj);
+    console.log(str);// '{"name":"星语星愿","age":10}'
+
+    //字符串转成对象
+    var newobj = JSON.parse(str);
+    console.log(newobj);
+
+    //深度拷贝：方法一，循环逐个拷贝过来
+    var obj3 = {};
+    for (var key in obj) {
+        obj3[key] = obj[key];
+    }
+    obj3.nashen = '任贤齐';
+    console.log(obj, obj3);
+    console.log(obj3.other.arr[1]);
+
+    //深度拷贝：方法二，用json的两个方法实现
+    var str2 = JSON.stringify(obj);
+    var obj4 = JSON.parse(str2);
+    obj4.year = 2012;
+    console.log(obj, obj4);
+
+    //封装深度拷贝
+    function deepClone(obj) {
+        var str = JSON.stringify(obj);
+        return JSON.parse(str);
+    }
+
+    //标准的json数据属性名要加双引号，属性值如果是字符串格式，也是双引号
+    var data = '[{"name":"苹果"},{"name":"华为"}]';//后端给我们的数据是字符串格式  '[{},{},{}]'
+    var arr = JSON.parse(data);
+    console.log(arr);
+
+    //eval() : 将字符串转成js
+    var arr2 = eval(data);//[{},{},{}]
+    console.log(arr2);//可以转成js
+
+
+    var str5 = 'function show() {console.log(666);}';//字符串
+    eval(str5);//可以转成js
+    // JSON.parse(str5);//不能转，必须是json数据才可以转js
+    // function show() {
+    //     console.log(666);
+    // }
+    show();//show is not defined
+
+
+</script>
+
+</html>

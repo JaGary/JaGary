@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>04dom树</title>
+</head>
+
+<body>
+    <ul id="tree">
+        <li class="xigua">西瓜</li>
+    </ul>
+</body>
+<script src="js/jquery-1.10.1.min.js"></script>
+<script>
+    (function () {
+
+        //append()和appendTo()后续操作对象不同
+        var $li = $('<li>苹果</li>');//创建节点
+        $('#tree').append($li);//后面添加
+
+        var $li2 = $('<li>雪梨</li>');//创建节点
+        $li2.appendTo($('#tree')).css('color', 'red');
+
+        //删除
+        // $('#xigua').remove();
+        var newli = $('.xigua').clone(true);
+        $('#tree').append(newli);//后面添加
+    })();
+</script>
+
+</html>

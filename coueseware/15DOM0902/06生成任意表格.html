@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>生成任意表格</title>
+    <style>
+        #output {
+            margin-top: 20px;
+        }
+
+        table {
+            border: 1px solid #ddd;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td {
+            border: 1px solid #ddd;
+            padding: 3px 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>生成任意表格</h1>
+    <label for="row">行：</label><input type="text" id="row">
+    <label for="col">列：</label><input type="text" id="col">
+    <input type="button" value="生成表格" id="btn">
+    <div id="output">
+        <table>
+            <!-- <tr>
+                <td contenteditable="true">121</td>
+                <td>
+                    <a href="###">删除</a>
+                </td>
+            </tr> -->
+        </table>
+    </div>
+</body>
+<script>
+    /*
+        需求：根据表单输入的行数和列数，动态的生成表格
+
+        步骤：
+            * 点击按钮的时候
+            * 获取行数和列数,就可以知道循环次数，外循环生成tr，内循环生成td
+            * 创建好的节点插入到页面中
+            * 隔行变色
+    */
+
+    (function () {
+
+        var btn = document.querySelector('#btn');
+        var row = document.querySelector('#row');
+        var col = document.querySelector('#col');
+        var output = document.querySelector('#output table');
+
+        //点击按钮的时候
+        btn.onclick = function () {
+            var _rows = row.value.trim();//5==5行
+            var _cols = col.value.trim();
+            if (_rows && _cols) {
+                //非空
+                //外循环，创建行
+                for (var i = 0; i < _rows; i++) {
+                    var tr = document.createElement('tr');
+                    if (i % 2 == 0) {
+                        //偶数行
+                        tr.style.background = '#58bc58';
+                    } else {
+                        tr.style.background = '#ccc';
+                    }
+
+                    //添加多一列：放序号
+                    var firstTd = document.createElement('td');
+                    firstTd.innerHTML = `第${i + 1}行`;
+                    tr.appendChild(firstTd);
+
+                    for (var j = 0; j < _cols; j++) {
+                        //内循环，创建列
+                        var td = document.createElement('td');
+                        //父节点.appendChild(子节点)
+                        td.innerHTML = `第${i + 1}行第${j + 1}列`;
+                        tr.appendChild(td);
+                        // tr.innerHTML = td; 用createElement创建的节点不是字符串格式
+                    }
+
+                    //添加多一列：放操作
+                    var lastTd = document.createElement('td');
+                    lastTd.innerHTML = '<a href="###">删除</a>&nbsp;&nbsp;<a href="###">复制</a>';
+                    tr.appendChild(lastTd);
+
+                    output.appendChild(tr);
+                }
+            } else {
+                alert('请输入完整的内容');
+            }
+        }
+
+        /*
+            关于数据渲染到页面：
+                * DOM方式创建和插入节点实现页面渲染：DOM被频繁的操作，页面性能下降，第一个会耗费更多的时间，内存；第二个不利于搜索引擎优化 SEO(自然排名) SEM(百度竞价)
+                * 字符串拼接：性能更好，拼接好数据，一次性的渲染出来，不会频繁的改动DOM节点；
+        */
+
+    })();
+
+
+
+
+
+</script>
+
+</html>

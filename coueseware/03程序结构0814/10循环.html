@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>循环</title>
+</head>
+
+<body>
+    <ul id="list">
+        <li>111</li>
+        <li>222</li>
+        <li>333</li>
+        <li>111</li>
+        <li>222</li>
+        <li>333</li>
+        <li>111</li>
+        <li>222</li>
+        <li>333</li>
+        <li>111</li>
+        <li>222</li>
+        <li>333</li>
+        <li>111</li>
+        <li>222</li>
+        <li>333</li>
+    </ul>
+</body>
+<script>
+    /*
+        08程序的结构:
+            * 顺序结构
+            * 选择结构
+                * if else
+                    * 单分支
+                    * 双分支
+                    * 多分支
+                * 三目：双分支  ?:
+                * switch: 多分支
+            * 循环结构
+                * while：三大条件缺一不可
+                    * 初始值
+                    * 判断值
+                    * 自增值
+        
+        知识点：
+            * get Elements By Tag Name :集合 属性：length 个数,集合是通过下标去定位的，下标是从0开始
+            * 隔行变色：
+                节点.style.background = ''
+    */
+
+    var alis = document.getElementsByTagName('li');
+
+    var i = 0;
+    while (i < alis.length) {
+        if (i % 2 == 0) {
+            //偶数行
+            alis[i].style.background = 'pink';
+        } else {
+            alis[i].style.background = '#58bc58';
+        }
+        i++;
+    }
+    // console.log(alis.length);//3
+    // console.log(alis[0]);//0-2
+    // alis[0].style.background = 'pink';
+    // alis[1].style.background = '#58bc58';
+    // alis[2].style.background = 'pink';
+
+    //1.while
+    // var i = 0;//1.初始值 i=0
+    // while (i < 8) {//当i<8,就执行里面的代码  2.判断值
+    //     console.log(i);//0 1 7
+    //     i++;//1 2 7 8 3.自增值
+    // }
+
+    var i = 1;//1.初始值 
+    while (i < 8) {//.判断值
+        // console.log(i);//1 2 7
+        i++;//2 7 8  3.自增值
+    }
+    console.log(i);
+</script>
+
+</html>

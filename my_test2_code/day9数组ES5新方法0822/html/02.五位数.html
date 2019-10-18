@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>随机生成一个五位以内的数，然后输出该数共有多少位，</title>
+</head>
+
+<body>
+    <h2>随机生成一个五位以内的数，然后输出该数共有多少位，</h2>
+    <input type="button" id="btn" value="生成">
+    <p id="p1"></p>
+    <p id="p2"></p>
+</body>
+<script>
+    (function () {
+        var btn = document.getElementById('btn');
+        var p1 = document.getElementById('p1');
+        var p2 = document.getElementById('p2');
+
+        //生成五位随机数
+        // function show(n) {
+        //     var html = '';
+        //     for (i = 0; i < 5; i++) {
+        //         html += parseInt(Math.random() * 10) * 1;
+        //     }
+        //     return html;
+        // }
+        // //将随机数渲染到页面
+        // p1.innerHTML = show(5);
+        // //点击时随机生成五位随机数
+        // btn.onclick =function(){
+        //     p1.innerHTML = show(5);
+        // }
+        // btn.onclick = function(){
+        //     var arr = [];
+        // }
+        // var arr = [];
+
+        function numRandom() {
+            var num = parseInt(Math.random() * 100000);//取五位随机数
+            var num1 = num.toString();//转换成字符串
+            // var num2 = num1.length;
+            var obj = {};//创建一个空对象
+            for (var i = 0; i < num1.length; i++) {
+                obj[i] = parseInt(num1[i]);
+            }
+            // console.log('该数为' + num1 +  + num2 + '位数')
+            p1.innerHTML = '该数为' + num1 + '<br>' + num1.length + '位数';
+            for (var j = 0; j < num1.length; j++) {
+                console.log('第' + (j + 1) + '位为' + obj[j]);
+            }
+        }
+        numRandom();//函数入口
+        btn.onclick = function(){
+            numRandom();
+        }
+    })();
+</script>
+
+</html>

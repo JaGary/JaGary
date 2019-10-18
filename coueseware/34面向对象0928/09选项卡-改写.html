@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>选项卡的制作</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            padding: 50px;
+        }
+
+        #box input,
+        #box2 input {
+            width: 80px;
+            height: 40px;
+        }
+
+        #box input.active,
+        #box2 input.active {
+            background: red;
+        }
+
+        #box .con,
+        #box2 .con {
+            width: 400px;
+            height: 400px;
+            border: 1px solid #000;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <input class="active" type="button" name="" id="" value="新闻" />
+        <input type="button" name="" id="" value="体育" />
+        <input type="button" name="" id="" value="娱乐" />
+        <input type="button" name="" id="" value="教育" />
+        <div class="con" style="display: block;">
+            新闻
+        </div>
+        <div class="con">
+            体育
+        </div>
+        <div class="con">
+            娱乐
+        </div>
+        <div class="con">
+            教育
+        </div>
+    </div>
+
+    <div id="box2">
+        <input class="active" type="button" name="" id="" value="新闻" />
+        <input type="button" name="" id="" value="体育" />
+        <input type="button" name="" id="" value="娱乐" />
+        <input type="button" name="" id="" value="教育" />
+        <div class="con" style="display: block;">
+            新闻
+        </div>
+        <div class="con">
+            体育
+        </div>
+        <div class="con">
+            娱乐
+        </div>
+        <div class="con">
+            教育
+        </div>
+    </div>
+</body>
+<script src="js/tab.js"></script>
+<script>
+    /*
+                  写出面向过程  - 改写成面向对象
+                        * 变形(面向过程的程序)
+                            * 把代码里面，不是赋值的语句都提到初始化函数里面 init()
+                            * 尽量不要有函数嵌套
+                            * 可以存在全局变量
+                        * 改写
+                            * 变量改成属性，属性放在构造函数里面
+                            * 函数改成方法，放在原型下面
+                            * this的指向要明确 
+             */
+
+    (function () {
+
+        // var t1 = new Tabmove();
+        // t1.init();
+
+        new Tabmove('box');
+
+        new Tabmove('box2');
+    })();
+</script>
+
+</html>

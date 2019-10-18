@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>08作用域面试题</title>
+    <script src="js"></script>
+    <script>
+        window.onload = function () {
+            //加载完文档再执行这里的代码
+        }
+    </script>
+</head>
+
+<body>
+    <h1>08作用域面试题</h1>
+</body>
+<script src="js"></script>
+<script>
+
+    //面试题1：作用域链
+    // var sum = 2;
+    // function show() {
+    //     var sum = 4;
+    //     console.log(sum);//4 就近原则
+    // }
+
+    // show();
+
+    //面试题2：声明提前
+    // var sum = 2;
+    // function show() {
+    //     //var sum; 声明提前
+    //     console.log(sum);//undefined
+    //     var sum = 4;
+    // }
+
+    // show();
+
+    //面试题3：声明提前
+    // var sum = 2;
+    // function show() {
+    //     //var sum;
+    //     function son() {
+    //         console.log(sum);//undefined
+    //     }
+    //     son();
+    //     var sum = 4;
+    // }
+
+    // show();
+
+    //面试题4：作用域链
+    var sum = 2;
+    function show() {
+        function son() {
+            console.log(sum);//4
+        }
+        var sum = 4;
+        son();
+    }
+
+    show();
+
+    /*
+        变量尽量的写成局部变量
+            * 局部变量用完会被回收销毁，垃圾回收机制会自动销毁局部变量，全局变量不会被回收，浪费内存
+            * 局部变量只在局部作用域范围内起作用，不担心同名覆盖问题
+
+    */
+
+    // var num = 22;
+    // var num = 66;//被覆盖
+    function fn1() {
+        var num = 22;
+    }
+
+    function fn2() {
+        var num = 66;
+    }
+
+    //自调用：自己调用自己，写匿名函数;有时候页面会出现空白，原因很多,把js放在底部加载，可以让body的节点优先加载，用户马上看到页面，体验较好，js特效延迟一点加载不影响整体效果
+    (function () {
+        console.log('马上调用');
+
+        //写一个变量：局部变量
+        var num = 66;
+
+
+    })();
+
+</script>
+
+</html>

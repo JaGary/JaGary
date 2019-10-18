@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>加速运动</title>
+    <style type="text/css">
+        body {
+            background: #000;
+        }
+
+        #bb {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <img id="bb" src="img/basketball.jpg" />
+</body>
+<script>
+    (function () {
+
+        var bb = document.getElementById('bb');
+        var timer = null;
+        var speed = 5;//初始速度
+
+        //加速运动
+        timer = setInterval(function () {
+            speed += 5;
+            var iTop = bb.offsetTop + speed;
+            if (iTop >= window.innerHeight - bb.offsetHeight) {//临界值
+                iTop = window.innerHeight - bb.offsetHeight;
+                clearInterval(timer);
+            }
+            bb.style.top = iTop + 'px';
+        }, 30);
+    })();
+</script>
+
+</html>

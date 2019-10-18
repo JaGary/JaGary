@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>轮播图基本版</title>
+    <link rel="stylesheet" href="css/css2.css">
+</head>
+
+<body>
+    <div id="box">
+        <!--图片列表-->
+        <div class="imglist">
+            <ul>
+                <!-- <li><img src="img/001.jpg" alt=""></li>
+                <li><img src="img/002.jpg" alt=""></li>
+                <li><img src="img/003.jpg" alt=""></li>
+                <li><img src="img/004.jpg" alt=""></li> -->
+            </ul>
+        </div>
+        <!--焦点图-->
+        <p class="light">
+            <!-- <span class="active">1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+            <span>6</span> -->
+        </p>
+        <!--上下按钮-->
+        <div class="posibtn">
+            <p class="prev">&lt;</p>
+            <p class="next">&gt;</p>
+        </div>
+    </div>
+
+</body>
+<script src="../common.js"></script>
+<script src="js/imgCarousel.js"></script>
+<script>
+
+    /*
+        插件的使用：
+            * 引入html(不能变)
+            * 引入css(修改css变成你要的效果)
+            * 引入插件js(包括这个插件的依赖js都要一起引入)：根据参数说明，传参即可
+    */
+
+    //假设
+    imgCarousel({//配置参数
+        ele: 'box',//id
+        datalist: ['img/001.jpg', 'img/002.jpg', 'img/003.jpg', 'img/004.jpg', 'img/001.jpg', 'img/002.jpg'],//图片
+        iw: 800, //宽度 (可选)
+        ih: 350,//高度 (可选)
+        time: 3,//图片切换时间(可选)
+        btnType: true // 按钮是否一开始就显示：true(显示，默认效果)  false:隐藏(可选)
+    });
+
+
+</script>
+
+</html>

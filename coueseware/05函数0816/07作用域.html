@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>07作用域</title>
+</head>
+
+<body>
+    <h1>07作用域</h1>
+</body>
+<script>
+    /*
+        作用域：
+            * 全局作用域：函数外面就是全局作用域
+            * 局部作用域：函数里面就是局部作用域
+        * 变量：
+            * 全局变量：在全局作用域下面声明的变量，声明在函数外部的变量
+            * 局部的变量：在局部作用域下面声明的变量，写在函数体的变量
+    */
+
+    //外面的拿不到里面的变量，里面可以拿外面的变量
+    var num = 88;//全局变量
+    function show() {
+        var price = 99;//局部变量
+        // var num = 100;
+        console.log('局部变量:' + price);//可以
+        console.log('局部获取全局：' + num);//可以
+    }
+    show();
+    console.log(num);//全局作用域可以拿到全局的变量,全局下面拿不到局部的变量
+    // console.log(price);//price is not defined
+
+    //作用域链：从内到外，从下往上找，就近原则，找不到就找父函数，一直往外找，直到找到全局作用域为止，还是找不到的话，返回sum is not defined;你的就是我的,我的还是我的
+    // var sum = 18;
+    function father() {//父函数
+        // var sum = 12;
+        // console.log(sum);
+        function son() {//子函数
+            var sum = 15;
+            // console.log('拿到什么：' + sum);//?
+        }
+        son();
+    }
+    father();
+</script>
+
+</html>

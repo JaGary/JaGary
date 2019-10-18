@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>留言板</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul,
+        li {
+            list-style: none;
+        }
+
+        body {
+            margin: 20px 0px 0 20px;
+        }
+
+        #newli {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" id="tex1">
+    <input type="button" value="生成数据" id="btn">
+    <ul id="newli">
+        <!-- <li></li> -->
+    </ul>
+</body>
+<script>
+    window.onload = function () {
+        //找节点
+        var tex1 = document.querySelector('#tex1');
+        var btn = document.querySelector('#btn');
+        var newli = document.querySelector('#newli');
+        var lis = newli.getElementsByTagName('li');
+
+
+
+        function creat() {
+            var val = tex1.value.trim();
+
+            if (val) {
+                var li = document.createElement('li'); //生成新标签（元素节点）
+                console.log(li);
+                li.innerHTML = val; //渲染
+
+                if (lis.length) {
+                    //如果有内容
+                    newli.insertBefore(li, lis[0]) //从前面添加
+                } else {
+                    //如果没内容
+                    newli.appendChild(li); //给父元素添加子元素，
+                }
+                tex1.value = ''; //清空表单
+                tex1.focus(); //聚焦
+            } else {
+                alert('有小偷啊');
+                alert('偷走我的心');
+            }
+        }
+        btn.onclick = function () {
+            creat();
+        }
+        tex1.onkeydown = function (ev) {
+            console.log(ev.keyCode);
+
+            if (ev.keyCode == 16) { //键值16为shift
+
+                creat();
+            }
+
+        }
+    }
+</script>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>给你一个对象，封装成参数拼接在网站后面</h2>
+    <!-- 给你一个对象，封装成参数拼接在网站后面：http://www.baidu.com
+        给你对象：对象转换成参数
+{
+    name : 'apple',
+    price : 7890
+}
+
+得到：'http://www.baidu.com？name=apple&price=7890'
+
+ -->
+    <script>
+        // var obj1 = 'http://www.baidu.com';
+        // var obj = {
+        //     name: 'apple',
+        //     price: 7890
+        // };
+        // arr = [];
+        // for (i in obj) {
+        //     console.log(obj[i]);
+        //     arr.push(i + '=' + obj[i]); //arr
+        // }
+        // console.log(arr);
+
+        // for (j in arr) {
+        //     arr2 = arr[0] + '&' + arr[1];
+        //     console.log(arr2);
+        // }
+        // var res = obj1 + '?' + arr2;
+        // console.log(res);
+
+        //给你一个对象，封装成参数拼接在网站后面
+        function objTostr(obj) {
+            arr = [];
+            for (i in obj) {
+                arr.push(i + '=' + obj[i]); //arr
+                for (j in arr) {
+                    arr2 = arr[0] + '&' + arr[1];
+                }
+            }
+            return arr2;
+        }
+        var obj1 = 'http://www.baidu.com';
+        var obj = {
+            name: 'apple',
+            price: 7890
+        };
+        var res = objTostr(obj);
+        var res1 = obj1 + '?' + res;
+        console.log(res1);
+    </script>
+</body>
+
+</html>

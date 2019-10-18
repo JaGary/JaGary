@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>06原型对象</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    /*
+        this的指向：
+            * 指向函数被调用的对象
+            * 指向事件前面的对象
+    */
+
+    //构造函数.原型对象.方法 = function() {}
+    Array.prototype.sum = function () { //扩展系统的方法
+        let res = 0;
+        // console.log(this);//arr
+        this.forEach(item => { //this:指向sum()方法前面的对象(谁在调用这个方法，指的就是谁)
+            res += item;
+        });
+        return res;
+    }
+
+    //max() 求最大数
+    Array.prototype.max = function () {
+        let max = 0;
+        this.forEach(item => {
+            if (max < item) {
+                max = item;
+            }
+        });
+        return max;
+    }
+
+    //给数组求和
+    let arr = [1, 2, 3];
+    //想仿制系统的方法那样使用  arr.push()
+    // arr.sum = function () {
+    // let res = 0;
+    // console.log(this);//arr
+    // this.forEach(item => {
+    //     res += item;
+    // });
+    // return res;
+    // }
+
+    let res = arr.sum(); //想求和就调用该方法
+    console.log(res);
+
+    //需求：求和
+    let arr2 = [4, 34, 5, 6];
+    let res2 = arr2.sum();
+    console.log(res2);
+    console.log(arr2.max());
+    console.log(arr.sum == arr2.sum); //true:代码和内存都实现复用
+
+    // function show() {
+    //     console.log(this);
+    // }
+
+    // window.show();//window
+
+    // btn.onclick = show;//btn
+
+    // btn.onclick = function () {
+    //     console.log(this);//btn
+    //     window.show();//window
+    // }
+</script>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>运算</title>
+</head>
+
+<body>
+    <h1>运算</h1>
+</body>
+<script>
+    /*
+        运算符：
+            * 算术运算符： + - * / %(求余)
+            * 比较运算符
+            * 逻辑运算符
+            * 一元运算符
+            * 赋值运算符
+    */
+
+    //求余：为抵抗洪水，战士连续作战89小时，编程计算共多少天零多少小时？
+    //需求：89小时==xx天xx小时
+
+    var hours = 89;
+    var day = parseInt(hours / 24);//天数
+    var hour = hours % 24;
+    console.log(day, hour);
+    //xx天xx小时
+    var str = day + '天' + hour + '小时';
+    console.log(str);
+</script>
+
+</html>

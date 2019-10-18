@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>进度条效果</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #bar {
+            width: 0;
+            height: 10px;
+            background: green;
+            /* position: absolute;
+            left: 50px;
+            top: 60px; */
+        }
+    </style>
+</head>
+
+<body>
+    <div id="bar"></div>
+    <div id="scal">35%</div>
+</body>
+<script>
+    /*
+        运动的原理：控制某个样式不断的改变，就有动画效果
+            * 进度条  width不断变大
+            * 盒子   left 不断变大：
+            * 渐隐渐现效果  opacity 不断的变化
+        
+        三大家族的offset家族：
+            * offset
+                * offsetLeft 获取盒子到有定位的父节点的left值
+                * offsetTop 获取盒子到有定位的父节点的top值
+                * offsetWidth 获取盒子的width值
+                * offsetHeight 获取盒子的height值
+                * offsetParent 获取有定位的父节点
+            * scroll
+            * client
+        
+        可视区的宽高：
+            * 宽度： window.innerWidth
+            * 高度： window.innerHeight
+    */
+
+    (function () {
+
+        var bar = document.getElementById('bar');
+        var scalDiv = document.getElementById('scal');
+
+        console.log(bar.offsetLeft);//left 50
+        console.log(bar.offsetWidth);//30
+        console.log(bar.offsetParent);//body
+
+        //需求：制作进度条
+        // bar.style.width = '50px';
+        var speed = 20;
+        var timer = setInterval(function () {
+            var iLeft = bar.offsetWidth + speed;//20 + 20
+            if (iLeft >= window.innerWidth) {//临界值的设置
+                iLeft = window.innerWidth;
+                clearInterval(timer);
+            }
+            //比例系数计算：
+            var scal = parseInt(iLeft / window.innerWidth * 100);
+            scalDiv.innerHTML = scal + '%';
+            console.log(scal);
+            bar.style.width = iLeft + 'px';
+        }, 30);//每隔30毫秒运动20px
+    })();
+</script>
+
+</html>

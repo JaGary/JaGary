@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>封装一个显示隐藏的函数</title>
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+            background: #ccc;
+            color: black;
+            display: none;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="button" value="点击" id="btn">
+    <div id="box"></div>
+</body>
+<script>
+    (function () {
+        var btn = document.getElementById('btn');
+        var box = document.getElementById('box');
+
+        function hideShow(btn, box) {
+            //点击事件
+            btn.onmouseover = function () {
+                if (box.style.display == 'block') {
+                    box.style.display = 'none';
+                } else {
+                    //第一次显示
+                    box.style.display = 'block';
+                }
+            }
+            btn.onmouseout = function () {
+                if (box.style.display == 'none') {
+                    box.style.display = 'block';
+                } else {
+                    //第一次显示
+                    box.style.display = 'none';
+                }
+            }
+        }
+        // function hideShow(btn,box){
+
+        // }
+
+        hideShow(btn, box);
+    })();
+</script>
+
+</html>

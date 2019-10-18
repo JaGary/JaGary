@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>99乘法</title>
+    <style>
+        #box span{
+            display: inline-block;
+            height: 50px;
+            width: 100px;
+            background: #ccc;
+            color: blue;
+            margin: 5px;
+            text-align: center;
+            line-height: 50px;
+        }
+        #box span:hover{
+            background: #58bc58;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h2>99乘法表</h2>
+    <div id="box">
+        <!-- <span>1x1=1</span><br />
+        <span>2x1=2</span><span>2x2=2</span><br />
+        <span>3x1=3</span><span>3x2=6</span><span>3x3=9</span><br /> -->
+    </div>
+</body>
+<script>
+    var box = document.getElementById('box');
+
+    var html = ''; //准备存放字符串
+    for(var n = 1;n <= 9;n++) {
+        for(j = 1;j <= n;j++) {
+            html += '<span>' + n + 'x' + j + '=' + n*j + '</span>';
+        }
+        html += '<br />'
+    }
+    box.innerHTML = html;
+</script>
+</html>

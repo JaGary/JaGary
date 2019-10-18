@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>01document对象</title>
+</head>
+
+<body>
+    <div id="box" title="标题" class="one">
+        <p>内容</p>
+    </div>
+    <ul id="list">
+        <li>
+            <p></p>
+        </li>
+        <li>
+            <p></p>
+        </li>
+        <li>
+            <p></p>
+        </li>
+        <li>
+            <p></p>
+        </li>
+    </ul>
+    <!-- 内容aas 文本节点 -->
+    <ul id="tree">
+        <li id="laoda">老大</li>
+        <li>老二</li>
+        <li>老幺</li>
+    </ul>
+</body>
+<script>
+    /*
+        <div id="box" title="标题">内容</div>
+
+        document:赋予我们操作节点(元素)的能力
+            * 节点
+                * 查找节点
+                    * document.getElementById('box'); 通过id找到单个元素(不用出现重复id值)
+                    * box.getElementsByTagName('li'); 标签查找
+                    * box.getElementsByClassName('btn'); 类名查找
+                    * ES5新增
+                        * document.queryseletor()；单个
+                        * document.querySelectorAll('#list li p'); 集合
+                    * 特殊节点：
+                        * document.body body节点查找
+                        * document.title title
+                        * document.head head
+                        * document.documentElement html节点
+                    * 通过关系查找：
+                        * parentNode 查找父节点
+                        * children 获取元素的全部子元素
+                        * firstElementChild 获取第一个子元素
+                        * lastElementChild 获取最后一个子元素
+                        * previousElementSibling 获取前一个元素
+                        * nextElementSibling 获取下一个元素
+                * 创建节点
+                * 删除节点
+                    * 父节点.removeChild(要删除的节点)
+                * 插入节点
+                * 复制节点
+            * 属性
+                * 属性的添加
+                * 属性的修改
+                * 属性的删除
+                    
+                * 属性值的获取
+            * 内容
+                * 设置和获取内容
+                    * 普通节点
+                        * innerHTML
+                        * innerText
+                    * 表单
+                        * value
+            * 事件
+
+    */
+
+    (function () {
+
+        // var box = document.getElementById('box');//找到单个
+        // var list = document.getElementById('list');//找到单个
+        // var alis = box.getElementsByTagName('li');//document里面找到所有的li(范围太大，不推荐这样写)。集合(即使只有一个li也是数组的形式)
+        // var aps = alis.getElementsByTagName('p');//错误：集合里面找集合
+        // var aps = alis[0].getElementsByTagName('p');//正确：但是只能找到一个
+        // var aps = list.getElementsByTagName('p');//正确：就可以找到所有p这个节点集合
+        // var abtns = box.getElementsByClassName('btn');
+
+
+        // alis[0].onclick = function () {
+        //     //直接写alis出错，alis是一个集合，要加下标
+        // }
+
+        //获取到的是单个元素
+        // var box = document.querySelector('#box');//参数是选择器   
+        // var box = document.querySelector('.one');//参数是选择器 ，如果页面中有多个类名一样的元素，这里找到的是集合的第一个 
+
+        //ES5新增方法查找节点
+        var box = document.querySelector('div p');//参数是选择器   
+        box.onclick = function () {
+            console.log('querySelector');
+        }
+
+        //查找集合
+        var alis = document.querySelectorAll('#list li p');//集合
+        console.log(alis.length);
+
+        //特殊节点的查找
+        // console.log(document.title.innerHTML);
+        console.log(document.title);//获取title值
+        console.log(document.head);//获取head节点
+        console.log(document.documentElement);//获取html节点
+        console.log(document.body);//body节点
+
+        //通过关系查找节点
+        var tree = document.querySelector('#tree');
+
+        //通过父节点找到所有的孩子
+        console.log(tree.childNodes);//? 7 包含文本和元素节点 ,不推荐用childNodes
+        console.log(tree.childNodes[1].nodeName);//LI
+        console.log(tree.childNodes[1].nodeType);//1 == 元素节点  2==属性节点  3==文本节点
+
+        console.log(tree.children.length); // 获取到三个元素节点。推荐使用这个
+
+        //找父节点
+        var laoda = document.querySelector('#laoda')
+        console.log(laoda.parentNode);
+
+        //找首尾节点
+        console.log(tree.firstChild.innerHTML);//IE678写法
+        // console.log(tree.firstElementChild.innerHTML); //标准浏览器写法
+        console.log(tree.lastChild.innerHTML);
+
+
+    })();
+</script>
+
+</html>

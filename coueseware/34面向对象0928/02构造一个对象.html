@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>02构造一个对象</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    /*
+        对象的组成：
+            * 属性:把变量挂在对象下面
+            * 方法：把函数挂在对象下面
+        系统提供空对象：专门给你构造对象用
+            * Object()
+    */
+
+    var num = 23;//变量
+    var arr = [1, 2, 3];
+    arr.sum = 45;//属性：挂在某个对象下面，本质上就是变量，名花有主；挂在对象下面的变量就是属性
+    console.log(arr.sum);//arr.lenght
+
+    function show() { //函数
+        console.log(666);
+    }
+
+    show();//调用
+
+    arr.init = function () { //方法：本质就是函数，挂在对象下面
+        console.log(999);
+    }
+
+    arr.init();//arr.push() arr.slice()
+
+    //不建议把变量和函数挂在已有的对象下面：可能会出现覆盖
+
+    arr.push = function () {
+        console.log('我们准备放假咯！');
+    }
+
+    arr.push(5);
+    console.log(arr);
+
+</script>
+
+</html>

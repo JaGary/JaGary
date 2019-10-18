@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>this的指向：选项卡</title>
+    <style>
+        .active {
+            background: pink;
+        }
+
+        #list div {
+            width: 400px;
+            height: 200px;
+            border: 1px solid #ccc;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>this的指向</h1>
+    <div id="list">
+        <input type="button" class="active" value="新闻">
+        <input type="button" value="体育">
+        <input type="button" value="娱乐">
+        <input type="button" value="财经">
+        <div class="con" style="display: block">新闻</div>
+        <div class="con">体育</div>
+        <div class="con">娱乐</div>
+        <div class="con">财经</div>
+    </div>
+</body>
+<script>
+    (function () {
+
+        /*
+            需求：选项卡的实现
+
+            知识点：
+                * document.getElementsByClassName() 通过类名找到元素，集合
+                * 添加样式：节点.style
+                * 添加属性：节点名.属性名 (除了class之外)
+                * 添加类名：节点名.className
+        */
+
+        //找节点
+        var list = document.getElementById('list');
+        var abtns = list.getElementsByTagName('input');
+        var acons = list.getElementsByClassName('con');
+
+        //遇到数组少不了循环
+        for (var i = 0; i < abtns.length; i++) {//循环绑定事件
+            abtns[i].index = i;//添加索引(自定义属性) abtns[0].index = 0；abtns[1].index = 1
+            abtns[i].onclick = function () {//循环在前，点击在后，循环早已经结束，i已经循环到最后，跳出循环体的i值
+                //排他
+                for (var j = 0; j < abtns.length; j++) {
+                    abtns[j].className = '';//全部都先清空类名
+                    acons[j].style.display = 'none';
+                }
+                this.className = 'active';//每一次都应该只有一个是高亮的
+                // console.log(this.index);
+                acons[this.index].style.display = 'block';
+                // console.log(i);//全部都是4 这种方式拿不到下标
+                // console.log(this);
+                // this.title = '添加title';
+                // this.id = 'one';
+                // this.className = 'two';
+            }
+        }
+
+    })();
+</script>
+
+</html>

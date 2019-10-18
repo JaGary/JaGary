@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>1-100中7的倍数和带7的数</title>
+    <p id="p1"></p>
+</head>
+<body>
+    
+</body>
+<script>
+    var num = 1;
+
+    var p1 = document.getElementById('p1');
+
+    while (num <= 100) {
+        if(num % 7 == 0) {
+            var sum = num.toString(); //把数字转换成字符串
+            if(sum.indexOf('7') != -1) { // 节点.indexof() ----表示条件 节点中包含数字7的数  
+                // -1 表示
+                // document.write(num + '<br>');
+                p1.innerHTML += num + "<br>"; //
+            }
+        }
+         num++;
+    }
+</script>
+</html>

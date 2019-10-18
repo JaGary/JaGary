@@ -1,0 +1,198 @@
+{
+  "id": "1379189",
+  "name": "二",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "1615529",
+      "name": "金牌",
+      "font_class": "jinpai",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    },
+    {
+      "icon_id": "4765728",
+      "name": "left-circle",
+      "font_class": "left-circle",
+      "unicode": "e77f",
+      "unicode_decimal": 59263
+    },
+    {
+      "icon_id": "4765729",
+      "name": "down-circle",
+      "font_class": "down-circle",
+      "unicode": "e780",
+      "unicode_decimal": 59264
+    },
+    {
+      "icon_id": "4765738",
+      "name": "right-circle",
+      "font_class": "right-circle",
+      "unicode": "e783",
+      "unicode_decimal": 59267
+    },
+    {
+      "icon_id": "4765887",
+      "name": "poweroff",
+      "font_class": "poweroff",
+      "unicode": "e78c",
+      "unicode_decimal": 59276
+    },
+    {
+      "icon_id": "4765891",
+      "name": "setting",
+      "font_class": "setting",
+      "unicode": "e78e",
+      "unicode_decimal": 59278
+    },
+    {
+      "icon_id": "4765896",
+      "name": "eye",
+      "font_class": "eye",
+      "unicode": "e78f",
+      "unicode_decimal": 59279
+    },
+    {
+      "icon_id": "4765897",
+      "name": "location",
+      "font_class": "location",
+      "unicode": "e790",
+      "unicode_decimal": 59280
+    },
+    {
+      "icon_id": "4766289",
+      "name": "add user",
+      "font_class": "adduser",
+      "unicode": "e7ae",
+      "unicode_decimal": 59310
+    },
+    {
+      "icon_id": "4766903",
+      "name": "cloud-download",
+      "font_class": "cloud-download",
+      "unicode": "e7d9",
+      "unicode_decimal": 59353
+    },
+    {
+      "icon_id": "4936458",
+      "name": "gift",
+      "font_class": "gift",
+      "unicode": "e842",
+      "unicode_decimal": 59458
+    },
+    {
+      "icon_id": "4936460",
+      "name": "fire",
+      "font_class": "fire",
+      "unicode": "e843",
+      "unicode_decimal": 59459
+    },
+    {
+      "icon_id": "4936955",
+      "name": "alipay",
+      "font_class": "alipay",
+      "unicode": "e87c",
+      "unicode_decimal": 59516
+    },
+    {
+      "icon_id": "4936956",
+      "name": "taobao",
+      "font_class": "taobao",
+      "unicode": "e87d",
+      "unicode_decimal": 59517
+    },
+    {
+      "icon_id": "4936966",
+      "name": "aliwangwang",
+      "font_class": "aliwangwang",
+      "unicode": "e87e",
+      "unicode_decimal": 59518
+    },
+    {
+      "icon_id": "4936967",
+      "name": "apple",
+      "font_class": "apple",
+      "unicode": "e87f",
+      "unicode_decimal": 59519
+    },
+    {
+      "icon_id": "4936980",
+      "name": "android-fill",
+      "font_class": "android-fill",
+      "unicode": "e881",
+      "unicode_decimal": 59521
+    },
+    {
+      "icon_id": "4936984",
+      "name": "QQ",
+      "font_class": "QQ",
+      "unicode": "e882",
+      "unicode_decimal": 59522
+    },
+    {
+      "icon_id": "4936985",
+      "name": "twitter",
+      "font_class": "twitter",
+      "unicode": "e883",
+      "unicode_decimal": 59523
+    },
+    {
+      "icon_id": "4936987",
+      "name": "weibo",
+      "font_class": "weibo",
+      "unicode": "e884",
+      "unicode_decimal": 59524
+    },
+    {
+      "icon_id": "4936991",
+      "name": "wechat-fill",
+      "font_class": "wechat-fill",
+      "unicode": "e885",
+      "unicode_decimal": 59525
+    },
+    {
+      "icon_id": "4936993",
+      "name": "alipay-circle-fill",
+      "font_class": "alipay-circle-fill",
+      "unicode": "e886",
+      "unicode_decimal": 59526
+    },
+    {
+      "icon_id": "4937000",
+      "name": "github-fill",
+      "font_class": "github-fill",
+      "unicode": "e887",
+      "unicode_decimal": 59527
+    },
+    {
+      "icon_id": "5167963",
+      "name": "购物车",
+      "font_class": "gouwuche3",
+      "unicode": "e60c",
+      "unicode_decimal": 58892
+    },
+    {
+      "icon_id": "5756282",
+      "name": "audio-fill",
+      "font_class": "audio-fill",
+      "unicode": "e897",
+      "unicode_decimal": 59543
+    },
+    {
+      "icon_id": "6927154",
+      "name": "下尖角",
+      "font_class": "xiajianjiao",
+      "unicode": "e619",
+      "unicode_decimal": 58905
+    },
+    {
+      "icon_id": "9092116",
+      "name": "旺旺",
+      "font_class": "wangwang",
+      "unicode": "e62e",
+      "unicode_decimal": 58926
+    }
+  ]
+}

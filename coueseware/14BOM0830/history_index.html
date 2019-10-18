@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>06history首页</title>
+	<link rel="stylesheet" href="iconfont/iconfont.css">
+	<link rel="stylesheet" href="css/history.css">
+	<script>
+		/*
+           BOM:浏览器对象模型，赋予我们操控窗口的能力：弹窗、窗口的关闭和打开、刷新页面、获取url、页面跳转、复制、粘贴、回退、前进……
+   
+           window : { 是BOM最核心的对象，是很多子对象的顶层对象
+               属性：
+                   * 浏览器窗口尺寸 innerWidth/innerHeight, //表示浏览器窗口”可视区域”尺寸 outerWidth/outerHeight //表示整个浏览器窗口的尺寸
+                   * 滚动相关
+                       * scrollX/scrollY //获取浏览器窗口滚动条滚动过的距离
+                      
+               方法：
+                   * 滚动
+                       * scrollTo(x,y) //指定滚动位置
+                       * scrollBy(xnum,ynum) //设置基于当前位置滚动的距离，可以为负数
+                   * 弹窗：都会阻塞后面代码的执行：阻塞==中断，尽量少用
+                       * alert(msg)//弹出对话框
+                       * confirm(msg)//弹出警告框，返回布尔值
+                       * prompt(msg,default)//弹出输入框，返回消息或null
+                       * open(url,name,[options]) : 打开一个新窗口并返回新 window 对象
+                       * close(): 关闭窗口(很少用)
+                   
+               事件：
+               子对象：
+                    * location
+                        * 属性
+                            * href
+                            * search
+						* 方法
+							* reload() 重新加载当前文档，带参数true表示不使用缓存刷新页面
+                    * history
+						* length 记录页面跳转的次数
+						* back() 后退，回到上一页
+						* forward() 前进，回到下一页
+						* go() 可以任意跳转到历史记录，可以是正负数
+                    * document  DOM知识
+           }
+   
+       */
+		window.onload = function () {
+			var btnPrev = document.getElementById('prev');
+			var btnNext = document.getElementById('next');
+
+			// 绑定点击事件
+			btnPrev.onclick = function () {
+				history.back();//后退
+			}
+
+			btnNext.onclick = function () {
+				history.forward();//前进
+			}
+		}
+	</script>
+</head>
+
+<body>
+	<div class="container">
+		<header>
+			<button id="prev">&lt;</button>
+			<h1>首页</h1>
+			<button id="next">&gt;</button>
+		</header>
+		<div class="main"></div>
+		<footer>
+			<ul>
+				<li><a href="history_index.html">首页</a></li>
+				<li><a href="history_list.html">列表</a></li>
+				<li><a href="history_goods.html">详情</a></li>
+				<li><a href="history_shopingcar.html">购物车</a></li>
+			</ul>
+		</footer>
+	</div>
+</body>
+
+</html>

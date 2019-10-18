@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>数组的方法补充</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    /*
+         05数组的方法（ES3）: 数组.方法名();
+             * push() 从尾部添加一个或多个数据 (重点)
+             * pop()：删除数组最后一个元素，返回删除的元素 (重点)
+             * unshift()：往数组开头添加一个或多个元素，返回数组新的长度
+             * shift()：删除数组第一个元素，返回删除的元素
+             * splice(start,deleteNum,…items)：在数组中插入、删除、替换的通用方法
+                 start：起始索引位置
+                 deleteNum：要删除的数量
+                 items：插入的元素（可以是多个）
+             * slice(start[,end])：返回数组的片段或子数组，从start开始到end(不包括end所对应的元素) (重点)
+                 * 如果省略end参数，则截取到数组的最后一项,支持负数
+
+             * sort()：将数组中的元素排序，并返回排序后的数组 (重点)
+                 默认:以字符串的排列方式（转换成ASCII码进行对比）
+                 参数fn（比较函数）：利用fn的返回值来确定数组中两个数的位置（假设两个数为a,b）
+                 返回负数：确定a在b前，[a,b…]
+                 返回0：不改变现有位置
+                 返回正数：确定a在b后面，[b,a…]
+             * reverse()：将数组中的元素颠倒顺序，返回逆序后的数组
+             * join(separator) 返回字符串值，其中包含了连接到一起的数组的所有元素 (重点)
+                 separator为分隔符，默认为逗号
+            * concat() 合并数组
+            * toString() 把数组转成字符串并返回，用逗号拼接
+
+        数组的新方法(ES5)：
+            * 静态方法：Array.isArray() 判断是否为数组，返回true/false；构造函数才能调用的方法，叫静态方法；
+            * 索引方法:indexOf() 查找数组里面是否含有某个数，含有就返回这个数所在下标，不含有就返回-1 (重点)
+            * 迭代（遍历）方法:
+                * forEach(fn) 遍历方法，for循环没有太大差别，比for循环方便 (重点)
+                * map(fn) 返回一个数量相等的数组，内容是什么取决于在fn中返回的值 (重点)
+                * filter(fn) 得到执行fn后返回true时对应的数组元素，利用这个方法可对数组元素进行过滤筛选
+                * some(fn) 如果该函数中任何一项返回 true，则返回true
+                * every(fn) 如果该函数对每一项都返回 true，则返回true
+                    参数fn：函数中有三个形参分别为
+                    - item：数组中的每一项,
+                    - index：遍历过程中对应的索引值,
+                    - array：对数组的引用
+                * reduce()
+            * includes():查找是否包含某个数，有就返回true，否则返回false (重点)
+            数组：https://www.runoob.com/jsref/jsref-obj-array.html
+     */
+
+    //自学能力：查文档API、看手册提供的属性和方法、查看案例、演示案例领悟功能，用自己的话术总结描述，这个方法就算掌握了
+    var arr = [1, 2, 3];
+    var arr2 = [4, 5, 6];
+    var all = arr2.concat(arr);//? arr2在前,arr在后，拼接成一个大的数组
+    console.log(all);
+
+    console.log(arr.includes(5));
+
+    var arr3 = ['惠州西湖', '深圳小梅沙'];
+    var str = arr3.toString();//把数组转成字符串，用逗号拼接
+    console.log(arr3);
+    console.log(str);
+    console.log(arr3.join(','));
+
+</script>
+
+</html>

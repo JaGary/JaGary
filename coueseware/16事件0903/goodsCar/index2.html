@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>jQuery购物车</title>
+</head>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<style lang="scss">
+    .shopping-car-container {
+        padding: 50px 40px;
+    }
+
+    .shopping-car-container .car-headers-menu {
+        border-bottom: 1px solid #f5f5f5;
+        padding: 0 15px;
+    }
+
+    .shopping-car-container .panel-body {
+        padding: 15px 0;
+    }
+
+    #checkAll {
+        vertical-align: text-bottom;
+    }
+
+    .shopping-car-container .car-menu {
+        text-align: center;
+    }
+
+    /*
+		 商品区
+		 * */
+
+    .shopping-car-container .goods-content {
+        margin-top: 15px;
+    }
+
+    .shopping-car-container .goods-content .goods-item {
+        margin-top: 20px;
+    }
+
+    .shopping-car-container .goods-content .goods-item .car-goods-info {
+        height: 150px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+    .shopping-car-container .goods-content .goods-item .goods-image-column img,
+    .shopping-car-container .goods-content .goods-item .goods-image-column span {
+        display: block;
+        float: left;
+    }
+
+    .shopping-car-container .goods-content .goods-item .goods-image-column span {
+        width: calc(100% - 100px);
+        box-sizing: border-box;
+        text-indent: 2rem;
+        line-height: 25px;
+        padding: 10px;
+    }
+
+    .goods-price {
+        color: red;
+        font-weight: bolder;
+    }
+
+    .form-control {
+        text-align: center;
+    }
+
+    .single-total {
+        color: red;
+        font-weight: bold;
+    }
+
+    .goods-params {
+        color: darkgray;
+    }
+
+    .bottom-menu {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .bottom-menu #checkAllBottom {
+        vertical-align: text-bottom;
+    }
+
+    #deleteMulty {
+        color: cornflowerblue;
+        cursor: pointer;
+        vertical-align: text-bottom;
+    }
+
+    .bottom-menu-include {
+        background: #e5e5e5;
+    }
+
+    #selectGoodsCount {
+        color: orangered;
+        font-size: 16px;
+        font-weight: bolder;
+    }
+
+    #selectGoodsMoney {
+        color: orangered;
+        font-size: 16px;
+        font-weight: bolder;
+    }
+
+    .panel-default .submitData {
+        background: orangered;
+        font-size: 16px;
+        color: white;
+        cursor: pointer;
+        font-weight: bolder;
+        height: 58px;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    .panel-default .submitDis {
+        background: #B0B0B0;
+        cursor: no-drop;
+    }
+
+    .shopping-car-container .panel-default {
+        position: relative;
+    }
+</style>
+
+<body>
+    <div class="shopping-car-container">
+        <div class="car-headers-menu">
+            <div class="row">
+                <div class="col-md-1 car-menu">
+                    <label><input type="checkbox" id="check-goods-all" /><span id="checkAll">全选 茶香阁</span></label>
+                </div>
+                <div class="col-md-3 car-menu">商品信息</div>
+                <div class="col-md-3 car-menu">商品参数</div>
+                <div class="col-md-1 car-menu">单价</div>
+                <div class="col-md-1 car-menu">数量</div>
+                <div class="col-md-1 car-menu">金额</div>
+                <div class="col-md-2 car-menu">操作</div>
+            </div>
+        </div>
+        <div class="goods-content">
+            <!--goods display-->
+            <!-- <div class="goods-item">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<div class="col-md-1 car-goods-info"><label><input type="checkbox"
+									class="goods-list-item"></label></div>
+						<div class="col-md-3 car-goods-info goods-image-column"><img class="goods-image" src="img/3.jpg"
+								style="width: 100px; height: 100px;"><span
+								id="goods-info">号地块健身房回复的科技示范户快速坚实的看了看大家发快递了很费劲的开始放假</span></div>
+						<div class="col-md-3 car-goods-info goods-params">四季度后付款的酸辣粉</div>
+						<div class="col-md-1 car-goods-info goods-price"><span>￥</span><span
+								class="single-price">199</span></div>
+						<div class="col-md-1 car-goods-info goods-counts">
+							<div class="input-group">
+								<div class="input-group-btn"><button type="button"
+										class="btn btn-default car-decrease">-</button></div><input type="text"
+									class="form-control goods-count" value="1">
+								<div class="input-group-btn"><button type="button"
+										class="btn btn-default car-add">+</button></div>
+							</div>
+						</div>
+						<div class="col-md-1 car-goods-info goods-money-count"><span>￥</span><span
+								class="single-total">199</span></div>
+						<div class="col-md-2 car-goods-info goods-operate"><button type="button"
+								class="btn btn-danger item-delete">删除</button></div>
+					</div>
+				</div>
+			</div> -->
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-body bottom-menu-include">
+                <div class="col-md-1 check-all-bottom bottom-menu">
+                    <label>
+                        <input type="checkbox" id="checked-all-bottom" />
+                        <span id="checkAllBottom">全选</span>
+                    </label>
+                </div>
+                <div class="col-md-1 bottom-menu">
+                    <span id="deleteMulty">
+                        删除
+                    </span>
+                </div>
+                <div class="col-md-6 bottom-menu">
+
+                </div>
+                <div class="col-md-2 bottom-menu">
+                    <span>已选商品 <span id="selectGoodsCount">0</span> 件</span>
+                </div>
+                <div class="col-md-1 bottom-menu">
+                    <span>合计：<span id="selectGoodsMoney">0.00</span></span>
+                </div>
+                <div id="jiesuan" class="col-md-1 bottom-menu submitData submitDis">
+                    结算
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+<script src="js/js.js" type="text/javascript"></script>
+
+</html>

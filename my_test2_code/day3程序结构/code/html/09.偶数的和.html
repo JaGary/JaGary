@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>100以内所有偶数的和</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var n = 1;
+    var sum = 0;
+    
+    while(n <= 100) {
+
+        if(n % 2 == 0){ //表示取偶数
+            document.write('偶数:' + n); //偶数
+            sum += n; //表示sum总数加上判断好的100以内的偶数
+        }
+        n++;
+    }
+    document.write('<br>' + '偶数总和:' + sum); //输出偶数总和
+    
+</script>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>流氓广告</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 200px;
+            height: 100px;
+            border: 1px solid #ccc;
+            position: absolute;
+            top: 100px;
+            left: 200px;
+        }
+
+        #time {
+            /* line-height: 20px; */
+            font-size: 20px;
+            /* margin-top: 5px; */
+            position: absolute;
+            top: 30px;
+            left: 50px;
+        }
+
+        #close {
+            position: absolute;
+            cursor: pointer;
+            top: 4px;
+            right: 5px;
+        }
+        #box1{
+            width: 248px;
+            height: 115px;
+            border: 1px solid #000;
+            display: none;
+            position: absolute;
+            top: 100px;
+            left: 200px;
+            background-image: url(../images/2019.gif);
+            background-size: 100%;
+            background-position: center center;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>流氓广告</h2>
+    <div id="box1"></div>
+    <div id="box">
+        <p id="time">5s</p>
+        <p id="close">X</p>
+    </div>
+    
+</body>
+<script>
+    (function () {
+        var box = document.getElementById('box');
+        var time = document.getElementById('time');
+        var close = document.getElementById('close');
+        var box1 = document.getElementById('box1');
+
+
+        var num = 5;
+
+        function show() {
+            num--;
+            if (num < 0) {
+                //正常广告5s后消失
+                box.style.display = 'none';
+                clearInterval(timer);
+                // location.href = 'https://www.runoob.com/';
+            }
+            time.innerHTML = num + 's';
+        }
+        timer = setInterval(show, 1000);
+        //正常广告
+        // close.onclick = function () {//点击后消失
+        //     box.style.display = 'none';
+        //     clearInterval(timer);
+        // }
+
+        //流氓广告1
+        // close.onclick = function () {
+        //     // window.open('https://www.runoob.com/');//新窗口打开
+        //     // location.href='http://www.chaofanshuma.com/';//原窗口打开
+        // }
+
+        //流氓广告2,点击后过3秒又跳出来
+        close.onclick = function () {
+            num = 6;//给计数器一个初始值，因为一点击就有个延迟一秒钟，所以num为6
+            show();//立刻执行
+            //先清空
+            box.style.display = 'none';
+            clearInterval(timer);
+
+            //过3秒后又跳出
+            setTimeout(function () {
+                box.style.display= 'block';
+                box1.style.display= 'block';
+                timer = setInterval(show, 1000);
+            }, 3000);
+        }
+    })();
+</script>
+
+</html>

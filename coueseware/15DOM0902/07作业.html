@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>生成任意表格</title>
+    <style>
+        #output {
+            margin-top: 20px;
+        }
+
+        table {
+            border: 1px solid #ddd;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td {
+            border: 1px solid #ddd;
+            padding: 3px 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>生成任意表格</h1>
+    <label for="row">姓名：</label><input type="text" id="row">
+    <label for="col">年龄：</label><input type="text" id="col">
+    <input type="button" value="插入到表格" id="btn">
+    <div id="output">
+        <table>
+            <tr>
+                <td>1</td>
+                <td contenteditable="true">张三</td>
+                <td contenteditable="true">10</td>
+                <td>
+                    <a href="###">删除</a>
+                    <a href="###">复制</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+<script>
+    /*
+        需求：根据表单输入的行数和列数，动态的生成表格
+
+        步骤：
+            * 点击按钮的时候
+            * 获取行数和列数,就可以知道循环次数，外循环生成tr，内循环生成td
+            * 创建好的节点插入到页面中
+            * 隔行变色
+    */
+
+    (function () {
+        var btn = document.querySelector('#btn');
+        var row = document.querySelector('#row');
+        var col = document.querySelector('#col');
+        var output = document.querySelector('#output table');
+
+        btn.onclick = function(){
+            var _row = row.value.trim();
+            var _col = col.value.trim();
+
+            
+        }
+
+
+    })();
+
+
+
+
+
+</script>
+
+</html>

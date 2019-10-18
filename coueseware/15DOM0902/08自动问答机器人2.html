@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>自动问答机器人</title>
+    <style>
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .msg-list {
+            position: relative;
+            width: 600px;
+            margin: 0 auto;
+        }
+
+        .msg-list ul {
+            padding: 10px;
+            min-height: 200px;
+            max-height: 400px;
+            /*超出部分出现滚动条*/
+            overflow-y: auto;
+            border: 1px solid #ddd;
+        }
+
+        .msg-list li {
+            float: left;
+            clear: both;
+            margin: 10px 0;
+            padding: 5px;
+            line-height: 2;
+            border-radius: 5px;
+            background-color: #efefef;
+        }
+
+        .msg-list li.active {
+            float: right;
+            background-color: #58bc58;
+            color: #fff;
+        }
+
+        .msg-list textarea {
+            display: block;
+            min-height: 50px;
+            margin: 10px 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .status {
+            display: none;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            padding: 5px 10px;
+            text-align: center;
+            color: #999;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>自动应答机器人</h1>
+    <div id="autoAnswer" class="msg-list">
+        <ul>
+            <!-- <li>内容</li>
+            <li class="active">我方</li>
+            <li>内容</li>
+            <li class="active">我方</li>
+            <li>内容</li>
+            <li class="active">我方</li>
+            <li>内容</li>
+            <li class="active">我方</li>
+            <li>内容</li>
+            <li class="active">我方</li>
+            <li>内容</li>
+            <li class="active">我方</li>
+            <li>内容</li>
+            <li class="active">我方</li> -->
+            <!-- <li>机器人</li>
+            <li class="active">我方</li> -->
+            <!-- <li>回复内容</li>-->
+        </ul>
+        <textarea></textarea>
+        <input type="button" value="提交">
+        <div class="status">对方正在输入...</div>
+    </div>
+</body>
+<script>
+    (function () {
+
+        /*
+            需求：
+                * 我方：
+                    * 点击或回车的时候，获取表单内容
+                    * 创建li节点，插入到对话框ul里面
+                    * 立马显示：对方正在输入...
+                * 对方：
+                    * 开启定时器：2秒后让:对方正在输入...隐藏
+                    * 机器人：回复内容
+                        * 创建节点 li
+                        * 匹配关键字，拿到对应数据，回复对方
+                        * 插入节点
+        */
+
+        var autoAnswer = document.querySelector('#autoAnswer');
+        var ul = autoAnswer.children[0];
+        var tex = autoAnswer.children[1];
+        var btn = autoAnswer.children[2];
+        var status = autoAnswer.children[3];
+        var arrq = ['你好', '你是男的女的', '约吗'];
+        var arra = ['大家好，才是真好', '机器人不分男女', '丑拒'];
+
+        function show() {
+            var val = tex.value.trim();
+            if (val) {
+                //非空
+                //我方
+                var qli = document.createElement('li');
+                qli.innerHTML = val;//我方内容设置
+                qli.className = 'active';
+                ul.appendChild(qli);
+                status.style.display = 'block';
+                ul.scrollTop = ul.scrollHeight - ul.offsetHeight - 2;
+
+                //对方回复
+                var html = '';//放回复内容的
+                if (arrq.indexOf(val) >= 0) {
+                    //找到
+                    var index = arrq.indexOf(val);
+                    html = arra[index];//拿到对应的内容回复
+                } else {
+                    html = '你说啥，风太大，我听不到……';
+                }
+                setTimeout(function () {//异步机制
+                    status.style.display = 'none';
+                    var ali = document.createElement('li');
+                    ali.innerHTML = html;
+                    ul.appendChild(ali);
+                    tex.value = '';//清空并聚焦
+                    tex.focus();
+                    ul.scrollTop = ul.scrollHeight - ul.offsetHeight - 2;
+                }, 2000);//等两秒再回复
+
+            } else {
+                alert('请输入内容');
+            }
+        }
+
+        btn.onclick = function () {
+            show();
+        }
+
+        //回车提交
+        tex.onkeyup = function (ev) {
+            // console.log(ev.keyCode);
+            if (ev.keyCode == 13) {
+                //按下了回车键
+                show();
+            }
+        }
+
+        // ul.scrollTop = 50;
+        // ul.style.top = 
+    })();
+</script>
+
+</html>

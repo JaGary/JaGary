@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>列表页.html</title>
+    <style>
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #goodslist {
+            padding: 20px;
+        }
+
+        #goodslist img {
+            width: 200px;
+        }
+
+        #goodslist ul {
+            overflow: hidden;
+        }
+
+        #goodslist li {
+            float: left;
+            border-right: 1px dotted #ddd;
+            padding-right: 20px;
+            margin-right: 20px;
+        }
+
+        .price span {
+            color: #f00;
+        }
+
+        .price span::before {
+            content: '￥';
+        }
+    </style>
+</head>
+
+<body>
+    <h1>页面之间数据传递</h1>
+    <ul id="goodslist">
+        <!-- <li>
+            <a href="#">
+                <img src="img/ip7.jpg" alt="" />
+                <h4></h4>
+            </a>
+            <p class="color">颜色：红色</p>
+            <p class="price">原价：<del>888</del></p>
+            <p class="price">现价：<span>888</span></p>
+        </li> -->
+
+    </ul>
+</body>
+<script src="../common.js"></script>
+<script>
+    /*
+        需求：点击列表页的内容，实现页面跳转到详情页，共用一个详情页
+            * 列表页渲染数据(html/css/假数据准备好) 敏捷开发
+            * 给每一个商品绑定点击事件
+                * 页面跳转：window.open() 并实现带参数过去
+                    * window.open('url?' + 参数)
+            * 来到详情页，接收数据
+                * 获取url，进行数据的提取
+                * 渲染到详情页，就可以实现详情页的共享
+    */
+
+    (function () {
+
+        var goodslist = getid('goodslist');
+
+        //假数据：[{},{},{}]
+        var data = [{
+            id: '001',
+            name: 'iphone7 plugs',
+            imgurl: 'img/ip7.jpg',
+            price: 5899.00,
+            sale: 5888.00,
+            color: '土豪金'
+        }, {
+            id: '002',
+            name: 'Note7',
+            imgurl: 'img/note7.jpg',
+            price: 3899.00,
+            sale: 998.00,
+            color: '黑色'
+        }, {
+            id: '003',
+            name: '荣耀7',
+            imgurl: 'img/honor7.jpg',
+            price: 1999.00,
+            sale: 1899.00,
+            color: '白色'
+        }];
+
+        //1.渲染数据到页面
+        var str = data.map(function (item) {
+            //data-id 自定义属性：原本属性不够用
+            return `<li data-id="${item.id}">
+                        <a href="###">
+                            <img src="${item.imgurl}" alt="" />
+                            <h4>${item.name}</h4>
+                        </a>
+                        <p class="color">颜色：${item.color}</p>
+                        <p class="price">原价：<del>${item.price}</del></p>
+                        <p class="price">现价：<span>${item.sale}</span></p>
+                    </li>`;
+        }).join('');
+
+        goodslist.innerHTML = str;//渲染
+        //渲染再找节点，否则找不到绑定不了事件
+        var alis = goodslist.getElementsByTagName('li');
+
+        //2.点击商品可以跳转详情页，并把数据带到详情页
+        for (var i = 0; i < alis.length; i++) {
+            alis[i].index = i;
+            alis[i].onclick = function () {
+                //相对：同一个文件夹下； 绝对：网址、从某个盘往下找
+                //如果有数据要用url传输，要写成这种格式：name=apple&price=8999
+                console.log(this.index);
+                console.log(data[this.index]);
+                var str = objToStr(data[this.index]);
+                console.log(str);//id=001&name=iphone7 plugs&imgurl=img/ip7.jpg&price=5899&sale=5888&color=土豪金
+                window.open('05详情页.html?' + str);
+            }
+        }
+    })();
+</script>
+
+</html>

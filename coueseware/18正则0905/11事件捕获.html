@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>事件的捕获</title>
+    <style>
+        div,
+        span {
+            display: block;
+            padding: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="father" style="background: forestgreen">
+        <span id="son" style="background: gold"></span>
+    </div>
+</body>
+<script>
+    (function () {
+
+        //面试可能遇到：默认是冒泡，如果用监听器可以改变默认效果，变成捕获的方式；
+
+        var father = document.getElementById('father');
+        var son = document.getElementById('son');
+
+        //事件绑定
+        son.addEventListener('click', function () {
+            console.log('span');
+        }, false);//false:冒泡  true:捕获(反冒泡)
+
+        father.addEventListener('click', function () {
+            console.log('div');
+        }, true);
+
+        document.body.addEventListener('click', function () {
+            console.log('body');
+        }, false);
+
+        document.addEventListener('click', function () {
+            console.log('document');
+        }, true);
+
+        window.addEventListener('click', function () {
+            console.log('window');
+        }, false);
+
+
+    })();
+</script>
+
+</html>

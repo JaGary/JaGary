@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- 1.解析HTML结构。 -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>01文档的加载步骤</title>
+    <!-- 2.加载外部脚本和样式表文件。 -->
+    <link rel="stylesheet" href="css.css">
+
+    <script>
+        // 3.解析并执行部分脚本代码。
+
+        window.onload = function () {//6.页面加载完毕。//4.window.onload
+            // var btn = document.getElementById('btn');
+            console.log('onload');
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {//2.性能要比onload好
+            console.log('DOMContentLoaded');
+        });
+
+        document.onreadystatechange = function () {
+            if (document.readyState == 'interactive') {//1.jq入口：$(function() {}) 节点边生产边加载
+                console.log('interactive');
+            }
+
+            if (document.readyState == 'complete') {//3.等节点都加载后执行
+                console.log('complete');
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <!-- 4.DOM树构建完成。//DOMContentLoaded -->
+    <h1 id="btn"></h1>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <!-- 5.加载图片等外部文件。 -->
+    <img src="" alt="">
+</body>
+<script src="js.js"></script>
+<script>
+        /*
+        01文档的加载步骤:
+    
+            1.解析HTML结构。
+            2.加载外部脚本和样式表文件。
+            3.解析并执行部分脚本代码。
+            4.DOM树构建完成。//DOMContentLoaded
+            5.加载图片等外部文件。
+            6.页面加载完毕。//window.onload
+        */
+
+        //自调用：工作也喜欢这样写
+        (function () {
+            console.log('自调用');
+        })();
+</script>
+
+</html>

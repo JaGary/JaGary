@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>合并对象</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let obj = Object.assign({ a: 1 }, { b: 2 }, { b: 4, c: 3 });
+    console.log(obj);//{a: 1, b: 4, c: 3}
+
+    //替补方案
+    let option = { //配置参数
+        name: '江林',
+        adr: '江西'
+    }
+
+    let defaultOpt = {//默认参数
+        name: '雪莹'
+    }
+
+    let newobj = Object.assign(defaultOpt, option);//实现对象的拷贝
+    option.like = '代码';
+    console.log(newobj);//?
+    console.log(defaultOpt);
+    console.log(option);
+</script>
+
+</html>

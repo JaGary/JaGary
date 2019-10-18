@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul> -->
+    <p></p>
+</body>
+<script>
+    /*
+           运算符：
+               * 算术运算符： + - * / %(求余)
+               * 比较运算符
+                    * ==(等于), !=(不等于)
+                    * <(小于)、>(大于)、<=(小于等于)、>=(大于等于)
+                    * ===、恒等于/全等于，比较的时候要求值和类型都相等（不会进行类型隐式转换）
+                    * !==、不全等于
+               * 逻辑运算符：面试题
+                   * 与 && 两边为真才真，如果左边为假，就不再运行右边
+                   * 或 || 两边为假才为假,如果左边为真，就不再运行右侧
+                   * 非 !  取反，做开关
+               * 一元运算符
+               * 赋值运算符
+                    * =
+                    * +=
+                    * -=
+                    * *=
+                    * %=
+       */
+
+    var n1 = 3;
+    var n2 = '3';
+    console.log(n1 === n2);//?true == 会进行隐式转换,===全等、恒等，不会进行隐式转换，面试题
+
+    //赋值语句
+    var num = 23;
+    // num = num + 5;//在原本基础上加5
+    num += 5;
+    console.log(num);
+
+    //+=用来做字符串拼接:渲染页面==生成节点插入到body
+    var html = '<ul>';
+    html += '<li></li><li></li><li></li><li></li><li></li>';
+    html += '</ul>';
+
+    //把一个p标签拼接在html后面
+    // html += '<p></p>';
+    //把一个p标签拼接在html前面
+    html = '<p></p>' + html;
+    console.log(html);
+    //留言板：论坛，发帖子
+
+</script>
+
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>自定义右键菜单</title>
+    <style>
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .contextMenu {
+            width: 220px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border: 1px solid #ccc;
+            display: none;
+        }
+
+        .contextMenu li {
+            position: relative;
+            padding-left: 10px;
+            border-bottom: 1px dashed #ccc;
+            line-height: 2.2
+        }
+
+        .contextMenu li:hover {
+            background: #ccc;
+        }
+
+        .contextMenu li:last-child {
+            border: none;
+        }
+
+        .contextMenu li span {
+            position: absolute;
+            right: 5px;
+            top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="contextMenu" id="contextMenu">
+        <ul>
+            <li>复制<span>Ctrl+C</span></li>
+            <li>粘贴<span>Ctrl+V</span></li>
+            <li>剪切<span>Ctrl+X</span></li>
+            <li>删除<span>Del</span></li>
+            <li>保存<span>Ctrl+S</span></li>
+        </ul>
+    </div>
+</body>
+<script>
+    /*
+    需求：
+        * 写一个自定义的菜单
+        * 阻止默认的菜单显示
+        * 阻止默认行为：
+            标准：event.preventDefault();
+            IE8-：event.returnValue = false;
+            通用：retrun false
+        * 显示自己写好的菜单
+        * 菜单定位在鼠标坐标位置
+        * 右键按下的时候：oncontextmenu
+        */
+    (function () {
+        var contextMenu = document.getElementById('contextMenu');
+
+        //右键点击出现 右键按下的时候：oncontextmenu
+        document.oncontextmenu = function (ev) {
+            ev.preventDefault(); //阻止默认行为
+            contextMenu.style.display = 'block';
+            //光标跟着鼠标走 菜单定位在鼠标坐标位置
+            contextMenu.style.left = ev.pageX + 'px';
+            contextMenu.style.top = ev.pageY + 'px';
+        }
+        
+        //阻止冒泡
+        contextMenu.onclick =function(ev){
+            ev.stopPropagation();
+        }
+        //点击空白处消失
+        document.onclick = function () {
+            contextMenu.style.display = 'none';
+        }
+    })();
+</script>
+
+</html>

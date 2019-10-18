@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>侧栏广告</title>
+    <style>
+        #box {
+            width: 100px;
+            position: fixed;
+            right: -100px;
+            height: 80px;
+            transform: translateY(-50%);
+            background: #ccc;
+            top: 50%;
+        }
+
+        #box #box1 {
+            width: 20px;
+            height: 50px;
+            position: absolute;
+            left: -20px;
+            transform: translateY(-50%);
+            top: 50%;
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <div id="box1"></div>
+    </div>
+</body>
+<script src="../js/common.js"></script>
+<script>
+    (function () {
+        var box = document.getElementById('box');
+        //鼠标划入
+        box.onmouseover = function () {
+            startMove(box, {
+                'right': 0
+            })
+        }
+        //鼠标划出
+        box.onmouseout = function () {
+            startMove(box, {
+                'right': -100
+            });
+        }
+    })();
+</script>
+
+</html>

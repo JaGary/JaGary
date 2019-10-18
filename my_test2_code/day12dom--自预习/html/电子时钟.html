@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>电子时钟</title>
+</head>
+
+<body>
+    <div id="clock1"></div>
+</body>
+<script>
+    /*
+    需求：
+    * 获取系统时间：时分秒(补零)
+    * 用图片取代数字
+    * 显示图片
+    */
+
+    (window.onunload = function () {
+        var clock2 = document.getElementById('clock1');
+
+        function siz(num) {
+
+            if (num < 10) {
+                return '0' + num;
+            } else {
+                return '' + num;
+            }
+        }
+
+        function getTime() {
+            var time = new Date();
+            var year = time.getFullYear();
+            var month = time.getMonth() + 1;
+            var today = time.getDate();
+
+            var hour = time.getHours();
+            var min = time.getMinutes();
+            var sec = time.getSeconds();
+            var html = year + '-' + siz(month) + '-' + siz(today) + '&nbsp&nbsp' + siz(hour) + ':' + siz(min) +
+                ':' +
+                siz(sec);
+            clock2.innerHTML = html;
+            return html;
+        }
+        getTime();
+        setInterval(getTime, 1000);
+    })();
+
+</script>
+
+</html>

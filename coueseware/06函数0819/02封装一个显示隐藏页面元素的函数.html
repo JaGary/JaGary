@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>封装一个显示隐藏页面元素的函数</title>
+    <style>
+        #box,
+        #box2 {
+            width: 200px;
+            height: 200px;
+            background: #ccc;
+            overflow: hidden;
+            transition: all 0.5s;
+            display: none;
+        }
+
+        #con {
+            position: absolute;
+            top: 300px;
+            left: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <input type="button" value="下拉菜单" id="btn">
+        <div id="box">菜单</div>
+    </div>
+    <div id="con">
+        <input type="button" value="下拉菜单" id="btn2">
+        <div id="box2">菜单</div>
+    </div>
+
+</body>
+<script src="../common.js"></script>
+<script>
+    (function () {
+
+        //找节点
+        var btn = document.getElementById('btn');
+        var box = document.getElementById('box');
+        var btn2 = document.getElementById('btn2');
+        var box2 = document.getElementById('box2');
+        /*
+            需求：
+                * 点击按钮的时候，让box显示或隐藏
+        */
+
+        // console.log(box.style.display);//获取行内样式
+
+        hideShow(btn, box);//实参：是两个元素
+        hideShow(btn2, box2);//实参：是两个元素
+
+
+        //封装：移入显示，移出隐藏
+    })();
+</script>
+
+</html>

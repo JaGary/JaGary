@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>用数组实现斐波那契数列</title>
+</head>
+
+<body>
+    <h2>用数组实现斐波那契数列</h2>
+    <input type="text" id="num">
+    <input type="button" value="点击" id="btn">
+    <p id="p1"></p>
+</body>
+<script>
+    (function () {
+        var num = document.getElementById('num');
+        var btn = document.getElementById('btn');
+        var p1 = document.getElementById('p1');
+
+
+        btn.onclick = function () {//点击事件
+            var arr = [];
+            var n = num.value;// 点击时获取表单数据
+            for (i = 0; i < n; i++) {
+                if (i < 2) {//当i<2时，给数组添加1
+                    arr.push(1);
+                } else {//当i>2时，取arr[i - 1] + arr[i - 2]
+                    var sum = arr[i - 1] + arr[i - 2]; //升序
+                    arr.push(sum);
+                }
+                // console.log(arr);
+            }
+            p1.innerHTML = arr;
+        }
+    })();
+</script>
+
+</html>

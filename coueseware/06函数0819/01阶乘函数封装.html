@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>01阶乘函数封装</title>
+</head>
+
+<body>
+    <h1>01阶乘函数封装</h1>
+    <input type="text" name="" id="tex">
+    <input type="button" value="计算阶乘" id="btn">
+    <div id="box"></div>
+</body>
+<script>
+    //自调用：把变量都写在函数内部变成局部变量，用完就自动释放内容，垃圾回收机制回收
+
+    (function () {
+
+        //函数的封装：声明式
+        function factorial(num) {//num==5 求5的阶乘  形参
+            var res = 1;
+            for (var i = 1; i <= num; i++) {
+                res *= i;
+            }
+            return res;//记得返回值是最终的那个值，一定是for循环结束的返回值才是最后的结果
+        }
+
+        //调用:复制一行：shift + alt + 下键
+        var tex = document.getElementById('tex');
+        var btn = document.getElementById('btn');
+        var box = document.getElementById('box');
+
+        //点击按钮的时候，拿到表单的值，计算阶乘，结果放到box里面
+        btn.onclick = function () {
+            var val = tex.value;//取值
+            var res = factorial(val);//实参 加工
+            box.innerHTML = val + '的阶乘是：' + res; //赋值
+        }
+    })();
+</script>
+
+</html>

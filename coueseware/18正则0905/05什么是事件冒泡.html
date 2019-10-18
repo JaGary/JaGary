@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>事件冒泡</title>
+    <style>
+        div {
+            padding: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="father" style="background: forestgreen">
+        <div id="son" style="background: gold">
+            <div id="now" style="background: hotpink"></div>
+        </div>
+    </div>
+</body>
+<script src="../common.js"></script>
+<script>
+    (function () {
+
+        var father = document.getElementById('father');
+        var son = document.getElementById('son');
+        var now = document.getElementById('now');
+
+        /*
+            事件冒泡:事件执行的一种顺序，默认的一种效果；
+                * 好的一面：利用事件冒泡实现事件委托：减少事件绑定次数；针对创建的节点也可以一次性绑定事件
+                    * 利用target事件源对象，在传播的过程中不会改变
+                * 不好的一面：避免事件冒泡
+                    * 标准：event.stopPropagation();
+                    * IE8-：event.cancelBubble = true;
+                    
+                1）不是所有的事件都能冒泡。以下事件不冒泡：blur、focus、load、unload…。
+                2）冒泡到最顶层的目标不同。大部分浏览器到window对象，IE8-到document对象 
+        */
+        now.onclick = function (ev) {
+            alert(this.style.backgroundColor);
+            ev.stopPropagation();//阻止冒泡
+        }
+
+        son.onclick = function (ev) {
+            alert(this.style.backgroundColor);
+            ev.stopPropagation();//阻止冒泡
+        }
+
+        father.onclick = function () {
+            alert(this.style.backgroundColor);
+        }
+
+    })();
+</script>
+
+</html>

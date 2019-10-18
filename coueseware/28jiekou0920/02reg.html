@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>注册页面</title>
+</head>
+
+<body>
+    <form id="login" action="" method="post">
+        用户名：<input type="text" placeholder="写邮箱" id="mail" /><span id="inf1"></span><br />
+        密码：<input type="text" placeholder="写密码" id="psw" /><span id="inf2"></span><br />
+        <input type="button" value="注册" id="btn" />
+        <!-- <input type="button" value="登陆" id="login" /> -->
+    </form>
+
+</body>
+<script src="common.js"></script>
+<script>
+    (function () {
+
+        /*
+            需求：
+                * 验证用户名是否存在：select
+                * 不存在就可以注册：insert
+                * 注册成功可以登陆(存cookie) : select
+                * 登陆成功跳转页面，可以退出(查cookie是否含有该用户)
+                    * 如果是在注册页、首页跳转到登陆页；本来就在登陆页：登陆成功就跳转到首页 : window.open(url) location.href=url 
+                    * 如果是非登陆页登陆的，跳转回上一页(localstorage存上一页路径)
+                * 退出：点击退出就删除cookie
+        */
+
+        let mail = document.getElementById('mail');
+        let psw = document.getElementById('psw');
+        let btn = document.getElementById('btn');
+        let inf1 = document.getElementById('inf1');
+        let inf2 = document.getElementById('inf2');
+        let login = document.getElementById('login');
+        let isok = false;
+        //1.验证用户名是否存在：select
+        mail.onblur = () => {
+            //非空-正则-ajax验证
+            ajax({
+                type: 'post',
+                // url: 'api/01checkname.php',
+                url: 'api/jiekou.php',
+                data: {
+                    name: mail.value.trim(),
+                    type: 'checkname'
+                },
+                success: str => {
+                    console.log(str);
+                    if (str == 'yes') {
+                        inf1.innerHTML = '可以注册';
+                        inf1.style.color = '#58bc58';
+                        isok = true;
+                    } else {
+                        inf1.innerHTML = '不可以注册';
+                        inf1.style.color = 'red';
+                        isok = false;
+                    }
+                }
+            })
+        }
+
+        //2.不存在就可以注册：insert
+
+        //验证通过，准备注册
+        btn.onclick = () => {
+            if (isok) {
+                console.log(666);
+                ajax({
+                    type: 'post',
+                    url: 'api/02reg.php',
+                    data: {
+                        name: mail.value.trim(),
+                        password: psw.value.trim(),
+                        type: 'reg'
+                    },
+                    success: str => {
+                        console.log(str);
+                        if (str == 'yes') {
+                            alert('注册成功');
+                            location.href = '03login.html?name=' + mail.value.trim();
+                        } else {
+                            alert('注册失败');
+                        }
+                    }
+                });
+            }
+
+        }
+
+    })();
+</script>
+
+</html>

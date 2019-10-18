@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>篮球</title>
+</head>
+<body>
+    <!-- 篮球从5米高的地方掉下来，每次弹起的高度是
+        原来的30%，经过几次弹起，篮球弹起的最终高度小于0.1米-->
+</body>
+<script>
+    var j = 0;
+    for(var i = 5;num = 0.3;i--){
+        // var num = 0.3;
+        // i 5 1.5 0.45 0.135 0.0405
+        i *= 0.3;
+        j++;
+        document.write(i);
+        document.write('<br />');
+        if(i<0.1){ 
+            break; 
+         }
+    }
+    document.write(j);
+    	// var h=5;//初始高度
+    	// var i=0;
+        // while(h<=5){ 
+        //     h *=0.3
+        //     //每一次落下时弹起的高度 
+        //     i++;//运行的次数 
+        //     if(h<0.1){//当h小于0.1m时跳出本层循环 
+        //         break; 
+        //     } 
+        // } 
+        //     document.write(h+"</br>");
+    	//     document.write(i); 
+</script>
+</html>

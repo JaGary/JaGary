@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>选项卡的制作</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            padding: 50px;
+        }
+
+        #box input {
+            width: 80px;
+            height: 40px;
+        }
+
+        #box input.active {
+            background: red;
+        }
+
+        #box .con {
+            width: 400px;
+            height: 400px;
+            border: 1px solid #000;
+            display: none;
+        }
+    </style>
+    <script type="text/javascript">
+
+
+
+
+
+
+    </script>
+</head>
+
+<body>
+    <div id="box">
+        <input class="active" type="button" name="" id="" value="新闻" />
+        <input type="button" name="" id="" value="体育" />
+        <input type="button" name="" id="" value="娱乐" />
+        <input type="button" name="" id="" value="教育" />
+        <div class="con" style="display: block;">
+            新闻
+        </div>
+        <div class="con">
+            体育
+        </div>
+        <div class="con">
+            娱乐
+        </div>
+        <div class="con">
+            教育
+        </div>
+    </div>
+</body>
+<script>
+    /*
+                  写出面向过程  - 改写成面向对象
+                        * 变形(面向过程的程序)
+                            * 把代码里面，不是赋值的语句都提到初始化函数里面 init()
+                            * 尽量不要有函数嵌套
+                            * 可以存在全局变量
+                        * 改写
+                            *
+             */
+    var oBox = null;
+    var aInputs = null;
+    var aDivs = null;
+    (function () {
+
+        oBox = document.getElementById('box');
+        aInputs = oBox.getElementsByTagName('input');//通过标签名查找元素
+        aDivs = oBox.getElementsByClassName('con');//通过类名查找元素
+
+        //循环绑定事件
+        init();
+
+
+    })();
+
+    function init() {
+        for (var i = 0; i < aInputs.length; i++) {
+            aInputs[i].index = i;//添加索引，做一个标识，点击的时候就可以知道我点的是第几个了
+
+            aInputs[i].onclick = function () {
+                //排他:清空
+                tab(this);//this指向按钮
+            }
+        }
+    }
+
+    function tab(now) {
+        for (var i = 0; i < aInputs.length; i++) {
+            aInputs[i].className = '';
+            aDivs[i].style.display = 'none';
+        }
+        now.className = 'active';//添加类名 this本来指向按钮，但是封装后，指向window
+        aDivs[now.index].style.display = 'block';
+    }
+</script>
+
+</html>

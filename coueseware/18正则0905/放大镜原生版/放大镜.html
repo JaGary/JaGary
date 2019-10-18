@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <!-- <script type="text/javascript" src="js/tools.js"></script>
+	<script type="text/javascript" src="js/move.js"></script> -->
+  </head>
+
+  <body>
+    <div class="wrap" id="wrap">
+      <div class="biger">
+        <!-- <img src="" alt=""> -->
+      </div>
+      <div class="imgs">
+        <div class="main">
+          <!-- <img src="" alt="">
+				<div class="mask" id="mask"></div>  -->
+        </div>
+        <div class="bottom">
+          <p class="prev">&lt;</p>
+          <div class="box">
+            <ul class="smaller">
+              <!-- <li><img src="" alt=""></li> -->
+            </ul>
+          </div>
+          <p class="next">&gt;</p>
+        </div>
+      </div>
+    </div>
+  </body>
+  <!-- <script src="js/common.js"></script> -->
+  <!-- <script src="js/magniglass.js"></script> -->
+  <script>
+    (function() {
+      var wrap = document.getElementById("wrap");
+      var main = wrap.getElementsByClassName("main")[0]; //盒子1
+      var biger = wrap.getElementsByClassName("biger")[0]; //盒子2
+      var smaller = wrap.getElementsByClassName("smaller")[0]; //小图
+      var prev = wrap.getElementsByClassName("prev")[0];
+      var next = wrap.getElementsByClassName("next")[0];
+      var arr = [
+        "images/banner1.jpg",
+        "images/banner2.jpg",
+        "images/banner3.jpg",
+        "images/banner4.jpg",
+        "images/banner5.jpg",
+        "images/banner1.jpg",
+        "images/banner2.jpg",
+        "images/banner3.jpg",
+        "images/banner4.jpg",
+        "images/banner5.jpg"
+      ];
+
+      //1.生成图片渲染
+      var html = arr
+        .map(function(item) {
+          return `<li><img src="${item}" alt=""></li>`;
+        })
+        .join("");
+
+      smaller.innerHTML = html;
+      smaller.children[0].className = "active"; //第一个高亮
+
+      main.innerHTML = `<img src="${arr[0]}" alt="">
+				<div class="mask"></div> `;
+      biger.innerHTML = `<img src="${arr[0]}" alt="">`;
+
+      //2.鼠标移入盒子1：盒子2和盒子3出现;移出：隐藏
+      var mask = wrap.getElementsByClassName("mask")[0]; //盒子3：遮罩
+
+      main.onmouseover = function() {
+        biger.style.display = "block";
+        mask.style.display = "block";
+      };
+
+      main.onmouseout = function() {
+        biger.style.display = "none";
+        mask.style.display = "none";
+      };
+
+      //3.鼠标在盒子1滑动的过程：盒子2跟着鼠标走，遮罩动了，大图跟着按照比例运动
+      main.onmousemove = function(ev) {
+        var iLeft = ev.pageX - wrap.offsetLeft - mask.offsetWidth / 2;
+        var iTop = ev.pageY - wrap.offsetTop - mask.offsetHeight / 2;
+        //临界值
+        if (iLeft <= 0) {
+          iLeft = 0;
+        } else if (iLeft >= wrap.offsetWidth - mask.offsetWidth) {
+          iLeft = wrap.offsetWidth - mask.offsetWidth;
+        }
+        // console.log(wrap.offsetHeight - mask.offsetHeight);
+        if (iTop <= 0) {
+          iTop = 0;
+        } else if (iTop >= main.offsetHeight - mask.offsetHeight) {
+          iTop = main.offsetHeight - mask.offsetHeight;
+        }
+
+        //比例系数
+        var scalX = iLeft / (wrap.offsetWidth - mask.offsetWidth);
+        var scalY = iTop / (main.offsetHeight - mask.offsetHeight);
+        // console.log(iTop);
+        mask.style.left = iLeft + "px";
+        mask.style.top = iTop + "px";
+
+        //大图运动距离：大图的最大运动距离 * 比例系数
+        biger.children[0].style.left =
+          (biger.offsetWidth - biger.children[0].offsetWidth) * scalX + "px";
+        biger.children[0].style.top =
+          (biger.offsetHeight - biger.children[0].offsetHeight) * scalY + "px";
+      };
+    })();
+  </script>
+</html>

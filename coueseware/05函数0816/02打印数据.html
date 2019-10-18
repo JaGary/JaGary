@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>02打印数据</title>
+</head>
+
+<body>
+    <h1>02打印数据</h1>
+    <input type="button" value="点我" id="btn">
+    <div id="box">
+        <h1>666</h1>
+    </div>
+</body>
+<script>
+
+    // document.write('今晚烧烤哦，我喜欢吃烤虾');
+    var btn = document.getElementById('btn');
+    var box = document.getElementById('box');
+    btn.onclick = function () { //点击的时候文档流重新生成了，所以会被覆盖
+        // document.write('今晚烧烤哦，我喜欢吃烤虾');
+        // box.innerHTML = '<b>明天享受周末的阳光</b>';
+        // box.innerText = '<b>明天享受周末的阳光</b>';
+        // box.innerText = '明天享受周末的阳光';
+        console.log(box.innerHTML);//<h1>666</h1> 要节点的
+        // console.log(box.innerText);//666 获取文本，不要节点的
+    }
+</script>
+
+</html>

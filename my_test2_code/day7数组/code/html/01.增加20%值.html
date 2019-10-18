@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>编写一个map(arr)函数，把数组中的每一个数字都增加20%</title>
+</head>
+
+<body>
+    <h2>编写一个map(arr)函数，把数组中的每一个数字都增加20%</h2>
+</body>
+<script>
+    (function () {
+        var arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; //先数组再写函数
+        function map(arr) {
+            var newarr = [];
+            for (var i = 0; i < arr.length; i++) {
+                var num = arr[i] * (1 + 0.2);
+                var num1 = num.toFixed(2) * 1;
+                newarr.push(num1);
+            }
+            return newarr;
+        }
+        var num2 = map(arr); //要添加入口
+        console.log(num2);
+        console.log(num2.length);
+    })();
+</script>
+
+</html>

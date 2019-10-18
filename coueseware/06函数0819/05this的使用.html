@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>this的使用</title>
+</head>
+
+<body>
+    <ul id="list">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <!-- <ul>
+        <li>111</li>
+    </ul> -->
+</body>
+<script>
+    /*
+        this：
+            * 第一种用法：指向调用该函数的对象
+            * 第二种用法:指向事件前面的对象，当前的那个
+    */
+
+    function show() {
+        console.log(this);//this指向window
+    }
+
+    window.show();//winodw最大的对象，我们学的大量方法都是属于window下面的
+
+    // window.alert(112);//平时的写法，省略了window对象，像这种完整的写法，我们就非常的容易看出，就是window再调用alert
+
+    var list = document.getElementById('list');
+    var aLis = list.getElementsByTagName('li');//可以在document下找li这个集合，但是在文档里面找，范围太大，找到页面所有的li
+
+    for (var i = 0; i < aLis.length; i++) {
+        //循环给每一个li绑定点击事件
+        aLis[i].onclick = function () {
+            console.log(this);//指向当前被你点击的那个li
+        }
+    }
+</script>
+
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ajax get</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #list{
+            width: 100%;
+            height: 100%;
+            padding-left: 20px;
+        }
+        #list li{
+            width: 50%;
+            height: 100px;
+            float: left;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="list">
+        <!-- <li data-id="10">
+                    <p>华为</p>
+                    <p>红色</p>
+                    <p>价格：9999</p>
+            </li> -->
+    </ul>
+</body>
+
+<script>
+    let list = document.getElementById('list');
+
+    //1.告诉ajax你要做什么
+    let xhr = new XMLHttpRequest();
+    /*
+            open(请求方式,url,同步或异步)
+                参数一：请求方式 get 或 post
+                参数二：url，接口地址,如果需要传数据给后端，如果是get方式，数据是在url这里传输；url?name=jingjing&tel=12132132
+                参数三：同步或异步，同步false；异步：true
+        */
+    xhr.open('get', '../api/01.get.php', true);
+
+    //2.ajax帮你发送请求
+    /*
+            send(参数)
+                * 如果是get方式：send(null)
+                * 如果是post，并且需要传数据给后端，send('name=jingjing&tel=12132132')
+        */
+    xhr.send(null);
+
+    //3.接口   php 后端
+
+
+    //4.渲染数据  事件 ： xhr.onreadystatechange = function(){}
+    xhr.onreadystatechange = () => {
+        if (xhr.readyState == 4) {
+            //已经完成,但不一定是正确的
+            if (xhr.status == 200) { //执行成功
+                //完成并成功了：可以在network里面查看响应，是否接收成功；也可以用responseText打印到控制台检测
+                // console.log(xhr.responseText);
+                let arr = JSON.parse(xhr.responseText); //将数据转换成对象
+
+                let html = arr.map(item => {
+                    return `<li data-id="${item.gid}">
+                                <p>${item.name}</p>
+                                <p>${item.color}</p>
+                                <p>价格：${item.price}</p>
+                            </li>`
+                }).join('');
+
+                //渲染
+                list.innerHTML = html;
+            }
+        }
+    }
+</script>
+
+</html>

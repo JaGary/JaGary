@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>09回调函数</title>
+</head>
+
+<body>
+    <h1>09回调函数</h1>
+</body>
+<script>
+    /*
+        09回调函数:
+            * 把一个函数当成实参来传递，这个函数就是回调函数
+            * 以后封装函数会经常用到
+    */
+
+    function show(fn) {//形参：fn就是一个函数
+        // console.log(fn);
+        var price = 666;//局部变量
+        fn(price);//实参
+    }
+
+    // 方法一：回调函数写在外面，用函数名调用
+    // function son(data) {//形参
+    //     console.log('我是回调' + data);
+    // }
+
+    // show(son);//入口：实参是一个函数
+
+    //方法二：直接在入口处写匿名函数，该函数就是回调函数
+    show(function (data) {
+        console.log('我是回调函数' + data);
+    });
+
+    //如果系统方法说明参数是一个回调函数，那就是传一个函数进去才能起作用
+</script>
+
+</html>

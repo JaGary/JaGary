@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>计算两个文本框的和</title>
+</head>
+
+<body>
+    <h1>计算两个文本框的和</h1>
+    <input type="text" id="num1">
+    <input type="text" id="num2">
+    <input type="button" value="相加" id="add">
+    <input type="text" id="sum">
+</body>
+<script>
+    /*
+        get Element By Id
+        获取  元素   通过  id：在文档里面通过id获取元素,找到单个元素
+    */
+    //查找节点
+    var num1 = document.getElementById('num1');
+    var num2 = document.getElementById('num2');
+    var add = document.getElementById('add');
+    var sum = document.getElementById('sum');//存放结果
+
+    /*
+        伪代码：
+        需求：点击按钮add的时候，获取两个表单的值，进行运算，结果放到sum表单里面
+            * 点击按钮：节点.onclick = function () {功能}
+            * 获取和设置表单的值：节点.value = 22;
+    */
+    // num1.value = '西瓜好好吃';//设置表单内容
+    // console.log(num1.value);
+
+    add.onclick = function () {
+        // console.log(666);
+        var val1 = num1.value;
+        var val2 = num2.value;
+        console.log(val1, val2);
+        if (val1 && val2) {
+            //非空
+            if (isNaN(val1) || isNaN(val2)) { 
+                //至少有一个不是数字,不用计算
+                alert('请写数字，不能输入字母');
+            } else {
+                //两边都是false：两边都是数字
+                sum.value = val1 * 1 + val2 * 1;
+            }
+            console.log(isNaN(val1), isNaN(val2));
+        } else {
+            //空
+            alert('请输入两个数据');
+        }
+        // sum.value = val1 + val2;
+        // console.log(val1, val2);
+    }
+</script>
+
+</html>

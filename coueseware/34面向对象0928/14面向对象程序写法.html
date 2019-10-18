@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+</body>
+<script>
+
+    /*
+        购物车：面向对象方式写
+            * 属性
+            * 方法
+
+        面向对象程序编程：
+            * 把旧的面向过程的程序改成面向对象：this指向要明确，出错了就要修正：定时器、事件
+            * 从零开始用面向对象方式书写
+                * 构造函数：里面放好书写
+                * 原型对象：放方法
+                * 调用：实例化一个对象
+    */
+
+    function Car() {
+        //放属性
+        this.removeAll = null;//全删按钮
+        this.totalNum = 0;//总数量
+        this.totalPrice = 0;//总价
+        this.addBtns = null;//添加按钮
+        ……
+        this.init();//初始化方法
+    }
+
+    Car.prototype.init = function () {
+        //节点的查找；事件绑定
+        this.creatList();//渲染数据
+        this.addNum();//添加数量
+        this.cutNum();//减少数量
+        this.removeRow(index);//删除某行
+        this.removeAllRows();//循环调用this.removeRow(index) 耦合
+        this.allNum();//统计数量
+        this.updateIndex();//重置索引
+        ……
+    }
+
+    //单一性原则：一个方法尽量只有一个功能
+    Car.prototype.creatList = function () {
+
+    }
+
+</script>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>时间差</title>
+</head>
+
+<body>
+    <h1>04两个时间差</h1>
+    <input type="date" id="start">
+    <input type="date" id="end">
+    <input type="button" id="btn" value="两个时间差">
+    <div id="output"></div>
+</body>
+<script>
+    (function () {
+
+        //需求：时间差
+        var start = document.getElementById('start');
+        var end = document.getElementById('end');
+        var btn = document.getElementById('btn');
+        var output = document.getElementById('output');
+
+        //点击按钮的时候，计算两个时间的差值
+        /*
+            * 时间和时间的相减：时间的相关计算，都要先转成纪元时间(把一个时间转成毫秒数)，再相减，再把结果转成指定的格式
+                * getTime() 获取纪元时间
+                * Date.parse(“2015-08-24”)//返回指定日期距1970-1-1零时的毫秒数
+                * Date.now();//返回执行这行代码时距1970-1-1零时的毫秒数
+        */
+
+        btn.onclick = function () {
+            var startTime = start.value;
+            var endTime = end.value;
+            console.log(startTime, endTime);//2019-08-28 2019-08-30 字符串
+
+            //方法一：获取纪元时间
+            // var _startTime = new Date(startTime);//把字符串的日期转成了日期对象，日期对象才能调用日期的方法
+            // var sTime = _startTime.getTime();
+            // console.log(sTime);//毫秒数  1566950400000
+
+            //方法二：直接用Date.parse(“2015-08-24”)
+            var _startTime = Date.parse(startTime);//把字符串的时间直接转成毫秒数
+            var _endTime = Date.parse(endTime);
+
+            var res = _endTime - _startTime;//减完了还是毫秒数
+
+            //毫秒数->天数
+            var days = parseInt(res / 1000 / 60 / 60 / 24);
+            output.innerHTML = `时间${startTime}到时间${endTime}相差${days}天`;
+        }
+
+        
+    })();
+</script>
+
+</html>

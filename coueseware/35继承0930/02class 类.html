@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    /*
+            面向对象的写法：
+                * 第一种：单体
+                * 第二种：混合方式
+                * 第三种：ES6 class
+                * 
+            代码层次：写得出来-写得漂亮-性能好(可维护性、可扩展性、代码效率)
+        */
+
+    class Student {
+        constructor(name, age) {
+            //属性
+            this.name = name;
+            this.age = age;
+        }
+        showname() {//方法
+            console.log(this.name + '回家不？');
+        }
+        coding() {//方法
+            console.log(this.name + '代码非常6');
+        }
+    }
+
+    var bobo = new Student('波波', 18);
+    bobo.coding();
+    console.log(bobo);
+
+    var wenwen = new Student('雯雯', 18);
+    wenwen.coding();
+
+    console.log(bobo.coding == wenwen.coding);
+</script>
+
+</html>

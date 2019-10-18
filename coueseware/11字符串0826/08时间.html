@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>时间对象</title>
+</head>
+
+<body>
+    <h1>时间对象</h1>
+</body>
+<script>
+    /*
+        时间对象: new Date()
+        方法：
+            * 获取时间：
+            * 设置时间
+    */
+    var time = new Date();//时间戳 获取时间
+    var year = time.getFullYear();//年
+    var month = time.getMonth() + 1;//月
+    var day = time.getDate();//日
+    var hours = time.getHours();//时
+    var mins = time.getMinutes();//分
+    var secs = time.getSeconds();//秒
+    var week = time.getDay();//从0-6 星期天-星期六
+
+    console.log(month);
+    function toDb(num) {
+        if (num < 10) {
+            return '0' + num;
+        } else {
+            return '' + num;
+        }
+    }
+    //需求：2019-08-26 17:34:09
+    var str = `${year}-${toDb(month)}-${toDb(day)} ${toDb(hours)}:${toDb(mins)}:${toDb(secs)}`;
+    console.log(str);
+
+    //设置时间
+    // var time2 = new Date('1905-8-4');//时间戳 
+    // var time2 = new Date('1905/8/4');//时间戳
+    // var time3 = new Date(1996, 6, 1);
+    // var time3 = new Date(56521211021);////参数为距1970-1-1零时的毫秒数
+    // console.log(time3);
+
+    var time2 = new Date();//获取时间
+    time2.setDate(12);//设置日
+    console.log(time2);
+</script>
+
+</html>

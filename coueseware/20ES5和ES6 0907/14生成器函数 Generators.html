@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>生成器函数 Generators</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    /*
+        生成器函数 Generators:了解即可
+        * function和函数名之间有一个*号
+        * 函数体内部使用了yield表达式
+        * next()
+            * 执行next()后得到一个yield或return返回值组成的对象{value:xx,done:false}
+            * 对象中的done是否为true,取决于函数是否完结束
+        
+        * 用途：
+            * 游戏向导
+            * 安装软件向导
+    */
+    function* show() {//生成器函数
+        console.log('1');
+        yield 'one';//yield 暂停
+        console.log('2');
+        yield 'two';
+        console.log('3');
+        yield 'three';
+        console.log('4');
+        // return 'over';//终止
+    }
+
+    var res = show();
+    // console.log(res.next());
+    // console.log(res.next());
+    // console.log(res.next());
+    // console.log(res.next());
+    // console.log(res);
+
+    //点击btn才能执行下一步
+    function* mygame() {//生成器函数
+        console.log('读完规则下一步');
+        yield 'one';//yield 暂停
+        console.log('来到王者，请去领取皮肤');
+        yield 'two';
+        console.log('领完皮肤，到战场试炼,亚瑟加油！');
+        yield 'three';
+    }
+    var game = mygame();
+
+    // btn.onclick = function () {//btn:已经读完规则
+    //     if (cheBox.checked) {
+    //         game.next();
+    //     }
+    // }
+
+    // btn2.onclick = function () {//btn:已经拿到皮肤
+    //     game.next();
+    // }
+</script>
+
+</html>

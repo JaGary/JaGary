@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>08程序的结构</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    /*
+        08程序的结构:
+            * 顺序结构
+            * 选择结构
+                * if else
+                    * 单分支
+                    * 双分支
+                    * 多分支
+                * 三目：双分支  ?:
+                * switch: 多分支
+            * 循环结构
+    */
+
+    //找bug
+
+    console.log(222);//打印了222，说明什么？
+    //代码块1 10行代码
+    console.log(444);//打印了44，说明代码块2出bug
+    //代码块2 10行代码
+    console.log(333);//不打印,说明上面有问题
+    //代码块3 10行代码
+    console.log('111');//控制台不显示111 ，说明什么？
+
+    //选择结构：if else
+    var num = 2;
+    if (num == 2) {//单分支
+        console.log('good');
+    }
+
+    //双分支
+    if (num == 2) {
+        console.log('ok');
+    } else {
+        console.log('no');
+    }
+
+    //多分支?
+    //需求：成绩判断；注意实现：条件判断必须写在if的后面，最后的else可写可不写
+    var score = 40;
+    if (score < 60 && score >= 0) {
+        //不及格
+        console.log('你要留级了，悲剧了');
+    } else if (score < 80 && score >= 60) {
+        //良好
+        console.log('你成绩不错哦！');
+    } else if (score <= 100 && score >= 80) {
+        //优秀
+        console.log('你很秀儿');
+    } else {
+        console.log('成绩不合法');
+    }
+
+
+</script>
+
+</html>

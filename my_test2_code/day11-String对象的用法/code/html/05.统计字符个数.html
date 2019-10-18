@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>封装一个统计字符串中每个字符个数的函数</title>
+</head>
+
+<body>
+    <h2>封装一个统计字符串中每个字符个数的函数</h2>
+    <div id="box"></div>
+</body>
+<script>
+    (function () {
+        var box = document.getElementById('box');
+
+        var str = 'aabccd';
+
+        function news(str) {
+            var num1 = {};
+            var sum = '';
+            for (i in str) {
+                sum += str.charAt(i); //遍历str，从下标取键值
+                // console.log(sum);
+                var s = 0;//定时器
+                for (j in sum) {//遍历找出同样的
+                    if (sum.charAt(j) == str.charAt(i)) {
+                        s++;//如果符合就+1
+                    }
+                    num1[(str.charAt(i))] = s;//通过下标找到str字符串找到num1的键名
+                    // console.log(s);
+                }
+            }
+            return num1;
+        }
+        console.log(news(str));
+    })();
+</script>
+
+</html>

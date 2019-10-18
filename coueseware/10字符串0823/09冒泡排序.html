@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>冒泡排序</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    /*
+        02冒泡排序:找大的数往后挪；升序
+            * 当前元素跟下一个元素对比:用相邻的元素相比
+            * 把最大的逐个往后排列
+    */
+
+    var arr = [1, 5, 3, 2];
+    var num = 0;//计数器
+    for (var j = 0; j < arr.length; j++) {
+        for (var i = 0; i < arr.length - 1 - j; i++) {
+            if (arr[i] > arr[i + 1]) {//如果前面的比后面的大，要交换位置
+                var temp = arr[i];
+                arr[i] = arr[i + 1];
+                arr[i + 1] = temp;
+            }
+            num++;
+        }
+    }
+
+    console.log(arr);
+    console.log('循环次数：' + num);
+</script>
+
+</html>

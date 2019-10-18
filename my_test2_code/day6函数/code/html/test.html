@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>test</title>
+    <style>
+        .active {
+            background: #ffffff;
+        }
+
+        #list .con {
+            width: 200px;
+            height: 200px;
+            display: none;
+        }
+
+        .con .top {
+            width: 182px;
+            height: 27px;
+            background-color: #ccc;
+            margin-top: 15px;
+            text-align: center;
+            display: flex;
+        }
+
+        .con .top span {
+            color: #959599;
+            line-height: 27px;
+            font-size: 12px;
+            display: block;
+            margin-left: 20px;
+        }
+
+        .con .top .bb {
+            margin-left: 40px;
+        }
+
+        .con .center {
+            flex: 1;
+            display: flex;
+        }
+
+        .con .center div {
+            width: 50%;
+            height: 100%;
+            text-align: center;
+        }
+
+        .con .center .center-1 span {
+            display: block;
+            margin-top: 15px;
+            font-size: 11px;
+
+        }
+
+        .con .center div .p1 {
+            display: block;
+            line-height: 75px;
+            font-size: 11px;
+            color: #ccc;
+            /* margin-left: 40px; */
+        }
+
+        .con .bottom {
+            width: 182px;
+            height: 27px;
+            background-color: #ccc;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .con .bottom a {
+            text-decoration: none;
+            font-size: 13px;
+            color: #006cba;
+            line-height: 27px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="list">
+        <input type="button" class="active" value="竞彩预测">
+        <input type="button" value="红彩专家">
+
+        <div class="con" style="display: block">
+            <div class="top">
+                <i></i>
+                <span>欧冠</span>
+                <span class="bb">07/24 02：00</span>
+            </div>
+            <div class="center">
+                <div class="center-1">
+                    <span>埃因霍温</span>
+
+                    <span>巴塞尔</span>
+                </div>
+                <div>
+                    <span class="p1">未开赛</span>
+                </div>
+            </div>
+            <div class="bottom">
+                <a href="">查看全部方案</a>
+            </div>
+        </div>
+        <div class="con">4551</div>
+
+    </div>
+</body>
+<script>
+    (function () {
+        var list = document.getElementById('list');
+        var abtns = list.getElementsByTagName('input');
+        var acons = list.getElementsByClassName('con');
+
+        for (var i = 0; i < abtns.length; i++) { //循环绑定事件
+            abtns[i].index = i; //添加索引(自定义属性) abtns[0].index = 0；abtns[1].index = 1
+            abtns[i].onclick = function () { //循环在前，点击在后，循环早已经结束，i已经循环到最后，跳出循环体的i值
+                //排他
+                for (var j = 0; j < abtns.length; j++) {
+                    abtns[j].className = ''; //全部都先清空类名
+                    acons[j].style.display = 'none';
+                }
+                this.className = 'active'; //每一次都应该只有一个是高亮的
+                acons[this.index].style.display = 'block';
+
+            }
+        }
+    })();
+</script>
+
+</html>

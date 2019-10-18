@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>05下拉菜单的值获取</title>
+</head>
+
+<body>
+    <h1>05下拉菜单的值获取</h1>
+    <select name="" id="sum">
+        <option value="add">+</option>
+        <option value="cut">-</option>
+    </select>
+    <input type="button" value="计算" id="btn">
+</body>
+<script>
+    var btn = document.getElementById('btn');
+    var sum = document.getElementById('sum');
+
+    btn.onclick = function () {
+        var n1 = 7;
+        var n2 = 6;
+        var fuhao = sum.value;
+        if (fuhao == 'add') {//判断
+            //相加
+            console.log(n1 + n2);
+        }
+
+        if (fuhao == 'cut') {
+            console.log(n1 - n2);
+        }
+        console.log(fuhao);
+    }
+</script>
+
+</html>

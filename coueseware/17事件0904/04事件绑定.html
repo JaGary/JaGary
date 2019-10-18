@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>04事件绑定</title>
+</head>
+
+<body>
+    <input type="button" value="点击" id="btn">
+
+</body>
+<script>
+    /*
+        事件的绑定：
+            节点.onclick = 事件处理函数(ev) {} ev(event)事件处理函数里面的第一个形参，就是event对象，里面含有很多属性和方法
+
+            event {//有兼容：ie8- window.event
+                keycode:键盘键值
+                        * 回车 13
+                        * 左上右下：37-40
+                        * shift：16
+                        * ctrl : 17
+                        * alt : 18
+                        * 空格 : 32
+                        * altKey 返回当事件被触发时，ALT 键是否被按下。
+                        * ctrlKey 返回当事件被触发时，CTRL 键是否被按下。
+                        * shiftKey 返回当事件被触发时，Shift 键是否被按下。
+                target:事件源对象
+                    
+            }
+
+           
+
+    */
+    (function () {
+        var btn = document.getElementById('btn');
+
+        btn.onclick = function (ev) {
+            //var ev ev名字任取
+            // var iev = ev || window.event;//兼容处理
+            ev = ev || window.event;//兼容处理
+            // if (!ev) {
+            //     //ie低版本
+            //     ev = window.event;
+            // }
+            console.log(ev.target);//很像this
+            console.log(this);
+        }
+
+        document.onkeydown = function (ev) {//打印键值:获取键值要用键盘事件
+            console.log(ev.keyCode);
+            //需求：按下回车键和ctrl键就可以提交
+            if (ev.keyCode == 13 && ev.ctrlKey) {
+                console.log('按下了组合键：回车+ctrl');
+            }
+        }
+
+
+    })();
+</script>
+
+</html>

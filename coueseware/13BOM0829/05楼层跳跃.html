@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>跳楼</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        #lou li {
+            width: 100%;
+            /* height: 500px; */
+        }
+
+        #lou li:nth-child(1) {
+            background: lavender;
+        }
+
+        #lou li:nth-child(2) {
+            background: lightblue;
+        }
+
+        #lou li:nth-child(3) {
+            background: lightcoral;
+        }
+
+        #btn {
+            position: fixed;
+            left: 50px;
+            top: 100px;
+        }
+
+        #btn li {
+            width: 80px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            margin-bottom: 10px;
+            background: lightpink;
+        }
+
+        #btn .active {
+            background: lightsalmon;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <ul id="lou">
+            <li>1楼</li>
+            <li>2楼</li>
+            <li>3楼</li>
+        </ul>
+        <ul id="btn">
+            <li class="active">1楼</li>
+            <li>2楼</li>
+            <li>3楼</li>
+        </ul>
+    </div>
+</body>
+<script>
+    /*
+        需求：
+            * 找到所有的楼层：设置高度等于一屏的高度  window.innerHeight
+            * 给按钮们绑定点击事件，点击哪一个哪一个高亮，并且跳转到对应楼层
+            * 滚动滑轮，如果滚动到了相应的楼层，对应按钮也要高亮
+    */
+
+    (function () {
+
+        var lou = document.getElementById('lou');
+        var btn = document.getElementById('btn');
+        var alous = lou.getElementsByTagName('li');//楼层
+        var abtns = btn.getElementsByTagName('li');//按钮
+
+        //1.找到所有的楼层：设置高度等于一屏的高度  window.innerHeight
+        for (var i = 0; i < alous.length; i++) {
+            alous[i].style.height = window.innerHeight + 'px';
+        }
+
+        //2.给按钮们绑定点击事件，点击哪一个哪一个高亮，并且跳转到对应楼层
+        for (var i = 0; i < abtns.length; i++) {
+            abtns[i].index = i;//绑定索引
+            abtns[i].onclick = function () {
+                // console.log(this);
+                for (var j = 0; j < abtns.length; j++) {
+                    abtns[j].className = '';
+                }
+                this.className = 'active';
+                var iScroll = window.innerHeight * this.index;
+                window.scrollTo(0, iScroll)
+            }
+        }
+
+        //3.滚动滑轮，如果滚动到了相应的楼层，对应按钮也要高亮
+        window.onscroll = function () {
+            var scrollTop = window.scrollY;//滚动距离
+            for (var i = 0; i < alous.length; i++) {
+                if (scrollTop >= alous[i].offsetTop) {
+                    // console.log('到达临界点' + i);
+                    for (var j = 0; j < abtns.length; j++) {
+                        abtns[j].className = '';
+                    }
+                    abtns[i].className = 'active';
+                }
+            }
+        }
+    })();
+</script>
+
+</html>

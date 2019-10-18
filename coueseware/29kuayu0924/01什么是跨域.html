@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>01什么是跨域</title>
+</head>
+
+<body>
+
+</body>
+<script src="../1common.js"></script>
+<script>
+    /*
+            百度接口：
+            https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?cb=getData&wd=html5
+    
+            不能用ajax方式请求这个数据：Access-Control-Allow-Origin 没有权限，同源策略引起的
+    
+            什么是同源和跨域：
+                * 如果url中：协议、子域名、主域名、端口号任意一个不同，就算是不同的域
+                * 浏览器基于安全的考虑，不同的域之间是不能相互访问资源的，这就是同源策略
+                * 跨域：越过浏览器的同源策略，拿到不同域的资源，这个过程就是跨域
+                    * JSONP(前端做的跨域)
+                    * CORS
+                    * 服务器代理
+                * 几种方式区别：
+                    * A公司（上海）  前端：丽美  后端：江林
+                    * B公司（广州）  前端：曾泽  后端：大哲
+
+                    需求：A公司开发用到B公司的数据(主域名不同)
+                        * JSONP ： 丽美找大哲要数据(不能发送ajax请求)：大哲开放了这个接口(授权)
+                        * CORS: 丽美找大哲要数据(用ajax),大哲开放了这个接口(授权)
+                        * 服务器代理：江林找大哲要数据(后端不需要经过浏览器，没有跨域),江林把数据给丽美(同域下面直接ajax获取数据)
+                    
+            跨域举例：站群
+                * https://www.baidu.com/
+                * http://news.baidu.com/
+                * https://tieba.baidu.com/index.html
+                * https://wenku.baidu.com/?fr=tieba
+    
+            跨域举例：数据不在自己这里
+                * 天气预报
+                * 股票信息
+                * 手机短信验证码
+                * 身份证查询
+                * ip地址查询：地址
+                * 参考数据接口网站：https://www.juhe.cn
+            
+            面试题：
+                * 有什么跨域方法？
+                * jsonp的原理是什么？
+            
+        */
+
+    ajax2({
+        type: 'get',
+        url: ' https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?cb=getData&wd=html5',
+        success: str => {
+            console.log(str);
+        }
+    });
+</script>
+
+</html>

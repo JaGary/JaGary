@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>生成任意表格2</title>
+    <style>
+        #output {
+            margin-top: 20px;
+        }
+
+        table {
+            border: 1px solid #ddd;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td,
+        th {
+            border: 1px solid #ddd;
+            padding: 3px 5px;
+            text-align: center;
+        }
+
+        #box tr:nth-child(2n) {
+            background-color: #58bc58;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>生成任意表格</h1>
+    <label for="row">姓名：</label><input type="text" id="name">
+    <label for="col">年龄：</label><input type="text" id="age">
+    <label for="sex">性别：</label><input type="text" id="sex">
+    <input type="button" value="插入到表格" id="btn">
+    <div id="output">
+        <table>
+            <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>姓名</th>
+                    <th>年龄</th>
+                    <th>性别</th>
+                    <th>功能</th>
+                </tr>
+            </thead>
+            <tbody id="box">
+                <!-- <tr>
+                    <td>1</td>
+                    <td contenteditable="true">张三</td>
+                    <td contenteditable="true">10</td>
+                    <td contenteditable="true">男</td>
+                    <td>
+                        <a href="###">删除</a>
+                        <a href="###">复制</a>
+                    </td>
+                </tr> -->
+            </tbody>
+        </table>
+    </div>
+</body>
+<script>
+    (function () {
+        var name = document.querySelector('#name');
+        var age = document.querySelector('#age');
+        var sex = document.querySelector('#sex');
+        var btn = document.querySelector('#btn');
+        var box = document.querySelector('#box');
+
+        //排序
+        function chNum() {
+            var fir1 = box.getElementsByClassName('fir');
+            console.log(fir1);
+            for (var i = 0; i < fir1.length; i++) { //给序号添加 
+                fir1[i].innerHTML = i + 1;
+            }
+        }
+
+        //删除复制
+        function delTr() {
+            var delBtns = document.getElementsByClassName('del');
+            var copBtns = document.getElementsByClassName('cop');
+
+            for (var i = 0; i < delBtns.length; i++) {
+                //删除
+                delBtns[i].onclick = function () {
+                    var now = this.parentNode.parentNode;
+                    var res = confirm('你要删除我吗？');
+                    if(res){
+                        box.removeChild(now);
+                        chNum();
+                    }
+                    
+                }
+                //复制
+                copBtns[i].onclick = function () {
+                    var now = this.parentNode.parentNode;
+                    var res = now.cloneNode(true);
+                    box.appendChild(res);
+                    chNum();
+                    delTr();
+                }
+                
+            }
+        }
+        
+
+        btn.onclick = function () {
+            var name1 = name.value.trim();
+            var num = age.value.trim();
+            var sex1 = sex.value.trim();
+
+            if (name1 && num && sex1) {
+                //非空
+                var html =
+                    ` <tr>
+                    <td class="fir">1</td>
+                    <td contenteditable="true">${name1}</td>
+                    <td contenteditable="true">${num}</td>
+                    <td contenteditable="true">${sex1}</td>
+                    <td>
+                        <a class="del" href="###">删除</a>
+                        <a class="cop" href="###">复制</a>
+                    </td>
+                </tr>`;
+                //数据渲染
+                box.innerHTML += html;
+                //清空表单
+                name.value = age.value = sex.value = '';
+                name.focus();
+                delTr();
+                //添加序号
+                chNum();
+            } else {
+                alert('请输入完整信息');
+            }
+        }
+
+    })();
+</script>
+
+</html>

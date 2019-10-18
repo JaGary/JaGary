@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>同分同名</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var score = [
+        {
+            sno: 1,
+            total: 188
+        }, {
+            sno: 2,
+            total: 190
+        }, {
+            sno: 3,
+            total: 188
+        }, {
+            sno: 4,
+            total: 176
+        }, {
+            sno: 5,
+            total: 158
+        }
+    ];
+
+    score.sort(function (a, b) {//降序
+        return b.total - a.total;
+    });
+
+    var arr = [];//存放所有的总成绩
+    score.forEach(function (item, index) {
+        // item.rank = index + 1;
+        arr.push(item.total);
+    });
+
+    console.log(arr);
+    //去重
+    function norepeat(arr) {
+        //arr是要去重的数组
+        var newarr = [];//准备用来存放去重之后的数据
+        arr.forEach(function (item) {
+            if (newarr.indexOf(item) == -1) {//1 2 1 2 3 4
+                //不包含
+                newarr.push(item);//1 2 3 4
+            }
+        });
+        return newarr;
+    }
+
+    var arr2 = norepeat(arr);
+    console.log(arr2);
+
+    //绑定索引：排名ip
+    arr2.forEach(function (item, index) {//item-arr2里面的内容，去重后的数据
+        score.forEach(function (obj) {//obj-score的一个值，对象
+            if (item == obj.total) {
+                obj.rank = index + 1;
+            }
+        });
+    });
+
+    console.log(score);
+</script>
+
+</html>

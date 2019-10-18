@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>sql的使用</title>
+    <style>
+        *{list-style: none;}
+        #list li img{
+            width: 350px;
+            height: 500px;
+        }
+    </style>
+</head>
+<body>
+    <ul id="list">
+        <!-- <li data-id="1">
+            <img src="https://img.alicdn.com/tfscom/i4/1710310361/TB26nK5bgCYW1JjSZFCXXcxLVXa_!!1710310361.jpg_460x460xz.jpg"
+                alt="">
+            <p>中长款高领套头针织衫秋冬新款宽松保暖加厚长袖女毛衣外套1</p>
+            <p>价格：190</p>
+        </li> -->
+    </ul>
+</body>
+<script src="../common.js"></script>
+<script>
+    (function(){
+        var list = document.getElementById('list');
+
+        function int(){
+            ajax({
+                type:'get',
+                url:'../api/sql.php',
+                success: str =>{
+                    creat(str)
+                }
+            })
+
+            function creat(str){
+                let arr = JSON.parse(str);
+
+                let html = arr.map(item =>{
+                    return `<li data-id="${item.id}">
+                                <img src="${item.url}" alt="">
+                                <p>${item.name}</p>
+                                <p>价格：${item.price}</p>
+                            </li>`
+                }).join('');
+                list.innerHTML = html;
+                console.log(html);
+            }
+        }
+        int();
+
+
+    })();
+</script>
+</html>

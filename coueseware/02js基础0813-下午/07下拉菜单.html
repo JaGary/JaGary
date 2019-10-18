@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>下拉菜单</title>
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+            background: #ccc;
+            display: none;
+        }
+    </style>
+    <script>
+        // window.onload = function () {
+        //     //等整个文档都加载完才执行这里的代码,延迟代码的执行时间
+        //     var btn = document.getElementById('btn');
+
+        //     //绑定事件
+        //     btn.onclick = function () {//Cannot set property 'onclick' of null 代表：onclick前面的节点找不到
+        //         console.log(666);
+        //     }
+        // }
+
+    </script>
+</head>
+
+<body>
+    <input type="button" value="下拉菜单" id="btn">
+    <div id="box">菜单</div>
+</body>
+<script>
+    /*
+        知识点：
+            * 给节点添加样式：style="display: block"
+            节点.style = 'display: block;width:200px;height:200px;';
+            节点.style.display = 'block';
+    */
+    var btn = document.getElementById('btn');
+    var box = document.getElementById('box');
+    var istrue = true;//开关
+    //绑定事件
+    btn.onclick = function () {//Cannot set property 'onclick' of null 代表：onclick前面的节点找不到
+        // console.log(666);
+        // box.style.display = 'block';
+        if (istrue) {//true false
+            //第一次：显示
+            box.style.display = 'block';
+        } else {
+            box.style.display = 'none';
+        }
+        istrue = !istrue;//istrue =!true
+    }
+</script>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>事件的使用</title>
+</head>
+
+<body>
+    <ul id="list">
+        <li class="one">1</li>
+        <li class="two">2</li>
+        <li>3</li>
+    </ul>
+</body>
+<script src="js/jquery-1.10.1.min.js"></script>
+<script>
+    /*
+
+    */
+    (function () {
+        //普通的写法
+        // $('#list li').click(function () {
+
+        // });
+
+        //bind()
+        // $('#list li').bind('click mouseover', function () {
+
+        // });
+
+        //delegate()事件委托
+        // $('#list').delegate('.one', 'click', function () {
+        //     console.log($(this).html());//不需要target
+        // }).delegate('.two', 'click', function () {
+        //     $(this).css('background', 'pink');
+        // });
+
+        //on() 做为普通绑定事件
+        // $('#list li').on('click', function () {
+
+        // });
+
+        //事件委托
+        $('#list').on('click', 'li', function () { //推荐使用
+            console.log($(this).html());
+        });
+
+        // $('#list li').bind('click','mousemove',function(){
+        //     console.log(111);
+        // })
+        // $('#list li').on('click',function(){
+        //     console.log(123);
+        // })
+        $('#list').delegate('.one','click',function(){
+            console.log($(this).html());
+        }).delegate('.two','click',function(){
+            console.log($(this).html());
+        })
+    })();
+
+</script>
+
+</html>

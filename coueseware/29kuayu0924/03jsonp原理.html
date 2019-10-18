@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jsonp跨域原理</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    /*
+        jsonp实现跨域的原理：
+            * 通过script的src属性引入外部资源，这个文件里面写一个函数的调用(入口)，写好实参，这个实参就是你要传输的数据；
+            * 在需要用数据的页面，写一个全局的函数声明体，函数名必须和入口一致，通过形参来接收外部数据；不会被同源策略限制；
+            * 一般后端会接收一个参数：cb或callback，用于接收函数名，这样子函数的名字就可以由前端决定
+            * jsonp是get请求：url传输数据
+            
+        使用jsonp跨域注意细节：
+            * 需要用的时候，再动态的创建script(按需加载)
+            * 请求次数过多
+            * script生成太多
+    */
+    function show(data) {//实参传给形参：函数体就可以接收到数据了
+        console.log(data);
+    }
+</script>
+<!-- <script src="js.js"></script> -->
+<script src="http://localhost:1907/js.js"></script>
+
+</html>

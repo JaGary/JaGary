@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>03节点的操作</title>
+</head>
+
+<body>
+    <ul id="tree">
+        <li class="xigua">西瓜</li>
+        <li id="putao">葡萄</li>
+        <li>哈密瓜</li>
+    </ul>
+</body>
+<script>
+    /*
+            <div id="box" title="标题">内容</div>
+    
+            document:赋予我们操作节点(元素)的能力
+                * 节点
+                    * 查找节点
+                        * document.getElementById('box'); 通过id找到单个元素(不用出现重复id值)
+                        * box.getElementsByTagName('li'); 标签查找
+                        * box.getElementsByClassName('btn'); 类名查找
+                        * ES5新增
+                            * document.queryseletor()；单个
+                            * document.querySelectorAll('#list li p'); 集合
+                        * 特殊节点：
+                            * document.body body节点查找
+                            * document.title title
+                            * document.head head
+                            * document.documentElement html节点
+                        * 通过关系查找：
+                            * parentNode 查找父节点
+                            * children 获取元素的全部子元素
+                            * firstElementChild 获取第一个子元素
+                            * lastElementChild 获取最后一个子元素
+                            * previousElementSibling 获取前一个元素
+                            * nextElementSibling 获取下一个元素
+                    * 创建节点
+                        * document.creatElement('li')
+                    * 删除节点
+                        * 父节点.removeChild(要删除的节点)
+                    * 插入节点
+                        *　插入到末尾：父节点.appendChild(子节点)
+                        * 插入到前面：父节点.insertBefore(新节点,参照节点)
+                    * 复制节点
+                        * var li = xigua.cloneNode(true) 拷贝记得和插入节点一起使用
+                * 属性
+                    * 属性的添加
+                    * 属性的修改
+                    * 属性的删除
+                    * 属性值的获取
+                * 内容
+                    * 设置和获取内容
+                        * 普通节点
+                            * innerHTML
+                            * innerText
+                        * 表单
+                            * value
+                * 事件
+    
+        */
+
+    (function () {
+
+        var tree = document.querySelector('#tree');
+
+        //1.创建节点
+        var li = document.createElement('li');//创建后记得要插入到页面，否则没有意义
+        li.innerHTML = '柚子';
+
+        //2.插入节点
+        //插入到末尾：父节点.appendChild(子节点)
+        tree.appendChild(li);
+
+        var li2 = document.createElement('li');
+        li2.innerHTML = '榴莲';
+
+        //插入到前面：parent.insertBefore(new,node)  在指定的子节点node前插入新的子节点new。
+        var xigua = document.querySelector('.xigua');
+        tree.insertBefore(li2, xigua);//在西瓜的前面插入一个兄弟节点
+
+        //3.删除节点 : 父节点.removeChild(子节点)
+        var putao = document.querySelector('#putao');
+        tree.removeChild(putao);
+
+        //4.复制节点  要复制节点.cloneNode(true); true :深度拷贝，把子节点也一并拷贝
+        var xigua2 = xigua.cloneNode(true);
+        tree.appendChild(xigua2);
+
+        //用.添加属性:title、id、class、checked
+        xigua.title = '我是大西瓜';
+        //修改属性
+        xigua.title = '西瓜好甜';
+        //删除属性值
+        xigua.title = '';
+        //获取属性值
+        console.log(xigua.title);
+
+        //自定义属性 ：标签和非标准的
+        xigua.index = 666;//非标准自定义属性，但是看不到，拿得到
+        console.log(xigua.index);
+        //标准自定义属性：data-id  利用一个dataset对象进行设置即可
+        xigua.dataset.id = '自定义属性';
+        //data-price-one 驼峰命名
+        xigua.dataset.priceOne = '我喜欢中秋吃月饼';
+        //获取
+        console.log(xigua.dataset.id);
+
+        //用方法对属性进行增删改查
+        tree.setAttribute('title', '一个DOM树');//设置属性值
+        tree.setAttribute('title', '圣诞树');//修改属性值
+        tree.removeAttribute('title');//删除属性
+        console.log(tree.getAttribute('id'));//获取属性值
+
+        //添加自定义属性
+        tree.setAttribute('index', '666');//用方法添加的自定义属性，不管是否是data-开头，都可以显示在节点上
+        tree.setAttribute('data-id', '999');
+        tree.setAttribute('data-id-price', '999');
+        console.log(tree.getAttribute('data-id'));//获取自定义属性值
+    })();
+</script>
+
+</html>

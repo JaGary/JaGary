@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>01一元运算符</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    /*
+               运算符：
+                   * 算术运算符： + - * / %(求余)
+                   * 比较运算符
+                        * ==(等于), !=(不等于)
+                        * <(小于)、>(大于)、<=(小于等于)、>=(大于等于)
+                        * ===、恒等于/全等于，比较的时候要求值和类型都相等（不会进行类型隐式转换）
+                        * !==、不全等于
+                   * 逻辑运算符：面试题
+                       * 与 && 两边为真才真，如果左边为假，就不再运行右边
+                       * 或 || 两边为假才为假,如果左边为真，就不再运行右侧
+                       * 非 !  取反，做开关
+                   * 一元运算符：前置 ++num  后置 num++
+                        * 返回值：前置：返回加之后的值；后置：返回加之前的值
+                        * 自身：无论前置后置都会加1
+                   * 赋值运算符
+                        * =
+                        * +=
+                        * -=
+                        * *=
+                        * %=
+                    * 三目运算符： ?:
+                
+                运算符优先级：
+                    * ()
+                    * ++ -- !
+                    * * / %
+                    * + -
+                    * < > <= >=
+                    * == != === !==
+                    * &&
+                    * ||
+                    * ?:
+                    * 赋值 = += -+    
+           */
+
+    //一元运算符
+    var num = 2;
+    // var res = num++;//后置：2
+    var res2 = ++num;//前置：3
+    console.log(num, res2);//num自身 3；res返回值 2
+
+    //考题：
+    var n = 2;
+    var m = n++ + ++n + n + n++ + --n;
+    //自身   3  +  4  +  4  + 5 + 4   n==4
+    //返回值 2  +  4  + 4  + 4  + 4   m==18
+    console.log(n, m);
+
+    //考题2：
+    var x = 3;
+    var y = x + x++ + ++x + x-- + x + ++x;
+    console.log(x, y);//5 25
+
+    //n1加一
+    var n1 = 2;
+    // n1 = n1 + 1;
+    // n1 += 1;
+    // n1++;
+    // ++n1;
+
+    //取两个数的大的数
+    var m1 = 12;
+    var m2 = 8;
+    // var max;
+    // if (m1 > m2) {
+    //     max = m1;
+    // } else {
+    //     max = m2;
+    // }
+
+    //三目运算
+    var max = m1 > m2 ? m1 : m2;
+    console.log('最大数是：' + max);
+
+    if (a && b || c) {
+        //a和b必须满足，或满足c
+    }
+</script>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>商品价格增加</title>
+    <style>
+        #box{
+            width: 500px;
+            height: 500px;
+            border: 1px solid #ccc;
+            margin: 0 auto;
+        }
+        #box img{
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <img src="../images/换肤_03.png" alt="123">
+        <p >商品name</p>
+        <p id="p1">仓库剩余数量:10</p>
+        <p id="p2">商品价格:199.00</p>
+        <input type="button" value="+" id="btn">
+        <input type="number" id="num" value="1">
+        <input type="button" id="btn1" value="-">
+        
+    </div>
+</body>
+<script>
+    var num = document.getElementById('num');
+    var btn = document.getElementById('btn');
+    var btn1 = document.getElementById('btn1');
+    var p1 = document.getElementById('p1');
+    var p1 = document.getElementById('p2');
+    btn.onclick = function() {
+        
+        var val = num.value * 1; //将类型变成数字
+        num.value = ++val;
+        if(val > 10){
+            num.value = 10;
+            val = 10;
+        }
+        //节点.innerHTML  ----设置和获取普通节点的值
+        p1.innerHTML = `仓库剩余数量:${10 - val}`;
+        p2.innerHTML = `商品价格:${199.00 * val}￥`;
+    }
+      btn1.onclick = function() {
+        console.log(num.value);
+        var val = num.value * 1; //将类型变成数字
+        num.value = --val;
+        if(val < 1){
+            num.value = 0;
+            val = 0; //数量最少为0
+        }
+        p1.innerHTML = `仓库剩余数量:${10-val}`;
+        p2.innerHTML = `商品价格:${199.00 * val}￥`;
+      }
+</script>
+</html>

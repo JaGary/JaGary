@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>02进制转换</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    /*
+        02进制转换:了解
+            * toString(你要转的进制) : 将十进制转成其他进制
+            * parseInt() : 将其他进制转成十进制
+    */
+    
+    var num = 6;//十进制
+    //十进制转成二进制
+    var num2 = num.toString(2);//110
+    var num3 = num.toString(8);
+    console.log(num, num2, num3);
+
+    //二进制转成十进制
+    var num4 = 110;//二进制
+    var num5 = parseInt(num4, 2);
+    console.log(num4, num5);
+
+    //二进制转成16进制？
+    var num6 = 110;//二进制
+    var num7 = parseInt(num6, 2);//十进制
+    var num8 = num7.toString(16);//十六进制
+
+</script>
+
+</html>

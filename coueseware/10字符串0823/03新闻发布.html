@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>[案例]显示5条最新消息</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        .news-list {
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            width: 600px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+
+        .news-list h4 {
+            margin: 0 0 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .news-list ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            line-height: 2;
+        }
+
+        .form {
+            margin: 100px auto 0;
+            width: 600px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .form input {
+            float: left;
+            width: 480px;
+            height: 50px;
+            box-sizing: border-box;
+            padding: 10px;
+        }
+
+        .form button {
+            float: left;
+            width: 120px;
+            height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>显示5条最新消息</h1>
+    <div class="news-list">
+        <h4>最新消息</h4>
+        <ul id="newsList">
+            <!-- <li>sss</li> -->
+        </ul>
+    </div>
+
+    <div class="form">
+        <input type="text" id="news"><button id="btnAdd">添加</button>
+    </div>
+</body>
+<script>
+
+    /*
+        需求：
+            1、根据数组的内容，动态生成li节点，渲染数据
+            2、点击按钮可以获取内容生成节点
+                * 新节点从前面插入
+                * 数据只保留5条
+
+    */
+    (function () {
+
+        var list = document.getElementById('newsList');
+        var btnAdd = document.getElementById('btnAdd');
+        var news = document.getElementById('news');
+        var newslist = ['小明由于调戏女老师再次被滚粗教室', 'iPhone10发布,屏幕高度亮瞎了所有小伙伴', '为了弘扬乐于助人的精神，中国人大开会决定授予老王“中国好邻居”称号'];
+
+        //1、根据数组的内容，动态生成li节点，渲染数据
+        function creat() {
+            var html = newslist.map(function (item, index) {
+                return `<li>${index + 1}.${item}</li>`;
+            }).join('');//把拼接好的数组有拼接成字符串
+
+            list.innerHTML = html;
+        }
+        creat();
+
+        //2、点击按钮可以获取内容生成节点
+        btnAdd.onclick = function () {
+            var val = news.value;
+            //非空验证
+            if (val) {
+                //非空再创建节点
+                newslist.unshift(val);//插入到前面
+                if (newslist.length > 5) {
+                    newslist.pop();
+                }
+                creat();
+                console.log(newslist);
+            } else {
+                alert('请你输入留言');
+            }
+        }
+        
+    })();
+
+
+
+
+
+
+
+</script>
+
+</html>

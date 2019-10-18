@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>给你45678秒：xx时xx分xx秒</title>
+</head>
+
+<body>
+    <h1>给你45678秒：xx时xx分xx秒</h1>
+</body>
+<script>
+    var num = 45678;
+    var h = parseInt(num / 3600);
+    var m = parseInt(num % 3600 / 60);
+    var s = (num % 3600 % 60);
+    console.log(h + '小时' + m + '分钟' + s + '秒');
+</script>
+
+</html>

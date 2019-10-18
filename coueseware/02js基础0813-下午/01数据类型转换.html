@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>数据类型转换</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    /*
+        数据类型转换
+            * 隐式类型转换（面试题）：系统自动转换数据类型的过程  - * / %(余数) 把字符串转成数字
+            * 强制类型转换：利用内置函数进行转换，系统写好的，调用即可转换数据类型
+                * String(要转换的数据)：把其他的数据类型转成字符串，得到一个字符串
+                * Number(要转换的数据):把其他的数据类型转成数字类型，得到一个数字
+                * Boolean(要转换的数据):把其他的数据类型转成布尔值(了解)
+                * parseInt()  把字符串转成数字
+                * parseFloat() 把字符串转成数字，保留小数
+
+    */
+
+    var a = '4';
+    var b = '3';
+    //+号的两边都是数字，那+就是数学运算相加；但是如果其中一边有字符串，+就是字符串拼接，得到一个新的字符串
+    console.log(a + b);//打印到控制台  5 -> 23
+
+    var num1 = 3;
+    var num2 = '2';
+    console.log(num1 % num2);//? 1 相减:系统发现不能直接相减，已经偷偷的帮你把字符串转成数字，再相减，这种不需要转换，系统自动转换的过程就是隐式类型转换
+
+    //String(要转换的数据)：把其他的数据类型转成字符串，得到一个字符串
+    var sum = 120;
+    var str = String(sum);
+    console.log(sum, str, typeof str);
+
+    //NaN:not a number这不是一个数字
+    var n1 = 2;
+    var n2 = 'a';
+    var n3 = n1 - n2;
+    console.log(n3, typeof n3);//-1 number:NaN是数字类型（面试题）
+
+    // Number(要转换的数据):把其他的数据类型转成数字类型，得到一个数字
+    var str2 = '88';
+    var n4 = Number(str2);//得到数字88
+    console.log(str2, n4);
+
+    //判断语句：选择
+    /*
+        表达式无论多复杂，最终都是转成真和假
+            * 真：非空字符串、非0数字、非空对象、表达式为结果真的、
+            * 假：空字符串、数字0、null空对象、表达式为结果假的、undefined
+    */
+    // var test = [1, 2, 3];//数组，对象，非空对象
+    // 7<9  7 + 1
+    var test = null;
+    if (test) {//隐式转换
+        //如果圆括号里面的表达式为真，执行这里
+        console.log('真');
+    } else {
+        //为假，执行这里
+        console.log('假');
+    }
+
+    //parseInt()
+    var n5 = 1.2;
+    var n6 = parseInt(n5);//1.取整
+    console.log(n5, n6);
+
+    var n7 = '44';
+    var n8 = parseInt(n7);//2.把字符串转成数字
+    console.log(n8);
+
+    var n9 = '434sdas';
+    var n10 = parseInt(n9);//3.提前数字开头的字符串的数字部分
+    console.log(n10);
+
+    var n11 = '1.2';
+    console.log(parseFloat(n11));
+</script>
+
+</html>

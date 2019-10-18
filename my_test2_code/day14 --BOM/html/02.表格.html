@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>表格</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            margin-top: 20px;
+            margin-left: 20px;
+        }
+
+        #tb {
+            border-collapse: collapse;
+            margin-top: 30px;
+        }
+
+        #tb td {
+            width: 100px;
+            height: 30px;
+            border: 1px solid #ccc;
+            line-height: 30px;
+            text-align: center;
+        }
+
+        #tb tbody tr:nth-child(2n) {
+            background-color: aqua;
+        }
+    </style>
+</head>
+
+<body>
+    用户名：<input type="text" id="tex1">
+    密码：<input type="password" id="tex2">
+    <input type="button" value="生成" id="btn">
+    <table id="tb" border="" cellspacing="0" cellpadding="0">
+        <thead>
+            <tr>
+                <td>用户名</td>
+                <td>密码</td>
+                <td>删除</td>
+                <td>复制</td>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- <tr>
+                <td>张三</td>
+                <td>123456</td>
+                <td class="del"><a href="###">删除</a></td>
+                <td class="clone"><a href="javascript:;">复制</a></td>
+            </tr> -->
+        </tbody>
+    </table>
+</body>
+<script>
+    window.onload = function () {
+        //找节点
+        var tex1 = document.getElementById('tex1');
+        var tex2 = document.getElementById('tex2');
+        var btn = document.getElementById('btn');
+        var tb = document.getElementById('tb');
+
+        var tbodys = tb.tBodies[0];
+
+        // var trs = tbodys.childNodes;
+
+        console.log(tbodys);
+        btn.onclick = function () {
+            var username = tex1.value.trim();
+            var password = tex2.value.trim();
+
+            //判断非空
+            // var html = '';
+            if (username && password) {
+                //非空
+                //拼接
+                html = `<tr>
+                    <td>${username}</td>
+                    <td>${password}</td>
+                    <td class="del"><a href="###">删除</a></td>
+                    <td class="clone"><a href="javascript:;">复制</a></td>
+                </tr>`;
+                // "###" 和 javascript:; 都可以让a标签点击后不刷新页面
+
+                tbodys.innerHTML += html; //渲染到页面
+
+                //表单数据清空
+                tex1.value = '';
+                tex2.value = '';
+                tex1.focus(); //聚焦
+
+                for (i = 0; i < trs.length; i++) {
+                    if (i % 2 == 0) {
+                        trs[i].style.backgroundColor = pink;
+                    }
+                }
+            } else {
+                alert('请输入完整数据');
+            }
+        }
+    }
+</script>
+
+</html>

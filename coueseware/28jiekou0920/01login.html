@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>表单验证</title>
+</head>
+
+<body>
+    <form id="login" action="" method="post">
+        用户名：<input type="text" autocomplete="off" placeholder="写邮箱" id="mail" /><span class="inf"></span><br />
+        密码：<input type="text" placeholder="写密码" id="psw" /><span class="inf"></span><br />
+        <input type="checkbox" name="" id="keep">七天免登陆<br />
+        <input type="button" value="登陆" id="btn" />
+    </form>
+    <div id="inf"></div>
+</body>
+<script src="common.js"></script>
+<script>
+    (function () {
+
+        //04七天免登陆
+
+        let mail = document.getElementById('mail');
+        let psw = document.getElementById('psw');
+        let keep = document.getElementById('keep');
+        let btn = document.getElementById('btn');
+        let inf = document.getElementById('inf');
+
+        //保留7天数据，不用再填：注册页面，表单内容，写到一半就停电，再打开页面写过的数据还在
+        // mail.onblur = () => {
+        //     setcookie('email', mail.value.trim(), 7);
+        // }
+
+        // psw.onblur = () => {
+        //     setcookie('psw', psw.value.trim(), 7);
+        // }
+
+        // //读数据渲染到表单
+        // let mailVal = getcookie('email');
+        // let pswVal = getcookie('psw');
+        // if (mailVal) {
+        //     mail.value = mailVal;
+        // }
+
+        // if (psw) {
+        //     psw.value = pswVal;
+        // }
+
+        //保留七天免登陆
+        btn.onclick = () => {
+            if (keep.checked) {
+                //要保留7天
+                setcookie('email', mail.value.trim(), 7);
+                setcookie('psw', psw.value.trim(), 7);
+            }
+        }
+
+        //判断选择是否是登陆状态
+        let mailVal = getcookie('email');
+        if (mailVal) {
+            //登陆中
+            inf.innerHTML = mailVal + '欢迎你';
+        } else {
+            inf.innerHTML = '请先登陆网站';
+        }
+    })();
+</script>
+
+</html>

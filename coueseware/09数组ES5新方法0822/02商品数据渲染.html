@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>列表数据渲染</title>
+    <style>
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #goodslist {
+            padding: 20px;
+        }
+
+        #goodslist img {
+            width: 200px;
+        }
+
+        #goodslist ul {
+            overflow: hidden;
+        }
+
+        #goodslist li {
+            float: left;
+            border-right: 1px dotted #ddd;
+            padding-right: 20px;
+            margin-right: 20px;
+        }
+
+        .price span {
+            color: #f00;
+        }
+
+        .price span::before {
+            content: '￥';
+        }
+    </style>
+</head>
+
+<body>
+    <h1>根据数据生成一个商品列表</h1>
+    <div id="goodslist">
+        <ul id="list">
+            <!-- <li data-guid="001">
+                <img src="img/honor7.jpg">
+                <h4>苹果</h4>
+                <p class="color">颜色：土豪金</p>
+                <p class="price">原价：<del>77</del></p>
+                <p class="price">现价：<span>77</span></p>
+            </li> -->
+
+        </ul>
+    </div>
+</body>
+<script>
+    (function () {
+        /*
+            页面渲染步骤：
+                * 写好html和css
+                * 分析把重复的结构给删除，记得保留一个结构注释，方便后面参考
+                * 准备假数据：[{},{},{}]
+                * 循环拼接数据，渲染到页面即可
+        */
+        var list = document.getElementById('list');
+        var data = [{//假数据：真数据是从数据库读出来的  [{},{},{}]
+            id: '001',
+            name: 'iphone7 plugs',
+            imgurl: 'img/ip7.jpg',
+            price: 5899.00,
+            sale: 5888.00,
+            color: '土豪金'
+        }, {
+            id: '002',
+            name: 'Note7',
+            imgurl: 'img/note7.jpg',
+            price: 3899.00,
+            sale: 998.00,
+            color: '黑色'
+        }, {
+            id: '003',
+            name: '荣耀7',
+            imgurl: 'img/honor7.jpg',
+            price: 1999.00,
+            sale: 1899.00,
+            color: '白色'
+        }, {
+            id: '004',
+            name: 'iphone7 plugs',
+            imgurl: 'img/ip7.jpg',
+            price: 5899.00,
+            sale: 5888.00,
+            color: '土豪金'
+        }, {
+            id: '005',
+            name: 'Note7',
+            imgurl: 'img/note7.jpg',
+            price: 3899.00,
+            sale: 998.00,
+            color: '黑色'
+        }, {
+            id: '006',
+            name: '荣耀7',
+            imgurl: 'img/honor7.jpg',
+            price: 1999.00,
+            sale: 1899.00,
+            color: '白色'
+        }, {
+            id: '007',
+            name: 'iphone7 plugs',
+            imgurl: 'img/ip7.jpg',
+            price: 5899.00,
+            sale: 5888.00,
+            color: '土豪金'
+        }, {
+            id: '008',
+            name: 'Note7',
+            imgurl: 'img/note7.jpg',
+            price: 3899.00,
+            sale: 998.00,
+            color: '黑色'
+        }, {
+            id: '009',
+            name: '荣耀7',
+            imgurl: 'img/honor7.jpg',
+            price: 1999.00,
+            sale: 1899.00,
+            color: '白色'
+        }, {
+            id: '010',
+            name: 'iphone7 plugs',
+            imgurl: 'img/ip7.jpg',
+            price: 5899.00,
+            sale: 5888.00,
+            color: '土豪金'
+        }, {
+            id: '011',
+            name: 'Note7',
+            imgurl: 'img/note7.jpg',
+            price: 3899.00,
+            sale: 998.00,
+            color: '黑色'
+        }, {
+            id: '012',
+            name: '荣耀7',
+            imgurl: 'img/honor7.jpg',
+            price: 1999.00,
+            sale: 1899.00,
+            color: '白色'
+        }];
+
+        //map(fn) 最实用的地方，用于拼接字符串
+        var html = data.map(function (item) {
+            return `<li data-guid="${item.id}">
+                        <img src="${item.imgurl}">
+                        <h4>${item.name}</h4>
+                        <p class="color">颜色：${item.color}</p>
+                        <p class="price">原价：<del>${item.price}</del></p>
+                        <p class="price">现价：<span>${item.sale}</span></p>
+                    </li>`;
+        }).join('');
+        console.log(html);
+        list.innerHTML = html;//渲染到页面
+    })();
+</script>
+
+</html>

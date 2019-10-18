@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>04获取样式</title>
+    <style>
+        /* 内部样式：非行内 */
+        #box {
+            width: 200px;
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box" style="height: 200px;"></div>
+</body>
+<script src="../common.js"></script>
+<script>
+
+    (function () {
+        /*
+            offset家族：
+                * offsetWidth
+                * offsetHeight
+                * offsetLeft
+                * offsetTop
+            
+            获取样式的方法：获取到的时候优先级最高的样式
+                * getComputedStyle(ele,pseudo).属性名 （标准）
+                    ele:要获取样式的元素
+                    pseudo:伪元素样式字符(可选)，可获取伪元素样式
+                * ele.currentStyle.属性名 （IE8-）
+        */
+
+        //获取样式：内联和非内联
+        var box = document.getElementById('box');
+
+        // box.style.display = 'none';//设置行内样式
+        console.log(box.style.height);//200px 元素.style的方式只能获取到行内样式
+        console.log(box.style['height']);//200px 元素.style的方式只能获取到行内样式
+        console.log(box['style']['height']);//200px 元素.style的方式只能获取到行内样式
+        console.log(box.style.width);//拿不到：width写在非行内
+        console.log(box.offsetWidth);//200
+        console.log(box.offsetHeight);//200
+
+        //获取背景颜色:能用.的地方就可以用方括号;遇到变量的时候只能用方括号
+        var color = getComputedStyle(box, false).background;
+        var color = getComputedStyle(box, false)['background'];
+        console.log(color);
+        console.log(getComputedStyle(box, false).width);//100px
+        console.log(getComputedStyle(box, false).height);//200px
+
+        //兼容处理
+        function getStyle(ele, attr) {
+            if (getComputedStyle(ele, false)) {
+                //标准浏览器：谷歌、火狐、360、苹果、ie10+……
+                return getComputedStyle(ele, false)[attr];
+            } else {
+                //IE678
+                return ele.currentStyle[attr];
+            }
+        }
+
+        //获取宽度
+        var iW = getStyle(box, 'width');
+        console.log(iW);
+
+        //非行内样式只可获取不可设置，通过设置行内样式改变原本效果的；
+
+        //arguments : 数组,用来存实参的，当实参个数不定的时候，就用arguments来接收实参
+
+        //需求：实现两个数的求和
+        function sum(a, b) {
+            return a + b;
+        }
+        var res = sum(1, 7);
+
+        //需求：实现三个数的求和
+        function sum2(a, b, c) {
+            return a + b + c;
+        }
+
+        function sum3() {//任意个数据的求和
+            // console.log(arguments);//系统提供的数组，不需要你声明的，用来存实参的
+            var sum = 0;
+            for (var i in arguments) {
+                sum += arguments[i];
+            }
+            return sum;
+        }
+
+        var res2 = sum3(666, 777, 888);
+        console.log(res2);
+
+        var res3 = sum3(1, 1, 2, 6, 7, 8, 9);
+        console.log(res3);
+
+
+
+        var iw = css(box, 'width');
+        console.log('css方法：' + iw);
+        css(box, 'display', 'none');
+    })();
+</script>
+
+</html>

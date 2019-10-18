@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>正则的封装</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    //验证邮箱
+    ainputs[0].onblur = function () {
+        var val = this.value.trim();
+        var reg = /^[\w#$!\-]+@[\w#$!\-]+\.[a-zA-Z]+$/;
+        if (val) {
+            //非空验证->正则->正确性(和数据库数据验证)
+            var isok = reg.test(val);
+            if (isok) {
+                //正则验证通过
+                infs[0].innerHTML = '邮箱验证通过';
+                infs[0].style.color = '#58bc58';
+                istrue1 = true;
+            } else {
+                infs[0].innerHTML = '邮箱验证不通过';
+                infs[0].style.color = 'red';
+                istrue1 = false;
+            }
+        } else {
+            infs[0].innerHTML = '请输入邮箱地址';
+            infs[0].style.color = 'red';
+        }
+    }
+
+    //验证手机号码
+    ainputs[1].onblur = function () {
+        var val = this.value.trim();
+        var reg = /^1[3-9]\d{9}$/;
+        if (val) {
+            //非空验证->正则->正确性(和数据库数据验证)
+            var isok = reg.test(val);
+            if (isok) {
+                //正则验证通过
+                infs[1].innerHTML = '手机验证通过';
+                infs[1].style.color = '#58bc58';
+                istrue2 = true;
+            } else {
+                infs[1].innerHTML = '手机验证不通过';
+                infs[1].style.color = 'red';
+                istrue2 = false;
+            }
+        } else {
+            infs[1].innerHTML = '请输入手机号码';
+            infs[1].style.color = 'red';
+        }
+    }
+
+    //验证,账号名字的
+    
+    ainputs[1].onblur = function () {
+        var val = this.value.trim();
+        var reg = /^[a-zA-Z]\S{5,19}$/; //账号字母开头, 6 - 20位  \S 空格以外的字符
+        var reg = /^[a-zA-Z][\w\-]{5,19}$/;//账号字母开头,6-20位  ，数字字母下划线任意
+        if (val) {
+            var isok = reg.test(val);
+            if (isok) {
+                //正则验证通过
+                infs[1].innerHTML = '名字验证通过';
+                infs[1].style.color = '#58bc58';
+                istrue2 = true;
+            } else {
+                infs[1].innerHTML = '名字验证不通过';
+                infs[1].style.color = 'red';
+                istrue2 = false;
+            }
+        } else {
+            infs[1].innerHTML = '请输入正确名字';
+            infs[1].style.color = 'red';
+        }
+    }
+</script>
+
+</html>

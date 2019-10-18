@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>05愤怒的小鸟</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+
+        #bird {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 200px;
+        }
+
+        img {
+            display: block;
+            width: 180px;
+        }
+
+        .d-right {
+            transform: rotateY(180deg)
+        }
+
+        .d-top {
+            transform: rotateZ(45deg)
+        }
+
+        .d-bottom {
+            transform: rotateZ(-45deg)
+        }
+    </style>
+</head>
+
+<body>
+
+    <img src="img/bird.jpg" alt="" id="bird">
+
+</body>
+<script>
+    (function () {
+
+        //bird
+        var bird = document.getElementById('bird');
+
+        document.onkeydown = function (ev) {
+            var speedX = 0;
+            var speedY = 0;
+            ev = ev || window.event;//兼容
+            if (ev.keyCode == 37) {//左键
+                bird.className = '';
+                speedX = -5;
+            } else if (ev.keyCode == 38) {//上键
+                bird.className = 'd-top';
+                speedY = -5;
+            } else if (ev.keyCode == 39) {//右键
+                bird.className = 'd-right';
+                speedX = 5;
+            } else if (ev.keyCode == 40) {//下键
+                bird.className = 'd-bottom';
+                speedY = 5;
+            }
+
+            //水平方向临界值
+            var l = bird.offsetLeft + speedX;
+            if (l >= (window.innerWidth - bird.offsetWidth)) {
+                l = window.innerWidth - bird.offsetWidth;
+            } else if (l <= 0) {
+                l = 0;
+            }
+
+            bird.style.left = l + 'px';
+            bird.style.top = bird.offsetTop + speedY + 'px';
+        }
+    })();
+</script>
+
+</html>

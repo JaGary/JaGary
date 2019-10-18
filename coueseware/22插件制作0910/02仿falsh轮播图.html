@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/style.css">
+    <title>轮播图款式2</title>
+</head>
+
+<body>
+    <div id="playimages" class="play">
+        <ul class="big_pic" id="big_pic">
+            <div class="prev" id="prev"></div>
+            <div class="next" id="next"></div>
+
+            <a id="mark_left" class="mark_left" href="javascript:;"></a>
+            <a id="mark_right" class="mark_right" href="javascript:;"></a>
+
+            <div class="bg">
+                <div id="text" class="text">风景图1</div>
+                <div id="length" class="length">计算图片数量1/6</div>
+            </div>
+
+            <li style="z-index:1;"><img src="images/1.jpg" /></li>
+            <li><img src="images/2.jpg" /></li>
+            <li><img src="images/3.jpg" /></li>
+            <li><img src="images/4.jpg" /></li>
+            <li><img src="images/5.jpg" /></li>
+            <li><img src="images/6.jpg" /></li>
+        </ul>
+        <div class="small_pic">
+            <ul style="width:390px;" id="small" class="small">
+                <li class="active"><img src="images/1.jpg" /></li>
+                <li><img src="images/2.jpg" /></li>
+                <li><img src="images/3.jpg" /></li>
+                <li><img src="images/4.jpg" /></li>
+                <li><img src="images/5.jpg" /></li>
+                <li><img src="images/6.jpg" /></li>
+            </ul>
+        </div>
+    </div>
+</body>
+<script src="../common.js"></script>
+<script src="js/js.js"></script>
+
+</html>

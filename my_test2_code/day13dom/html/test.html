@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>楼层跳跃2</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        #menu {
+            position: fixed;
+            left: 50px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 9999;
+        }
+
+        #menu li {
+            width: 80px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            border: 1px solid #000000;
+            background: #d8d8d8;
+            cursor: pointer;
+
+        }
+
+        #menu .active {
+            background: #58bc58;
+        }
+
+        #con {
+            position: absolute;
+            top: 0px;
+            left: 0;
+            width: 100%;
+        }
+
+        #con li {
+            width: 100%;
+            font-size: 60px;
+            font-weight: bold;
+            text-align: center;
+            padding-top: 80px;
+            box-sizing: border-box;
+        }
+
+        #con li:nth-child(1) {
+            background: blueviolet;
+        }
+
+        #con li:nth-child(2) {
+            background: #fff;
+        }
+
+        #con li:nth-child(3) {
+            background: lawngreen;
+        }
+
+        #con li:nth-child(4) {
+            background: blue;
+        }
+
+        #con li:nth-child(5) {
+            background: lightcoral;
+        }
+
+        #con li:nth-child(6) {
+            background: yellow;
+        }
+
+        #con li:nth-child(7) {
+            background: lightcyan;
+        }
+
+        #con li:nth-child(8) {
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="menu">
+        <li class="active">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+    </ul>
+    <ul id="con">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+    </ul>
+</body>
+<script>
+    window.onload = function () {
+        var menu = document.getElementById('menu');
+        var btns = menu.getElementsByTagName('li');
+        var con = document.getElementById('con');
+        var cons = con.getElementsByTagName('li');
+
+        for (i = 0; i < cons.length; i++) {
+            cons[i].style.height = window.innerHeight + 'px';
+        }
+
+        for (i = 0; i < btns.length; i++) {
+            btns[i].index = i;
+            btns[i].onclick = function () {
+                clear();
+                this.className = 'active';
+
+                var top = cons[this.index].offsetTop;
+                window.scrollTo(0, top);
+            }
+        }
+
+        //清空高亮效果
+        function clear() {
+            for (j = 0; j < btns.length; j++) {
+                btns[j].className = '';
+            }
+        }
+
+        //滚动条事件改变点击效果
+        window.scroll = function () {
+            for (i = 0; i < btns.length; i++) {
+                clear();
+                btns[i].className = 'active';
+            }
+        }
+    }
+</script>
+
+</html>

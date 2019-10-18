@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>表单事件</title>
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <input type="text" name="" autocomplete="off" id="tex"><span id="inf"></span>
+</body>
+<script>
+    /*
+        事件：行为，js可以检测到的行为
+            * 鼠标：
+                * onclick 点击事件 onmousedown + onmouseup
+                * onmousedown 按下
+                * onmouseup 抬起
+                * onmousemove 抚摸，滑动
+                * onmouseover 鼠标移入元素的时候
+                * onmouseout 鼠标移出的时候
+                * ondbclick 双击 onclick*2
+            * 键盘：
+                * onkeydown 按下键盘的一瞬间
+                * onkeyup   从键盘抬起一瞬间
+                * onkeypress 按下非功能键:按下有值的键就是非功能键： 字母、符号、数字；  功能键：shift ctrl
+            * 其他类：
+                * onblur 失去焦点
+                * onfocus 聚焦
+                * oninput 内容发生改变的时候触发,边写边触发
+                * onchange 内容发生改变的时候，写完了失去焦点的时候才触发，多级联动
+    */
+
+
+    var tex = document.getElementById('tex');
+    var inf = document.getElementById('inf');
+    var num = 0;
+    //表单验证
+    tex.onfocus = function () {
+        //聚焦
+        inf.innerHTML = '请输入手机号码';
+    }
+
+    tex.onblur = function () {
+        //聚焦
+        inf.innerHTML = '失去焦点了';
+    }
+
+    // tex.oninput = function () {
+    //     num++;
+    //     console.log('内容变了' + num);
+    // }
+    tex.onchange = function () {
+        num++;
+        console.log('内容变了' + num);
+    }
+</script>
+
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>5×5的二维数组arr赋1到25的自然数</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        td {
+            width: 50px;
+            height: 50px;
+            border: 1px solid #ccc;
+            line-height: 50px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>通过循环按顺序为一个5×5的二维数组arr赋1到25的自然数，然后输出该数组的左下半三角的和</h2>
+    <table>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+            <td>10</td>
+        </tr>
+        <tr>
+            <td>11</td>
+            <td>12</td>
+            <td>13</td>
+            <td>14</td>
+            <td>15</td>
+        </tr>
+        <tr>
+            <td>16</td>
+            <td>17</td>
+            <td>18</td>
+            <td>19</td>
+            <td>20</td>
+        </tr>
+        <tr>
+            <td>21</td>
+            <td>22</td>
+            <td>23</td>
+            <td>24</td>
+            <td>25</td>
+        </tr>
+    </table>
+</body>
+<script>
+    /*
+        1.循环添加1~25的随机自然数，数组的左下三角形的和
+        2.二维数组 5x5。共25位数
+        3. arr=[1,6,7,11,12,13,16,17,18,19,21,22,23,24,25];  sum+=arr.item
+        4.先将0-25分成5个数组。length = 5;
+        5.利用递增。第一行1个数 1，第二行两个数6，7，第三行三个数11，12，13·····
+    */
+    (function () {
+        var arr = [];
+        var s = 1;
+        for (var i = 0; i < 5; i++) {
+            arr.push([]); //for循环 添加五个空数组，
+            for (var j = 0; j <= 5; j++) { //给每个空数组添加数据，每个数组长度为5
+                arr[i].push(s);
+                s++; //从1开始到25.递增
+            }
+        }
+        console.log(arr);
+
+        var sum = 0; //声明一个总和为0
+        for (var i = 0; i < 5; i++) { //循环5个数组
+            for (var j = 0; j < 5; j++) {
+                //表示第一行的第一个+第二行的前两个+第三行的前三个+第四行的前四个+第五行的5个
+                sum += arr[i][j];
+                /*
+                    i=0,j=0,  sum = 1;(第一个数组的下标为0的数)
+                    i=1,j=1, sum = 7+8 (第二个数组的下标为1前的数，即 下标为0和1 .也就是7和8)
+                    i= 2，j=2, sum = 11+12=13 (第三个数组的下标为2前的数，即下标为0,1,2 .)
+                    i = 3,j=3, sum = 16+17+18+19 (第四个数组的下标为3前的数，即下标为 0，1，2，3)
+                    i=4,j=4, sum = 21+22+23+24+25 (第五个数组的下标为4之前的数，即下标为0，1，2，3，4)
+                */
+            }
+        }
+        console.log(sum);
+        document.write('左下半三角形之和为' + sum);
+    })();
+</script>
+
+</html>

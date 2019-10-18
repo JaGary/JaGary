@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>淘宝页面</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #box {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+
+        #box li {
+            width: 300px;
+            height: 450px;
+            border: 1px solid #ccc;
+            margin-right: 15px;
+            box-sizing: border-box;
+        }
+
+        #box li .bipic {
+            position: relative;
+            height: 220px;
+            box-sizing: border-box;
+        }
+
+        #box li .bipic img {
+            display: block;
+            width: 280px;
+            height: 180px;
+            padding: 10px;
+        }
+
+        #box li .bipic .pic {
+            display: block;
+            width: 280px;
+            height: 40px;
+            background: red;
+            opacity: 0.3;
+            position: absolute;
+            bottom: 0px;
+            margin-left: 10px;
+            transition: all 0.5s;
+        }
+
+        #box li .bipic:hover .pic {
+            bottom: 30px;
+        }
+
+        #box li .smpic {
+            display: flex;
+        }
+
+        #box li .smpic img {
+            display: block;
+            width: 90px;
+            height: 90px;
+            margin-left: 5px;
+        }
+
+        #box li .con {
+            width: 250px;
+            padding: 10px;
+            height: 150px;
+        }
+
+        #box li .con h4 {
+            font-size: 20px;
+            color: black;
+            padding: 10px;
+        }
+
+        #box li .con .con-1 {
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .con-1 span {
+            font-size: 18px;
+            color: #959595;
+        }
+
+        #box li .con .con-2 {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .con .con-2 span {
+            font-size: 16px;
+            color: #959595;
+        }
+
+        .con .con-2 span:nth-child(1) {
+            color: red;
+            font-size: 20px;
+        }
+
+        #box li:hover {
+            border: 2px solid orangered;
+        }
+
+        .active {
+            border: 1px solid orangered;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="box">
+        <!-- <li>
+            <div class="bipic">
+                <img src="../img/images/1.webp" alt="">
+                <span class="pic"></span>
+            </div>
+            <div class="smpic">
+                <img class="active" src="../img/images/1.webp" alt="">
+            </div>
+            <div class="con">
+                <h4>领带男正装商务韩版男士手打</h4>
+                <div class="con-1">
+                    <span>评价：30</span>
+                    <span>收藏：30</span>
+                </div>
+                <div class="con-2">
+                    <span>￥300</span>
+                    <span>月销：50</span>
+                </div>
+            </div>
+        </li> -->
+    </ul>
+    <script>
+        (function () {
+            var box = document.getElementById('box');
+            var data = [{
+                    imgurl: ['../img/images/1.webp', '../img/images/2.webp', '../img/images/3.webp'],
+                    title: '领带男正装商务韩版男士手打',
+                    pingjia: 30,
+                    shocang: 30,
+                    xiaoliang: 50,
+                    jiage: 300,
+                },
+                {
+                    imgurl: ['../img/images/1.webp', '../img/images/2.webp', '../img/images/3.webp'],
+                    title: '领带男正装商',
+                    pingjia: 30,
+                    shocang: 30,
+                    xiaoliang: 50,
+                    jiage: 300,
+                },
+            ];
+            var html = data.map(function (item) {
+                return `<li>
+                <div class="bipic">
+                    <img src="../img/images/1.webp" alt="">
+                    <span class="pic"></span>
+                </div>
+                <div class="smpic">
+                    <img class="aaa active" src="../img/images/1.webp" alt="">
+                    <img class="aaa" src="../img/images/2.webp" alt="">
+                    <img class="aaa" src="../img/images/3.webp" alt="">
+                </div>
+                <div class="con">
+                    <h4>领带男正装商务韩版男士手打</h4>
+                    <div class="con-1">
+                        <span>评价：30</span>
+                        <span>收藏：30</span>
+                    </div>
+                    <div class="con-2">
+                        <span>￥300</span>
+                        <span>月销：50</span>
+                    </div>
+                </div>
+            </li>`;
+            }).join('');
+
+            box.innerHTML = html;
+
+            //小图换大团
+            var smpic = box.getElementsByClassName('smpic');
+            
+
+            //给小图第一个添加高亮效果
+            for (i = 0; i < smpic.length; i++) {
+                smpic[i].children[0].className = 'aaa active';
+            } //小图换大图 var
+            var small = box.getElementsByClassName('aaa');
+
+            for (i = 0; i < small.length; i++) {//点击小图切换大图事件
+                small[i].onclick = function () {
+                    //利用父元素  兄弟的子元素节点控制小图和大图的src
+                    this.parentNode.previousElementSibling.children[0].src = this.src;
+                    
+                    //利用循环清空
+                    for (i = 0; i < this.parentNode.children.length; i++) {
+                        this.parentNode.children[i].className = '';
+                    }
+                    this.className = 'active';//又添加class
+                }
+            }
+        })();
+    </script>
+</body>
+
+</html>

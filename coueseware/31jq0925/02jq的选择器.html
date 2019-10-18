@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>02jq的选择器</title>
+</head>
+
+<body>
+    <ul id="list">
+        <!-- <p>778</p> -->
+        <li class="one">1</li>
+        <li class="one">2</li>
+        <li class="one">3</li>
+        <li class="one">4</li>
+        <li class="one" id="me">5</li>
+    </ul>
+    <div id="box"></div>
+</body>
+<script src="js/jquery-1.10.1.min.js"></script>
+<script>
+    (function () {
+
+        // $('#list .one').html('666');//innerHTML 设置全部，不要循环就可以实现
+        // console.log($('#list .one').html());//获取到第一个值 
+
+        //隔行变色  :odd -- 2,4,8行(偶数行)  :even(奇数行)
+        $('#list .one:odd').css('background', '#58bc58');
+        $('#list .one:even').css('background', 'pink');
+        
+        $('#list .one:eq(2)').html('变');//有个冒号写法：过滤器
+        $('#list .one').eq(3).html('123');
+        $('#list .one').eq(2).css('color','red');
+        // let len = $('#list').find('.one').size();
+        let len = $('#list').find('.one').length;//例外：js和jq混用
+        console.log(len);
+        console.log($('#list .one').length);//两种写法
+
+        // $('#list .one')
+        //设置样式
+        $('#box').css({
+            'width': 200,
+            'height': '300px',
+            'background': '#ccc'
+        });
+        $('#box').css({
+            'width':500,
+        })
+        //index()获取索引值
+        let num = $('#me').index();
+        console.log(num);
+
+        $('#me').attr('data-id', 90);
+        $('#me').data('price', 100);
+        console.log($('#me').data('price'));
+
+        //遍历
+        $('#list li').each(function (index, item) {
+            $(item).html(index + 2);
+        });
+
+    })();
+</script>
+
+</html>

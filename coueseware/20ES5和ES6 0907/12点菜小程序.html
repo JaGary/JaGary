@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>12点菜小程序</title>
+</head>
+
+<body>
+    <input type="button" value="点菜" id="btn">
+    <input type="text" value="" id="tex">
+    <ul id="cai_menu">
+        <!-- <li>周1：xx</li>
+        <li>周2：xx</li>
+        <li>周3;xx</li>
+        <li></li>
+        <li></li>
+        <li></li> -->
+    </ul>
+</body>
+<script>
+
+    (function () {
+        let btn = document.getElementById('btn');
+        let tex = document.getElementById('tex');
+        let caiMenu = document.getElementById('cai_menu');
+        let arr = ['酸菜鱼', '麻婆豆腐', '麻辣香锅', '酱油鸡', '桂林米粉', '麻辣香锅', '麻辣香锅', '麻辣香锅'];
+
+        btn.onclick = () => {
+            let index = parseInt(Math.random() * arr.length);//0-arr.length-1
+            let cai = localStorage.getItem('name');//取值
+            if (cai) {
+                //有：昨天有点菜
+                while (cai == arr[index]) {//证明和昨天重复了，就继续获取随机数
+                    index = parseInt(Math.random() * arr.length);
+                }
+                // console.log(cai);
+            }
+            tex.value = arr[index];
+            localStorage.setItem('name', arr[index]);//设置
+            let old = localStorage.getItem('oldname');//null
+            if (old) {//有旧的内容
+                let str = old + '&' + arr[index];
+                localStorage.setItem('oldname', str);
+            } else {
+                localStorage.setItem('oldname', arr[index]);
+            }
+
+            init();
+
+        }
+
+        function init() {
+            let menu = localStorage.getItem('oldname');
+            let caiArr = menu.split('&');
+            creat(caiArr);//渲染
+            // console.log(caiArr);
+
+            if (caiArr.length > 5) {
+                //清空数据，从新开始存数据
+                localStorage.setItem('oldname', '');
+                caiArr = [];
+            }
+        }
+
+        init();
+
+        function creat(arr) {
+            let html = arr.map((item, index) => {
+                return `<li>周${index + 1}：${item}</li>`;
+            }).join('');
+            caiMenu.innerHTML = html;
+        }
+
+
+    })();
+
+    //浏览器存储数据：localstorage 本地存储
+    // 
+
+    // console.log(cai);
+</script>
+
+</html>

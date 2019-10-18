@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>函数</title>
+    <style>
+        .two {
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="two" id="box">点我</div>
+</body>
+<script>
+    /*
+        函数：
+            * 声明：
+                * 声明式
+                    function 函数名() {
+                        //代码块
+                    }
+                * 赋值式
+                    var show = function () {
+                        //代码块
+                    }
+            * 调用
+                * 普通调用
+                    函数名();
+                * 事件驱动调用：
+                    btn.onclick = 函数名;
+                    btn.onclick = function() {
+                        函数名();
+                    }
+            * 参数：一一匹配
+                * 实参
+                * 形参
+            * 返回值
+                * return
+                    * 可以把数据返回给入口(调用函数的地方) 返回值是用得最多的
+                    * return后的语句不会再被执行
+                    * return后面如果没有返回值，入口接收到undefined
+    */
+
+    //声明式
+    function show() {//声明体，如果不调用是不起作用的
+        console.log('婧婧的小萨很可爱');
+    }
+
+    //赋值式
+    var sum = function () {
+        console.log('玉林荔枝狗肉节');
+    }
+
+    //普通调用
+    show();//调用
+    console.log(sum);
+    sum();//函数的入口, 一个变量如果是用来存函数的，需要调用才有意义
+
+    //事件驱动方式调用
+    var box = document.getElementById('box');
+    box.onclick = function () {//没有名字的函数叫做匿名函数
+        sum();//功能
+        var a = 1;
+        var b = 2;
+        console.log(a + b);
+    }
+
+    // box.onclick = sum;
+
+    //需求：实现两个数的加法
+    // var a = 1;
+    // var b = 2;
+    // console.log(a + b);
+
+    //数据部分如果有变化的需要：就不要写死，利用实参和形参，使得程序更为灵活
+    // function total() {
+    //     var a = 1;//js的分号默认可以省略，但是为了可读性，不建议省略
+    //     var b = 2;
+    //     var c = a + b;
+    //     console.log(c);
+    // }
+
+    /*
+        实参传给形参
+            * 实参个数==形参个数；一一匹配(建议这样写，不会报错)
+            * 实参个数 > 形参个数,多余的实参被忽略
+            * 实参个数 < 形参个数，多余的形参是undefined，如果用于运算就会报错
+    */
+    function total(a, b) {//声明体：形参，本质上就是变量
+        // var a;
+        // var b;//undefined
+        // console.log(a, b);
+        // console.log(a + b);//打印到控制台
+        // document.write(a + b);
+        // console.log(a);
+
+        var res = a + b;
+        // console.log('我在下面，看到我没');
+        return res;//利用return设置返回值，如果return后面没有值，入口接收到的是undefined,遇到return就不再执行下面的代码
+        console.log('我在下面，看到我没');//不会打印出来，return后面的代码都是无意义的
+    }
+    //需求：实现两个数的加法 1 2,输出到body，document.write()
+    var res1 = total(1, 2);//入口这里：实参
+    document.write('write :' + res1);
+    //需求：实现两个数的加法 4 9,得到的结果，弹窗显示alert()
+    var res2 = total(4, 9);
+    alert(res2);//弹窗都会阻塞代码的执行,阻断，偶尔调试的时候使用
+</script>
+
+</html>

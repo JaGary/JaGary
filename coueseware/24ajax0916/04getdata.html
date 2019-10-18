@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>获取数据渲染到页面</title>
+</head>
+
+<body>
+    <ul id="list">
+        <!-- <li data-id="10">
+            <p>华为</p>
+            <p>红色</p>
+            <p>价格：9999</p>
+        </li> -->
+    </ul>
+</body>
+<script>
+    /*
+        需求：
+            * 获取后端的数据渲染出来
+    */
+
+    let list = document.getElementById('list');
+
+    let xhr = new XMLHttpRequest();//创建一个xhr对象
+
+    //1.告诉ajax你要什么
+    /*
+        open(请求方式,url,同步或异步)
+            参数一：请求方式 get 或 post
+            参数二：url，接口地址,如果需要传数据给后端，如果是get方式，数据是在url这里传输；url?name=jingjing&tel=12132132
+            参数三：同步或异步，同步false；异步：true
+    */
+
+
+
+    xhr.open('get', 'api/data.php', true);//1
+
+    //2.ajax帮你发送请求
+    /*
+        send(参数)
+            * 如果是get方式：send(null)
+            * 如果是post，并且需要传数据给后端，send('name=jingjing&tel=12132132')
+    */
+    xhr.send(null);//2
+
+    //3.做接口
+
+    //4.接收数据，做渲染
+    xhr.onreadystatechange = () => {//3 4
+        // console.log(xhr.readyState);
+        if (xhr.readyState == 4) {
+            //响应已经完成：完成一定正确吗？成功不一定是正确的
+            // console.log(xhr.status);
+            if (xhr.status == 200) {
+                //完成并成功了：可以在network里面查看响应，是否接收成功；也可以用responseText打印到控制台检测
+                // console.log(xhr.responseText);//后端返回的数据，默认是存在responseText属性里面
+                let arr = JSON.parse(xhr.responseText);//接收数据转成对象
+                console.log(arr);
+                let html = arr.map(item => {
+                    return `<li data-id="${item.gid}">
+                                <p>${item.name}</p>
+                                <p>${item.color}</p>
+                                <p>价格：${item.price}</p>
+                            </li>`;
+                }).join('');
+                list.innerHTML = html;//数据渲染
+            }
+        }
+    }
+
+</script>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>猜字游戏</title>
+</head>
+<body>
+    <input type="text" id="num">
+    <input type="button" value="点击" id="btn">
+
+</body>
+<script>
+    var num = document.getElementById('num');
+    var btn = document.getElementById('btn');
+
+    //parseInt-----取整
+    //Math.random()-----从0到1取随机数（不包括1），如果说要从1-100取随机数，那就 *100,变成 0-99  。然后+1
+    //变成1~50
+    var rnum = parseInt(Math.random() * 100) + 1;
+
+    btn.onclick = function() {
+        //获取和设置表单的值 -- 节点.value = 值
+        var val = num.value;
+        if(val) {
+            //值为非空时，执行以下代码
+            if(val == rnum) {
+                //alert----提示语句
+                alert('恭喜你猜对了！')
+            }
+            if(val > rnum) {
+                alert('猜大了')
+            }
+            if(val < rnum) {
+                alert('猜小了')
+            }
+        }else {
+            //当值为空时，执行
+            alert('请输入1-100之间的任意数字')
+        }
+    }
+</script>
+</html>

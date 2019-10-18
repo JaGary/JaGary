@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>事件</title>
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <input type="text" name="" autocomplete="off" id="tex">
+</body>
+<script>
+    /*
+        事件：行为，js可以检测到的行为
+            * 鼠标：
+                * onclick 点击事件 onmousedown + onmouseup
+                * onmousedown 按下
+                * onmouseup 抬起
+                * onmousemove 抚摸，滑动
+                * onmouseover 鼠标移入元素的时候
+                * onmouseout 鼠标移出的时候
+                * ondbclick 双击 onclick*2
+            * 键盘：
+                * onkeydown 按下键盘的一瞬间
+                * onkeyup   从键盘抬起一瞬间
+                * onkeypress 按下非功能键:按下有值的键就是非功能键： 字母、符号、数字；  功能键：shift ctrl
+            * 其他类：
+                * onblur 失去焦点
+                * onfocus 聚焦
+                * oninput 内容发生改变的时候触发
+                * onchange 内容发生改变的时候
+    */
+
+    var box = document.getElementById('box');
+    var tex = document.getElementById('tex');
+
+    box.onclick = function () {
+        console.log('click');
+    }
+
+    box.onmousedown = function () {
+        console.log('onmousedown');
+    }
+
+    box.onmouseup = function () {
+        console.log('onmouseup');
+    }
+
+    box.onmousemove = function () {
+        console.log('onmousemove');
+    }
+
+    box.onmouseover = function () {
+        console.log('onmouseover');
+    }
+
+    box.onmouseout = function () {
+        console.log('onmouseout');
+    }
+
+    //键盘事件
+    tex.onkeydown = function (ev) {
+        // console.log('onkeydown 按下键盘了');
+        //键值
+        console.log(ev.keyCode);
+    }
+
+    tex.onkeyup = function () {
+        // console.log('onkeyup 抬起');
+    }
+</script>
+
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>04全选不选反选</title>
+</head>
+
+<body>
+    <table id="dataList">
+        <caption>爱好</caption>
+        <thead>
+            <th><input type="checkbox" name="all" id="all">全选</th>
+            <th><input type="checkbox" name="fx" id="fx">反选</th>
+        </thead>
+        <tbody id="tbody">
+            <tr>
+                <td><input type="checkbox" name="hobby"></td>
+                <td>篮球</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="hobby"></td>
+                <td>足球</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="hobby"></td>
+                <td>羽毛球</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="hobby"></td>
+                <td>爬山</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="hobby"></td>
+                <td>游泳</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="hobby"></td>
+                <td>购物</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="hobby"></td>
+                <td>看电影</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="hobby"></td>
+                <td>旅游</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="hobby"></td>
+                <td>音乐</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="hobby"></td>
+                <td>画画</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+<script>
+    (function () {
+
+        //找节点
+        var all = document.querySelector('#all');
+        var fx = document.querySelector('#fx');
+        var chboxs = document.querySelectorAll('#tbody input');
+        // all.checked = true;//设置复选框被勾选
+        // console.log(chboxs.length);
+
+        //全选
+        all.onclick = function () {
+            console.log(all.checked);//获取复选框勾选的状态
+            // all.checked = true;
+            for (var i = 0; i < chboxs.length; i++) {
+                chboxs[i].checked = all.checked;
+            }
+        }
+
+        //反选
+        fx.onclick = function () {
+            for (var i = 0; i < chboxs.length; i++) {
+                chboxs[i].checked = !chboxs[i].checked;
+            }
+            all.checked = isChecked();
+        }
+
+        // //点击复选框，控制全选
+        function isChecked() {
+            var num = 0;//这个是被勾选的个数。计数器
+            var isok = false;
+            for (var i = 0; i < chboxs.length; i++) {
+                if (chboxs[i].checked) {
+                    num++;
+                }
+            }
+            if (num == chboxs.length) {
+                //全选了
+                isok = true;
+            }
+            return isok;
+        }
+
+        for (var i = 0; i < chboxs.length; i++) {
+            chboxs[i].onclick = function () {
+                all.checked = isChecked();
+            }
+        }
+
+    })();
+</script>
+
+</html>

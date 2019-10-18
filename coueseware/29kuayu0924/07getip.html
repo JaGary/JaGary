@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>天气预报</title>
+</head>
+
+<body>
+    <input type="text" id="city">
+    <input type="button" value="获取ip" id="btn">
+
+</body>
+<script src="../common.js"></script>
+<script>
+    /*
+        服务器代理方式实现跨域：
+            * 服务器(后台)已经帮你拿到数据
+            * 前端：用ajax发送请求即可拿到数据
+        
+        需求：用户A登录你的网站，上海的用户欢迎你，今天天气晴朗
+    */
+
+    (function () {
+
+        let btn = document.getElementById('btn');
+        let city = document.getElementById('city');
+        // var data = '';
+        btn.onclick = function () {
+            ajax({
+                type: 'get',
+                url: 'api/getip.php',
+                success: str => {
+                    // console.log(str);
+                    // data = str;
+                    // let arr = JSON.parse(str);
+                    // console.log(arr);
+                    // console.log(str);
+                    ajax({
+                        type: 'get',
+                        url: 'api/get_city.php',
+                        data: {
+                            ip: '61.144.97.209'
+                        },
+                        success: data => {
+                            // console.log(data);
+                            let arr2 = JSON.parse(data);
+                            console.log(arr2);
+                        }
+                    });
+                }
+            });
+
+
+        }
+
+
+
+        /*
+            三种跨域方式的区别：
+                假设：上海公司A公司：国庆(前端) 涛哥(后端)  广州分公司B公司：郑文(前端) 威哥(后端)
+                需求：A公司做项目需要用到B公司的资源，需要跨域获取资源(无论是哪种方式进行跨域，都要经过威哥授权)
+        
+                * JSONP:国庆(前端) 找 威哥(后端) 要数据,通过script标签
+                * CORS: 国庆(前端) 找 威哥(后端) 要数据,通过ajax发送请求就可以拿到数据
+                * 服务器代理：涛哥(后端) 找 威哥(后端) 要数据(后端程序不会受到同源策略的影响)，数据此刻已经来到本地，国庆(前端) 找 涛哥(后端) 要数据，不存在跨域，ajax获取即可
+        */
+    })();
+</script>
+
+</html>

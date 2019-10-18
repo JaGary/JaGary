@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    /*
+            运算符：
+                * 算术运算符： + - * / %(求余)
+                * 比较运算符
+                * 逻辑运算符：面试题
+                    * 与 && 两边为真才真，如果左边为假，就不再运行右边
+                    * 或 || 两边为假才为假,如果左边为真，就不再运行右侧
+                    * 非 !  取反，做开关
+                * 一元运算符
+                * 赋值运算符
+        */
+
+    //需求：桂林乐满地，3.7女生节那天，女生穿短裙免费游玩一天
+    var gender = '女';
+    var cloth = '短裙';
+    //方法一：用逻辑运算符写表达式
+    // if (gender == '女' && cloth == '短裙') {
+    //     //走这里：女生、短裙
+    //     console.log('你可以免费游玩一天！');
+    // } else {
+    //     //走这里：肯定有一个条件不符合
+    //     console.log('你不符合条件哦，买票吧！');
+    // }
+
+    //方法二：选择分支嵌套实现效果，可以确定哪个不满足
+    if (gender == '女') {
+        //女
+        if (cloth == '短裙') {
+            //女生，短裙
+            console.log('你可以免费游玩一天！');
+        } else {
+            //女生,不是短裙
+            console.log('你还是换短裙吧');
+        }
+    } else {
+        //非女
+        console.log('你的性别不对');
+    }
+
+    //&&的特性：如果左边为假，就不再运行右边
+    var a = 3;
+    var b = -2;
+    var c = 0;
+    var d = 0;
+    // (c = a + b) && (d = a - b);
+    (c = a + b) || (d = a - b);
+    // console.log(a, b, c, d);// 2 -2 0 0 &&
+    console.log(a, b, c, d);//3 -2 1 0
+</script>
+
+</html>

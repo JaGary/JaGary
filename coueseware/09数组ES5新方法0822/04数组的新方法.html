@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>01数组的新方法</title>
+</head>
+
+<body>
+    <h1>01数组的新方法</h1>
+</body>
+<script>
+    /*
+        数组的新方法：ES5/6 都不兼容IE8-
+            * 静态方法：Array.isArray() 判断是否为数组，返回true/false；构造函数才能调用的方法，叫静态方法；
+            * 索引方法:indexOf() 查找数组里面是否含有某个数，含有就返回这个数所在下标，不含有就返回-1 (重点)
+            * 迭代（遍历）方法:
+                * forEach(fn) 遍历方法，for循环没有太大差别，比for循环方便 (重点)
+                * map(fn) 返回一个数量相等的数组，内容是什么取决于在fn中返回的值 (重点)
+                * filter(fn) 得到执行fn后返回true时对应的数组元素，利用这个方法可对数组元素进行过滤筛选
+                * some(fn) 如果该函数中任何一项返回 true，则返回true
+                * every(fn) 如果该函数对每一项都返回 true，则返回true
+                    参数fn：函数中有三个形参分别为
+                    - item：数组中的每一项,
+                    - index：遍历过程中对应的索引值,
+                    - array：对数组的引用
+            * 归并方法：求和
+                * reduce(fn,initVal初始值)
+                    -fn(prev,cur,index,array): fn是每一项调用的函数，函数接受4个参数分别是
+                        -prev：前一次返回值，
+                        -cur(item)：当前值，
+                        -index：索引值，
+                        -array：当前数组， 函数需要返回一个值，这个值会在下一次迭代中作为prev的值
+                    -initVal: 迭代初始值（可选），如果缺省，prev的值为数组第一项
+
+
+    */
+
+    var arr = [1, 2, 3, 8, 14, 36, 18, 17, 27, 37, 7];
+    //filter(fn) 过滤留下满足条件的数据
+    //需求：查找数组里面小于10的数
+    var arr1 = arr.filter(function (item) {
+        return item < 10;
+    });
+    console.log(arr1);
+
+    //需求：查找数组里面所有的偶数
+    var arr2 = arr.filter(function (item) {
+        return item % 2 == 0;
+    });
+    console.log(arr2);
+
+    //需求：查找数组里面含有7或是7的倍数
+    var arr3 = arr.filter(function (item) {
+        var str = String(item); //转换成字符串方便indexOf方法使用
+        return item % 7 == 0 || str.indexOf(7) >= 0;
+    });
+    console.log(arr3);
+
+    //some(fn) 只要有真则为真，返回布尔值
+
+    //需求：数组里面是否包含60
+    var arr4 = arr.some(function (item) {
+        return item == 60;
+    });
+    console.log(arr4);
+
+    //every(fn) 每一项都是真才为真
+    //数组每一项都是奇数？
+    var arr5 = arr.every(function (item) {
+        return item % 2 == 1;
+    });
+    console.log(arr5);
+
+    //归并方法
+    var arr = [1, 2, 3];
+    var sum = arr.reduce(function (prev, item) { //累加
+        return prev + item;
+    }, 0);
+    console.log(sum);
+</script>
+
+</html>

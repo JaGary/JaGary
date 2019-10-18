@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>09距离某个日期还有多少天</title>
+</head>
+
+<body>
+    <h1>09距离某个日期还有多少天</h1>
+    <input type="date" id="end">
+    <input type="button" value="点我" id="btn">
+    <div id="output"></div>
+</body>
+<script src="../common.js"></script>
+<script>
+    (function () {
+        var btn = document.getElementById('btn');
+        var end = document.getElementById('end');
+        var output = document.getElementById('output');
+
+        btn.onclick = function () {
+            //需求：end时间 - 今天 = 毫秒数 -> 天数
+            var endTime = end.value;
+            var _endTime = Date.parse(endTime);
+            var startTime = Date.now();//获取到今天的纪元时间(到1970-1-1 零点的毫秒数)
+            var res = _endTime - startTime;//毫秒数
+            // var days = Math.ceil(res / 1000 / 60 / 60 / 24);
+            // console.log(days);
+            //年月日时分秒
+            var times = setTime(res);
+
+            console.log(times);
+            output.innerHTML = `还剩：${times.days}天${times.hours}小时${times.mins}分${times.secs}秒`;
+        }
+    })();
+</script>
+
+</html>

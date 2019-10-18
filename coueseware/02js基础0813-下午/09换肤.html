@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>换肤</title>
+    <link rel="stylesheet" href="css/css1.css" id="skin">
+</head>
+
+<body>
+    <input type="button" value="皮肤1" id="btn1">
+    <input type="button" value="皮肤2" id="btn2">
+    <input type="button" value="皮肤3" id="btn3"><br>
+    <input type="button" value="确定" id="btn4">
+    <input type="button" value="取消" id="btn5">
+    <h1>我喜欢这个颜色</h1>
+</body>
+<script>
+    /*
+        知识点：
+            * 设置属性和获取属性值
+            节点.属性名 = 属性值
+    */
+
+
+    //找节点
+    var btn1 = document.getElementById('btn1');
+    var btn2 = document.getElementById('btn2');
+    var btn3 = document.getElementById('btn3');
+    var btn4 = document.getElementById('btn4');
+    var btn5 = document.getElementById('btn5');
+    var skin = document.getElementById('skin');
+    var oldskin = skin.href;
+    // console.log(skin.href);//获取
+    // skin.href = '1.css';//设置和修改
+
+    //皮肤1
+    btn1.onclick = function () {
+        skin.href = 'css/css1.css';
+    }
+    //皮肤2
+    btn2.onclick = function () {
+        skin.href = 'css/css2.css';
+    }
+    //皮肤3
+    btn3.onclick = function () {
+        skin.href = 'css/css3.css';
+    }
+    //确定
+    btn4.onclick = function () {
+        console.log('确定应用这个皮肤');
+    }
+    //取消
+    btn5.onclick = function () {
+        skin.href = oldskin;
+    }
+</script>
+
+</html>

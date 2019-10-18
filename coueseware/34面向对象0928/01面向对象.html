@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>01面向对象</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    /*
+        对象：万物皆对象
+        面向对象：是一种思想 OOP(Object-oriented programming)
+            系统对象：Array、Math、Date()
+                arr.push(12) 只需要关注使用，不用关心内部
+
+        面向对象的优点：
+            * 代码整齐规范，易于维护和扩充
+            * 性能高,节约内存
+            * 封装好后，不用再关心内部，专注使用即可，有更多时间处理业务逻辑
+            * 方便继承
+
+        面向对象开发层次：
+            * 使用对象：系统对象，提供很多的方法，熟练的运用
+            * 构造对象：构造自己的对象，实现我们的功能
+
+        对象的组成：
+            * 属性
+            * 方法
+
+        面向对象特性：如果有三个空就不用写抽象
+            * 抽象
+            * 封装
+            * 继承：父子关系
+            * 多态：兄弟关系，多功能组件：弹窗组件(款式A:居中的；款式B：右下角；款式C:居中有遮罩)
+    */
+
+    //抽象：抽，抽取核心的属性构造对象
+    //需求：OA系统：姓名、性别、年龄、工号、电话、住址
+    //需求：相亲网：性别、姓名、年收入、车房、学历、爱好、感情经历、婚否
+
+    //封装：复用性
+
+    //继承
+    function aa() {
+        //功能a
+    }
+
+    function bb() {
+        //继承aa的功能 ：继承
+        //补充自己的功能
+    }
+
+    function cc() {
+        //aa和bb功能 ：多重继承
+    }
+
+
+    //多态:兄弟
+    function dialog(type) {
+        //共同代码块100行
+        if (type == 'center') {
+            //款式一
+        }
+        if (type == 'right') {
+            //款式二
+        }
+        if (type == 'mark') {
+            //款式三
+        }
+    }
+</script>
+
+</html>

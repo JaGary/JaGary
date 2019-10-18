@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>美女限时购</title>
+    <style>
+        .btn {
+            position: relative;
+        }
+
+        #countDown {
+            position: absolute;
+            left: 55px;
+            top: 50%;
+            transform: translate(0, -58%);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>10限时购</h1>
+    <div class="goods">
+        <img src="img/g3.jpg" id="meinv">
+        <h4>今年过节不收礼，收礼只收黑妹子</h4>
+        <p class="price">价格：<span>9.8W</span></p>
+        <div class="btn">
+            <div id="countDown">xx天xx时xx分xx秒</div>
+            <img src="img/btn_buy0.jpg" id="btnBuy">
+        </div>
+    </div>
+</body>
+<script src="../common.js"></script>
+<script>
+    (function () {
+
+        var meinv = document.getElementById('meinv');
+        var countDown = document.getElementById('countDown');
+        var btnBuy = document.getElementById('btnBuy');
+        var timer = null;
+        //需求：限时购  终点时间-现在时间 == 0秒 达到时间；替换图片
+
+        var endtime = '2019-8-28 11:59:00';
+        var _endtime = Date.parse(endtime);//把字符串的时间转成毫秒数
+        function show() {
+            var nowTime = Date.now();
+            var res = _endtime - nowTime;
+            if (parseInt(res / 1000) == 0) {
+                //到达临界点
+                clearInterval(timer);
+                countDown.innerHTML = '';
+                //替换图片
+                meinv.src = 'img/g1.jpg';
+                btnBuy.src = 'img/btn_buy.jpg';
+            } else {
+                var times = setTime(res);
+                // console.log(time);
+                var str = `还剩：${times.days}天${times.hours}小时${times.mins}分${times.secs}秒`;
+                countDown.innerHTML = str;
+            }
+
+        }
+
+        show();
+
+        timer = setInterval(show, 1000);
+
+
+    })();
+</script>
+
+</html>

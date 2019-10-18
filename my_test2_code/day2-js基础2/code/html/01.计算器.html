@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>计算器</title>
+</head>
+
+<body>
+    <input type="text" id="num1">
+    <select name="" id="sum1">
+        <option value="add">+</option>
+        <option value="cut">-</option>
+        <option value="ride">*</option>
+        <option value="div">/</option>
+    </select>
+    <input type="text" id="num2">
+    <input type="button" value="计算" id="btn">
+    <input type="text" id="sum2">
+</body>
+<script>
+    //查找节点
+    var num1 = document.getElementById('num1');
+    var sum1 = document.getElementById('sum1');
+    var num2 = document.getElementById('num2');
+    var btn = document.getElementById('btn');
+    var sum2 = document.getElementById('sum2');
+    //点击按钮
+    btn.onclick = function () {
+        //将任意转换成数字
+        var val1 = num1.value - 0;
+        var val2 = num2.value * 1;
+        //声明fuhao = sum1.value
+        var fuhao = sum1.value;
+        if (fuhao == 'add') {
+            sum2.value = val1 + val2;
+        }
+        if (fuhao == 'cut') {
+            sum2.value = val1 - val2;
+        }
+        if (fuhao == 'ride') {
+            sum2.value = val1 * val2;
+        }
+        if (fuhao == 'div') {
+            sum2.value = val1 / val2;
+        }
+    }
+</script>
+
+</html>

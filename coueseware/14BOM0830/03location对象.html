@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>window</title>
+</head>
+
+<body>
+
+    <input type="button" value="百度" id="btn">
+
+</body>
+<script>
+    /*
+           BOM:浏览器对象模型，赋予我们操控窗口的能力：弹窗、窗口的关闭和打开、刷新页面、获取url、页面跳转、复制、粘贴、回退、前进……
+   
+           window : { 是BOM最核心的对象，是很多子对象的顶层对象
+               属性：
+                   * 浏览器窗口尺寸 innerWidth/innerHeight, //表示浏览器窗口”可视区域”尺寸 outerWidth/outerHeight //表示整个浏览器窗口的尺寸
+                   * 滚动相关
+                       * scrollX/scrollY //获取浏览器窗口滚动条滚动过的距离
+                      
+               方法：
+                   * 滚动
+                       * scrollTo(x,y) //指定滚动位置
+                       * scrollBy(xnum,ynum) //设置基于当前位置滚动的距离，可以为负数
+                   * 弹窗：都会阻塞后面代码的执行：阻塞==中断，尽量少用
+                       * alert(msg)//弹出对话框
+                       * confirm(msg)//弹出警告框，返回布尔值
+                       * prompt(msg,default)//弹出输入框，返回消息或null
+                       * open(url,name,[options]) : 打开一个新窗口并返回新 window 对象
+                       * close(): 关闭窗口(很少用)
+                   
+               事件：
+               子对象：
+                    * location
+                        * 属性
+                            * href
+                            * search
+                            
+                    * history
+                    * document  DOM知识
+           }
+   
+       */
+
+    (function () {
+
+        var btn = document.getElementById('btn');
+
+        btn.onclick = function () {
+            console.log(location.href);//获取url
+            location.href = 'http://www.baidu.com?id=899';//原窗口打开,带参数到另一个页面
+        }
+
+        /*
+            页面跳转方式：
+                * a 标签 ：单纯的页面跳转，不能传参数(可以新窗口打开)
+                * window.open('url?' + 参数) 页面跳转+传参，新窗口打开
+                * location.href = 'url' + 参数;页面跳转+传参，原窗口打开
+
+        */
+    })();
+</script>
+
+</html>

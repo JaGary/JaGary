@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>列表页数据渲染</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        body {
+            padding: 50px;
+        }
+
+        #list {
+            margin-bottom: 50px;
+        }
+
+        #list li {
+            width: 600px;
+            border-bottom: 1px solid #000;
+            clear: both;
+            padding: 20px 0;
+        }
+
+        #list li .title {
+            float: left;
+        }
+
+        #list li .price {
+            float: right;
+        }
+
+        #pages a {
+            display: block;
+            width: 40px;
+            height: 40px;
+            border: 1px solid #ccc;
+            background: #C2C2C2;
+            color: #fff;
+            text-decoration: none;
+            text-align: center;
+            line-height: 40px;
+            float: left;
+            margin-right: 10px;
+        }
+
+        #pages .active {
+            background: orange;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>列表页分页</h2>
+    <input type="button" value="升序" id="btn">
+    <ul id="list">
+        <!-- <li data-id="1">
+            <p class="title">name</p>
+            <p class="price">price</p>
+        </li> -->
+    </ul>
+    <p id="pages">
+        <!-- <a href="###" class="active"></a> -->
+    </p>
+
+</body>
+<script src="common.js"></script>
+<script>
+
+    /*需求：
+    * 获取第一页的内容渲染到页面(按需加载)
+    * 根据总条数和每页的条数，生成页码 总条数：15 每页显示：10天 多少页：2== Math.ceil(15/10)
+    * 点击页码可以跳转到对应的页数*/
+    (() => {
+        let list = document.getElementById('list');
+        let pages = document.getElementById('pages');
+        let btn = document.getElementById('btn');
+        let ipage = 1; //第一页
+        let num = 5; //每页5条数据
+        let rank ='';//排序
+
+        //第一页内容加载到页面
+        function cont() {
+            ajax({
+                type: 'get',
+                url: '../api/cont.php',
+                data: {
+                    ipage,
+                    num,
+                    rank
+                },
+                success: str => {
+                    creat(str);
+                }
+            });
+
+            function creat(str) {
+                let arr = JSON.parse(str);
+
+                let html = arr.list.map(item => {
+                    return `<li data-id="${item.id}">
+                                <p class="title">${item.name}</p>
+                                <p class="price">${item.price}</p>
+                            </li>`
+                }).join('');
+                list.innerHTML = html;
+
+                //计算总页
+                let sum = Math.ceil(arr.total / num);
+                // console.log(sum)
+                let sTr = '';
+                for (let i = 0; i < sum; i++) {
+                    sTr += `<a href="###">${i + 1}</a>`
+                }
+                pages.innerHTML = sTr;
+                pages.childNodes[ipage - 1].className = 'active';//高亮
+
+                //点击跳转到对面页面
+                pages.onclick = ev => {
+                    if (ev.target.tagName == 'A') {
+                        ipage = ev.target.innerHTML;
+                        cont();
+                    }
+                }
+            }
+        }
+        cont();
+
+
+        //排序
+        btn.onclick = ()=>{
+            if(btn.value == '升序'){
+                //升序
+                btn.value = '降序';
+                rank = 'asc';
+            }else{
+                //降序
+                btn.value = '升序';
+                rank = 'desc';
+            }
+            cont();
+        }
+    })();
+</script>
+
+</html>

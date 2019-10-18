@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>弹幕</title>
+
+    <style>
+        .container {
+            width: 800px;
+            margin: 0 auto;
+            padding-bottom: 10px;
+            background-color: #dfdfdf;
+        }
+
+        #barrage {
+            position: relative;
+            height: 600px;
+            margin-bottom: 10px;
+            background-color: #000;
+            overflow: hidden;
+        }
+
+        #barrage .bar-item {
+            position: absolute;
+            left: 100%;
+            white-space: nowrap;
+        }
+
+        #msg {
+            margin-left: 10px;
+            width: 400px;
+            height: 30px;
+            border: 1px solid #999;
+            border-right: none;
+            box-sizing: border-box;
+            vertical-align: middle;
+        }
+
+        #msg+button {
+            padding: 0 10px;
+            height: 30px;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="barrage">
+            <!-- <span class="bar-item">ss</span> -->
+        </div>
+        <input type="text" id="msg"><input type="button" id="btn" value="发送" />
+    </div>
+</body>
+<script src="../common.js"></script>
+<script>
+
+    (function () {
+
+        /*
+            弹幕：面向对象程序
+
+            描述对象：弹幕有什么属性和方法
+
+                * 属性：
+                    * 屏幕可视区
+                    * 点击按钮
+                    * 表单
+                    * 文字颜色
+                    * 文字大小
+                    * 文字速度
+                    * 文字位置：top
+                * 方法
+                    * 初始化 init() :查找节点、绑定事件
+                    * 创建节点：creat()
+                    * 设置文字参数：setdata()
+                    * 文字运动：move()
+                    * 删除文字：remove()
+        */
+
+        var barrage = {
+            showbox: null,
+            btn: null,
+            msg: null,
+            init: function () {
+                //可视区初始化方法：查找节点、绑定事件
+                this.showbox = document.getElementById('barrage');
+                this.btn = document.getElementById('btn');
+                this.msg = document.getElementById('msg');
+                this.btn.onclick = () => {
+                    let val = this.msg.value.trim();
+                    new Word(val);//混合方式：工厂方式+new+原型
+                }
+            }
+        }
+
+        barrage.init();//入口
+
+        //文字对象的构造
+        function Word(val) {
+            //方属性
+            this.span = null;
+            this.color = '';//颜色
+            this.speed = 0;//速度
+            this.size = 0;//文字大小
+            this.itop = 0;//文字位置
+            this.val = val;
+            this.init();
+        }
+
+        //方法：挂在原型对象下面
+        Word.prototype.init = function () {
+            //查找节点，绑定事件
+            this.creat();
+            this.setDate();//设置参数：颜色、大小、位置
+            this.move();
+        }
+
+        Word.prototype.creat = function () {
+            //创建span节点
+            this.span = document.createElement('span');
+            this.span.innerHTML = this.val;
+            this.span.className = 'bar-item';
+            barrage.showbox.appendChild(this.span);
+        }
+
+        Word.prototype.setDate = function () {
+            this.color = randomColor(16);
+            this.size = ranNum(12, 60);
+            this.itop = ranNum(10, barrage.showbox.offsetHeight - this.size);
+            this.span.style.fontSize = this.size + 'px';
+            this.span.style.top = this.itop + 'px';
+            this.span.style.color = this.color;
+        }
+
+        Word.prototype.move = function () {
+            this.speed = ranNum(-10, -2);
+            this.timer = null;
+            this.timer = setInterval(() => {
+                let l = this.span.offsetLeft + this.speed;
+                if (l <= -this.span.offsetWidth) {
+                    clearInterval(this.timer);
+                    barrage.showbox.removeChild(this.span);
+                }
+                this.span.style.left = l + 'px';
+            }, 30);
+        }
+
+    })();
+
+
+
+</script>
+
+</html>

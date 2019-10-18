@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>系统动画</title>
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+            background: red;
+            /* display: none; */
+        }
+    </style>
+</head>
+
+<body>
+    <input type="button" value="下拉菜单" id="btn">
+    <input type="button" value="停止" id="btn2">
+    <div id="box"></div>
+</body>
+<script src="js/jquery-1.10.1.min.js"></script>
+<script>
+    (function () {
+        /*
+            animate()
+                * 参数一： 属性和目标值，{}
+                * 参数二：速度，单词或毫秒数
+                * 运动形式：默认swing。linear
+                * 回调：链式运动框架
+        */
+
+        $('#btn').click(function () {
+            $('#box').animate({ 'width': 500 }, 2000, 'linear', function () {
+                $('#box').delay(2000).animate({ 'height': 600 }, function () {
+                    $('#box').animate({ 'opacity': 0.2 });
+                });
+            });
+        });
+
+        $('#btn2').click(function () {
+            $('#box').stop();
+        });
+
+    })();
+</script>
+
+</html>

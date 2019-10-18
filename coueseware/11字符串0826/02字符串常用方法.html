@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>字符串的学习</title>
+</head>
+
+<body>
+    <h1>字符串的学习</h1>
+</body>
+<script>
+    /*
+        字符串的学习:
+            * 声明：
+                * 字面量： var str = 'how old are you';
+                * 构造函数 :
+                    var str = new String('怎么老是你');
+            * 属性：length 可读不可写
+            * 方法：
+                * charAt(3) //获取下标为3的字符  也可以用方括号获取
+                * indexOf() //查找是否存在，存在返回下标，不存在返回-1
+                * substring(start[,end])：不包括end所在字符，end省略表示截取到最后
+                * substr(start[,len])：支持负数，len为截取的数量
+                * slice(start[,end]) ：截取start到end(不包括end)的字符串，支持负数
+                * split(分割符)：根据分割字符，把字符串拆分成数组 和数组的join()是反操作
+
+            * 循环：
+                * while：可以遍历字符串、数组、对象、节点
+                * do while：可以遍历字符串、数组、对象、节点
+                * for ：可以遍历字符串、数组、对象、节点
+                * for in ：可以遍历字符串、数组、对象
+                * forEach() 数组专用
+
+    */
+
+    // var str = '3-4-5-6';
+    // //需求：得到一个数组  [3,4,5,6]
+    // var arr = str.split('-');
+    // console.log(arr);
+
+
+    /*
+        url的构成：http://www.baidu.com:8888/list/list.html?name=apple&price=8999#76687
+            * 协议：http:// 如果是这个协议，可以省略 http://meituan.com/，现在一般用 https://
+            * 子域名：www 协议和主域名之间的部分都是子域名 主域名下面可以有很多子域名，站群
+            * 主域名：baidu.com
+            * 端口号：跟着主域名后的数字，默认是80，可以不写的；但是非80端口就必须写
+            * 资源、目录：list/list.html
+            * 参数：问号后，#前的部分就是参数：name=apple&price=899
+            * 哈希值：#后的部分
+    */
+
+    var urlstr = 'http://www.baidu.com:8888/list/list.html?name=apple&price=8999';
+    /*
+        需求：面试题： 给你一个网站url，提取参数部分做成对象,方便后期渲染使用
+        {
+            name : 'apple',
+            price : 8999
+        }
+    */
+    var data = urlstr.split('?')[1];
+    console.log(data);//name=apple&price=8999
+    var arr1 = data.split('&');
+    console.log(arr1);//["name=apple", "price=8999"]
+    var obj = {};//准备用来存数据的对象
+    for (var i in arr1) {
+        var arr2 = arr1[i].split('=');//['name','apple'] ['price','8999']
+        obj[arr2[0]] = arr2[1];
+    }
+
+    console.log(obj);
+
+    //封装函数：
+    function strToObj(str) {
+        var obj = {};
+        var arr1 = str.split('&');//["name=apple", "price=8999"]
+        for (var i in arr1) {
+            var arr2 = arr1[i].split('=');
+            obj[arr2[0]] = arr2[1];
+        }
+        return obj;
+    }
+
+    var str = 'name=apple&price=8999&kun=888';
+    var good = strToObj(str);//封装函数
+    console.log(good);
+</script>
+
+</html>

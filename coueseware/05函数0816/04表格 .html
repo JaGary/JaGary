@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>生成任意表格</title>
+    <style>
+        #output {
+            margin-top: 20px;
+        }
+
+        table {
+            border: 1px solid #ddd;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td {
+            border: 1px solid #ddd;
+            padding: 3px 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>生成任意表格</h1>
+    <label for="row">行：</label><input type="text" id="row">
+    <label for="col">列：</label><input type="text" id="col">
+    <input type="button" value="生成表格" id="btn">
+    <div id="output">
+        <!-- <table>
+            <tr>
+                <td>1</td>
+                <td>121</td>
+                <td>44</td>
+                <td>
+                    <a href="###">删除：空连接：并且不会刷新页面跳到顶部</a>
+                    <a href="###">复制</a>
+                    <a href="javascript:;">编辑</a>
+                </td>
+            </tr>
+        </table> -->
+    </div>
+</body>
+<script>
+
+    //找节点
+    var rows = document.getElementById('row');
+    var cells = document.getElementById('col');
+    var btn = document.getElementById('btn');
+    var output = document.getElementById('output');
+
+    /*
+        需求：点击按钮的时候，获取行数和列数，动态创建表格，插入到页面
+            * 点击按钮 btn.onclick = function
+                * 获取行数和列数 var row = 节点.value
+                * 动态创建表格,字符串拼接
+                    * 两个循环生成tr和td
+                * 渲染页面
+    */
+
+    //2行3列表格
+    // var html = '<table>';
+    // html += '<tr><td>121</td><td>44</td><td>44</td></tr><tr><td>121</td><td>44</td><td>44</td></tr>';
+    // html += '</table>';
+    // output.innerHTML = html;
+    // console.log(html);
+
+    btn.onclick = function () {
+        var _rows = rows.value;//3
+        var _cells = cells.value;//2
+        var html = '<table>';
+        if (_rows && _cells) {
+            for (var i = 0; i < _rows; i++) {//外循环循环行
+                html += '<tr><td>' + (i + 1) + '</td>'; //<tr>
+                for (var j = 0; j < _cells; j++) {//<tr><td>121</td><td>121</td>
+                    html += '<td>第' + (i + 1) + '行第' + (j + 1) + '列</td>';
+                }
+                html += '<td>' +
+                    '<a href="###">删除</a>&nbsp;&nbsp;' +
+                    '<a href="###">复制</a>&nbsp;&nbsp;' +
+                    '<a href="javascript:;">编辑</a>' +
+                    '</td></tr>';
+
+            }
+            html += '</table>';
+            output.innerHTML = html;//渲染数据
+        } else {
+            alert('请输入两个数字');
+        }
+
+
+    }
+
+</script>
+
+</html>

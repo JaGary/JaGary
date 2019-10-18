@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>去重+排序+添加数组</title>
+</head>
+
+<body>
+    <h2>去重+排序+添加数组</h2>
+    <input type="text" id="text1" placeholder="请输入数组">
+    <input type="button" value="join" id="btn">
+    <p id="p1"></p>
+</body>
+<script>
+    (function () {
+        var arr = [1, 2, 2, 3, 5, 4, 3, 10, 9, 10, 5, 8];
+        var p1 = document.getElementById('p1');
+        var btn = document.getElementById('btn');
+        var text1 = document.getElementById('text1');
+
+
+        btn.onclick = function () {//点击事件：添加新数据，排序和去重
+            arr.push(text1.value * 1);
+
+            function norepare(arr) { //封装去重函数
+                var arr1 = []; //空数组
+                arr.forEach(function (item) { //遍历数组
+                    if (arr1.indexOf(item) == -1) { //判断arr1数组是否含有arr的item值，如果不含有就执行下面语句
+                        arr1.push(item); //添加数据到arr1数组
+                    }
+                })
+                return arr1; //
+            }
+
+            var arr2 = norepare(arr); //应用去重函数
+            arr2.sort(function (a, b) {
+                return a - b; //升序
+            })
+            console.log(arr2);
+            p1.innerHTML = '[' + arr2 + ']';
+            text1.value = ''; //清空输入框内容
+        }
+    })();
+</script>
+
+</html>

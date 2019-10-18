@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>梯形</title>
+    <style>
+         #box span{
+         display: inline-block;
+         height: 50px;
+         width: 100px;
+         background: #ccc;
+         color: blue;
+         margin: 5px;
+         text-align: center;
+         line-height: 50px;
+         }
+    </style>
+</head>
+<body>
+    <div id="box">
+
+    </div>
+</body>
+<script>
+    var box = document.getElementById('box');
+        var html = '';
+    for(var a=10;a<=30;a++) { //表示行数 
+            for(b=1;b<=a;b++) { //内循环 ---- 表示行内元素 (第一行1-10个，)
+                html += '*'
+            } 
+            html += '<br />'
+        } 
+        box.innerHTML = html;
+</script>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>08斐波那契数列</title>
+</head>
+
+<body>
+    <input type="text" id="num">
+    <input type="button" value="兔子数列" id="btn">
+    <div id="box"></div>
+</body>
+<script>
+    (function () {
+
+        var btn = document.getElementById('btn');
+        var num = document.getElementById('num');
+        var box = document.getElementById('box');
+        var arr = [];//兔子数列  [1,1,2,3,5] 某一项==前两项之和(n>2)
+
+        btn.onclick = function () {//面试题：记住 递归实现，数组实现
+            var val = num.value;
+            for (var i = 0; i < val; i++) {
+                if (i < 2) {
+                    arr.push(1);
+                } else {
+                    arr[i] = arr[i - 1] + arr[i - 2];
+                }
+            }
+            box.innerHTML = '[' + arr + ']';
+        }
+    })();
+</script>
+
+</html>

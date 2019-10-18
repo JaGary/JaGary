@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>拖拽原理</title>
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+            background: red;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+</body>
+<script>
+    (function () {
+        /*
+           写出面向过程  - 改写成面向对象
+                        * 变形(面向过程的程序)
+                            * 把代码里面，不是赋值的语句都提到初始化函数里面 init()
+                            * 尽量不要有函数嵌套
+                            * 可以存在全局变量
+                        * 改写
+                            * 变量改成属性，属性放在构造函数里面
+                            * 函数改成方法，放在原型下面
+                            * this的指向要明确 
+        */
+
+        var box = document.getElementById('box');
+
+        box.onmousedown = function (ev) {
+            //1.鼠标按下的一瞬间：获取到相对距离 ev.offsetX
+            console.log(ev.offsetX);
+            var disX = ev.offsetX;
+            var disY = ev.offsetY;
+            document.onmousemove = function (ev) {
+                //2.鼠标滑动的过程：不断的计算left和top(clientx - offsetx)
+                var iLeft = ev.clientX - disX;
+                var iTop = ev.clientY - disY;
+                if (iLeft <= 50) {
+                    //临界值
+                    iLeft = 0;
+                } else if (iLeft >= window.innerWidth - box.offsetWidth - 50) {
+                    iLeft = window.innerWidth - box.offsetWidth;
+                }
+                box.style.left = iLeft + 'px';
+                box.style.top = iTop + 'px';
+            }
+            //3.鼠标释放的时候：不再计算left和top
+            document.onmouseup = function () {
+                document.onmousemove = null;
+            }
+        }
+
+    })();
+</script>
+
+</html>

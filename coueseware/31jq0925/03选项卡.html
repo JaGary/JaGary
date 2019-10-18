@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>选项卡</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            padding: 50px;
+        }
+
+        #menu input {
+            width: 80px;
+            height: 30px;
+        }
+
+        .active {
+            background: red;
+        }
+
+        #con div {
+            width: 400px;
+            height: 200px;
+            border: 1px solid #000;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <div id="menu">
+            <input type="button" class="active" value="体育">
+            <input type="button" value="娱乐">
+            <input type="button" value="新闻">
+            <input type="button" value="科技">
+        </div>
+        <div id="con">
+            <div class="conbox" style="display: block">体育</div>
+            <div class="conbox">娱乐</div>
+            <div class="conbox">新闻</div>
+            <div class="conbox">科技</div>
+        </div>
+    </div>
+</body>
+<script src="js/jquery-1.10.1.min.js"></script>
+<script>
+    /*
+        选项卡
+    */
+
+    // (function () {
+    //     $('#menu input').click(function () {
+    //         $(this).attr('class', 'active').siblings().attr('class', '');
+    //         // $('#con .conbox').eq($(this).index()).css('display', 'block').siblings().css('display', 'none');
+    //     });
+    // })();
+
+    // (function(){
+    //     $('#menu input').click(function(){
+    //         $(this).attr('class','active').siblings().attr('class','');
+    //         $('#con .conbox').eq($(this).index()).css('display','block').siblings().css('display','none');
+    //     });
+    // })();
+
+    (function(){
+        $('#menu input').click(function(){
+            $(this).attr('class','active').siblings().attr('class','');
+            $('#con .conbox').eq($(this).index()).css('display','block').siblings().css('display','none');
+        });
+    })();
+</script>
+
+</html>

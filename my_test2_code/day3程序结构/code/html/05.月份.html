@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>月份</title>
+</head>
+<body>
+    <input type="text" id="month">
+    <input type="button" id="num1" value="总天数">
+    <input type="text" id="day">
+</body>
+<script>
+    var num = document.getElementById('month');
+    var num1 = document.getElementById('num1');
+    var num2 = document.getElementById('day');
+
+    num1.onclick = function() {
+        var day = num.value * 1;
+        var date = new Date();
+        var month = date.getMonth() + 1;
+        switch(day) {
+            case 1:
+            num2.value = 30;
+            break;
+            case 2:
+            num2.value = 30;
+            break;
+            case 3:
+            num2.value = 28;
+            break;
+            case 4:
+            num2.value = 30;
+            break;
+            case 5:
+            num2.value = 28;
+            break;
+            case 6:
+            num2.value = 28;
+            break;
+            case 7:
+            num2.value = 30;
+            break;
+            case 8:
+            num2.value = 30;
+            break;
+            case 9:
+            num2.value = 28;
+            break;
+            case 10:
+            num2.value = 30;
+            break;
+            case 11:
+            num2.value = 30;
+            break;
+            case 12:
+            num2.value = 28;
+            break;
+        }
+    }
+</script>
+</html>

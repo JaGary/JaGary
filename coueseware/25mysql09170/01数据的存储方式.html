@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>01数据的存储方式</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    /*
+        01数据的存储方式：三类
+            * 存在本地硬盘：json数据;缺点：读写本地文件不够方便；优点：能存储很多的数据；
+            * 存在浏览器里面：localstorage/sessionstorage/cookies
+            * 数据库方式：mysql：
+                优点：
+                    * 使用方便，存储结构化的数据非常简洁明了，因为是二维表的个数；
+                    * 操作方便：sql语句就可以对数据增删改查
+                缺点：收费，容量限制；
+                分类：
+                    * 关系型：二维表结构
+                        Oracle 甲骨文
+                        SQLServer 微软
+                        MySQL 被甲骨文收购
+                    * 非关系型：MongoDB json数据
+                    * 数据库
+                        * 数据库
+                            * 数据表：二维表：结构化数据
+                                * 字段：表头
+                                    * 数据类型
+                                        char : 固定长度字符串 char(9) 可以存9个字节：存9个字母或3个汉字
+                                        varchar : 可变长度字符串 varchar(9) : abc 容量变小，变成3；变小；存储10汉字，存不下溢出
+                                * 记录：2条记录
+                                * 主键：能唯一识别一条记录的字段名
+                                * 外键：某个表的主键，在这边表里面称之为外键，多表查询
+
+                    * 数据的增删改查：
+                        * 命令方式
+                        * 界面方式：navicat
+                            * 新建连接
+                            * 新建数据库
+                            * 创建表
+                            * 输入内容保存
+                            * 外部导入数据：xls或csv格式
+                            * 数据的备份(存储sql文件)和还原(运行sql文件：新建一个数据库，打开再运行)
+                        * php操控的方式
+                            * 连接数据库
+                            * 写查询语句，执行语句
+                            * 关闭连接
+    */
+</script>
+
+</html>

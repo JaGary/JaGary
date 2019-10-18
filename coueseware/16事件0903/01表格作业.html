@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>生成任意表格</title>
+    <style>
+        #output {
+            margin-top: 20px;
+        }
+
+        table {
+            border: 1px solid #ddd;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td,
+        th {
+            border: 1px solid #ddd;
+            padding: 3px 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>生成任意表格</h1>
+    <label for="row">姓名：</label><input type="text" id="name" autocomplete="off">
+    <label for="col">年龄：</label><input type="text" id="age">
+    <input type="button" value="插入到表格" id="btn">
+    <div id="output">
+        <table>
+            <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>姓名</th>
+                    <th>年龄</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <!-- <tr>
+                    <td>1</td>
+                    <td contenteditable="true">张三</td>
+                    <td contenteditable="true">10</td>
+                    <td>
+                        <a href="###">删除</a>
+                        <a href="###">复制</a>
+                    </td>
+                </tr> -->
+            </tbody>
+
+        </table>
+    </div>
+</body>
+<script>
+    /*
+        需求：根据表单输入的行数和列数，动态的生成表格
+
+       
+        1.表格的操作
+
+            -隔行变色
+            -删除当行
+            -复制当行
+            -添加数据动态插入内容
+            -动态修改单元格内容  contenteditable="true"
+    */
+
+    (function () {
+
+        var name = document.querySelector('#name');
+        var age = document.querySelector('#age');
+        var btn = document.querySelector('#btn');
+        var tbody = document.querySelector('#output tbody');
+
+        function addId() {
+            var ips = tbody.getElementsByClassName('ip');
+            var rows = tbody.getElementsByTagName('tr');
+            console.log(rows.length);
+            for (var i = 0; i < ips.length; i++) {
+                ips[i].innerHTML = i + 1;
+                if (i % 2) {
+                    //余数为1：真
+                    rows[i].style.background = '#58bc58';
+                } else {
+                    //余数为0：假
+                    rows[i].style.background = 'pink';
+                }
+            }
+        }
+
+        //删除功能
+        function delTr() {
+            var delBtns = tbody.getElementsByClassName('del');
+            var clones = tbody.getElementsByClassName('clone');
+            for (var i = 0; i < delBtns.length; i++) {
+                //删除
+                delBtns[i].onclick = function () {
+                    var now = this.parentNode.parentNode;
+                    var res = confirm('您确定不要我了吗？');
+                    if (res) {
+                        tbody.removeChild(now);
+                        addId();
+                    }
+                }
+                //复制
+                clones[i].onclick = function () {
+                    var now = this.parentNode.parentNode;
+                    var newTr = now.cloneNode(true);
+                    tbody.appendChild(newTr);
+                    delTr();//递归:给复制出来的新行重新绑定事件；性能比较差(后期我们用事件委托实现)
+                    addId();
+                }
+            }
+        }
+
+
+        btn.onclick = function () {
+            //1.添加数据动态插入内容
+            var _name = name.value.trim();
+            var _age = age.value.trim();
+
+            if (_name && _age) {
+                //非空
+                var html = `<tr>
+                                <td class="ip">1</td>
+                                <td contenteditable="true">${_name}</td>
+                                <td contenteditable="true">${_age}</td>
+                                <td>
+                                    <a class="del" href="###">删除</a>
+                                    <a class="clone" href="###">复制</a>
+                                </td>
+                            </tr>`;
+                tbody.innerHTML += html;//把内容拼接在末尾处
+                //添加序号
+                //先渲染，再隔行变色
+                addId();
+                //删除
+                delTr();
+                //复制
+
+            } else {
+                alert('请输入完整的内容');
+            }
+        }
+
+
+
+    })();
+
+
+
+
+
+</script>
+
+</html>

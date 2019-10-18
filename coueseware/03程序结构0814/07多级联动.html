@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>07多级联动</title>
+</head>
+
+<body>
+    <h1>三级联动制作</h1>
+    <select name="" id="sheng">
+        <option value="">省份</option>
+        <option value="gd">广东</option>
+        <option value="gx">广西</option>
+    </select>
+    <select name="" id="city">
+        <option value="">城市</option>
+    </select>
+    <select name="" id="town">
+        <option value="">区(镇)</option>
+    </select>
+</body>
+<script>
+
+    //多级联动：了解即可
+
+    //找到节点
+    var sheng = document.getElementById('sheng');
+    var city = document.getElementById('city');
+    var town = document.getElementById('town');
+
+    //内容发生变化的时候，检测选的是哪个省份
+
+    //省份变了-生成对应的数据给城市
+    sheng.onchange = function () {
+        var val = sheng.value;
+        if (val == 'gd') {
+            //拼接广东城市，渲染到城市下拉菜单里面
+            var html = '<option value="">城市</option><option value="gz">广州</option><option value="sz">深圳</option><option value="dg">东莞</option>';
+            city.innerHTML = html;
+        }
+
+        if (val == 'gx') {
+            var html = '<option value="">城市</option><option value="nn">南宁</option><option value="gl">桂林</option><option value="bs">百色</option>';
+            city.innerHTML = html;
+        }
+        // console.log(val);
+    }
+</script>
+
+</html>

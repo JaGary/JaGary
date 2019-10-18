@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>仿flash轮播图</title>
+    <link rel="stylesheet" href="../css/05轮播图.css">
+</head>
+
+<body>
+    <div id="playimages" class="play">
+        <ul class="big_pic" id="big_pic">
+            <div class="prev" id="prev"></div>
+            <div class="next" id="next"></div>
+
+            <a id="mark_left" class="mark_left" href="javascript:;"></a>
+            <a id="mark_right" class="mark_right" href="javascript:;"></a>
+
+            <div class="bg">
+                <div id="text" class="text">风景图1</div>
+                <div id="length" class="length">计算图片数量1/6</div>
+            </div>
+
+            <li style="z-index:1;"><img src="../images/flashImg/1.jpg" /></li>
+            <li><img src="../images/flashImg/2.jpg" /></li>
+            <li><img src="../images/flashImg/3.jpg" /></li>
+            <li><img src="../images/flashImg/4.jpg" /></li>
+            <li><img src="../images/flashImg/5.jpg" /></li>
+            <li><img src="../images/flashImg/6.jpg" /></li>
+        </ul>
+        <div class="small_pic">
+            <ul style="width:390px;" id="small" class="small">
+                <li class="active"><img src="../images/flashImg/1.jpg" /></li>
+                <li><img src="../images/flashImg/2.jpg" /></li>
+                <li><img src="../images/flashImg/3.jpg" /></li>
+                <li><img src="../images/flashImg/4.jpg" /></li>
+                <li><img src="../images/flashImg/5.jpg" /></li>
+                <li><img src="../images/flashImg/6.jpg" /></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</body>
+<script src="../js/common.js"></script>
+<script src="../js/flash轮播图.js"></script>
+
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>回到顶部效果</title>
+    <style>
+        body {
+            height: 2000px;
+        }
+
+        #btn1 {
+            width: 100px;
+            height: 100px;
+            position: fixed;
+            bottom: 50px;
+            right: 50px;
+            display: none;
+        }
+
+        #ig1 {
+            width: 100px;
+            height: 100px;
+            position: fixed;
+            bottom: 50px;
+            left: 50px;
+            transition: all 8s;
+        }
+
+        #ig2 {
+            width: 100px;
+            height: 100px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            transition: all 10s;
+        }
+
+        #ig3 {
+            width: 100px;
+            height: 100px;
+            position: fixed;
+            bottom: 150px;
+            left: 50px;
+            transition: all 6s;
+        }
+
+        #ig4 {
+            width: 100px;
+            height: 100px;
+            position: fixed;
+            bottom: 300px;
+            left: 50px;
+            transition: all 4s;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="btn">
+        <img src="../images/2.gif" alt="" id="btn1">
+    </div>
+    <div id="btn2">
+        <img src="../images/timg.jpg" alt="" id="ig1">
+        <img src="../images/timg.jpg" alt="" id="ig2">
+        <img src="../images/timg.jpg" alt="" id="ig3">
+        <img src="../images/timg.jpg" alt="" id="ig4">
+    </div>
+</body>
+<script>
+    (function () {
+        var btn = document.getElementById('btn1');
+        var ig1 = document.getElementById('ig1');
+        var ig2 = document.getElementById('ig2');
+        var ig3 = document.getElementById('ig3');
+        var ig4 = document.getElementById('ig4');
+
+        window.onscroll = function () {
+            var scrollTop = window.scrollY;
+            if (scrollTop >= 500) {
+                btn.style.display = 'block';
+                ig1.style.left = '1000px';
+                ig2.style.left = '1000px';
+                ig3.style.left = '1000px';
+                ig4.style.left = '1000px';
+            } else {
+                btn.style.display = 'none';
+                ig1.style.left = '50px';
+                ig2.style.left = '50px';
+                ig3.style.left = '50px';
+                ig4.style.left = '50px';
+            }
+        }
+
+        btn.onclick = function () {
+            var scrollTop = window.scrollY;
+            var timer = setInterval(function () {
+                scrollTop -= 20;
+                if (scrollTop <= 0) {
+                    clearInterval(timer);
+                    btn.style.display = 'block';
+                }
+                window.scrollTo(0, scrollTop);
+                btn.style.top = scrollTop;
+            }, 30);
+        }
+    })();
+</script>
+
+</html>

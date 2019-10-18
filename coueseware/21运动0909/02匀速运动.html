@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>运动的原理</title>
+    <style>
+        #bird {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <img id="bird" src="img/bird.gif" alt="">
+</body>
+<script>
+    /*
+        运动的原理：不断的改变某个样式，视觉效果就是运动；
+
+            * 定时器
+            * 样式：
+                * 从左运动到右边：left
+    
+    */
+    (function () {
+
+        //找到节点
+        var bird = document.getElementById('bird');
+        var timer = null;
+        var speed = 10;//步长、速度
+        var timer = null;
+
+        timer = setInterval(function () {
+            var iLeft = bird.offsetLeft + speed;//每隔30毫秒运动10px
+            if (iLeft >= window.innerWidth - bird.offsetWidth) {//临界点
+                iLeft = window.innerWidth - bird.offsetWidth;
+                clearInterval(timer);
+            }
+            bird.style.left = iLeft + 'px';
+        }, 30);
+
+    })();
+
+</script>
+
+</html>

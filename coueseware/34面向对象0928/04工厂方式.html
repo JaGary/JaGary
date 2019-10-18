@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>04工厂方式</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    /*
+        工厂方式：构造对象(可以实现复用)
+            * 流水线
+                * 原料
+                * 加工
+                * 出厂
+        工厂方式的优缺点：
+            * 优点，解决了单体的弊端，可以实现复用
+            * 缺点：
+                * 没有new
+                * 内存没有实现高度复用
+        混合开发方式：
+    */
+
+    function Student(name, age) {//构造函数：函数的首字母是大写的，用途：构造对象
+        //原料
+        var obj = new Object();//空对象：挂靠的对象
+        //加工
+        obj.name = name;//添加属性
+        obj.age = age;
+        obj.coding = function () {//添加方法
+            console.log(obj.name + '每天代码三千行');
+        }
+        obj.sing = function () {
+            console.log('唱歌');
+        }
+        //出厂
+        return obj;
+    }
+
+    var bobo = Student('波波', '19');//var arr = new Array(); var time = new Date();
+    bobo.coding();
+
+    var wenwen = Student('雯雯', '19');
+    wenwen.coding();
+    wenwen.sing();
+    console.log(wenwen.name);
+
+    console.log(bobo.coding == wenwen.coding);//false : 证明不是存在一个内存中
+</script>
+
+</html>

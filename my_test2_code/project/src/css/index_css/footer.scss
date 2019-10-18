@@ -1,0 +1,85 @@
+//底部
+.box_footer {
+    width: 100%;
+    height: 200px;
+    background: #fafafa;
+
+    .box_footer_con {
+        width: 1230px;
+        height: 150px;
+        padding-top: 30px;
+        margin: 0 auto;
+        font-size: 11px;
+        color: #757575;
+
+        a {
+            // height: 200px;
+            float: left;
+        }
+
+        .footer-right {
+            width: 1135px;
+            margin-left: 73px;
+
+            .footer_list {
+                width: 100%;
+                height: 13px;
+
+                li {
+                    float: left;
+                    height: 13px;
+                    border-right: 1px solid #757575;
+                    padding: 0 4px;
+                    cursor: pointer;
+
+                    a {
+                        font-size: 11px;
+                        color: #757575;
+                        line-height: 13px;
+                    }
+                }
+
+                li:hover a {
+                    color: #ff6700;
+                }
+            }
+
+            span {
+                margin-top: 8px;
+                margin-left: 2px;
+            }
+
+            .foot_con {
+                color: #b0b0b0;
+
+                // margin-top: 8px;
+                span:hover {
+                    color: #ff6700;
+                }
+            }
+
+            .list_img {
+                margin-top: 8px;
+
+                img {
+                    width: 85px;
+                    height: 28px;
+                }
+            }
+        }
+
+    }
+
+    .logo_title {
+        margin: 0 auto;
+        height: 50px;
+        text-align: center;
+        margin-top: 8px;
+
+        span {
+            font-size: 18px;
+            line-height: 50px;
+            color: #bebebe;
+        }
+    }
+}

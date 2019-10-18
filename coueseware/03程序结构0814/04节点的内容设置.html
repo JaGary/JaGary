@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>04节点的内容设置</title>
+</head>
+
+<body>
+    <p id="con">商品总价￥99.90</p>
+    <input type="button" value="点我" id="btn">
+</body>
+<script>
+    /*
+        设置和获取普通节点的内容：
+            * 节点.innerHTML = 值
+            * 节点.innerHTML
+    */
+    var btn = document.getElementById('btn');
+    var con = document.getElementById('con');
+    var num = 99.9;
+    btn.onclick = function () {
+        num++;
+        console.log(con.innerHTML);
+        //设置
+        con.innerHTML = '商品总价￥' + num;
+    }
+</script>
+
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>reg</title>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/font/iconfont.css">
+    <link rel="stylesheet" href="../css/reg_css/reg.css">
+</head>
+
+<body>
+    <div id="box_reg">
+        <div class="reg">
+            <div class="reg_logo">
+                <a href="###"></a>
+            </div>
+            <div class="title">
+                <h3>注册小米账号</h3>
+            </div>
+            <div class="reg_inp">
+                <span style="display: block;margin-top:43px;">国家/地区</span>
+                <div class="country">
+                    <input type="text" value="中国">
+                    <i class="iconfont icon-jiantou"></i>
+                </div>
+                <div class="list_count">
+                    <ul class="list_cot">
+                        <li><span>中国</span><span>+86</span></li>
+                        <li><span>美国</span><span>+1</span></li>
+                        <li><span>法国</span><span>+33</span></li>
+                        <li><span>阿富汗</span><span>+93</span></li>
+                        <li><span>印度</span><span>+91</span></li>
+                        <li><span>加拿大</span><span>+1</span></li>
+                        <li><span>澳大利亚</span><span>+61</span></li>
+                        <li><span>俄罗斯</span><span>+7</span></li>
+                        <li><span>英国</span><span>+44</span></li>
+                        <li><span>巴拿马</span><span>+507</span></li>
+                        <li><span>波兰</span><span>+48</span></li>
+                    </ul>
+                </div>
+                <p>成功注册账号后，国家/地区将不能够修改</p>
+                <span style="display: block;margin-top: 23px;">手机号码</span>
+                <div class="tell_code">
+                    <div class="cod_add">
+                        <div class="con">
+                            <p class="con_Code">+86</p>
+                            <i></i>
+                        </div>
+                    </div>
+                    <div class="list_count2">
+                        <ul class="list_cot">
+                            <li><span>中国</span><span>+86</span></li>
+                            <li><span>美国</span><span>+1</span></li>
+                            <li><span>法国</span><span>+33</span></li>
+                            <li><span>阿富汗</span><span>+93</span></li>
+                            <li><span>印度</span><span>+91</span></li>
+                            <li><span>加拿大</span><span>+1</span></li>
+                            <li><span>澳大利亚</span><span>+61</span></li>
+                            <li><span>俄罗斯</span><span>+7</span></li>
+                            <li><span>英国</span><span>+44</span></li>
+                            <li><span>巴拿马</span><span>+507</span></li>
+                            <li><span>波兰</span><span>+48</span></li>
+                        </ul>
+                    </div>
+                    <div class="tel_phone">
+                        <input type="text" placeholder="请输入手机号码" id="tel_code">
+                        <span class="inf2"></span>
+                        <span class="inf3" style="text-align: center;"></span>
+                    </div>
+                </div>
+                <div class="btn_log">
+                    <input type="text" id="reg_btn" value="立即注册">
+                </div>
+            </div>
+            <div class="privacy">
+                <!-- <input type="checkbox" name="" id="" class="read"> -->
+                <p>已阅读并同意 : 小米<a href="###">用户协议</a>和<a href="###">隐私政策</a></p>
+            </div>
+        </div>
+        <div class="reg_footer">
+            <div class="list">
+                <ul class="list_list">
+                    <li><a href="###">简体</a></li>
+                    <li><a href="###">繁体</a></li>
+                    <li><a href="###">English</a></li>
+                    <li><a href="###">常见问题</a></li>
+                </ul>
+            </div>
+            <p class="copy">
+                <a href="###">小米公司版权所有-京ICP备10046444-</a>
+                <a href="###">
+                    <span>
+                        <img src="https://account.xiaomi.com/static/res/9204d06/account-static/respassport/acc-2014/img/ghs.png"
+                            alt="">
+                    </span>
+                    京公网安备11010802020134号
+                </a>
+                <a href="###">-京ICP证110507号</a>
+            </p>
+        </div>
+    </div>
+</body>
+<script src="../js/common.js"></script>
+<script src="../js/reg.js"></script>
+<script>
+    (function () {
+        let code = document.querySelector('#tel_code');
+        let regbtn = document.getElementById('reg_btn');
+        let inf2 = document.querySelector('.inf2');
+        let inf3 = document.querySelector('.inf3');
+
+        code.onblur = () => {
+            let codeVal = code.value.trim();
+            let reg = /^1[3-9]\d{9}$/; //手机号码验证
+            if (codeVal) {
+                let regVal = reg.test(codeVal);
+                if (regVal) {
+                    inf2.innerHTML = '正则通过';
+                    inf2.style.color = '#58bc58';
+                } else {
+                    inf2.innerHTML = '手机号码错误';
+                    inf2.style.color = 'red';
+                }
+            } else {
+                inf2.innerHTML = '请输入手机号';
+                inf2.style.color = 'red';
+            };
+            ajax({
+                type: 'get',
+                url: '../api/username.php',
+                data: {
+                    val2: code.value.trim()
+                },
+                success: str => {
+                    if (code.value) {
+                        if (str == 'no') {
+                            inf3.innerHTML = '该用户名已被注册';
+                            inf3.style.color = 'red';
+                        } else {
+                            inf3.innerHTML = '可以注册';
+                            inf3.style.color = 'green';
+                            regbtn.onclick = () => {
+                                ajax({
+                                    type: 'post',
+                                    url: '../api/reg.php',
+                                    data: {
+                                        val: code.value.trim()
+                                    },
+                                    success: str => {
+                                        if (code.value) {
+                                            let coTle = code.value;
+                                            console.log(str);
+                                            if (str == 'yes') {
+                                                alert('请输入密码');
+                                                location.href = 'password.html?' +
+                                                    coTle;
+                                            } else {
+                                                alert('该号码已被注册');
+                                            }
+                                        } else {
+                                            alert('请注册');
+                                        }
+                                    }
+                                })
+                            }
+                        }
+                    }
+                }
+            })
+        }
+
+    })();
+</script>
+
+</html>

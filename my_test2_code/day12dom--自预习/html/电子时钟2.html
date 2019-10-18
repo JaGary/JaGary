@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="clock"></div>
+    <script>
+        // function myFunction() {
+        //     setTimeout(function () {
+        //         alert("Hello")
+        //     }, 3000);
+        // }
+        // myFunction();
+        var time1 = document.getElementById('clock');
+
+        function myFunction() {
+            function siz(num) {
+                if (num < 10) {
+                    return '0' + num;
+                } else {
+                    return '' + num;
+                }
+            }
+            setTimeout(function () {
+                var time = new Date();
+                var year = time.getFullYear();
+                var month = time.getMonth() + 1;
+                var today = time.getDate();
+
+                var hour = time.getHours();
+                var min = time.getMinutes();
+                var sec = time.getSeconds();
+                var html = year + '-' + siz(month) + '-' + siz(today) + ' ' + siz(hour) + ':' + siz(min) +
+                    ':' + siz(sec);
+                console.log(html);
+                return html;
+            }, 1000);
+
+        }
+        myFunction();
+        // var int = self.setInterval("clock()", 1000);
+
+        // function clock() {
+        //     var time = new Date();
+        //     var t = time.toLocaleTimeString();
+        //     document.getElementById("clock").value = t;
+        //     console.log(t);
+        // }
+    </script>
+</body>
+
+</html>

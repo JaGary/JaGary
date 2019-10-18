@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>促销</title>
+    <style>
+        .btn {
+            position: relative;
+        }
+
+        #countDown {
+            position: absolute;
+            left: 55px;
+            top: 50%;
+            transform: translate(0, -58%);
+        }
+    </style>
+</head>
+
+<body>
+    <h2>促销商品</h2>
+    <div class="goods">
+        <img src="../images/1.webp" id="meinv">
+        <h4>今年过节不收礼，收礼只收黑袜子</h4>
+        <p class="price">价格：<span>9.8W</span></p>
+        <div class="btn">
+            <div id="countDown"></div>
+            <img src="../images/2.webp" id="btnBuy">
+        </div>
+    </div>
+</body>
+<script>
+    (function () {
+        var countDown = document.getElementById('countDown');
+        var meinv = document.getElementById('meinv');
+        var btnBuy = document.getElementById('btnBuy');
+
+        var endTime = '2019-8-29 23:59:59';
+        var end = new Date(endTime); //将字符串转换成日期
+        // console.log(end);
+
+        setInterval(function setTime() {
+                var now = new Date(); //获取系统时间
+                var html = '';
+                // console.log(now);
+                var dis = parseInt((end - now) / 1000);
+                // var dis = (end - now)/1000;
+                console.log(dis);
+                var day = parseInt(dis / 60 / 60 / 24) % 24; //天
+                var hour = parseInt(dis / 60 / 60) % 24; //小时
+                var min = parseInt(dis / 60) % 60; //分钟
+                var sec = dis % 60; //秒
+
+                var html = day + '天' + hour + '小时' + min + '分钟' + sec + '秒'; //拼接时间戳
+                console.log(html);
+                countDown.innerHTML = html; //渲染数据到页面
+
+                // if (dis <= 0) { //临界点
+                //     meinv.src = '../images/2.webp'; //替换图片
+                //     btnBuy.src = '../images/1.webp';
+                //     countDown.innerHTML = ''; //清空数据
+                //     clearInterval(timer) //清空计时器
+                // }
+            },
+            1000);
+        //定时器开启
+        //  setTimeout(setTime, 1000);
+    })();
+</script>
+
+</html>

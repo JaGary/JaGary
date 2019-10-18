@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         //两种方法：
+         //第一：求余数
+         var second = 45678;
+         var hour = parseInt(second / 3600);//小时
+         var m1 = second % 3600;
+         console.log(m1);//求除于3600剩余多少秒
+         var min = parseInt(m1 / 60);//分钟
+         console.log(hour,min);
+         var sec = m1 % 60;
+         console.log(sec);//余秒
+         var last = hour + '小时' + min + '分钟' + sec + '秒';
+         console.log(last);
+
+         //第二：传统的加减
+         // var second = 45678;
+         // var hour = parseInt(second / 3600);//小时
+         // var m1 = second - (hour*3600);
+         // console.log(second,hour,m1);
+         // var min = parseInt(m1 / 60);//分钟
+         // console.log(hour,min);
+         // var sec = second - hour*3600 - min*60;//余秒
+         // console.log(hour,min,sec);
+         // //xx小时xx分钟xx秒
+         // var last = hour + '小时' + min + '分钟' + sec + '秒';
+         // console.log(last);
+    </script>
+</body>
+</html>

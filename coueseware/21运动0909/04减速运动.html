@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>减速运动</title>
+	<style type="text/css">
+		#car {
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 150px;
+		}
+	</style>
+
+</head>
+
+<body>
+	<img id="car" src="img/car.jpg" />
+	<!--<canvas id="" width="" height=""></canvas>-->
+</body>
+<script src="../common.js"></script>
+<script>
+	(function () {
+
+		var car = document.getElementById('car');
+		var speed = 100;
+		var timer = null;
+		//需求：减速运动
+		// console.log(car.offsetHeight);
+
+		// console.log(css(car, 'height'));
+		//预加载：确保图片资源到了再获取高度就不会拿不到了
+		var img = new Image();
+		img.src = 'img/car.jpg';
+		img.onload = function () {
+			car.style.top = window.innerHeight - car.offsetHeight + 'px';
+		}
+
+		timer = setInterval(function () {
+			speed -= 5;
+			if (speed <= 0) {
+				clearInterval(timer);
+			} else {
+				var iLeft = car.offsetLeft + speed;
+				car.style.left = iLeft + 'px';
+			}
+		}, 30);
+
+
+	})();
+</script>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="tex">
+    <input type="button" value="点击验证非空" id="btn">
+</body>
+<script>
+    (function () {
+        var btn = document.getElementById('btn');
+        var tex = document.getElementById('tex');
+
+        btn.onclick = function () {
+            var texVal = tex.value.trim();//去除前后空格再判断是否为空才比较严谨
+            if (texVal) {
+                //不为空
+                alert('不为空');
+            } else {
+                //空
+                alert('空');
+            }
+        }
+    })();
+</script>
+
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>window</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    /*
+        BOM:浏览器对象模型，赋予我们操控窗口的能力：弹窗、窗口的关闭和打开、刷新页面、获取url、页面跳转、复制、粘贴、回退、前进……
+
+        window : { 是BOM最核心的对象，是很多子对象的顶层对象
+            属性：
+                * 浏览器窗口尺寸 innerWidth/innerHeight, //表示浏览器窗口”可视区域”尺寸 outerWidth/outerHeight //表示整个浏览器窗口的尺寸
+                * 滚动相关
+                    * scrollX/scrollY //获取浏览器窗口滚动条滚动过的距离
+                   
+            方法：
+                * scrollTo(x,y) //指定滚动位置
+                * scrollBy(xnum,ynum) //设置基于当前位置滚动的距离，可以为负数
+            事件：
+            子对象：
+        }
+
+        13826108920
+
+        注意事项：
+                * 定义在全局环境下的变量都会成为window对象的属性
+                * 把变量定义在函数体里，可以有效减少全局环境下的变量冲突，避免污染全局环境
+                * window对象可以在代码中省略，如window.alert()可以写成alert();
+                * 在函数内部不用var声明的变量会成为全局变量，即window对象的属性
+                * 通过var在全局作用域下声明的变量用delete无法删除
+    */
+
+    //window 变量声明:尽量不要写全局变量
+    var anum = 666;//把anum这个对象挂在了window的下面，作为他的属性
+    window.anum2 = 999;//如果把变量写在全局作用域：1、不被释放内存，浪费内存；2.污染全局环境
+    console.log(anum2);
+
+    (function () {//可以用自调用把所有的变量放里面全部都变成局部变量
+        var anum3 = 789;
+        anum4 = 12345;//不写var的变量就是全局变量
+    })();
+
+    console.log(anum4);//外面是可以拿到全局变量的
+
+    console.log(window);
+
+    var obj = {};
+    obj.num = 66;
+    obj.num = 99;
+    console.log(obj);
+
+
+    function father() {
+        //父函数
+        total = 555;
+        // var sum;
+        // var sum = 0;
+        function son() {
+            //子函数
+            // var sum = 34;
+            sum = 34;//不写var就是定义在全局作用域下
+        }
+        son();
+        console.log(sum);//?sum is not defined 34
+    }
+
+    father();
+    console.log(total);
+    console.log(sum);
+</script>
+
+</html>

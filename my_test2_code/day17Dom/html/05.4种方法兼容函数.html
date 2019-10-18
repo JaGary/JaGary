@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document4中查找关系兼容问题</title>
+</head>
+
+<body>
+    <script>
+        //lastChild 兼容问题
+        function lastChild(ele) {
+            if (ele.lastElementChild) {
+                return ele.lastElementChild;
+            } else {
+                return lastChild;
+            }
+        }
+
+        //previousSibling 兼容问题
+        function previousSibling(ele) {
+            if (ele.previousElementSibling) {
+                return ele.previousElementSibling;
+            } else {
+                return previousSibling;
+            }
+        }
+
+        //nextSibling 兼容问题
+        function nextSibling(ele) {
+            if (ele.nextElementSibling) {
+                return ele.nextElementSibling;
+            } else {
+                return nextSibling;
+            }
+        }
+
+        //兼容：面试题
+        //firstChild兼容函数
+        function firstChild(ele) {
+            //找到第一个孩子
+            if (ele.firstElementChild) {
+                //标准浏览器下
+                return ele.firstElementChild;
+            } else {
+                //IE678
+                return ele.firstChild;
+            }
+        }
+    </script>
+</body>
+
+</html>

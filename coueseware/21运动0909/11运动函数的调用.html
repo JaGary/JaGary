@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>运动函数</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="button" value="运动" id="btn">
+    <div id="box"></div>
+</body>
+<script src="../common.js"></script>
+<script>
+    (function () {
+        /*
+            运动框架封装：startMove()过渡    jq animate()
+            最终版：多对象，多属性，链式运动框架(运动队列)
+            参数一：对象名
+            参数二：属性，目标值  键名：属性名，键值：目标值    {'width':200,'heigth':400}  实现：宽度和高度一起改变，宽度变成200，高度变成400
+            参数三：回调函数(可选参数) 可选参数
+
+            距离越大速度越大：缓冲运动
+        */
+        //找节点
+        var btn = document.getElementById('btn');
+        var box = document.getElementById('box');
+
+        btn.onclick = function () {
+            // startMove(box, { 'width': 400, 'height': 400 });//实现：宽度和高度一起改变，宽度变成400，高度变成400
+            startMove(box, { 'width': 400 }, function () {
+                //链式运动
+                startMove(box, { 'height': 400 }, function () {
+                    startMove(box, { 'opacity': 60 });
+                });
+            });
+        }
+    })();
+</script>
+
+</html>

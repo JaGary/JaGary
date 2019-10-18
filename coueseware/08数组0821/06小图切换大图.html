@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>06小图切换大图</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        body {
+            padding: 50px;
+        }
+
+        ul li {
+            float: left;
+            width: 50px;
+            margin-right: 10px;
+            border: 2px #fff solid;
+        }
+
+        ul li .active {
+            border: 2px sandybrown solid;
+        }
+
+        ul li img {
+            display: block;
+            width: 50px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <img id="bigpic"
+        src="https://g-search3.alicdn.com/img/bao/uploaded/i4/i2/1127308153/O1CN01BixS1A2A67ekr7tvA_!!0-item_pic.jpg_230x230.jpg_.webp"
+        alt="">
+    <ul id="list">
+        <li>
+            <img class="active"
+                src="https://g-search3.alicdn.com/img/bao/uploaded/i4/i2/1127308153/O1CN01BixS1A2A67ekr7tvA_!!0-item_pic.jpg_230x230.jpg_.webp"
+                alt="">
+        </li>
+        <li>
+            <img src="https://g-search3.alicdn.com/img/bao/uploaded/i4/i1/138219081/O1CN01nzoZ972Gx9DqlaYQu_!!138219081.jpg_230x230.jpg_.webp"
+                alt="">
+        </li>
+        <li>
+            <img src="https://g-search2.alicdn.com/img/bao/uploaded/i4/i3/1656609387/O1CN01dXndxM2JDINqDSxY2_!!1656609387.jpg_230x230.jpg_.webp"
+                alt="">
+        </li>
+    </ul>
+</body>
+<script>
+    (function () {
+
+        var bigpic = document.getElementById('bigpic');
+        var list = document.getElementById('list');
+        var smallpics = list.getElementsByTagName('img');
+
+        for (var i = 0; i < smallpics.length; i++) {
+            smallpics[i].onclick = function () {
+                for (var j = 0; j < smallpics.length; j++) {
+                    smallpics[j].className = '';
+                }
+                this.className = 'active';
+                console.log(this.src);
+                bigpic.src = this.src;//替换图片
+            }
+        }
+    })();
+</script>
+
+</html>

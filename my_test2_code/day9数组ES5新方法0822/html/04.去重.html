@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>去重函数，去掉数组中的重复项，并返回一个新的数组</title>
+</head>
+
+<body>
+    <h2>编写一个norepeat(arr)去重函数，去掉数组中的重复项，并返回一个新的数组</h2>
+    <p id="p1"></p>
+</body>
+<script>
+    (function () {
+        var p1 = document.getElementById('p1');
+        var arr = [1, 1, 2, 3, 4, 2];
+
+        //第一种
+        function norepeat(arr) {
+            var newarr = [];
+            arr.forEach(function (item) {
+                if (newarr.indexOf(item) == -1) { //判断是否含有相同的 ，如果不含有就执行
+                    newarr.push(item);
+                }
+            });
+            return newarr;
+        }
+        
+        //第二种:利用icludes查询数组是否含有相同的
+        function norepeat1(arr) {
+            var newarr = [];
+            arr.forEach(function (item) {
+                if (!newarr.includes(item)) { //判断是否含有相同的 ，如果不含有就执行
+                    newarr.push(item);
+                }
+            });
+            return newarr;
+        }
+        var arr1 = norepeat(arr);
+        var arr2 = norepeat1(arr);
+        p1.innerHTML = arr1;
+        // p1.innerHTML = arr2;
+        console.log(arr1);
+        console.log(arr2);
+
+    })();
+</script>
+
+</html>

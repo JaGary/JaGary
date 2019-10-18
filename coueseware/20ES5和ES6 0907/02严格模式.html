@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>02严格模式</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // var price;
+    // 'use strict';//将普通的模式变成严格模式：全局
+    /*
+        严格模式：
+            * 优点：能够让一些不报错的错显示出来
+
+    */
+
+    // num = 77;//严格模式下不能省略var
+    // console.log(num);//num is not defined
+
+    console.log(price);//? undefinded 声明提前 严格模式下，还是会声明提前
+    var price = 66;
+
+    function show() {
+        'use strict';//局部：严格模式：管好自己，天下太平
+    }
+
+    (function () {
+        'use strict';//局部：严格模式：管好自己，天下太平
+    })();
+</script>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>02变量</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    /*
+        熊:200斤，棕色，喜欢吃草
+
+        别名：小花-变量
+
+        声明变量：变量名要遵循下面的规定
+            * 变量名必须是数字,字母,下划线_和美元符$组成;
+            * 第一个字符不能为数字
+            * 不能使用关键字或保留字
+        
+        以下变量名是否合法？
+            —this 不合法,不能出现特殊符号
+            8a 不合法，不能数字开头
+            _num 合法
+            $price 合法
+            .num6 不合法，不能出现特殊符号.
+            sum7 合法
+            class 不合法，关键字
+            for 不合法，关键字
+            sum 合法
+    */
+
+    //方法一：声明+赋值(推荐这种方式)
+    var num = 999;//var 声明变量的关键字  num：变量名  =叫做赋值符号：把右边的值存到左边的变量里面
+    // alert(num);弹窗：不好的地方，遇到一个就弹一次，中断后面代码的执行
+
+    var a = 3;
+    a = 6;//a被覆盖，现在变成6
+    var b = 5;
+    var c = a * b;//看到赋值符号，先看右侧，再看左侧
+    // alert(c);//? 15
+
+    //方法二：先声明后赋值
+    var price;
+    price = 12;
+    // alert(price);
+    console.log(price);//打印到控制台
+
+    //方法三：一次性声明多个变量
+    var sum1 = sum2 = sum3 = 999;
+    console.log(sum1, sum2, sum3);
+
+    //变量名
+    var class1 = 88;//关键字和保留字不能用来做变量名，可以借助软件来检测合法性
+
+</script>
+
+</html>

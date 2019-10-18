@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>05循环的跳转</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    /*
+        05循环的跳转：利用这两个属性，可以减少循环次数，面试喜欢考
+            * break
+            * continue
+        
+        需求：查找数组里面是否含有60？
+    */
+
+    for (var i = 0; i < 10; i++) {
+        if (i == 5) {
+            // break;//跳出本层循环体：中断整个循环
+            continue;//跳过本层循环，继续下一个
+        }
+        document.write(i + '<br />');//?
+    }
+
+
+</script>
+
+</html>

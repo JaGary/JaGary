@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>输出所有1-100之间7的倍数和包含7的数字</h2>
+</body>
+<script>
+    
+    // for (i = 1; i <= 100; i++) {
+    //     if (i % 7 == 0) {
+    //         var arr2 = i.toString();
+    //         if (arr2.indexOf('7') != -1) {
+    //             console.log(arr2);
+    //         }
+    //     }
+    // }
+
+    //输出所有1-100之间7的倍数和包含7的数字
+
+    function multiple() {
+        for (i = 1; i <= 100; i++) {
+            if (i % 7 == 0) {
+                var arr2 = i.toString();//必须转换成字符串
+                if (arr2.indexOf('7') != -1) {//indexOf()对字符串有效果
+                    console.log(arr2);
+                }
+            }
+        }
+    }
+    multiple();
+</script>
+
+</html>

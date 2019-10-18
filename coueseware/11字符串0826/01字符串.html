@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>字符串的学习</title>
+</head>
+
+<body>
+    <h1>字符串的学习</h1>
+</body>
+<script>
+    /*
+        字符串的学习:
+            * 声明：
+                * 字面量： var str = 'how old are you';
+                * 构造函数 :
+                    var str = new String('怎么老是你');
+            * 属性：length 可读不可写
+            * 方法：
+                * charAt(3) //获取下标为3的字符  也可以用方括号获取
+                * indexOf() //查找是否存在，存在返回下标，不存在返回-1
+                * substring(start[,end])：不包括end所在字符，end省略表示截取到最后
+                * substr(start[,len])：支持负数，len为截取的数量
+                * slice(start[,end]) ：截取start到end(不包括end)的字符串，支持负数
+                * split(分割符)：根据分割字符，把字符串拆分成数组 和数组的join()是反操作
+
+            * 循环：
+                * while：可以遍历字符串、数组、对象、节点
+                * do while：可以遍历字符串、数组、对象、节点
+                * for ：可以遍历字符串、数组、对象、节点
+                * for in ：可以遍历字符串、数组、对象
+                * forEach() 数组专用
+
+    */
+
+    //字面量
+    var str = 'c  i;中ty taolu shen ,i want go to nongcun';
+    str.length = 5;
+    console.log(str);
+    console.log(str.length);//37 ：字母、数字、汉字、符号、空格都是占一个长度
+
+    //遍历字符串
+    var str2 = new String('我喜欢惠州西湖');
+    console.log(str2);
+    console.log(str2[5]);//通过下标获取对应的字符 ES5的写法
+    console.log(str2.charAt(6));//通过下标获取对应的字符，ES3写法
+
+    for (var i in str2) {
+        // console.log(i);
+        console.log(str2[i]);
+    }
+
+    //字符串方法
+    var str3 = 'javasctipt';
+    console.log(str3.indexOf('a'));//? 1 找到第一个a字母出现的位置
+
+    /*
+        * substring(start[,end])：不包括end所在字符，end省略表示截取到最后
+        * substr(start[,len])：支持负数，len为截取的数量
+        * slice(start[,end]) ：截取start到end(不包括end)的字符串，支持负数
+    */
+
+    var str4 = 'vuejs my like';
+    console.log(str4.substring(2, 7));//?ejs m 包头不包尾，返回一段字符串
+    console.log(str4.substr(2, 3));//?ejs 从下标2起往后面截取3个字符
+    console.log(str4.slice(2, -1));//ejs my lik,包头不包尾,支持负数
+
+    //需求：'￥68.9';
+    var str5 = '￥68.9';
+    var str6 = str5.slice(1) * 1;
+    console.log(str5, str6);
+
+
+</script>
+
+</html>

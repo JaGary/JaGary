@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>04和尚挑水</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    /*
+        3.山上有一口缸可以装50升水，现在有15升水。老和尚叫小和尚下山挑水，每次可以挑5升。问：小和尚要挑几次水才可以把水缸挑满？通过编程解决这个问题。
+
+        已知条件：
+            * 水缸：50  目前：15
+            * 每次：5  问：多少次挑满
+    */
+
+    //方法一：while
+    var water = 15;
+    var num = 0;//次数
+    while (water < 50) {
+        water += 5;//每次挑5升
+        num++;
+    }
+
+    console.log('挑满50升，挑水次数：' + num);
+
+    //方法二：for
+    var res = 0;//计数器
+    for (var i = 15; i < 50; i += 5) {
+        res++;
+    }
+    console.log('挑满50升，挑水次数：' + res);
+</script>
+
+</html>

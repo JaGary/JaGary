@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>首页</title>
+</head>
+
+<body>
+    <h1>首页</h1>
+    <div id="welcome">欢迎你访问我们的网站。<a href="###" class="quit">退出</a></div>
+</body>
+<script src="common.js"></script>
+<script>
+    (function () {
+
+        //首页：退出功能
+        let welcome = document.getElementById('welcome');
+
+        // let data = decodeURI(location.search.slice(1));//把转码的中文转回来
+
+        function undate() {
+            let data = getcookie('username');
+            if (data) {
+                //登陆的
+                welcome.innerHTML = data + ',欢迎你访问我们的网站。<a href="###" class="quit">退出</a>';
+            } else {
+                welcome.innerHTML = '欢迎你访问我们的网站。<a href="###" class="quit">登陆</a>';
+            }
+        }
+
+        undate();
+
+
+        welcome.onclick = ev => {
+            if (ev.target.innerHTML == '退出') {
+                //退出
+                alert('退出成功');
+                removeCookie('username');
+                removeCookie('url');
+                // console.log(getcookie('username'));
+                // welcome.innerHTML = '欢迎你访问我们的网站。<a href="###" class="quit">登陆</a>';
+            } else if (ev.target.innerHTML == '登陆') {
+                location.href = '03login.html';
+            }
+            undate();
+        }
+
+
+
+    })();
+</script>
+
+</html>

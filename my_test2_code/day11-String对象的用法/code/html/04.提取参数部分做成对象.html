@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>提取参数部分做成对象</title>
+</head>
+
+<body>
+    <div id="box">提取参数部分做成对象</div>
+</body>
+<script>
+    (function () {
+        var box = document.getElementById('box');
+
+        //封装提取参数部分做成对象
+        function strToObj(str) {
+            var obj = {};
+            var arr = str.split('&');
+            // for(var i in arr){
+            //     var arr1 = arr[i].split('=');
+            //     obj[arr1[0]] = arr1[1];
+            // }
+
+            for (i = 0; i < arr.length; i++) {
+                var arr1 = arr[i].split('=');
+                obj[arr1[0]] = arr1[1];
+            }
+            return obj;
+        }
+        var str = 'name=apple&price=8999&kun=888';
+        console.log(strToObj(str));
+
+    })();
+</script>
+
+</html>

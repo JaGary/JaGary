@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>自定义滚动条</title>
+    <style>
+        body {
+            padding: 50px;
+        }
+
+        #box {
+            width: 50px;
+            height: 400px;
+            background: #d8d8d8;
+            position: relative;
+            float: left;
+            margin-right: 10px;
+        }
+
+        #bar {
+            width: 50px;
+            height: 50px;
+            background: red;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        #move {
+            width: 50px;
+            height: 50px;
+            background: blue;
+            float: left;
+            position: absolute;
+            left: 200px;
+            top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <div id="bar"></div>
+    </div>
+    <div id="move"></div>
+</body>
+<script>
+    (function () {
+
+        var bar = document.getElementById('bar');
+        var box = document.getElementById('box');
+        var move = document.getElementById('move');
+
+        //1.按下的时候拿到相对距离
+        bar.onmousedown = function (ev) {
+            var disY = ev.offsetY;
+            document.onmousemove = function (ev) {
+                //2.滑动的过程不断的计算最新的top
+                var iTop = ev.pageY - disY - box.offsetTop;
+                //临界值
+                if (iTop <= 0) {
+                    iTop = 0;
+                } else if (iTop > box.offsetHeight - bar.offsetHeight) {
+                    iTop = box.offsetHeight - bar.offsetHeight;
+                }
+                //比例系数
+                var scal = iTop / (box.offsetHeight - bar.offsetHeight);
+                console.log(scal);
+                bar.style.top = iTop + 'px';
+                //盒子的最大运动距离*比例系数=>实际运动距离
+                move.style.top = 800 * scal + 'px';
+
+            }
+            document.onmouseup = function () {
+                //3.鼠标放开就停止
+                document.onmousemove = null;
+            }
+        }
+    })();
+</script>
+
+</html>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>放大镜</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      img {
+        vertical-align: middle;
+        width: 100%;
+        height: 100%;
+      }
+
+      .box {
+        position: relative;
+        top: 100px;
+        left: 100px;
+        width: 500px;
+        height: 500px;
+      }
+
+      .box .img {
+        width: 400px;
+        height: 500px;
+        position: absolute;
+      }
+
+      .box .img .top {
+        position: relative;
+        overflow: hidden;
+        padding: 4px;
+        width: 100%;
+        height: 300px;
+        border: 1px solid black;
+        cursor: pointer;
+      }
+
+      .box .img .top img {
+        position: absolute;
+      }
+
+      .mask {
+        position: absolute;
+        width: 150px;
+        height: 150px;
+        background: #ff6a00;
+        opacity: 0.2;
+        display: none;
+        cursor: crosshair;
+      }
+
+      .box .img .bottom {
+        position: relative;
+        width: 100%;
+        height: 100px;
+        margin-top: 30px;
+        border: 1px solid #ccc;
+      }
+
+      .bottom p {
+        width: 35px;
+        height: 72px;
+        text-align: center;
+        line-height: 72px;
+        background: #777;
+        cursor: pointer;
+        float: left;
+      }
+
+      .bottom .prev {
+        margin-right: 5px;
+        background: #ccc;
+      }
+
+      .list {
+        width: 318px;
+        height: 72px;
+        overflow: hidden;
+        position: relative;
+        float: left;
+        margin-right: 5px;
+      }
+
+      .smaller {
+        /* position: relative; */
+        overflow: hidden;
+        width: 400px;
+        height: 72px;
+        /* margin-top: 10px; */
+        transition: all 1s;
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+
+      .smaller li {
+        position: relative;
+        float: left;
+        padding: 2px;
+        width: 64px;
+        height: 64px;
+        border: 2px solid #000;
+        margin-left: 10px;
+        cursor: pointer;
+      }
+
+      .smaller li:first-child {
+        margin-left: 0;
+      }
+
+      .smaller .active {
+        border-color: #ff6a00;
+      }
+
+      .bimg {
+        position: absolute;
+        overflow: hidden;
+        display: none;
+        left: 410px;
+        width: 500px;
+        height: 400px;
+      }
+      .bimg img {
+        position: absolute;
+        width: 150%;
+        height: 200%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="box" id="box">
+      <!-- 右边大图 隐藏 -->
+      <div class="bimg">
+        <!-- <img src="" alt=""> -->
+      </div>
+      <!-- 左边 -->
+      <div class="img">
+        <div class="top">
+          <!-- <img src="" alt="">
+                <div class="mask"></div> -->
+        </div>
+        <div class="bottom">
+          <p class="prev">&lt;</p>
+          <div class="list">
+            <ul class="smaller">
+              <!-- <li><img src="../images/1.png" alt=""></li> -->
+            </ul>
+          </div>
+          <p class="next">&gt;</p>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    (function() {
+      var box = document.getElementById("box");
+      var bimgs = box.getElementsByClassName("bimg")[0];
+      var top = box.getElementsByClassName("top")[0];
+      var smaller = box.getElementsByClassName("smaller")[0];
+
+      var arr = [
+        "../images/1.png",
+        "../images/2.jpg",
+        "../images/3.png",
+        "../images/4.jpg",
+        "../images/5.jpg"
+      ];
+      //图片渲染
+      var html = arr
+        .map(function(item) {
+          return `<li><img src="${item}" alt=""></li>`;
+        })
+        .join("");
+
+      smaller.innerHTML = html;
+      //第一个高亮
+      // smaller.children[0].className = "active";
+
+      bimgs.innerHTML = `<img src="${arr[0]}" alt="">`;
+      top.innerHTML = `<img src="${arr[0]}" alt="">
+        <div class="mask"></div>`;
+      var mask = box.getElementsByClassName("mask")[0];
+
+      //鼠标移入出现，移出隐藏
+      top.onmouseover = function() {
+        mask.style.display = "block";
+        bimgs.style.display = "block";
+      };
+
+      //移出隐藏
+      top.onmouseout = function() {
+        mask.style.display = "none";
+        bimgs.style.display = "none";
+      };
+
+      //抚摸事件
+      top.onmousemove = function(ev) {
+        var aTop = ev.pageY - box.offsetTop - mask.offsetHeight / 2; //让光标居中
+        var aLeft = ev.pageX - box.offsetLeft - mask.offsetWidth / 2;
+
+        //临界值
+        if (aLeft >= box.offsetWidth - mask.offsetWidth) {
+          aLeft = box.offsetWidth - mask.offsetWidth;
+        } else if (aLeft <= 0) {
+          aLeft = 0;
+        }
+        if (aTop >= box.offsetHeight - mask.offsetHeight) {
+          aTop = box.offsetHeight - mask.offsetHeight;
+        } else if (aTop <= 0) {
+          aTop = 0;
+        }
+
+        //比例系数
+        var sacX = aLeft / (box.offsetWidth - mask.offsetWidth);
+        var sacY = aTop / (box.offsetHeight - mask.offsetHeight);
+
+        mask.style.left = aLeft + "px";
+        mask.style.top = aTop + "px";
+        //大图运动距离：大图的最大运动距离 * 比例系数
+        bimgs.children[0].style.left =
+          (bimgs.offsetWidth - bimgs.children[0].offsetWidth) * sacX + "px";
+        bimgs.children[0].style.top =
+          (bimgs.offsetHeight - bimgs.children[0].offsetHeight) * sacY + "px";
+      };
+
+      //小图切换大图
+      var alis = document.querySelectorAll(".smaller li");
+      console.log(alis);
+      var liImg = document.querySelectorAll(".smaller img");
+      console.log(liImg);
+      //给第一个孩子高亮
+      for (var i = 0; i < alis.length; i++) {
+        alis[0].className = "active";
+      }
+      for (var i = 0; i < liImg.length; i++) {
+        //小图切换大图
+        liImg[i].onclick = function() {
+          
+          //左边大图的切换
+          this.parentNode.parentNode.parentNode.parentNode.previousElementSibling.children[0].src = this.src;
+          //右边大图的切换
+          this.parentNode.parentNode.parentNode.parentNode.parentNode.previousElementSibling.children[0].src = this.src;
+          
+          for (var i = 0; i < alis.length; i++) {
+            alis[i].className = ""; //清空小图高亮效果
+          }
+          this.parentNode.className = "active"; //增加高亮效果
+        };
+      }
+    })();
+  </script>
+</html>

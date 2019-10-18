@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>删除当行</title>
+</head>
+
+<body>
+    <ul id="oo">
+        <li>
+            <a href="##">111</a>
+        </li>
+        <li>
+            <a href="##">222</a>
+        </li>
+        <li>
+            <a href="##">333</a>
+        </li>
+        <li>
+            <a href="##">444</a>
+        </li>
+    </ul>
+</body>
+<!-- <script>
+    (function () {
+        //点击删除a标签的父节点li
+        var oo = document.querySelector('#oo');
+        var ch = document.querySelectorAll('#oo a');//标签a
+
+        for(var i = 0;i<ch.length;i++){
+            ch[i].onclick = function(){
+                var res = confirm('你要删除我了吗？');
+                if(res){
+                    //点击删除a标签的父节点li ----this.a的父节点(parentNode)
+                    oo.removeChild(this.parentNode);//父节点.removeChild(要删除的节点)
+                }
+            }
+        }
+    })();
+</script> -->
+
+<script>
+    var oo =document.querySelector('#oo');
+    var btn = document.querySelectorAll('#oo a');
+
+    for(var j = 0;j<btn.length;j++){
+        btn[j].onclick = function(){
+            var res = confirm('您要删除我了吗？');
+            if(res){
+                oo.removeChild(this.parentNode);
+            }
+        }
+    }
+</script>
+</html>

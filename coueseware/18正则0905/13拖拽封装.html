@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>10拖拽</title>
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+            background: red;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+</body>
+<script src="../common.js"></script>
+<script>
+    /*
+        拖拽的用途：
+            * 自定义滚动条
+            * 拖拽验证
+            * 放大镜
+
+        拖拽的原理：相对距离保持不变
+
+    */
+
+    (function () {
+        // var box = document.getElementById('box');
+        // var timer = null;//因为定时器是对象，初始化，空对象
+        // var arr = [1, 2, 3];
+        // arr = [];
+        // arr.length = 0;
+
+        drag({ //半成品：有更好的方案
+            ele: '#box',//对象
+            fn: function (obj) {//obj：形参，接收最新的left和top
+                // console.log(666);
+                console.log(obj);
+                if (obj.iLeft) {
+                    //水平运动
+                    if (obj.iLeft <= 0) {
+
+                    }
+                }
+            }
+        });
+
+        function drag(opt) {
+            console.log(opt.ele);
+            var box = document.querySelector(opt.ele);
+            console.log(box);
+            box.onmousedown = function (ev) {
+                //1.按下鼠标的时候获取相对距离
+                var disX = ev.offsetX;
+                var disY = ev.offsetY;
+                //2.按下并且不放手，滑动的时候，不断的计算left和top
+                document.onmousemove = function (ev) {
+                    var iLeft = ev.pageX - disX;
+                    var iTop = ev.pageY - disY;
+                    //临界值判断
+                    opt.fn({ //入口：实参
+                        iLeft: iLeft,
+                        iTop: iTop
+                    });
+                    // if (iLeft <= 30) {
+                    //     iLeft = 0;
+                    // } else if (iLeft >= window.innerWidth - box.offsetWidth - 30) {
+                    //     iLeft = window.innerWidth - box.offsetWidth;
+                    // }
+                    css(box, 'left', iLeft + 'px');
+                    css(box, 'top', iTop + 'px');
+                }
+
+                //3.当我们放开鼠标的时候，盒子就应该停在终点(不再计算left和top)
+                document.onmouseup = function () {
+                    document.onmousemove = null;
+                }
+                // console.log(disX, dixY);
+            }
+        }
+
+
+
+    })();
+</script>
+
+</html>

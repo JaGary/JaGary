@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>鼠标检测</title>
+    <style type="text/css">
+        #box {
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+
+    </div>
+</body>
+<script>
+    /*
+        button 返回当事件被触发时，哪个鼠标按钮被点击。
+
+        W3C标准
+            0: 代表鼠标按下了左键
+            1: 代表按下了滚轮
+            2: 代表按下了右键
+        IE8-（IE8以下的浏览器）
+            1鼠标左键， 2鼠标右键， 3左右同时按， 4滚轮， 5左键加滚轮， 6右键加滚轮， 7三个同时
+    */
+
+    (function () {
+
+        var box = document.querySelector('#box');
+
+        //了解
+        box.onmousedown = function (ev) {
+            console.log(ev.button);
+            if (ev.button == 0) {
+                //按下左键
+                box.innerHTML = '发射子弹';
+            } else if (ev.button == 1) {
+                //按下滚轮
+                box.innerHTML = '切换武器';
+            } else if (ev.button == 2) {
+                //按下鼠标右键
+                box.innerHTML = '瞄准';
+            }
+        }
+
+
+    })();
+</script>
+
+</html>

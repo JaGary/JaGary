@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jq的ajax</title>
+</head>
+
+<body>
+    <input type="button" value="获取数据" id="btn">
+    <ul id="list">
+        <!-- <li>
+            <p></p>
+        </li> -->
+    </ul>
+</body>
+<script src="js/jquery-1.10.1.min.js"></script>
+<script>
+    (function () {
+
+        //和promise
+        $('#btn').click(function () {
+            let p = new Promise(function (resolve) {
+                $.ajax({//不存在跨域
+                    type: 'get',
+                    url: 'http://wthrcdn.etouch.cn/weather_mini',
+                    data: {
+                        city: '广州'
+                    },
+                    dataType: 'json',
+                    success: str => {
+                        console.log(str);
+                        // resolve(str);
+                        // let arr = JSON.parse(str);
+                        // console.log(arr);
+
+                    }
+                });
+            });
+
+            // p.then(function (data) {
+            //     //数据渲染
+            //     let str = data.map(item => {
+            //         return `<li><p>${item.name}</p></li>`;
+            //     }).join('');
+            //     $('#list').html(str);
+            // });
+        });
+
+
+
+    })();
+</script>
+
+</html>

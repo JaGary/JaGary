@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>图片遮罩</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+
+        }
+
+        body {
+            padding: 50px;
+        }
+
+        li {
+            list-style: none;
+            float: left;
+            width: 200px;
+            height: 200px;
+            background: #58bc58;
+            margin-right: 10px;
+            position: relative;
+        }
+
+        p {
+            width: 100%;
+            height: 100%;
+            background: #000;
+            opacity: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="list">
+        <li>
+            <p></p>
+        </li>
+        <li>
+            <p></p>
+        </li>
+        <li>
+            <p></p>
+        </li>
+    </ul>
+</body>
+<script src="../common.js"></script>
+<script>
+    (function () {
+
+        var list = document.querySelector('#list');
+        var aLis = document.querySelectorAll('#list li');
+
+        //方法一：本来li就存在
+        // for (var i = 0; i < aLis.length; i++) {
+        //     // aLis[i].index = i;
+        //     aLis[i].onmouseover = function () {
+        //         console.log(this);
+        //         startMove(this.children[0], { 'opacity': 30 });
+        //     }
+
+        //     aLis[i].onmouseout = function () {
+        //         console.log(this);
+        //         startMove(this.children[0], { 'opacity': 0 });
+        //     }
+        // }
+
+        //方法二：li是渲染出来的
+        list.onmouseover = function (ev) {
+            if (ev.target.tagName == 'P') {
+                console.log(ev.target);
+                startMove(ev.target, { 'opacity': 30 });
+            }
+        }
+        list.onmouseout = function (ev) {
+            if (ev.target.tagName == 'P') {
+                console.log(ev.target);
+                startMove(ev.target, { 'opacity': 0 });
+            }
+        }
+    })();
+</script>
+
+</html>

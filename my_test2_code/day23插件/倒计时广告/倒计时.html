@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>今晚打老虎</title>
+    <style>
+        .btn {
+            position: relative;
+        }
+
+        #countDown {
+            position: absolute;
+            left: 55px;
+            top: 50%;
+            transform: translate(0, -58%);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>10限时购</h1>
+    <div class="goods">
+        <img src="img/g1.jpg" id="meinv">
+        <h4>今年过节不收礼，收礼只收黑妹子</h4>
+        <p class="price">价格：<span>9.9W</span></p>
+        <div class="btn">
+            <div id="countDown">xx天xx时xx分xx秒</div>
+            <img src="img/btn_buy0.jpg" id="btnBuy">
+        </div>
+    </div>
+</body>
+<script src="../common.js"></script>
+<script src="countDown.js"></script>
+<script>
+    cutDown({
+        ele: 'goods',
+        // url1:['img/g1.jpg','img/g2.jpg','img/g3.jpg'],
+        // url2:['img/btn_buy0.jpg','img/btn_buy1.jpg'],
+        // endTime:'2019-9-30 00:00:00',
+        // time:'1000'
+    })
+</script>
+
+</html>

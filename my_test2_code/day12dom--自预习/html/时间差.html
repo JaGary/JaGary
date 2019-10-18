@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="date" id="start">
+    <input type="date" id="end">
+    <input type="button" value="计算" id="btn">
+
+</body>
+<script>
+    (function () {
+        window.onload = function () {
+            /*
+            需求：计算两个日期的差值
+            * 把时间转成毫秒数(获取纪元时间，距离19700101的毫秒数)
+            * 毫秒数相减计算差值
+            * 毫秒数转成天数
+
+            步骤：时间差
+            * 把字符串转成日期对象 new Date(字符串)
+            * 获取纪元时间 日期.gettime()
+            * 两个纪元时间相减：得到一个毫秒数
+            * 毫秒数再转成你要的格式
+            * 7890秒 时：分：秒
+            */
+
+            //取节点
+            var btn = document.getElementById('btn');
+            var start = document.getElementById('start');
+            var end = document.getElementById('end');
+
+            //点击事件
+            btn.onclick = function () {
+                var num1 = start.value; //获取值
+                var num2 = end.value; //获取值
+                if (num1 && num2) {
+                    //非空
+                    var newtime = new Date(num1);////把字符串转成日期
+                    var oldtime = new Date(num2);////把字符串转成日期
+                    console.log(newtime, oldtime);
+
+                    //.getTime --转换成纪元数
+                    var dis = newtime.getTime() - oldtime.getTime(); //得到的是毫秒数
+                    console.log(dis);
+
+                    var res = parseInt(dis / 1000 / 60 / 60 / 24); //天数
+                    console.log(res);
+                } else {
+                    alert('请输入时间段');
+                }
+
+            }
+        }
+    })();
+</script>
+
+</html>

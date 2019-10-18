@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>01数组的新方法</title>
+</head>
+
+<body>
+    <h1>01数组的新方法</h1>
+</body>
+<script>
+    /*
+        数组的新方法：
+            * 静态方法：Array.isArray() 判断是否为数组，返回true/false；构造函数才能调用的方法，叫静态方法；
+            * 索引方法:indexOf() 查找数组里面是否含有某个数，含有就返回这个数所在下标，不含有就返回-1
+            * 迭代（遍历）方法:
+                * forEach(fn) 遍历方法，for循环没有太大差别，比for循环方便
+                * map(fn) 返回一个数量相等的数组，内容是什么取决于在fn中返回的值
+                * filter(fn) 得到执行fn后返回true时对应的数组元素，利用这个方法可对数组元素进行过滤筛选
+                * some(fn) 如果该函数中任何一项返回 true，则返回true
+                * every(fn) 如果该函数对每一项都返回 true，则返回true
+                    参数fn：函数中有三个形参分别为
+                    - item：数组中的每一项,
+                    - index：遍历过程中对应的索引值,（下标）
+                    - array：对数组的引用
+    */
+
+    var arr = [1, 2, 3];
+    arr.push(4); 
+
+    var arr2 = new Array(); //Array-构造函数，用构造函数new(构造)一个实例
+    //角色：管理员、教师、学生  不同的角色权限不同 类
+    //用户：大哲(学生)、琳姐(教师)  实例
+    console.log(arr);
+    console.log(typeof arr); //object
+    console.log(Array.isArray(arr));
+
+    var obj = {
+        name: '田田'
+    }
+
+    console.log(typeof obj); //object
+    console.log(Array.isArray(obj));
+
+    //判断数组里面是否含有60
+    var arr = [1, 5, 600, 3];
+    if (arr.indexOf(60) >= 0) { //两种写法：arr.indexOf(60) >= 0;  arr.indexOf(60) != -1
+        //含有这个数
+        console.log('该数组含有60');
+    } else {
+        console.log('该数组不含有60');
+    }
+
+    //forEach(fn) 遍历数组
+    var arr3 = [55, 66, 77];
+    // arr3.forEach(function (item, index, arr) {
+    //     //参数可以自己命名，但是不推荐修改，约定俗成
+    //     console.log(item);//item-数组里面的每一项值
+    //     console.log(index);//index-下标
+    //     console.log(arr3[index]);
+    //     console.log(arr);
+    // });
+
+    //遍历数组得到值
+    arr3.forEach(function (item) {
+
+    });
+
+
+
+    //需求:数组的每一项增加20%
+    var arr4 = [1, 2, 3];
+
+    function map(arr) {
+        var newarr = [];
+        arr.forEach(function (item) {
+            var num = (item * 1.2).toFixed(1);
+            newarr.push(num);
+        });
+        return newarr;
+    }
+
+    var arr5 = map(arr4);
+    console.log(arr5);
+    //需求:数组的每一项增加5
+    function map2(arr) {
+        var newarr = [];
+        arr.forEach(function (item) {
+            var num = (item + 5).toFixed(1);
+            newarr.push(num);
+        });
+        return newarr;
+    }
+
+    var arr6 = map2(arr4);
+    console.log(arr6);
+    //需求:数组的每一项拼接666
+    function map2(arr) {
+        var newarr = [];
+        arr.forEach(function (item) {
+            var num = item + '666';
+            newarr.push(num);
+        });
+        return newarr;
+    }
+
+    //map(fn)返回一个数量相等的数组，内容是什么取决于在fn中返回的值
+    var newarr = [1, 2, 3];
+
+    //需求:数组的每一项增加20%
+    var arr1 = newarr.map(function (item) {
+        return (item * 1.2).toFixed(1);
+    });
+    console.log(arr1);
+
+    //需求:数组的每一项增加5
+    var arr2 = newarr.map(function (item) {
+        return item + 5;
+    });
+    console.log(arr2);
+
+    //需求:数组的每一项拼接666
+    var arr3 = newarr.map(function (item) {
+        return item + '666';
+    });
+    console.log(arr3);
+
+    //需求：把内容都用li标签包裹起来
+    var arr4 = newarr.map(function (item) {
+        return `<li>${item}</li>`;
+    });
+    console.log(arr4.join(''));
+</script>
+
+</html>

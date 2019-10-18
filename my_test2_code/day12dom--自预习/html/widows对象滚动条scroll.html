@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>window对象的介绍</title>
+    <style>
+        #box {
+            width: 80px;
+            height: 50px;
+            background: lightcoral;
+            position: fixed;
+            left: 50px;
+            bottom: 50px;
+            display: none;
+            cursor: pointer;
+            text-align: center;
+            line-height: 50px;
+        }
+
+        body {
+            height: 2000px;
+            width: 2000px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>window对象的介绍</h2>
+    <div id="box">回到顶部</div>
+</body>
+<script>
+    /*
+        回到顶部：
+            * 滚动到300px的时候显示回到顶部的按钮
+            * 点击回到顶部可以快速回到顶部
+            */
+    (function () {
+        var box = document.getElementById('box');
+
+        //回到顶部事件
+        window.onscroll = function () { //滚动条事件
+            if (scrollY >= 300) { //当滚动距离大于等于300时
+                box.style.display = 'block'; //显示box
+            } else {
+                box.style.display = 'none'; //隐藏
+            }
+        }
+
+        //回到左边事件
+        // window.onscroll = function(){
+        //     if(scrollX>=500){
+        //         box.style.display = 'block';//显示box
+        //     }else{
+        //         box.style.display = 'none';//显示box
+        //     }
+        // }
+
+        //点击事件
+        box.onclick = function () {
+            //scrollTo(x, y)，设置回到的距离,x为水平距离，y为垂直距离
+            window.scrollTo(0, 0); //回到顶部
+        }
+
+
+
+    })();
+</script>
+
+</html>

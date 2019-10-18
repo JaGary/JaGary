@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>06随机点菜程序</title>
+</head>
+
+<body>
+    <input type="text" id="cai">
+    <input type="button" value="随机点菜" id="btn">
+    <input type="button" value="湘菜情" id="btn1">
+    <input type="button" value="粤菜馆" id="btn2">
+    <h1>菜谱</h1>
+    <ul id="list">
+        <!-- <li>1</li>
+        <li>1</li> -->
+    </ul>
+</body>
+<script>
+    (function () {
+        //随机点菜
+        var cai = document.getElementById('cai');
+        var btn = document.getElementById('btn');
+        var btn1 = document.getElementById('btn1');
+        var btn2 = document.getElementById('btn2');
+        var list = document.getElementById('list');
+        var arr1 = ['叫花鸡', '煲仔饭', '猪脚饭', '砂锅粥', '麻辣香锅', '螺蛳粉', '螺蛳粉', '螺蛳粉', '螺蛳粉', '螺蛳粉', '桂林米粉', '狮子头'];
+        var arr2 = ['白切鸡', '油焖大虾', '鱼香茄子', '青菜'];
+        var isok = true;
+
+        //生成随机数组下标，就可以通过下标获取菜名
+        btn.onclick = function () {
+            var index = 0;//0-arr.length-1
+            var name = '';
+            if (isok) {
+                index = parseInt(Math.random() * arr1.length);
+                name = arr1[index];//湘菜
+            } else {
+                index = parseInt(Math.random() * arr2.length);
+                name = arr2[index];//粤菜
+            }
+            cai.value = name;
+            console.log(name);
+        }
+
+        btn1.onclick = function () {
+            //湘菜
+            isok = true;
+            show(arr1);//实参
+        }
+        btn2.onclick = function () {
+            //粤菜
+            isok = false;
+            show(arr2);//实参
+        }
+
+        function show(arr) {
+            var html = '';//准备用来存放拼接的字符串
+            for (var i = 0; i < arr.length; i++) {
+                html += '<li>' + arr[i] + '</li>';
+            }
+            list.innerHTML = html;//渲染数据到页面
+        }
+
+
+    })();
+</script>
+
+</html>

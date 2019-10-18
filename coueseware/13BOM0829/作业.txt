@@ -1,0 +1,5 @@
+
+1.找一个动图做一个缓慢回到顶部效果
+参考：
+http://www.jq22.com/yanshi622
+http://www.jq22.com/jquery-info325

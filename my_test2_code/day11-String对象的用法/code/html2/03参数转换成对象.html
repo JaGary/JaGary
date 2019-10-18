@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>面试题： 给你一个网站url，提取参数部分做成对象,封装</h2>
+</body>
+<script>
+    // var data1 = data.split('?')[1];
+    // console.log(data1);
+    // var data2 = data1.split('&');
+    // console.log(data2);
+
+    // var obj = {};
+    // for (var i in data2) {
+    //     var arr1 = data2[i].split('=');
+    //     // console.log(arr1);
+    //     obj[arr1[0]] = arr1[1];
+    //     console.log(obj);
+    // }
+    // var data = 'http://www.baidu.com?name=apple&price=7890';
+
+    //给你一个网站url，提取参数部分做成对象,封装
+    function StrObj(data) {
+        var data1 = data.split('?')[1];//分割只取？后的值
+        var data2 = data1.split('&');//分割
+        var obj = {};//声明个空对象
+        for (var i in data2) {//遍历数组
+            var arr1 = data2[i].split('=');//利用下标分割
+            // console.log(arr1);
+            obj[arr1[0]] = arr1[1];//将分割好的值存入obj对象中
+            // console.log(obj);
+        }
+        return obj;//返回obj
+    }
+
+    var data = 'http://www.baidu.com?name=apple&price=7890';
+    var obj1 = StrObj(data);//调用函数
+    console.log(obj1);
+    
+</script>
+
+</html>

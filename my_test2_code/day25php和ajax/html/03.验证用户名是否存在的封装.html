@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>验证用户名是否存在的封装</title>
+</head>
+
+<body>
+    <label for="">用户名：</label><input type="text" autocomplete="off" name="" id="name"><span id="inf"></span><br>
+    <label for="">密码：</label><input type="password" id="password"><span id="inf2"></span><br>
+    <input type="button" value="注册" id="btn">
+</body>
+<script src="../common.js"></script>
+<script>
+    (function () {
+            var name = document.getElementById('name');
+            var password = document.getElementById('password');
+            var inf = document.getElementById('inf');
+
+            name.onblur = () => {
+
+                ajax({
+                    type: 'get',
+                    url: '../api/02.name.php',
+                    data: {
+                        name: name.value.trim()
+                    },
+                    success: function (str) {
+                        //成功的回调
+                        if (str == 'no') {
+                            inf.innerHTML = '用户名已被占用';
+                            inf.style.color = 'red';
+                        } else if (str == 'yes') {
+                            inf.innerHTML = '可以注册';
+                            inf.style.color = '#58bc58';
+                        }
+                    },
+                    error: function (sta) {
+                        //失败的回调
+                        if (sta == 404) {
+                            location.href = '404.html';
+                        }
+                    }
+                })
+
+
+            }
+
+            /*仿jq的ajax封装：
+            ajax({
+                  type : 'get', 必填
+                  url : 接口,必填
+                  data : { //选填
+                  name ：'蛋黄酥',
+                  price : '39.9'
+                },
+                asyn : true,可选
+                success : function(str) {
+                    //成功的回调
+                },
+                error : function(status) {//可选的
+                    //失败的回调
+                }
+             });*/
+            function ajax(opt) {
+                let defOpt = {
+                    data: '',
+                    asyn: true
+                }
+
+                Object.assign(defOpt, opt);
+
+                //创建对象
+                let xhr = new XMLHttpRequest();
+
+                if (defOpt.type.toLowerCase() == 'get') {
+                    //get请求
+                    if (defOpt.data) {
+                        //如果有数据
+                        // defOpt.url = defOpt.url + '?' + objToStr(defOpt.data);
+                        defOpt.url += '?' + objToStr(defOpt.data);
+                        console.log(defOpt.url);
+                    }
+                    xhr.open('get', defOpt.url, defOpt.asyn);
+                    xhr.send(null);
+                } else {
+                    //post请求
+                    xhr.open('post', defOpt.url, defOpt.asyn);
+                    let data = objToStr(defOpt.data);
+                    xhr.setRequestHeader('content-type', "application/x-www-form-urlencoded");
+                    xhr.send(data);
+                }
+
+                //渲染数据
+                xhr.onreadystatechange = () => {
+                    if (xhr.readyState == 4) {
+                        if (xhr.status == 200) { 
+                            //执行成功
+                            defOpt.success(xhr.responseText);
+                        }else{
+                            //失败
+                            if(defOpt.error){
+                                defOpt.error(xhr.status);
+                            }
+                        }
+                    }
+                }
+            }
+    })();
+</script>
+
+</html>

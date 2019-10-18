@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>验证表单数据是否存在</title>
+</head>
+
+<body>
+    <label for="">用户名：</label><input type="text" autocomplete="off" name="" id="name"><span id="inf"></span><br>
+    <label for="">密码：</label><input type="password" id="password"><span id="inf2"></span><br>
+    <input type="button" value="注册" id="btn">
+</body>
+<script>
+    (function () {
+        let name = document.getElementById('name');
+        let password = document.getElementById('password');
+        let btn = document.getElementById('btn');
+        let inf = document.getElementById('inf');
+        let inf2 = document.getElementById('inf2');
+
+        //用户名表单 失去焦点
+        name.onblur = () => {
+            let xhr = new XMLHttpRequest();
+            let val = name.value.trim();
+            //路径传参记得加 ?name=
+            //get方法
+            let url = '../api/02.name.php?name=' + val;
+            //1给ajax传递你要做什么
+            xhr.open('get', url, true);
+
+            console.log(url);
+            //2发送请求
+            xhr.send(null); //get方法 -- null
+
+            //post方法：
+            // let url = '../api/02.name.php';
+            // let data = 'name='+val;
+            // //利用请求头设置POST提交数据格式： 
+            // xhr.setRequestHeader('content-type',"application/x-www-form-urlencoded");//post方法专用
+            // xhr.send(data);
+
+
+
+            //3.给后端
+
+            //4.渲染数据
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState == 4) {
+                    if (xhr.status == 200) { //执行成功
+                        let str = xhr.responseText;
+                        if (str == 'no') {
+                            inf.innerHTML = '用户名已被占用';
+                            inf.style.color = 'red';
+                        } else if (str == 'yes') {
+                            inf.innerHTML = '可以注册';
+                            inf.style.color = '#58bc58';
+                        }
+                    }
+                }
+            }
+        }
+
+
+        //密码验证，失去焦点事件()
+        password.onblur = () => {
+            let xhr2 = new XMLHttpRequest();
+            let val2 = password.value.trim();
+
+            let url2 = '../api/03.password.php?password=' + val2;
+            xhr2.open('get', url2, true);
+
+            xhr2.send(null);
+
+            xhr2.onreadystatechange = () => {
+                if (xhr2.readyState == 4 && xhr2.status == 200) {
+                    inf2.innerHTML = '密码符合要求';
+                    inf2.style.color = '#58bc58';
+                }
+            }
+
+        }
+    })();
+</script>
+
+</html>

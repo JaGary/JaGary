@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>09电子时钟</title>
+</head>
+
+<body>
+    <h1>09电子时钟</h1>
+    <div id="time">2019-08-26 17:34:09</div>
+    <input type="button" value="关闭" id="close">
+    <input type="button" value="开始" id="start">
+</body>
+<script>
+    /*
+        定时器：
+            * 间隔型：闹钟型
+                * setInterval(fn,30)：每隔30毫秒执行一次fn这个函数,返回一个id标识
+                * clearInterval(intervalID)：清除指定id标识的定时器操作
+            * 倒计时：炸弹型
+                * setTimeout(fn,200)：两百毫秒后执行fn这个函数（只执行一次）,返回一个id标识
+                * clearTimeout(timeoutID)：清除指定id标识的延迟操作
+    */
+
+    //闹钟
+    var num = 0;
+    //写法一：
+    // setInterval(function () {
+    //     console.log('我怎么这么帅' + num++);
+    // }, 500);//1s==1000ms
+
+    //写法二：show不仅仅是在定时器里面调用的情况
+    // function show() {
+    //     console.log('我怎么这么帅' + num++);
+    // }
+    // var timer = setInterval(show, 1000);//1s==1000ms;第一次执行时间：等2秒后第一次执行，后面每2秒又执行一次
+    // console.log(id);
+    var close = document.getElementById('close');
+    var start = document.getElementById('start');
+    var timebox = document.getElementById('time');
+
+    close.onclick = function () {
+        //通过id值关闭对应的定时器
+        clearInterval(timer);
+    }
+
+    start.onclick = function () {
+        //通过id值关闭对应的定时器
+        timer = setInterval(show, 1000);
+    }
+
+    //炸弹型
+
+    // setTimeout(function () {
+    //     console.log('爆炸快跑');
+    // }, 5000);
+
+    function showtime() {
+        var time = new Date();//时间戳 获取时间
+        var year = time.getFullYear();//年
+        var month = time.getMonth() + 1;//月
+        var day = time.getDate();//日
+        var hours = time.getHours();//时
+        var mins = time.getMinutes();//分
+        var secs = time.getSeconds();//秒
+        var week = time.getDay();//从0-6 星期天-星期六
+
+        // console.log(month);
+        function toDb(num) {
+            if (num < 10) {
+                return '0' + num;
+            } else {
+                return '' + num;
+            }
+        }
+        //需求：2019-08-26 17:34:09
+        var str = `${year}-${toDb(month)}-${toDb(day)} ${toDb(hours)}:${toDb(mins)}:${toDb(secs)}`;
+        timebox.innerHTML = str;
+    }
+
+    showtime();//马上执行
+
+    setInterval(showtime, 1000);//每隔1秒后更新一次
+
+</script>
+
+</html>

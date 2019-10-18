@@ -1,0 +1,20 @@
+
+
+1.复制html结构，不要修改内部结构，只需要更换id即可
+
+2.把css样式复制过来，修改成你需要的款式
+
+-大小
+-小图间隙
+-左右按钮款式
+
+3.引入插件：magniglass.js
+
+4.调用插件实现放大镜效果：
+
+magniglass({
+	ele: 'wrap2',//最外层盒子的id(必填)
+	imglist: ["images/banner1.jpg", "images/banner2.jpg", "images/banner3.jpg", "images/banner4.jpg", "images/banner5.jpg", "images/banner1.jpg", "images/banner2.jpg", "images/banner1.jpg", "images/banner2.jpg"],//图片数据(必填)
+	scal: 2,//大图放大倍数(选填，默认是2倍)
+	speed: 4//小图运动的图片个数(选填，默认是一次动一张图)
+});

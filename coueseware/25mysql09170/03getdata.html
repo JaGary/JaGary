@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Pragma" content="no-cache">
+    <title>查询数据渲染到这</title>
+</head>
+
+<body>
+    <ul id="list">
+        <!-- <li data-id="1">
+            <img src="https://img.alicdn.com/tfscom/i4/1710310361/TB26nK5bgCYW1JjSZFCXXcxLVXa_!!1710310361.jpg_460x460xz.jpg"
+                alt="">
+            <p>中长款高领套头针织衫秋冬新款宽松保暖加厚长袖女毛衣外套1</p>
+            <p>价格：190</p>
+        </li> -->
+    </ul>
+</body>
+<script src="common.js"></script>
+<script>
+    /*
+        数据渲染：
+            前端：
+                * 结构html写好，css写好，删除重复的结构保留一个即可
+                * 发送ajax，获取数据，数据渲染
+            后端：
+                * 写接口：查询数据库，把数据做好，发给前端
+            
+            缓存的解决：如果两次请求的是通过url的资源，浏览器本身就会帮你缓存；
+                * 在network里面勾选去除缓存 disable cache
+                * 手动清除：ctrl + f5
+                * 清除浏览数据
+                * 改变url：加时间到参数里面   url?time=时间戳&name=jingjing&tel=231231
+                * 添加meta去除缓存：<meta http-equiv="Pragma" content="no-cache">
+    */
+
+    (function () {
+
+        let list = document.getElementById('list');
+
+        function init() {
+            //初始化数据
+            ajax({
+                type: 'get',
+                url: 'api/getdata.php',
+                success: str => {
+                    create(str);
+                }
+            });
+
+            function create(str) {
+                let arr = JSON.parse(str);
+                // console.log(arr);
+                let html = arr.map(item => {
+                    return `<li data-id="${item.id}">
+                                <img src="${item.url}"
+                                    alt="">
+                                <p>${item.name}</p>
+                                <p>价格：${item.price}</p>
+                            </li>`;
+                }).join('');
+                list.innerHTML = html;
+            }
+        }
+
+        init();
+
+    })();
+</script>
+
+</html>

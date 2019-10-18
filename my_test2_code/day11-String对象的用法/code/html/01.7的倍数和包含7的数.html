@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>输出所有1-100之间7的倍数和包含7的数字</h2>
+    <p id="p1"></p>
+</body>
+<script>
+    /*7的倍数
+    包含7的数---个位和十位数
+    &&
+    */
+
+    var p1 = document.getElementById('p1');
+
+    //while 循环
+    // var num = 1;
+    // while (num <= 100) {
+    //      if (num % 7 == 0) {//7的倍数
+    //         var sum = num.toString();
+    //          if (sum.indexOf('7') != -1) { //indexOf --表示判断是否有，如果有就不等于-1;
+    //             p1.innerHTML += num + '<br >';
+    //         }
+    //     }
+    //     num++;
+    // }
+
+    //for循环
+    for (num = 1; num <= 100; num++) {
+        if (num % 7 == 0) {//7的倍数
+            var sum = num.toString();
+            if (sum.indexOf('7') != -1) { //indexOf --表示判断是否有，如果有就不等于-1;
+                p1.innerHTML += num + '<br >';
+            }
+        }
+    }
+</script>
+
+</html>

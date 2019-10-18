@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>02查找bug</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    //找到bug：
+    //方法一：利用控制台:大部分的错误，会直接报错，有提示，行号
+
+    console.log(222);//打印出来了，bug出自代码块1
+    //代码块1
+    console.log(111);//打印不出，前面有问题
+
+    //插入断点 filebug
+    for (var i = 0; i < 8; i++) {
+        console.log(i);
+    }
+    console.log(888);
+</script>
+
+</html>

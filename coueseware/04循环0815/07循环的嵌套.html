@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>07循环的嵌套</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    //07循环的嵌套
+
+    for (var i = 0; i < 3; i++) {//外循环
+        for (var j = 0; j < 2; j++) {//内循环
+            document.write('循环是：' + i + ',' + j + '<br />');
+        }
+    }
+
+    // console.log(i, j);//? 3 2
+    /*
+        代入法：
+            * i = 0
+                j=0
+                    打印 0 0
+                j=1
+                    打印0 1
+                j=2
+            * i = 1
+                j= 0
+                    打印 1 0
+                j=1
+                    打印1 1
+                j=2
+            * i = 2
+                打印 2 0
+                打印 2 1
+            * i = 3
+    */
+
+    // for (var i = 0; i < 3; i++) {//外循环
+    //     for (var j = 0; j < 3; j++) {//内循环
+    //         if (j == 1) {//跳出本层循环
+    //             break;
+    //         }
+    //         document.write('循环是：' + i + ',' + j + '<br />');
+    //     }
+    // }
+
+    /*
+        代入：
+            i = 0
+                j = 0
+                    打印 0 0
+                j = 1 
+            i = 1
+                j = 0
+                    打印 1 0
+                j = 1
+    */
+
+    for (var i = 0; i < 3; i++) {//外循环
+        for (var j = 0; j < 3; j++) {//内循环
+            if (j == 1) {//跳出本层循环
+                continue;
+            }
+            document.write('循环是：' + i + ',' + j + '<br />');
+        }
+    }
+
+    for (var i = 0; i < 3; i++) {//外循环
+        if (i == 1) {
+            break;
+        }
+        for (var j = 0; j < 3; j++) {//内循环
+            document.write('循环是：' + i + ',' + j + '<br />');
+        }
+    }
+</script>
+
+</html>

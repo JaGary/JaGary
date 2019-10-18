@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>03对象Object</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    /*
+        对象的声明：
+            * 字面量
+                var obj = {属性名:属性值,属性名:属性值} 属性名-键名 属性值-键值；键值对
+            * 构造函数
+                var obj = new Object();
+            * 操作：增删改查  通过键名进行键值的操作
+            * 遍历对象：循环 for in
+            * 注意事项：遇到变量一定要用方括号才能获取键值
+    */
+
+    //字面量
+    var dazhe = {
+        'name': '大哲',
+        "age": 18,
+        gender: '男',
+        like: '男'
+    }
+
+    //取值
+    console.log(dazhe.name);//取值：通过键名取键值
+    console.log(dazhe['gender']);//如果是方括号的写法，记得要加引号，单引号和双引号都可以
+    //增
+    dazhe.adr = '吉林';
+    dazhe['danshen'] = 'yes';
+    //改
+    dazhe['danshen'] = 'no';
+    //删
+    dazhe.age = '';//清空内容
+    delete dazhe.age;
+
+    //遇到变量
+    var yourLike = 'like';//把属性名存在变量yourLike
+    // console.log(dazhe.yourLike);//undefined 没有把yourLike当成变量看待，而是把它当做其中一个属性名；只要你写了dazhe.yourLike，现在系统里面已经有该属性，只是没有赋值而已，看不到
+    console.log(dazhe[yourLike]);//遇到变量只能用方括号获取属性值
+
+    //构造函数方式
+    var meili = new Object();
+    meili.name = '美丽';
+    meili.like = '敲代码';
+    meili.gender = '女';
+
+    console.log(dazhe);//{name: "大哲", age: 18, gender: "男", like: "男"}
+    // console.log(meili);
+
+    //遍历对象  for in 
+    for (var key in meili) {
+        // console.log(key);//key-键名
+        console.log(meili[key]);//通过键名取键值
+    }
+
+    //遍历数组
+    var arr = [1, 2, 3];
+    for (var i in arr) {
+        // console.log(i);//下标
+        console.log(arr[i]);
+    }
+
+</script>
+
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ES6语法</title>
+</head>
+
+<body>
+    <ul id="list">
+        <li data-id="0">111</li>
+        <li data-id="1">222</li>
+        <li data-id="2">333</li>
+    </ul>
+</body>
+<script>
+    /*
+        声明变量：
+            * var
+            * let
+                * 变量声明不会提前
+                * 块级作用域
+                * let不允许相同作用域内多次声明同一变量
+            * const：声明常量，声明后不能再修改值
+                * 变量声明不会提前
+                * 块级作用域
+                * const不允许相同作用域内多次声明同一变量
+                * 声明后无法修改值
+                * 一般写成大写：可以小写，但是约定俗成一般都是写成大写
+    */
+
+    console.log(num);//undefined 声明提前
+    var num = 77;
+    var num = 88;
+    console.log(num);//会覆盖
+
+    //1、let不允许相同作用域内多次声明同一变量:安全，不会被覆盖，而且有报错提示方便修改
+    let price = 12;
+    // let price = 34;
+    function show() {
+        let price = 56;
+        console.log(price);
+    }
+    show();
+    console.log(price);
+
+    //2.变量声明不会提前
+    // console.log(sum);//?Cannot access 'sum' before initialization 
+    let sum = 88;
+    console.log(sum);
+
+    var list = document.getElementById('list');//ul
+    var alis = document.querySelectorAll('#list li');
+
+    //获取点击li的下标
+    // var i = 0;//i全局的i
+    // for (; i < alis.length; i++) {
+    //     alis[i].index = i;
+    //     alis[i].onclick = function () {
+    //         // console.log(i);//3
+    //         console.log(this.index);
+    //     }
+    // }
+
+    // var num2 = 0;
+    // function show2() {
+    //     num2 = 88;
+    // }
+    // show2();
+    // console.log('num2:' + num2);//?
+
+    //获取点击li的下标：推荐事件绑定
+    // list.onclick = function (ev) {
+    //     if (ev.target.tagName == 'LI') {
+    //         console.log(ev.target.dataset.id);//属性值：字符串
+    //     }
+    // }
+
+    //获取点击li的下标：3.let块级作用域
+    for (let i = 0; i < alis.length; i++) {
+        alis[i].onclick = function () {
+            console.log(i);//下标
+        }
+    }
+
+    //声明常量
+    const PRICE = 89;//可读不可写，后期不能再修改
+    // PRICE = 100;//Assignment to constant variable.
+    console.log(PRICE);
+
+</script>
+
+</html>

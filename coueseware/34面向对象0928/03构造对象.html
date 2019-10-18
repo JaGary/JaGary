@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    /*
+        空对象：Object()
+
+        json对象：{} 构造对象:不能实现复用，确定只要用一次，就可以用这个方式构造对象；单体
+
+        工厂方式：构造对象
+    */
+
+    //构造一个对象：邓波
+    var dengbo = {
+        name: '邓波',
+        age: 19,
+        adr: '江西',
+        like: '车',
+        coding: function () {
+            console.log('每天代码三千行');
+        },
+        sing: function () {
+            console.log('唱歌');
+        }
+    }
+
+    console.log(dengbo.name);//属性  对象名.属性名
+    dengbo.sing();//方法  对象名.方法名()
+
+    //构造一个对象
+    var peiyang = {
+        name: '章培杨',
+        age: 19,
+        adr: '汕头',
+        like: '代码',
+        coding: function () {
+            console.log('每天代码三千行');
+        },
+        sing: function () {
+            console.log('唱歌');
+        }
+    }
+
+
+</script>
+
+</html>

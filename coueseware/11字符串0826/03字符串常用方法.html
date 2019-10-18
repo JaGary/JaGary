@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>字符串的学习</title>
+</head>
+
+<body>
+    <h1>字符串的学习</h1>
+</body>
+<script>
+    /*
+        字符串的学习:
+            * 声明：
+                * 字面量： var str = 'how old are you';
+                * 构造函数 :
+                    var str = new String('怎么老是你');
+            * 属性：length 可读不可写
+            * 方法：
+                * charAt(3) //获取下标为3的字符  也可以用方括号获取
+                * indexOf() //查找是否存在，存在返回下标，不存在返回-1
+                * substring(start[,end])：不包括end所在字符，end省略表示截取到最后
+                * substr(start[,len])：支持负数，len为截取的数量
+                * slice(start[,end]) ：截取start到end(不包括end)的字符串，支持负数
+                * split(分割符)：根据分割字符，把字符串拆分成数组 和数组的join()是反操作
+                * toLowerCase()：转换成小写
+                * toUpperCase()：转换成大写
+                * trim() 去掉前后空格
+                * charCodeAt(3) //获取下标为3的字符的ASCII(American Standard Code for * Information Interchange) == > unicode编码
+                * String.fromCharCode(94) //编码转换成字符
+
+            * 循环：
+                * while：可以遍历字符串、数组、对象、节点
+                * do while：可以遍历字符串、数组、对象、节点
+                * for ：可以遍历字符串、数组、对象、节点
+                * for in ：可以遍历字符串、数组、对象
+                * forEach() 数组专用
+
+    */
+
+    // var str = '  hello hh  ';
+    // var str2 = str.trim();
+    // console.log(str.length);
+    // console.log(str);
+    // console.log(str2, str2.length);
+
+    /*
+        1T=1024G
+        1G=1024M
+        1M=1024KB
+        1Kb=1024B
+        1B=8bit
+        字符：文字 (字母、数字、符号、各国文字)
+        字符集：字符集合、中国常用汉字3000  ASCII码表
+        编码方式：gb2312(中文)、utf-8(国际编码)
+        编码：存储容量不同  汉字如果是gb2312:占2个字节  utf-8：占3个字节；如果是字母都是一个字节
+
+    */
+
+    //加密、解密 ： 密码学  A:65 B:66 a:97 b:98
+    var str3 = '我喜欢你';
+    console.log(str3.charCodeAt(0));//25105 把文字变成ascll码(位置)
+    console.log(str3.charCodeAt(1));
+    console.log(str3.charCodeAt(2));
+    console.log(str3.charCodeAt(3));
+
+    //解码
+    console.log(String.fromCharCode(25105));
+
+    //加密：转成ascll + 数 - 数 * 数 + 随机数
+    //解密：逆操作 https://www.cmd5.com/hash.aspx?s=123456 后端加密
+    //js
+</script>
+
+</html>

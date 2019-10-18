@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>07ES6的结构</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    /*
+        07ES6的解构：在数组和对象中提取值，再存到变量中，这被叫做“解构”
+    */
+
+    //数组的解构
+    let arr = [1, 2, 3];
+    // let a = arr[0];
+    // let b = arr[1];
+    let [a, b, c] = arr;//解构
+    console.log(a, b, c);
+
+    //对象的解构
+    let study = {
+        type: 'html5',
+        time: '5个月',
+        price: '21900'
+    }
+
+    // let type = study.type;
+    // let time = study.time;
+    //如果想换变量名(不想和属性名一样，需要换名字)  属性名:新名字  用新名字
+    let { type, time, price: num } = study;//解构：变量名必须和属性名一致才能解构，否则解构失败
+    console.log(type, time, num);
+
+    //具体的用途
+    // function show(a, b) {
+
+    // }
+
+    // show(3, 4);//传统的方式参数存在的问题:1.个数不匹配，出错；2.顺序问题
+
+    //ES6方式传参(重点)
+    function show({ a = 1, b = 1 }) {//默认参数
+        console.log(a, b);//a=3;b=4
+    }
+
+    show({ b: 4 });//1.顺序随便写；2.配置参数
+
+    //交换两个数
+    let num1 = 12;
+    let num2 = 34;
+    [num1, num2] = [num2, num1];//快速的交换两个数:面试题：一句话实现两个数的交换(重点)
+    console.log(num1, num2);
+
+    //函数返回多个值
+    function gettime() {
+        let a = 666;
+        let b = 999;
+        return {//可以返回多个值
+            n1: a,
+            n2: b
+        }
+    }
+
+    let res = gettime();
+    console.log(res);
+
+    //ES6返回多个值
+    function gettime2() {
+        (重点)
+        let a = 666;
+        let b = 999;
+        return [a, b];
+    }
+    let [n1, n2] = gettime2();
+    console.log(n1, n2);
+
+
+    //对象属性名是存在变量里面的(重点)
+    let name = 'age';
+    let obj = {
+        username: '郑少秋',
+        [name]: '50' //遇到变量，写方括号
+    }
+    console.log(obj);
+
+    //快速制作对象数据
+    let sum = 345;
+    let total = 678;
+    let now = 2;
+    // let good = {
+    //     sum: sum,
+    //     total: total
+    // }
+    let good = {//上面方法的简写方式(重点)
+        sum,
+        total,
+        now
+    }
+    console.log(good);//{sum: 345, total: 678}
+
+    //ES6对象里面多个方法
+    // let checkReg = {
+    //     email: function () {
+    //         console.log('email');
+    //     },
+    //     tel: function () {
+    //         console.log('tel');
+    //     }
+    // }
+
+    //简写方案：如果属性值是一个函数的时候，就可以这样简写(重点)
+    let checkReg = {
+        email(str) {
+            console.log('email');
+        },
+        tel(str) {
+            console.log('tel');
+        }
+    }
+
+    //调用
+    checkReg.tel();
+</script>
+
+</html>

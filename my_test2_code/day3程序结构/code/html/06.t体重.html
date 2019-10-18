@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BMI</title>
+</head>
+<body>
+    <p>请输入体重</p>
+    
+    <input type="text" id="num1">
+    <br>
+    <p>请输入身高</p>
+    
+    <input type="text" id="num2">
+    <br>
+    <br>
+    <input type="button" value="计算比较" id="btn">
+</body>
+<script>
+    var num1 = document.getElementById('num1');
+    var num2 = document.getElementById('num2');
+    var btn = document.getElementById('btn');
+    var p1 = document.getElementById('p1');
+
+    btn.onclick = function() {
+
+        //注意:一定要声明两个输入框的值，才能进行比较
+        var w = num1.value - 0;
+        var h = num2.value - 0;
+
+        var bmi = w / (h^2);
+        if(bmi > 32) {
+            // p1.innerHTML = '非常肥胖'
+            alert('非常肥胖');
+        }else if (bmi > 28 && bmi <= 32) {
+            alert('肥胖');
+        }else if (bmi >25 && bmi <= 28) {
+            alert('过重');
+        } else if (bmi > 18.5 && bmi <= 24.99) {
+            alert('正常');
+        }else {
+            alert('过轻');
+        }
+        console.log(bmi)
+        // p1.innerHTML = '数值' +
+    }
+</script>
+</html>

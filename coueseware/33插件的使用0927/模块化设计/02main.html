@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>主页</title>
+    <style>
+        .wraper {
+            width: 80%;
+            height: 300px;
+            background: lightcoral;
+            float: left;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 头部文件 -->
+    <div id="head">
+
+    </div>
+    <!-- 主体模块 -->
+    <div>
+        <div class="wraper"></div>
+        <div id="right">
+
+        </div>
+    </div>
+    <!-- 尾部文件 -->
+    <div id="foot">
+
+    </div>
+
+</body>
+<script src="js/jquery-1.10.1.min.js"></script>
+
+<script>
+    (function () {
+        //方法一引入模块：发送ajax请求，拿到的页面数据渲染到结构中
+        // $.ajax({//用服务器方式查看，ajax发送请求
+        //     type: 'get',
+        //     url: 'head.html',
+        //     success: str => {
+        //         $('#head').html(str);
+        //     }
+        // });
+
+        //方法二引入模块：load()方法,底层也是ajax封装的，免去渲染页面
+        $('#head').load('head.html');
+        $('#right').load('sidbar.html');
+        $('#foot').load('foot.html', function () {
+            //引入模块若是需要绑定事件，记得写在回调里面，否则异步代码会导致bug出现
+            $('#foot .footer').click(function () {
+                alert(666);
+            });
+        });
+
+
+    })();
+</script>
+
+</html>

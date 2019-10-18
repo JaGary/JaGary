@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>验证用户名是否存在</title>
+</head>
+
+<body>
+    用户名：<input type="text" autocomplete="off" name="" id="name"><span id="inf"></span><br>
+    密码：<input type="text"><br>
+    <input type="button" value="注册">
+</body>
+<script>
+    (function () {
+
+        let name = document.getElementById('name');
+        let inf = document.getElementById('inf');
+
+        name.onblur = () => {
+            //1.告诉ajax你要的接口
+            let xhr = new XMLHttpRequest();
+            let val = name.value.trim();//获取到用户名
+            let url = 'api/checkname_get.php?name=' + val;
+            xhr.open('get', url, true);
+            //2.发送请求
+            xhr.send(null);
+
+            //4.接收数据，做渲染
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    let str = xhr.responseText;
+                    // console.log(str);
+                    if (str == 'yes') {
+                        inf.innerHTML = '可以注册';
+                        inf.style.color = '#58bc58';
+                    } else {
+                        inf.innerHTML = '该用户名太受欢迎啦，请换一个呗';
+                        inf.style.color = 'red';
+                    }
+                }
+            }
+        }
+
+
+    })();
+</script>
+
+</html>

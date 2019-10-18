@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>编写生成4位数字验证码的函数，并显示在页面，点击重新生成验证码</title>
+</head>
+
+<body>
+    输入验证码:<input type="text" name="" id="num">
+    <!-- <input type="button" value="6789" id="rannum"> -->
+    <div id="rannum">
+        <!-- <span>1</span>
+        <span>d</span>
+        <span>y</span>
+        <span>9</span> -->
+    </div>
+    <input type="button" value="提交" id="btn">
+    <span id="inf"></span>
+</body>
+<script>
+    (function () {
+
+        //找节点
+        var num = document.getElementById('num');
+        var rannum = document.getElementById('rannum');
+        var btn = document.getElementById('btn');
+        var inf = document.getElementById('inf');
+
+        /*
+            伪代码：中文大纲
+
+            需求：
+                * 生成一个四位数带字母的随机数：封装函数：大小写字母和数字的组合，长度为4
+                * 点击提交的时候：验证输入的数据是否和随机数一样，给出提示
+            
+            字符串的方法：
+                * var str = '可爱的小萨'; 0-4
+                //通过下标  str[3] == 小
+                * 字符串属性：lenght
+        */
+
+        // var str = '可爱的小萨';
+        // console.log(str.length);
+        // console.log(str[3]);
+
+        function checkCode(n) {
+            //0-9之间任意n个数字组合
+            // var num = parseInt(Math.random() * 10);//0-9.999  0-9
+            // console.log(num);
+            var str = 'zxcvbnmlkjhgfdsaqwertyuiopZXCVBNMLKJHGFDSAQWERTYUIOP1234567890';//0 - lenght
+            var html = '';
+            for (var i = 0; i < n; i++) {
+                var index = parseInt(Math.random() * str.length);//0 - str.length-1
+                var num = '<span>' + str[index] + '</span>';
+                html += num;
+            }
+            return html;//拼接好的四位随机数
+        }
+
+        //1.生成一个四位数随机数
+        rannum.innerHTML = checkCode(4);//马上生成一个随机数放到表单
+
+        //2.点击一次，生成一个随机数替换rannum的值
+        rannum.onclick = function () {
+            rannum.innerHTML = checkCode(4);
+        }
+
+        //3.点击提交的时候：验证输入的数据是否和随机数一样，给出提示
+        btn.onclick = function () {
+            var val1 = num.value;
+            var val2 = rannum.innerHTML;
+            if (val1 == val2) {
+                inf.innerHTML = '验证通过';
+                inf.style.color = '#58bc58';
+                console.log('等于');
+            } else {
+                inf.innerHTML = '验证不通过';
+                inf.style.color = 'red';
+                console.log('不等');
+            }
+        }
+    })();
+</script>
+
+</html>

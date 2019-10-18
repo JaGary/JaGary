@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>选项卡</title>
+    <style>
+        .active {
+            background: pink;
+        }
+
+        #list div {
+            width: 400px;
+            height: 200px;
+            border: 1px solid #ccc;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="list">
+        <!-- <input type="button" class="active" value="新闻">
+        <input type="button" value="体育">
+        <input type="button" value="娱乐">
+        <input type="button" value="财经">
+        <div class="con" style="display: block"></div>
+        <div class="con"></div>
+        <div class="con"></div>
+        <div class="con"></div> -->
+    </div>
+</body>
+<script src="../js/TabControl.js"></script>
+<script>
+    tabControl({
+        //配置参数
+        ele: 'list'
+    });
+
+    //第二种写法
+    // var obj = {
+    //     ele: 'list',
+    //     con: ['新闻', '体育', '娱乐', '财经'], //内容
+    //     inpVal: ['新闻', '体育', '娱乐', '财经'] //value值
+    // };
+    // tabControl(obj);
+
+
+</script>
+
+</html>

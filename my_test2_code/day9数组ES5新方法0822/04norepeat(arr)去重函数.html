@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>norepeat(arr)去重函数</title>
+</head>
+
+<body>
+    <h1>norepeat(arr)去重函数</h1>
+</body>
+<script>
+
+    //norepeat(arr)去重函数
+    var arr = [1, 2, 1, 2, 3, 4];
+    console.log(arr);
+    //去掉重复的内容
+
+    //方法一
+    function norepeat(arr) {
+        //arr是要去重的数组
+        var newarr = [];//准备用来存放去重之后的数据
+        arr.forEach(function (item) {
+            if (newarr.indexOf(item) == -1) {//1 2 1 2 3 4
+                //不包含
+                newarr.push(item);//1 2 3 4
+            }
+        });
+        return newarr;
+    }
+
+    //方法二
+    function norepeat2(arr) {
+        //arr是要去重的数组
+        var newarr = [];//准备用来存放去重之后的数据
+        arr.forEach(function (item) {
+            if (!newarr.includes(item)) {//1 2 1 2 3 4
+                //不包含
+                newarr.push(item);//1 2 3 4
+            }
+        });
+        return newarr;
+    }
+
+    //方法三：利用对象
+    //[1, 2, 1, 2, 3, 4]
+    function norepeat3(arr) {
+        var obj = {
+            // 1 : true,
+            // 2 : true,
+            // 3 : true,
+            // 4 : true
+        };//开关
+        arr.forEach(function (item) {//
+            if (!obj[item]) {//obj.1 obj.2 obj.1 obj.2 obj.3
+                obj[item] = true;//对象的赋值  item就是作为键名；true作为键值
+            }
+        });
+        var newarr = [];
+        for (var key in obj) {
+            //遍历对象
+            newarr.push(key * 1);
+        }
+        console.log(obj);
+        return newarr;
+    }
+
+    var arr1 = norepeat3(arr);
+    console.log(arr1);
+
+
+</script>
+
+</html>

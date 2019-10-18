@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>拖拽行为</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            background: orange;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+</body>
+<script>
+    var box = document.getElementById('box');
+    // var box = document.getElementsByClassName('box');
+    
+    box.onmousedown = function (ev) {
+        var disY = ev.offsetY;
+        var disX = ev.offsetX;
+        document.onmousemove = function (ev) {
+            var iTop = ev.pageY - disY;
+            var iLeft = ev.pageX - disX;
+            
+            //临界值判断
+            if (iTop <= 0) {
+                iTop = 0;
+            } else if (iTop >= window.innerHeight - box.offsetHeight) {
+                iTop = window.innerHeight - box.offsetHeight;
+            }
+
+            //临界值判断
+            if (iLeft <= 0) {
+                iLeft = 0;
+            } else if (iLeft >= window.innerWidth - box.offsetWidth) {
+                iLeft = window.innerWidth - box.offsetWidth;
+            }
+
+            box.style.top = iTop + 'px';
+            box.style.left = iLeft + 'px';
+        }
+        //鼠标抬起时，停止运动，left和top不会变
+        document.onmouseup = function () {
+            document.onmousemove = null;
+        }
+    }
+
+    //当超出可视窗口时会消失，但当光标移入可视窗口时又出现(bug)
+    // box.onmouseup = function () {
+    //     document.onmousemove = null;
+    // }
+</script>
+
+</html>

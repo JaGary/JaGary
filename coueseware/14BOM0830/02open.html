@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>window</title>
+</head>
+
+<body>
+    <!-- <ul id="list">
+        <li>删除1</li>
+        <li>删除2</li>
+        <li>删除3</li>
+    </ul> -->
+    <input type="button" value="百度" id="btn">
+    <input type="button" value="关闭" id="btn2">
+</body>
+<script>
+    /*
+           BOM:浏览器对象模型，赋予我们操控窗口的能力：弹窗、窗口的关闭和打开、刷新页面、获取url、页面跳转、复制、粘贴、回退、前进……
+   
+           window : { 是BOM最核心的对象，是很多子对象的顶层对象
+               属性：
+                   * 浏览器窗口尺寸 innerWidth/innerHeight, //表示浏览器窗口”可视区域”尺寸 outerWidth/outerHeight //表示整个浏览器窗口的尺寸
+                   * 滚动相关
+                       * scrollX/scrollY //获取浏览器窗口滚动条滚动过的距离
+                      
+               方法：
+                   * 滚动
+                       * scrollTo(x,y) //指定滚动位置
+                       * scrollBy(xnum,ynum) //设置基于当前位置滚动的距离，可以为负数
+                   * 弹窗：都会阻塞后面代码的执行：阻塞==中断，尽量少用
+                       * alert(msg)//弹出对话框
+                       * confirm(msg)//弹出警告框，返回布尔值
+                       * prompt(msg,default)//弹出输入框，返回消息或null
+                       * open(url,name,[options]) : 打开一个新窗口并返回新 window 对象
+                       * close(): 关闭窗口(很少用)
+                   
+               事件：
+               子对象：
+                    * location
+                    * history
+                    * document  DOM知识
+           }
+   
+       */
+    // var res = confirm('你要删除我吗？');//删除的时候挽留一下
+    // console.log(res);
+
+    // var num = prompt('你的女神是？');//输入框 少用
+    // console.log(num);
+
+    (function () {
+
+        var btn = document.getElementById('btn');
+        var btn2 = document.getElementById('btn2');
+        var ck = null;
+        btn.onclick = function () {
+            // ck = window.open('http://www.baidu.com', 'baidu', 'width=400,height=400,top=200,left=200');//新窗口打开页面
+            // window.open('http://www.baidu.com?id=789');//页面跳转并传参
+            window.print();//调出打印窗口
+        }
+
+        btn2.onclick = function () {
+            // window.close();//关掉当前的页面
+            window.close(ck);
+        }
+    })();
+</script>
+
+</html>

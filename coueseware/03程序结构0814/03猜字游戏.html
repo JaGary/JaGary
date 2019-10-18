@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>猜字游戏</title>
+</head>
+
+<body>
+    <h1>猜字游戏：范围是1-50之间</h1>
+    <input type="text" id="num"><input type="button" value="猜数字" id="btn">
+</body>
+<script>
+
+    var num = document.getElementById('num');
+    var btn = document.getElementById('btn');
+
+    /*
+        需求：
+            * 生成一个随机数：1-50之间的随机数
+            * 点击按钮的时候，获取表单的数据和随机数比较
+                * 给出比较后的提示
+
+        知识点：
+            * Math.random() 可以生成0-1之间但是不包括1的随机数
+            * 获取和设置表单的值：节点.value = 值
+    */
+
+    //1.生成一个随机数：1-50之间的随机数
+    var ranNum = parseInt(Math.random() * 50) + 1;//0-1  [0,1) 0-49.9999 [0,49] [1,50]
+    // console.log(ranNum);
+
+    //2.点击按钮的时候，获取表单的数据和随机数比较
+    btn.onclick = function () {
+        // var ranNum = parseInt(Math.random() * 50) + 1;
+        var val = num.value;
+        // console.log(val);
+        //非空验证
+        if (val) {//非空字符串为真
+            //不为空
+            if (val == ranNum) {
+                //相等
+                alert('很棒，猜对了，免费游玩千锋一天');
+            }
+            if (val > ranNum) {
+                alert('你猜大了');
+            }
+            if (val < ranNum) {
+                alert('你猜小了');
+            }
+        } else {
+            //为空
+            alert('请输入一个数字，范围是1-50之间');
+        }
+    }
+</script>
+
+</html>

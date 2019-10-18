@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>随机颜色</h2>
+    <input type="button" value="点击随机生成" id="btn">
+    <div id="box">
+        <p id="p1">随机颜色</p>
+    </div>
+</body>
+<script>
+    (function () {
+        var box = document.getElementById('box');
+        var btn = document.getElementById('btn');
+        var p1 = document.getElementById('p1');
+
+        // var p1 = document.getElementsByClassName('p1');
+
+        //封装随机颜色
+        function randomColor(n) {
+            var color = '';
+            if (n == 16) {
+                var str = '123456789abcdef';
+                color += '#';
+                for (i = 0; i < 6; i++) {//6位
+                    var index = parseInt(Math.random() * str.length);//随机取六位的下标
+                    color += str[index];
+                }
+                return color;
+            }
+
+        }
+
+        btn.onclick = function () {
+            box.style.backgroundColor = randomColor(16);
+            p1.style.color = randomColor(16);
+        }
+    })();
+</script>
+
+</html>

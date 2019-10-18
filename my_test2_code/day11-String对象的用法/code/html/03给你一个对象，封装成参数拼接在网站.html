@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>给你一个对象，封装成参数拼接在网站后面</title>
+</head>
+<script src="../common.js"></script>
+
+<body>
+    <h2>给你一个对象，封装成参数拼接在网站后面：http://www.baidu.com</h2>
+</body>
+<script>
+    var obj1 = 'http://www.baidu.com';
+
+    var obj = {
+        name: 'apple',
+        price: 7890,
+        color: 'red',
+    };
+
+    // var arr = []; //给个空数组
+
+    // for (var i in str) { //通过键名取键值
+    //     console.log(str[i]); //键名
+    //     arr.push(i + '=' + str[i]); //键值
+    // }
+    // console.log(arr);
+
+    // //拼接
+    // arr1 = arr[0] + '&' + arr[1];
+    // var res = obj + '?' + arr1;
+    // console.log(res);
+
+    //第一种封装函数
+    // function http(str) {
+    //     var arr = [];
+    //     for (var i in str) { //通过键名取键值
+    //         console.log(str[i]); //键名
+    //         arr.push(i + '=' + str[i]); //键值
+    //     }
+    //     // console.log(arr);
+
+    //     //拼接
+    //     arr1 = arr[0] + '&' + arr[1];
+    //     var res1 = obj + '?' + arr1;
+    //     console.log(res1);
+    // }
+
+    // http(str)
+
+    //第二种
+    // console.log(arr);
+    function objTostr(obj) {
+        arr = [];
+        var arr2 = '';
+        for (var i in obj) {
+            arr.push(i + '=' + obj[i]); //拼接组成arr
+            console.log(arr);
+        }
+        arr2 = arr.join('&');
+        // console.log(arr2);
+        // arr3 = arr2.slice(0, -1); //将arr2倒数第1个元素的&去掉
+        // console.log(arr2);
+        return arr2; //返回arr2
+    }
+    var res = obj1 + '?' + objTostr(obj);
+    // console.log(arr);
+
+    console.log(res);
+</script>
+
+</html>

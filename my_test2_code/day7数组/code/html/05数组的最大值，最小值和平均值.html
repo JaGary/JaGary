@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>数组的最大值，最小值和平均值</title>
+</head>
+
+<body>
+    <p id="p1"></p>
+    <script>
+        (function () {
+            /*需求：
+             * 求最大的数，求最小的数
+             * 求最大数下标、最小数下标
+             * 平均数*/
+            //声明存储最大数最小数和索引的
+            var p1 = document.getElementById('p1');
+            var arr = [6, 3, 5, 8, 6, 10];
+            var max = arr[0]; //存最大的数
+            var maxIndex = 0; //最大数的下标
+            var min = arr[0]; //最小的数
+            var minIndex = 0; //最小数下标
+            var avg = 0; //平均数
+            var sum = arr[0]; //总数 数组
+
+
+            for (var i = 1; i < arr.length; i++) {
+                //从第一个数比较，如果有比这个数还大的数就替换，
+                //占据原来最大的数位置，继续跟下一个数比较，直到比较出最大数
+                if (arr[i] > max) { //判断最大值
+                    max = arr[i];
+                    maxIndex = i;
+                }
+                if (arr[i] < min) { //判断求最小值
+                    min = arr[i];
+                    minIndex = i;
+                }
+                sum += arr[i]; //总数
+                avg = sum / arr.length; //求平均值  
+                avg = avg.toFixed(2); //小数取2位
+            }
+            p1.innerHTML = '最大值为' + max + '<br>' + '最大值索引为' + maxIndex + '<br>' + '最小值为：' + min + '<br>' +'最小值索引为' + minIndex + '<br>' + '数组平均值为：' + avg;
+        })();
+    </script>
+</body>
+
+</html>

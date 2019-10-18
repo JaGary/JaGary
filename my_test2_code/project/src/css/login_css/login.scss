@@ -1,0 +1,201 @@
+#login {
+    width: 100%;
+
+    .content {
+        width: 1130px;
+        margin: 0 auto;
+
+        .header {
+            height: 98px;
+            width: 100%;
+
+            .h-logo {
+                width: 200px;
+                height: 98px;
+                background: url(../img/mistore_logo.png) no-repeat;
+
+                a {
+                    display: block;
+                    height: 98px;
+                }
+            }
+        }
+    }
+
+    .con-login {
+        height: 588px;
+        width: 100%;
+        background: url(../img/e8201bfbb8c9d474a48da76f7d81a5c7.jpg);
+        position: absolute;
+        left: 0;
+        top: 98px;
+        background-repeat: no-repeat;
+        background-position: top center;
+
+        .input {
+            width: 410px;
+            height: 516px;
+            background: #fff;
+            position: relative;
+            margin-left: 830px;
+            margin-top: 32px;
+
+            .nav-tab {
+                padding: 27px 0 24px;
+                text-align: center;
+                font-size: 24px;
+                color: #666;
+                .active{
+                    color: #f56600;
+                }
+                a{
+                    color: #666;
+                }
+                .line {
+                    width: 1px;
+                    height: 24px;
+                    margin: 0 35px 0 42px;
+                    border: 1px solid #e0e0e0;
+                }
+            }
+            .scan_code{
+                width: 348px;
+                height: 415px;
+                margin: 100px auto;
+                img{
+                    margin-left: 80px;
+                }
+                .scan_txt{
+                    color: #757575;
+                    font-size: 14px;
+                    text-align: center;
+                    margin-top: 20px;
+                }
+            }
+            .content-inp{
+                width: 348px;
+                height: 415px;
+                margin: 0 auto;
+                .usn{
+                    width: 346px;
+                    height: 48px;
+                    border: 1px solid #ccc;
+                    cursor: pointer;
+                    text-align: center;
+                    input{
+                        width: 306px;
+                        line-height: 48px;
+                    }
+                }
+                .psw{
+                    width: 346px;
+                    height: 48px;
+                    border: 1px solid #ccc;
+                    cursor: pointer;
+                    margin-top: 14px;
+                    text-align: center;
+                    input {
+                        width: 306px;
+                        line-height: 48px;
+                    }
+                }
+                .btn-bg{
+                    width: 348px;
+                    height: 50px;
+                    margin-top: 24px;
+                    input{
+                        width: 100%;
+                        height: 50px;
+                        background: #ff6700;
+                        color: #fff;
+                    }
+                }
+                .other{
+                    width: 348px;
+                    height: 208px;
+                    font-size: 13px;
+                    margin-top: 13px;
+                    .cell-code{
+                        float: left;
+                        color: #f56600;
+                        a{
+                            color: #f56600;
+                        }
+                    }
+                    .forget-pwd{
+                        float: left;
+                        color: #ccc;
+                        margin-left: 94px;
+                        a{
+                            color: #ccc;
+                        }
+                    }
+                    .other_login{
+                        padding-top: 113px;
+                        .oth_tp{
+                            border-top: 1px solid #e0e0e0;
+                            padding-top: 10px;
+                            .oth_tp_txt{
+                                font-size: 14px;
+                                text-align: center;
+                                margin: 0 auto;
+                                color: #ccc;
+                            }
+                        }
+                        .oth_type_list{
+                            text-align: center;
+                            margin-top: 16px;
+                            margin: auto;
+                            a{
+                                font-size: 30px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .log_footer{
+        height: 80px;
+        width: 100%;
+        margin: auto;
+        position: relative;
+        text-align: center;
+        top: 588px;
+        margin-top: 100px;
+        
+        .list{
+            height: 15px;
+            margin: auto;
+            width: 338px;
+            text-align: center;
+            .list_list{
+                display: flex;
+                
+                li{
+                    padding: 0 10px;
+                    border-right: 1px solid #333;
+                    height: 15px;
+                    text-align: center;
+                    font-size: 15px;
+                    line-height: 15px;
+                    a{
+                        color: #333;
+                    }
+                }
+                li:nth-child(5){
+                    border-right: none;
+                }
+            }
+        }
+        .copy{
+            // height: 13px;
+            margin-top: 20px;
+            a{
+                font-size: 13px;
+                color: #333;
+                padding: 3px 0;
+            }
+        }
+    }
+}

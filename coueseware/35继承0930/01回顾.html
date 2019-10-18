@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    /*
+        面向对象的写法：
+            * 第一种：单体  
+            * 第二种：混合方式
+            * 第三种：ES6 class
+    */
+
+    //单体
+
+    var Car = {
+        box: null,
+        checkall: null,
+        deleteall: null,
+        addBtns: null,
+        cutbtn: null,
+        init() {
+            //初始化方法：查找节点，绑定事件
+            this.checkall = document.querySelector('#allchecked');
+            this.addBtns = this.box.queryseleterAll('.addnum');
+            this.addNum();
+        },
+        addNum() {
+
+        },
+        cutNum() {
+
+        }
+    }
+
+    Car.init();//调用
+
+    //第二种：混合方式
+
+    function Car() {
+        //属性
+        this.removeAll = null;//全删按钮
+        this.totalNum = 0;//总数量
+        this.totalPrice = 0;//总价
+        this.addBtns = null;//添加按钮
+        ……
+        this.init();//初始化方法
+    }
+
+    Car.prototype.init = function () {
+        //节点的查找；事件绑定
+        this.creatList();//渲染数据
+        this.addNum();//添加数量
+        this.cutNum();//减少数量
+        this.removeRow(index);//删除某行
+        this.removeAllRows();//循环调用this.removeRow(index) 耦合
+        this.allNum();//统计数量
+        this.updateIndex();//重置索引
+        ……
+    }
+
+    //单一性原则：一个方法尽量只有一个功能
+    Car.prototype.creatList = function () {
+
+    }
+
+    new Car();//调用
+
+</script>
+
+</html>

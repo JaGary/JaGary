@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>表单验证</title>
+</head>
+
+<body>
+    <form id="login" action="" method="post">
+        用户名：<input type="text" placeholder="写邮箱" value="" /><span class="inf"></span><br />
+        手机：<input type="text" placeholder="写手机" /><span class="inf"></span><br />
+        <!-- 密码：<input type="text" placeholder="密码" /><span class="inf"></span><br /> -->
+        <input type="button" value="注册" id="btn" />
+    </form>
+</body>
+<script src="../common.js"></script>
+<script>
+    (function () {
+
+        //找节点
+        var ainputs = document.querySelectorAll('#login input');
+        var infs = document.querySelectorAll('#login span');
+        var btn = document.getElementById('btn');
+        var istrue1 = false;
+        var istrue2 = false;
+
+        //验证邮箱
+        ainputs[0].onblur = function () {
+            var val = this.value.trim();
+            var reg = /^[\w#$!\-]+@[\w#$!\-]+\.[a-zA-Z]+$/;
+            if (val) {
+                //非空验证->正则->正确性(和数据库数据验证)
+                var isok = reg.test(val);
+                if (isok) {
+                    //正则验证通过
+                    infs[0].innerHTML = '邮箱验证通过';
+                    infs[0].style.color = '#58bc58';
+                    istrue1 = true;
+                } else {
+                    infs[0].innerHTML = '邮箱验证不通过';
+                    infs[0].style.color = 'red';
+                    istrue1 = false;
+                }
+            } else {
+                infs[0].innerHTML = '请输入邮箱地址';
+                infs[0].style.color = 'red';
+            }
+        }
+
+        //验证手机
+        ainputs[1].onblur = function () {
+            var val = this.value.trim();
+            var reg = /^1[3-9]\d{9}$/;
+            if (val) {
+                //非空验证->正则->正确性(和数据库数据验证)
+                var isok = reg.test(val);
+                if (isok) {
+                    //正则验证通过
+                    infs[1].innerHTML = '手机验证通过';
+                    infs[1].style.color = '#58bc58';
+                    istrue2 = true;
+                } else {
+                    infs[1].innerHTML = '手机验证不通过';
+                    infs[1].style.color = 'red';
+                    istrue2 = false;
+                }
+            } else {
+                infs[1].innerHTML = '请输入手机号码';
+                infs[1].style.color = 'red';
+            }
+        }
+
+        //上面的规则都验证通过才可以跳转
+        btn.onclick = function () {
+            if (istrue1 && istrue2) {
+                window.open('05首页.html');
+            } else {
+                alert('请验证信息');
+            }
+        }
+
+
+
+        //方法一：一个函数拥有多个功能-普通函数
+        function show(type) {
+            if (type == 'email') {
+                //功能一：验证邮箱
+            }
+            if (type == 'tel') {
+                //功能一：验证手机
+            }
+        }
+
+        //方法二：一个函数拥有多个功能-对象
+        var obj = {
+            email: function (data) {//形参
+                console.log(data);
+                return data + 89;
+            }
+        }
+        var res = obj.email(345);//实参
+        console.log(res);
+
+        //邮箱
+        var str = '32332qq.com';
+        var res = checkReg.email(str);
+        console.log(res);
+    })();
+</script>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>05classList的使用</title>
+</head>
+
+<body>
+    <input type="button" value="点击" id="btn">
+    <h1 id="box" class="two"></h1>
+</body>
+<script>
+    (function () {
+        /*
+            classList : 节点下面的子对象
+                box.classList.方法名()
+                    * length : class类名的个数
+                    * add() : 添加class方法
+                    * remove() : 删除class方法
+                    * toggle() : 切换class方法
+                    * contains():是否含有某个类,返回布尔值
+        */
+        var box = document.getElementById('box');
+        var btn = document.getElementById('btn');
+
+        // box.className = 'one';
+        // box.className = 'one two';
+
+        // box.classList.add('one');
+        // box.classList.add('two');//不会覆盖旧的样式
+        // box.classList.remove('one');//不会覆盖旧的样式
+
+        btn.onclick = function () {
+            box.classList.toggle('one');//来回添加删除one类名，不会影响其他类名，和点击事件一起使用
+        }
+
+    })();
+</script>
+
+</html>

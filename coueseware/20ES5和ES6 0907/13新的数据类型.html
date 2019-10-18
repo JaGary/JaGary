@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>数据类型</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    /*
+        数据类型：
+            * 基本类型：
+                * 值类型：number、string、boolean
+                * 特殊类型：null/undefined
+            * 引用类型：
+                * array
+                * object
+            * 新的数据类型：ES6
+                * Symbol() 类似字符串，独一无二，不可修改,不可计算
+                * Set() 类似数组，但是不可重复
+                * Map() 类似对象,键值对
+    */
+
+    //定义Symbol()
+    var s1 = Symbol();
+    var s2 = Symbol();
+    console.log(s1, s2);
+    console.log(s1 == s2);//false
+
+    //带标识的定义
+    var s3 = Symbol('jingjing');
+    var s4 = Symbol('tiantian');
+    console.log(s3, s4);
+
+    //用途：私有属性
+    // const AGE = 28;//如果放在对象里面就变成普通属性名，可以被串改
+    var MYAGE = Symbol('age');
+    var person = {
+        name: '薇薇',
+        age: 38,
+        [MYAGE]: '薇薇已经三十有六'//用symbol可以做私有属性，不可串改
+        // AGE
+    }
+    person.name = '田田';
+    console.log(person);
+    // console.log(s3 == s4);
+
+    //set数据：类似数组
+    let arr = new Set();
+    arr.add('婧婧');
+    arr.add('田田');
+    arr.add('老姚');
+    console.log(arr);//{"婧婧", "田田", "老姚"}
+    // console.log(arr[0]);
+    for (var val of arr) {
+        console.log(val);
+    }
+    arr.forEach(function (item, index) {
+        console.log(item, index);
+    });
+
+    //去重：两句话去重
+    let arr2 = [1, 2, 3, 1, 2, 4, 5];
+    let arr3 = new Set(arr2);//自动去重
+    let arr4 = Array.from(arr3);// Array.from()把类数组转成数组
+    console.log(arr4);
+
+
+
+    //map合集:类似json对象
+    let mdata = new Map();
+    mdata.set('name', '小王');
+    mdata.set('age', '小花');
+    console.log(mdata);//{"name" => "小王", "age" => "小花"}
+
+    for (var [key, val] of mdata) {
+        console.log(key, val);
+    }
+
+    //一句话实现数组去重
+    var arr7 = [1, 1, 2, 2, 3, 3];
+    console.log(arr7);
+    var arr6 = Array.from(new Set(arr7));
+    console.log(arr6);
+</script>
+
+</html>

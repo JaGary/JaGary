@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>阶层的和</title>
+</head>
+<body>
+    <!-- 求1!+2!+3!+4!+5!…20! -->
+</body>
+<script>
+    var sum = 0;
+    for(var i = 1;i <= 20;i++){
+        for( var j = 0;j<i;j++){
+            var s =1;
+            s *= j;
+            s++;
+            sum += s;
+        }
+    }
+    document.write(sum);
+
+    //输入任意数，求出任意数的阶层之和
+    //    var n = parseInt(prompt("请输入数字"));
+    //    var z = 0
+    //    for(var i = 1;i<=n;i++){ 
+    //        for(var c=0;c<i;c++){ 
+    //         var s=1; 
+    //         s=s*c; 
+    //         s++;
+    //          z=s+z
+    //      } 
+    //     } 
+    //      document.write(z)
+</script>
+</html>

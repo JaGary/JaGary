@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>菲波纳茨数列</title>
+</head>
+
+<body>
+    <h2>菲波纳茨数列(兔子数列)</h2>
+    <input type="text" id="num">
+    <input type="button" value="加入" id="btn">
+    <div id="show"></div>
+</body>
+<script>
+    (function () {
+        //菲波纳茨数列-兔子数列
+        //遵循[1,1,2,3,5]  
+        // 除了下标<2 ,数值为1外，其他的(下标>=2),数值都是前面两位数之和。
+        //arr[i-1]+arr[i-2]
+        var num = document.getElementById('num');
+        var btn = document.getElementById('btn');
+        var show = document.getElementById('show');
+
+        // var arr = [1,1,2,3,5];
+
+        btn.onclick = function () { //点击事件
+            var arr = []; //先var个新数组，存点击事件后的数据
+            var sum = num.value; //声明个变量
+            for (i = 0; i < sum; i++) { //遍历数组 除了下标<2 ,数值为1外，其他的(下标>=2),数值都是前面两位数之和。
+                if (i < 2) { //判断数组的下标
+                    arr.push(1); //将数值插入到最后一位
+                } else {
+                    var sum1 = arr[i - 1] + arr[i - 2];
+                    arr.push(sum1);
+                }
+                num.value = '';
+            }
+            show.innerHTML = arr; //渲染数据到页面
+        }
+
+    })();
+</script>
+
+</html>

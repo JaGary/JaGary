@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>留言板</title>
+</head>
+
+<body>
+    <input type="text" id="text">
+    <input type="button" value="提交" id="btn">
+    <ul id="tree">
+        <!-- <li></li> -->
+    </ul>
+</body>
+<script>
+    (function () {
+
+        //最新的放在最前面
+        var tex = document.querySelector('#text');
+        var btn = document.querySelector('#btn');
+        var tree = document.querySelector('#tree');
+
+        btn.onclick = function () {
+            var val = tex.value.trim();//去除前后空格
+            if (val) {
+                //创建节点
+                var li = document.createElement('li');
+                li.innerHTML = val;//设置内容
+                if (tree.children) {
+                    //有孩子，就拿第一行作为参照物
+                    tree.insertBefore(li, tree.children[0]);
+                } else {
+                    tree.appendChild(li);
+                }
+                //清空内容
+                tex.value = '';
+                tex.focus();//聚焦
+            } else {
+                alert('留言内容不能为空');
+            }
+        }
+    })();
+</script>
+
+</html>

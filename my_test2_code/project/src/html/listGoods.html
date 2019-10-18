@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>小米列表页</title>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/font/iconfont.css">
+    <link rel="stylesheet" href="../css/listgoods_css/list.css">
+</head>
+
+<body>
+    <div id="box">
+        <div class="header">
+            <ul class="header-left">
+                <li>
+                    <a href="">小米商城</a>
+                </li>
+                <li>
+                    <a href="">MIUI</a>
+                </li>
+                <li>
+                    <a href="">IoT</a>
+                </li>
+                <li>
+                    <a href="">云服务</a>
+                </li>
+                <li>
+                    <a href="">金融</a>
+                </li>
+                <li>
+                    <a href="">有品</a>
+                </li>
+                <li>
+                    <a href="">小爱开放平台</a>
+                </li>
+                <li>
+                    <a href="">企业团购</a>
+                </li>
+                <li>
+                    <a href="">资质证照</a>
+                </li>
+                <li>
+                    <a href="">协议规则</a>
+                </li>
+                <li>
+                    <a href="">下载app</a>
+                    <span class="sanjiao"></span>
+                    <span class="dowpng">
+                        <img src="../img/download.png" alt="">
+                        <span style="display: inline-block;margin-top: 2px;font-size: 12px;">小米商城app</span>
+                    </span>
+                </li>
+                <li>
+                    <a href="">Select Region</a>
+                </li>
+            </ul>
+            <ul class="header-right">
+                <div class="usnam">
+                    <span class="username_inf"></span>
+                </div>
+                <li><a href="###">消息通知</a></li>
+                <div class="my_goods">
+                    <span>我的订单</span>
+                </div>
+                <li style="background: #424242;height: 100%;margin-top: 0;margin-left: 20px;">
+                    <a href="###" style="padding-top: 12px;display: block;">
+                        <i class="iconfont icon-iconfontcart"></i>
+                        <i id="cart" class="iconfont icon-cart-full" style="display: none;"></i>
+                        <span>购物车</span>
+                        <span>(0)</span>
+                    </a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <div class="main">
+                <div class="main-top">
+                    <div class="logo">
+                        <a href=""></a>
+                    </div>
+                    <ul class="main-top-nav">
+                        <li>
+                            <a href="###">全部商品分类</a>
+                        </li>
+                        <li>
+                            <a href="###" class="tell">小米手机</a>
+                            <div class="down_list">
+                                <ul class="list_1">
+                                    <li>
+                                        <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/41c566d825a3ae3b5751a78d4c7cffdb.png?thumb=1&w=160&h=110&f=webp&q=90"
+                                            alt="">
+                                        <span>小米9pro 5G</span>
+                                        <span>3699元起</span>
+                                    </li>
+                                    <li>
+                                        <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/5d19da60f9f62eb2aa5dcdbd7df19f0f.png?thumb=1&w=160&h=110&f=webp&q=90"
+                                            alt="">
+                                        <span>小米MIX Alpha</span>
+                                        <span>19999元</span>
+                                    </li>
+                                    <li>
+                                        <img src="https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/f515ab05232ed14ccd78ec67e024495a.png?thumb=1&w=160&h=110"
+                                            alt="">
+                                        <span>小米CC9</span>
+                                        <span>1699元</span>
+                                    </li>
+                                    <li>
+                                        <img src="https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/df9b3e7a562e02a33eb069b3f0119815.png?thumb=1&w=160&h=110"
+                                            alt="">
+                                        <span>小米CC9e</span>
+                                        <span>1299元起</span>
+                                    </li>
+                                    <li>
+                                        <img src="https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/b02f50c9dd2e01c139a06a12502755ef.png?thumb=1&w=160&h=110"
+                                            alt="">
+                                        <span>小米CC9 美图定制版</span>
+                                        <span>2599元</span>
+                                    </li>
+                                    <li>
+                                        <img src="https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/2c9307e9690dfbca39d8de770a7a8664.png?thumb=1&w=160&h=110"
+                                            alt="">
+                                        <span>小米9</span>
+                                        <span>2799元起</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="###">Redmi手机</a>
+                            <div class="down_list">
+                                <ul class="list_1">
+                                    <li>
+                                        <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c1937ecb7e9b8e1aee11d6936e19d53c.png?thumb=1&w=160&h=110&f=webp&q=90"
+                                            alt="">
+                                        <span>Redmi k20pro尊享版</span>
+                                        <span>2699元起</span>
+                                    </li>
+                                    <li>
+                                        <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/8ee0af37bbd2f5a83c799e87dd791037.png?thumb=1&w=160&h=110&f=webp&q=90"
+                                            alt="">
+                                        <span>Redmi Note8 Pro</span>
+                                        <span>1399元</span>
+                                    </li>
+                                    <li>
+                                        <img src="https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/f69828396fcd1e05b932778f4fca4409.jpg?thumb=1&w=160&h=110"
+                                            alt="">
+                                        <span>Redmi Note8</span>
+                                        <span>999元</span>
+                                    </li>
+                                    <li>
+                                        <img src="https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/f69828396fcd1e05b932778f4fca4409.jpg?thumb=1&w=160&h=110"
+                                            alt="">
+                                        <span>Redmi K20 Pro</span>
+                                        <span>2299元起</span>
+                                    </li>
+                                    <li>
+                                        <img src="https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/d4fbf37c6b51e510a3bac5e738f2f681.jpg?thumb=1&w=160&h=110"
+                                            alt="">
+                                        <span>Redmi K20</span>
+                                        <span>1799元起</span>
+                                    </li>
+                                    <li>
+                                        <img src="https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/b0e0c0fda4adf267012815127302f6de.jpg?thumb=1&w=160&h=110"
+                                            alt="">
+                                        <span>Redmi Note7 Pro</span>
+                                        <span>1399元</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="###">电视</a>
+                            <div class="down_list">
+                                <ul class="list_1">
+                                    <li>
+                                        <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/6917267948c54c647d2009a98637aac6.jpg?thumb=1&w=160&h=110&f=webp&q=90"
+                                            alt="">
+                                        <span>Redmi 红米电视70英寸 R70A</span>
+                                        <span>3799元起</span>
+                                    </li>
+                                    <li>
+                                        <img src="https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/00f597a8725eee9245e383c35cd4f7b6.jpg?thumb=1&w=160&h=110"
+                                            alt="">
+                                        <span>小米壁画电视 65英寸</span>
+                                        <span>6999元起</span>
+                                    </li>
+                                    <li>
+                                        <img src="https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/a40904b6a053b73b631a152334388d0e.jpg?thumb=1&w=160&h=110"
+                                            alt="">
+                                        <span>小米全面屏电视E55A</span>
+                                        <span>1799元</span>
+                                    </li>
+                                    <li>
+                                        <img src="https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/e8f4e22f6d591825f8f150b3309c750b.png?thumb=1&w=160&h=110"
+                                            alt="">
+                                        <span>小米电视4A 32英寸</span>
+                                        <span>1699元起</span>
+                                    </li>
+                                    <li>
+                                        <img src="https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/bf72a3e9a6e799cb71ecfa7d80465351.jpg?thumb=1&w=160&h=110"
+                                            alt="">
+                                        <span>小米CC9 美图定制版</span>
+                                        <span>2599元</span>
+                                    </li>
+                                    <li>
+                                        <img src="https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/bd922870295a97a0972eaba5af92129e.jpg?thumb=1&w=160&h=110"
+                                            alt="">
+                                        <span>小米9</span>
+                                        <span>2799元起</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="###">笔记本</a>
+                            <div class="down_list">
+                                <ul class="list_1">
+                                    <li>
+                                        <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/6a25f895ad6019c3fae32fd1f48a2c7c.png?thumb=1&w=160&h=110&f=webp&q=90"
+                                            alt="">
+                                        <span>RedmiBook 14 增强版 </span>
+                                        <span>3999元起</span>
+                                    </li>
+                                    <li>
+                                        <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/33c6a31aaee90164ce963801bec48e64.png?thumb=1&w=160&h=110&f=webp&q=90"
+                                            alt="">
+                                        <span>游戏本2019款</span>
+                                        <span>7499元起</span>
+                                    </li>
+                                    <li>
+                                        <img src="https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/a40904b6a053b73b631a152334388d0e.jpg?thumb=1&w=160&h=110"
+                                            alt="">
+                                        <span>小米笔记本Air 12.5"</span>
+                                        <span>3499元</span>
+                                    </li>
+                                    <li>
+                                        <img src="https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/96108a8feee8e790389b09b8b949fa7d.png?thumb=1&w=160&h=110"
+                                            alt="">
+                                        <span>小米笔记本 Air 13.3"</span>
+                                        <span>4699元起</span>
+                                    </li>
+                                    <li>
+                                        <img src="https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/bb159dbe860ee434b52d8eed9e9fd424.png?thumb=1&w=160&h=110"
+                                            alt="">
+                                        <span>小米笔记本 15.6"</span>
+                                        <span>3799元起</span>
+                                    </li>
+                                    <li>
+                                        <img src="https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/d712f71b3c4a3b562601c2b956a660ad.png?thumb=1&w=160&h=110"
+                                            alt="">
+                                        <span>小米笔记本Pro 15.6</span>
+                                        <span>5499元起</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="###">家电</a>
+                            <div class="down_list">
+                                <ul class="list_1">
+                                    <li>
+                                        <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/03dc85cd792904ddc8027b2d781beed8.png?thumb=1&w=160&h=110&f=webp&q=90"
+                                            alt="">
+                                        <span>米家互联网空调C1（一级能效）</span>
+                                        <span>2599元起</span>
+                                    </li>
+                                    <li>
+                                        <img src="https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/e06b219c5bced9256467b17738a943c6.png?thumb=1&w=160&h=110"
+                                            alt="">
+                                        <span>米家互联网空调（一级能效）</span>
+                                        <span>2399元</span>
+                                    </li>
+                                    <li>
+                                        <img src="https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/c5d772b7c2a159c3ed7d4e31bd293f18.jpg?thumb=1&w=160&h=110"
+                                            alt="">
+                                        <span>Redmi全自动波轮洗衣机</span>
+                                        <span>799元</span>
+                                    </li>
+                                    <li>
+                                        <img src="https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/11b8bca444aba2994fe852993eac9203.png?thumb=1&w=160&h=110"
+                                            alt="">
+                                        <span>米家互联网洗烘一体机10kg</span>
+                                        <span>1999元起</span>
+                                    </li>
+                                    <li>
+                                        <img src="https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/486a2a7359b6bda95b3dbd4e45b9c50a.jpg?thumb=1&w=160&h=110"
+                                            alt="">
+                                        <span>小米净水器</span>
+                                        <span>1999元</span>
+                                    </li>
+                                    <li>
+                                        <img src="https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/4ae019eebf10a55f8df2fee8d19b4e1f.jpg?thumb=1&w=160&h=110"
+                                            alt="">
+                                        <span>米家扫地机器人</span>
+                                        <span>1499元起</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="###">路由器</a>
+                            <div class="down_list">
+                                <ul class="list_1">
+                                    <li>
+                                        <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/5dd23c09b7eb6471968537fdce629194.png?thumb=1&w=160&h=110&f=webp&q=90"
+                                            alt="">
+                                        <span>小米路由器AC2100 </span>
+                                        <span>229元起</span>
+                                    </li>
+                                    <li>
+                                        <img src="https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/ec5be5f93ac0118aeec27b8df4337fc9.jpg?thumb=1&w=160&h=110"
+                                            alt="">
+                                        <span>小米路由器 Mesh</span>
+                                        <span>999元</span>
+                                    </li>
+                                    <li>
+                                        <img src="https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/026a28fc18eff2cfa4d26a799a2da9cc.jpg?thumb=1&w=160&h=110"
+                                            alt="">
+                                        <span>小米路由器4A 千兆版</span>
+                                        <span>149元</span>
+                                    </li>
+                                    <li>
+                                        <img src="https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/28efac56ef4c4942077dac7e30e8c624.jpg?thumb=1&w=160&h=110"
+                                            alt="">
+                                        <span>小米路由器4C</span>
+                                        <span>59元</span>
+                                    </li>
+                                    <li>
+                                        <img src="https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/3c3e9f61cc72ccd2a37fc90fed215b66.jpg?thumb=1&w=160&h=110"
+                                            alt="">
+                                        <span>小米路由器4A</span>
+                                        <span>99元</span>
+                                    </li>
+                                    <li>
+                                        <img src="https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/5fc5ee374e5306aa5513be4f3b560531.png?thumb=1&w=160&h=110"
+                                            alt="">
+                                        <span>小米路由器 HD/Pro</span>
+                                        <span>399元起</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="###">智能硬件</a>
+                            <div class="down_list">
+                                <ul class="list_1">
+                                    <li>
+                                        <img src="https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/2a500be4264c692899b25d86c16403f7.jpg?thumb=1&w=160&h=110"
+                                            alt="">
+                                        <span>小米米家智能摄像机云台版</span>
+                                        <span>179元起</span>
+                                    </li>
+                                    <li>
+                                        <img src="https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/e3fb0886fdb13e5ae784b9713b9a0038.jpg?thumb=1&w=160&h=110"
+                                            alt="">
+                                        <span>小米小爱老师</span>
+                                        <span>469元</span>
+                                    </li>
+                                    <li>
+                                        <img src="https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/5630aa997c82409ee33b2814c7eb2244.jpg?thumb=1&w=160&h=110"
+                                            alt="">
+                                        <span>小米米家智能门锁</span>
+                                        <span>1299元起</span>
+                                    </li>
+                                    <li>
+                                        <img src="https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/f6e585a4bf5c0f744ca60f19ecd6fadf.jpg?thumb=1&w=160&h=110"
+                                            alt="">
+                                        <span>小米小爱触屏音箱</span>
+                                        <span>249元起</span>
+                                    </li>
+                                    <li>
+                                        <img src="https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/df136199221a23299bc5348f37230a86.jpg?thumb=1&w=160&h=110"
+                                            alt="">
+                                        <span>小爱万能遥控版</span>
+                                        <span>149元</span>
+                                    </li>
+                                    <li>
+                                        <img src="https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/c1016ddffd2ac5808c4bebcdbefd413a.jpg?thumb=1&w=160&h=110"
+                                            alt="">
+                                        <span>查看全部</span><br>
+                                        <span>智能硬件</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <a href="###">服务</a>
+                        <a href="###">社区</a>
+                    </ul>
+                    <div class="input">
+                        <div class="input-left">
+                            <input type="text" class="search_val">
+                            <span>小米9 SE</span>
+                            <span>小米9</span>
+                        </div>
+                        <i class=" iconfont icon-Search"></i>
+                    </div>
+                </div>
+                <div class="last_step">
+                    <ul class="step">
+                        <li>
+                            <span class="index">首页</span>
+                            <i class="iconfont icon-arrow-up"></i>
+                        </li>
+                        <li>
+                            <span class="result">全部结果</span>
+                            <i class="iconfont icon-arrow-up"></i>
+                        </li>
+                        <li>
+                            <span>平衡车</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="classify">
+                    <ul>
+                        <li style="margin-left: 0;color: #b0b0b0;">分类:</li>
+                        <li>全部</li>
+                        <li>出行</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="main1">
+            <div class="main1_1">
+                <ul class="main1_top">
+                    <li class="zhonghe active">综合</li>
+                    <li class="new">新品</li>
+                    <li class="num">销量</li>
+                    <li class="price_btn">
+                        <span>价格</span>
+                        <i class="iconfont icon-xiangshangjiantou"></i>
+                        <i class="iconfont icon-xiangxiajiantou2" style="display: none;"></i>
+                    </li>
+                </ul>
+                <ul class="main1-right">
+                    <li class="location">
+                        <span>收货地</span>
+                        <p class="locat">
+                            <span>广东 广州市</span>
+                        </p>
+                    </li>
+                    <li>
+                        <input type="checkbox" name="" id="">
+                        <span>促销</span>
+                    </li>
+                    <li>
+                        <input type="checkbox" name="" id="">
+                        <span>分期</span>
+                    </li>
+                    <li>
+                        <input type="checkbox" name="" id="">
+                        <span>仅看有货</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="main_list">
+                <ul class="list">
+                    <!-- <li>
+                        <img src="https://cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1560764684.73552638.jpg"
+                            alt="" class="bigimg">
+                        <p class="title">九号平衡车 改装套件 白色</p>
+                        <span class="prices">2999元</span>
+                        <div class="imgsmall">
+                            <img src="https://cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1560764684.73552638.jpg"
+                                alt="">
+                                <img src="https://cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1560764684.73552638.jpg"
+                                    alt="">
+                        </div>
+                        <span class="fenqi">
+                            <img src="http://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/05c84c8d8ffebf7fd17c8838b5d81ee6.png"
+                                alt="">
+                        </span>
+                    </li> -->
+                </ul>
+            </div>
+            <div class="like">
+                <div class="like_top">
+                    <i></i>
+                    <span>猜你喜欢</span>
+                    <i></i>
+                </div>
+                <ul class="like_list">
+                    <li>
+                        <img src="../img/pms_1567056652.076330!140x140.png" alt="" class="bigimg">
+                        <h5> Redmi Note 8 Pro 6GB+128GB </h5>
+                        <p>1599元</p>
+                        <span class="good"> 2082人好评 </span>
+                        <div class="a">
+                            <span>加入购物车</span>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="../img/pms_1561969997.0862204!140x140.jpg" alt="" class="bigimg">
+                        <h5> 飞利浦智睿吸顶灯 简约版 卧室28W </h5>
+                        <p>299元</p>
+                        <span class="good"> 204人好评 </span>
+                        <div class="a">
+                            <span>加入购物车</span>
+                        </div>
+
+                    </li>
+                    <li>
+                        <img src="../img/pms_1567422705.63289280!140x140.jpg" alt="" class="bigimg">
+                        <h5> Redmi Note 8 6GB+128GB </h5>
+                        <p>1399元</p>
+                        <div class="a">
+                            <span>加入购物车</span>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="../img/pms_1569558301.51242741!140x140 (1).jpg" alt="" class="bigimg">
+                        <h5> Redmi K20 Pro 尊享版 12GB+512GB </h5>
+                        <p>3199元</p>
+                        <div class="a">
+                            <span>加入购物车</span>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="../img/pms_1562056117.01248149!140x140.jpg" alt="" class="bigimg">
+                        <h5> 小米CC9 6GB +64GB </h5>
+                        <p>1799元</p>
+                        <span class="good"> 1820人好评 </span>
+                        <div class="a">
+                            <span>加入购物车</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer">
+                <ul class="footer-top">
+                    <li>
+                        <i class="iconfont icon-tool-"></i>
+                        <span>预约维修服务</span>
+                    </li>
+                    <li>
+                        <i class="iconfont icon-circle-7"></i>
+                        <span>7天无理由退货</span>
+                    </li>
+                    <li>
+                        <i class="iconfont icon-15tian"></i>
+                        <span>15天免费换货</span>
+                    </li>
+                    <li>
+                        <i class="iconfont icon-gift"></i>
+                        <span>满150元包邮</span>
+                    </li>
+                    <li>
+                        <i class="iconfont icon-icon09"></i>
+                        <span style="margin-left: 2px;">520余家售后网点</span>
+                    </li>
+                </ul>
+                <div class="footer-bottom">
+                    <div class="footer-bottom-left">
+                        <dl>
+                            <dt><a href="###" style="color:#424242">帮助中心</a></dt>
+                            <dd><a href="###">账户管理</a></dd>
+                            <dd><a href="###">购物指南</a></dd>
+                            <dd><a href="###">订单操作</a></dd>
+                        </dl>
+                        <dl>
+                            <dt><a href="###" style="color:#424242">服务支持</a></dt>
+                            <dd><a href="###">售后政策</a></dd>
+                            <dd><a href="###">自助服务</a></dd>
+                            <dd><a href="###">相关下载</a></dd>
+                        </dl>
+                        <dl>
+                            <dt><a href="###" style="color:#424242">线下门店</a></dt>
+                            <dd><a href="###">小米之家</a></dd>
+                            <dd><a href="###">服务网点</a></dd>
+                            <dd><a href="###">授权体验店</a></dd>
+                        </dl>
+                        <dl>
+                            <dt><a href="###" style="color:#424242">关于小米</a></dt>
+                            <dd><a href="###">了解小米</a></dd>
+                            <dd><a href="###">加入小米</a></dd>
+                            <dd><a href="###">投资者关系</a></dd>
+                        </dl>
+                        <dl>
+                            <dt><a href="###" style="color:#424242">关注我们</a></dt>
+                            <dd><a href="###">新浪微博</a></dd>
+                            <dd><a href="###">官方微信</a></dd>
+                            <dd><a href="###">联系我们</a></dd>
+                        </dl>
+                        <dl>
+                            <dt><a href="###" style="color:#424242">特色服务</a></dt>
+                            <dd><a href="###">F码通道</a></dd>
+                            <dd><a href="###">礼物码</a></dd>
+                            <dd><a href="###">防伪查询</a></dd>
+                        </dl>
+                    </div>
+                    <div class="footer-bottom-right">
+                        <p>400-100-5678</p>
+                        <span>周一至周日 8：00-18：00</span>
+                        <br>
+                        <span>(仅收市话费)</span>
+                        <div class="lianxi">
+                            <i class="iconfont icon-message"></i>
+                            <span>联系客服</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box_footer">
+            <div class="box_footer_con">
+                <a href="###" style="width: 56px;height: 200px;">
+                    <img src="../img/logo.png" alt="">
+                </a>
+                <div class="footer-right">
+                    <ul class="footer_list">
+                        <li><a href="###">小米商城</a></li>
+                        <li><a href="###">MIUI</a></li>
+                        <li><a href="###">米家</a></li>
+                        <li><a href="###">米聊</a></li>
+                        <li>
+                            <a href="###">多看</a>
+                        </li>
+                        <li>
+                            <a href="###">游戏</a>
+                        </li>
+                        <li>
+                            <a href="###">路由器</a>
+                        </li>
+                        <li>
+                            <a href="###">米粉卡</a>
+                        </li>
+                        <li>
+                            <a href="###">政企服务</a>
+                        </li>
+                        <li>
+                            <a href="###">小米天猫店</a>
+                        </li>
+                        <li>
+                            <a href="###">小米集团隐私政策</a>
+                        </li>
+                        <li>
+                            <a href="###">小米公司儿童信息保护规则</a>
+                        </li>
+                        <li>
+                            <a href="###">小米商城隐私政策</a>
+                        </li>
+                        <li>
+                            <a href="###">小米商城用户协议</a>
+                        </li>
+                        <li>
+                            <a href="###">问题反馈</a>
+                        </li>
+                        <li>
+                            <a href="###">廉政举报</a>
+                        </li>
+                        <li>
+                            <a href="###">诚信合规</a>
+                        </li>
+                        <li style="border-right: none;">
+                            <a href="###">Select</a>
+                        </li>
+                    </ul>
+                    <span>Location</span>
+                    <div class="foot_con">
+                        <p>&copy; <span>mi.com</span> <span>京ICP证 110507号</span> <span>京ICP备 10046444号</span>
+                            <span>京公网安备 11010802020134号</span> <span>京网文[2017]1530-131号</span></p>
+                        <p>(京) 网械平台备字(2018) 第00005号 <span>互联网药品信息服务资格证(京)-非经营性-2014-0090</span> <span>营业执照</span>
+                            <span>医疗器械公告</span></p>
+                        <p><span>增值电信业务许可证</span> 网络食品经营备案(京) [2018] WLSPJYBAHF-12 <span>食品经营许可证</span></p>
+                        <p>违法和不良信息举报电话：185-0130-1238 <span>知识产权侵权投诉</span> 本网站所列数据，除特殊声明外，所有数据均出自我司实验室测试</p>
+                    </div>
+                    <div class="list_img">
+                        <a href="###">
+                            <img src="../img/truste2.png" alt="">
+                        </a>
+                        <a href="###">
+                            <img src="../img/v-logo-2.png" alt="">
+                        </a>
+                        <a href="###">
+                            <img src="../img/v-logo-1.png" alt="">
+                        </a>
+                        <a href="###">
+                            <img src="../img/v-logo-3.png" alt="">
+                        </a>
+                        <a href="###">
+                            <img src="../img/ba10428a4f9495ac310fd0b5e0cf8370.png" alt="">
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="logo_title">
+                <span>探索黑科技，小米为发烧而生</span>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../js/common.js"></script>
+<!-- <script src="../js/googlist.js"></script> -->
+<script>
+    (function () {
+        // let strName = decodeURI(location.search).slice(1);
+        let strName = getCookie('name');
+        let mainList = document.querySelector('.main_list');
+        let list = document.querySelector('.list');
+        let usernameInf = document.querySelector('.username_inf');
+        usernameInf.innerHTML = strName;
+
+        function create(str) {
+            let arr1 = JSON.parse(str);
+            let html = arr1.map(item => {
+                return `<li>
+                            <img src="${item.url1}" alt="" class="bigimg">
+                            <p class="title">${item.title}</p>
+                            <span class="prices">${item.price}</span>
+                            <div class="imgsmall">
+                                <img src="${item.url2}" alt="">
+                                <img src="${item.url3}" alt="">
+                            </div>
+                            <span class="fenqi">
+                                <img src="${item.url4}" alt="">
+                            </span>
+                        </li>`
+            }).join('');
+            list.innerHTML = html;
+            list.children[0].className = 'detail1';
+            list.children[1].className = 'detail2';
+            list.children[2].className = 'detail3';
+        }
+        //初始化
+        function init(str) {
+            ajax({
+                type: 'get',
+                url: '../api/goodlist.php',
+                success: str => {
+                    create(str);
+                }
+            })
+        }
+
+        init();
+
+        //升序降序
+        let priceBtn = document.querySelector('.price_btn');
+        let isok = true;
+        let rank = '';
+        priceBtn.onclick = () => {
+            if (isok) {
+                priceBtn.children[1].style.display = 'block';
+                priceBtn.children[2].style.display = 'none';
+                //升序
+                ajax({
+                    type: 'get',
+                    url: '../api/drop_lit.php',
+                    success: str => {
+                        create(str);
+                    }
+                });
+            } else {
+                priceBtn.children[1].style.display = 'none';
+                priceBtn.children[2].style.display = 'block';
+                //降序
+                ajax({
+                    type: 'get',
+                    url: '../api/drop_lit2.php',
+                    success: str => {
+                        console.log(str);
+                        create(str);
+                    }
+                });
+
+            }
+            isok = !isok;
+        }
+
+        //页面加载完才执行
+        window.onload = function () {
+            let list1 = document.querySelector('.list');
+            let detail1 = document.querySelector('.detail1');
+            let detail2 = document.querySelector('.detail2');
+            let detail3 = document.querySelector('.detail3');
+            let usernameInf1 = document.querySelector('.username_inf');
+            let sname = usernameInf1.innerHTML;
+
+            detail1.onclick = () => {
+                window.open('detail.html');
+            }
+
+            detail2.onclick = () => {
+                window.open('detail2.html');
+            }
+
+            detail3.onclick = () => {
+                window.open('detail3.html');
+            }
+
+        }
+
+        //模糊查询
+        let search = document.querySelector('.icon-Search');
+        let searchVal = document.querySelector('.search_val');
+        search.onclick = function(){
+            ajax({
+                type : 'get',
+                url : '../api/search.php',
+                data : {
+                    searchs : searchVal.value.trim()
+                },
+                success : str=>{
+                    create(str);
+                }
+            })
+        }
+
+    })();
+</script>
+
+</html>

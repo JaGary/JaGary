@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>10事件绑定方式</title>
+</head>
+
+<body>
+    <input type="button" value="点一杯奶茶" id="btn">
+</body>
+<script src="../common.js"></script>
+<script>
+    (function () {
+
+        /*
+            绑定事件的方法：
+                * 普通的事件绑定：
+                     节点.onclick = function() {}
+                * 事件监听器绑定：
+                    * 标准：元素.addEventListener(事件名,事件处理函数,是否捕获) 第三个参数：true：捕获；false 冒泡
+                    * IE8-:元素.attachEvent(on+事件名,事件处理函数)
+        
+        */
+        var btn = document.getElementById('btn');
+
+        // btn.onclick = function () {
+        //     console.log('烧仙草');
+        // }
+
+        // //起作用的是最后一个事件绑定
+        // btn.onclick = function () {
+        //     console.log('珍珠奶茶');
+        // }
+
+        // btn.addEventListener('click', function () {
+        //     console.log('烧仙草');
+        // }, false);//false:冒泡，这个参数是可选
+
+        // btn.addEventListener('click', function () {
+        //     console.log('珍珠奶茶');
+        // }, false);//false:冒泡，这个参数是可选
+
+        var num = 888;
+        num = 999;//
+
+
+
+        //兼容的事件监听器绑定事件：
+        bind(btn, 'click', function () {
+            console.log('烧仙草');
+        });
+
+        bind(btn, 'click', function () {
+            console.log('珍珠奶茶');
+        });
+
+    })();
+
+
+
+    // window.onload = function () {
+    //     //灏哥 代码3000
+    //     console.log('灏哥3000代码');
+    // }
+
+    // window.onload = function () {
+    //     //大哲 代码5000
+    //     console.log('大哲5000代码');
+    // }
+
+    window.addEventListener('load', function () {
+        console.log('灏哥3000代码');
+    });
+
+    window.addEventListener('load', function () {
+        console.log('大哲5000代码');
+    });
+</script>
+
+</html>

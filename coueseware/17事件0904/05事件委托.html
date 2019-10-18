@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>事件委托</title>
+</head>
+
+<body>
+    <ul id="list">
+        <li class="one">111</li>
+        <li class="two">222</li>
+        <li class="one">333</li>
+        <li class="two">444</li>
+        <p>段落</p>
+    </ul>
+</body>
+<script>
+    (function () {
+
+        //需求：给li绑定事件
+        //如果节点是渲染出来的：必须先渲染再获取节点
+        // var lis = document.querySelectorAll('#list li');
+        // for (var i = 0; i < lis.length; i++) {
+        //     lis[i].onclick = function () {
+        //         console.log(this.innerHTML);
+        //     }
+        // }
+
+        /*
+            事件委托方式：target:事件源对象
+                * 把事件绑在父节点身上(父级已存在节点)
+                * 优点
+                    * 减少事件绑定次数(页面性能好)
+                    * 针对创建的节点，依然可以绑定事件
+        */
+        var list = document.getElementById('list');
+        list.onclick = function (ev) {
+            // console.log(ev.target);//被点击的那个li：当前触发事件的对象就是事件源对象
+            // console.log(this);//指向事件前面的对象
+            // console.log(ev.target.tagName);//LI 大写
+            // console.log(ev.target.className);//one
+            // if (ev.target.className == 'one') {
+            //     //打印自身内容
+            //     console.log(ev.target.innerHTML);
+            // }
+            // if (ev.target.className == 'two') {
+            //     //修改值
+            //     ev.target.innerHTML = '变了';
+            // }
+
+            if (ev.target.tagName.toLowerCase() == 'li') {
+                console.log(ev.target.innerHTML);
+            }
+
+            if (ev.target.tagName.toLowerCase() == 'p') {
+                ev.target.innerHTML = '变了';
+            }
+        }
+
+    })();
+</script>
+
+</html>

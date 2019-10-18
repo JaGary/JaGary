@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>01jq的特点</title>
+</head>
+
+<body>
+    <input type="button" value="按钮" id="btn">
+    <div id="box"></div>
+</body>
+<script src="js/jquery-1.10.1.min.js"></script>
+<!-- <script src="https://cdn.bootcss.com/jquery/3.4.1/core.js"></script> -->
+<script>
+    //js入口
+    // window.onload = function () {
+
+    // }
+
+    // window.onload = function () {
+    //     //覆盖了上面的功能
+    // }
+
+    //jq入口:可以出现多个入口；边加载边执行
+    // $(function () {
+    //     console.log('666');
+    // });
+    // $(function () {
+    //     console.log('999');
+    // });
+    // $(function(){
+    //     console.log(111);
+    // })
+
+    //自调用
+    (function () {
+
+        //jq的链式写法
+        // $('#btn').val('点我')
+        //     .click(function () {
+        //         alert(666);
+        //     })
+        //     .attr('title', '我是标题');//设置内容
+
+        // console.log($('#btn').val());
+
+        //js和jq不能混用
+        // var btn = document.getElementById('btn');
+        // btn.val('变了');//js的对象不能调用jq的方法
+        // $('#btn').value = '变了';//不要用jq对象调用原生属性
+
+        //共存：js对象转成jq对象
+        // $(btn).val('变了');
+        // $('#btn').val('wo');
+        //this
+        $(this)
+        $(window)
+        $(document)
+        console.log(btn);
+        //jq对象转成js对象
+        // $('#btn').get(0).value = '我又变了';
+        $('#btn')[0].value = '我又变了';
+
+    })();
+
+</script>
+
+</html>

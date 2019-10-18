@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>全选不选反选</title>
+</head>
+
+<body>
+    <div id="box">
+        全选/不选:<input type="checkbox" name="" id="all" value="" />
+        反选：<input type="checkbox" name="" id="fx" value="" />
+        <div id="all_checked">
+            <input type="checkbox" name="" id="" value="" /><br />
+            <input type="checkbox" name="" id="" value="" /><br />
+            <input type="checkbox" name="" id="" value="" /><br />
+            <input type="checkbox" name="" id="" value="" /><br />
+            <input type="checkbox" name="" id="" value="" /><br />
+            <input type="checkbox" name="" id="" value="" /><br />
+            <input type="checkbox" name="" id="" value="" /><br />
+            <input type="checkbox" name="" id="" value="" />
+        </div>
+    </div>
+</body>
+<script src="js/jquery-1.10.1.min.js"></script>
+<script>
+    (function () {
+
+        //全选
+        // $('#all').click(function () {
+        //     // console.log($(this).prop('checked'));
+        //     var istrue = $(this).prop('checked');
+        //     $('#all_checked input').prop('checked', istrue);
+        // });
+        $('#all').click(function(){
+            var istrue = $(this).prop('checked');
+            $('#all_checked input').prop('checked',istrue);
+        });
+        //反选
+        $('#fx').click(function () {
+            $('#all_checked input').each(function (index, item) {
+                var istrue = $(item).prop('checked');
+                $(item).prop('checked', !istrue);
+            });
+            ischeck();
+        });
+
+        //点击反控制全选
+        $('#all_checked').on('click', 'input', function () {
+            // var isok = ischeck();
+            // $('#all').prop('checked', isok);
+            ischeck();
+        });
+
+        function ischeck() {
+            //被勾选的个数
+            var num = 0;
+            $('#all_checked input').each(function (index, item) {
+                if ($(item).prop('checked')) {
+                    num++;
+                }
+            });
+            if (num == $('#all_checked input').size()) {
+                //被勾选完了
+                // return true;
+                $('#all').prop('checked', true);
+            } else {
+                // return false;
+                $('#all').prop('checked', false);
+            }
+        }
+    })();
+</script>
+
+</html>

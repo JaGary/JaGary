@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>换肤</title>
+    <link rel="stylesheet" href="../css/01.css" id="skin">
+    <style>
+        
+    </style>
+</head>
+
+<body>
+
+    <input type="button" id="bt1" value="1">
+    <input type="button" id="bt2" value="2">
+    <input type="button" id="bt3" value="3">
+    <input type="button" id="bt4" value="4">
+    <input type="button" id="bt5" value="5">
+    <input type="button" id="bt6" value="6">
+    <input type="button" id="bt7" value="取消">
+</body>
+<script>
+    //先获取节点
+    var bt1 = document.getElementById('bt1');
+    var bt2 = document.getElementById('bt2');
+    var bt3 = document.getElementById('bt3');
+    var bt4 = document.getElementById('bt4');
+    var bt5 = document.getElementById('bt5');
+    var bt6 = document.getElementById('bt6');
+    var bt7 = document.getElementById('bt7');
+
+    //捆绑按钮
+    bt1.onclick = function () {
+        //设置和修改，样式的路径
+        skin.href = '../css/01.css';
+    }
+    bt2.onclick = function () {
+        skin.href = '../css/02.css';
+    }
+    bt3.onclick = function () {
+        skin.href = '../css/03.css';
+    }
+    bt4.onclick = function () {
+        skin.href = '../css/04.css';
+    }
+    bt5.onclick = function () {
+        skin.href = '../css/05.css';
+    }
+    bt6.onclick = function () {
+        skin.href = '../css/06.css';
+    }
+    bt7.onclick = function () {
+        skin.href = '../css/01.css';
+    }
+</script>
+
+</html>

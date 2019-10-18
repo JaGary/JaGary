@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>创建一个包含50个三位数的随机数组</title>
+</head>
+
+<body>
+    <h1>创建一个包含50个三位数的随机数组</h1>
+</body>
+<script src="../common.js"></script>
+<script>
+    /*
+        需求：创建一个包含50个三位数的随机数组
+            * 三位数的随机数：封装一个函数可以生成任意范围内的随机数
+            * 生成50个这样的随机数：for 50次
+            * 存到数组：arr.push()
+    */
+
+    var num = ranNum(100, 999);
+    console.log(num);//三位数的随机数
+
+    // var arr = [];//声明一个空数组
+    // for (var i = 0; i < 50; i++) { //0次 ，50次
+    //     var num = ranNum(100, 999);
+    //     arr.push(num);
+    // }
+    // console.log(arr);//50个三位数的随机数组
+</script>
+
+</html>

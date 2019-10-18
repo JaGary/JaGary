@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>冒泡排序</title>
+</head>
+
+<body>
+    <h2>冒泡排序</h2>
+    <script>
+        //给数组排序(冒泡排序)
+        (function () {
+            var arr = [1, 3, 5, 4, 6];
+            var num = 0; //计数器
+            for (j = 0; j < arr.length; j++) {
+                for (i = 0; i < arr.length - 1 - j; i++) {//'-j是为了减少循环次数，便于运算'
+                    if (arr[i] > arr[i + 1]) {
+                        var arr1 = arr[i]; //声明一个空对象存放最大的那个数组
+                        arr[i] = arr[i + 1]; //调换位置，程序不能变
+                        arr[i + 1] = arr1; //调换位置，程序不能变
+                    }
+                    num++;//计数器次数
+                }
+            }
+            console.log(arr);
+            console.log('排序的次数为：'+num);
+        })();
+    </script>
+</body>
+
+</html>

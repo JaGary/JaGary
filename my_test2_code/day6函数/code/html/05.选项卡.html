@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>选项卡两个款式：高度还原</title>
+    <style>
+        #list {
+            width: 223px;
+            height: 224px;
+            border: 1px solid #ccc;
+            position: relative;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        #list .con {
+            width: 182px;
+            height: 170px;
+
+            margin: auto;
+            display: none;
+
+        }
+
+        #list input {
+            margin-top: 10px;
+
+        }
+
+        .clearfix::after {
+            content: "";
+            display: block;
+            height: 0px;
+            overflow: hidden;
+            visibility: hidden;
+            clear: both;
+        }
+
+        #list .qq:active {
+            content: '';
+            background-color: red;
+            height: 2px;
+            width: 70px;
+            position: absolute;
+            top: 10px;
+        }
+
+        /* .box .content .header ul li::after {
+        content: "";
+        position: absolute;
+        width: 0%;
+        height: 3px;
+        background: blue;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 0px;
+        transition: width 1s;
+        } */
+
+
+        #list #ap {
+            margin-left: 40px;
+        }
+
+        .active {
+            background-color: #ffff;
+        }
+
+        .con .top {
+            width: 182px;
+            height: 27px;
+            background-color: #ccc;
+            margin-top: 15px;
+            text-align: center;
+            display: flex;
+        }
+
+        .con .top span {
+            color: #959599;
+            line-height: 27px;
+            font-size: 12px;
+            display: block;
+            margin-left: 20px;
+        }
+
+        .con .top .bb {
+            margin-left: 40px;
+        }
+
+        .con .center {
+            flex: 1;
+            display: flex;
+        }
+
+        .con .center div {
+            width: 50%;
+            height: 100%;
+            text-align: center;
+        }
+
+        .con .center .center-1 span {
+            display: block;
+            margin-top: 15px;
+            font-size: 11px;
+
+        }
+
+        .con .center div .p1 {
+            display: block;
+            line-height: 75px;
+            font-size: 11px;
+            color: #ccc;
+            margin-left: 40px;
+        }
+
+        .con .bottom {
+            width: 182px;
+            height: 27px;
+            background-color: #ccc;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .con .bottom a {
+            text-decoration: none;
+            font-size: 13px;
+            color: #006cba;
+            line-height: 27px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>选项卡两个款式：</h1>
+    <div id="list" class="clearfix">
+        <input type="button" class="active" id="ap" value="竞彩预测">
+        <input type="button" value="红彩专家">
+
+        <span class="qq"></span>
+        <div class="con" style="display: block">
+            <div class="top">
+                <i></i>
+                <span>欧冠</span>
+                <span class="bb">07/24 02：00</span>
+            </div>
+            <div class="center">
+                <div class="center-1">
+                    <span>埃因霍温</span>
+
+                    <span>巴塞尔</span>
+                </div>
+                <div>
+                    <span class="p1">未开赛</span>
+                </div>
+            </div>
+            <div class="bottom">
+                <a href="">查看全部方案</a>
+            </div>
+        </div>
+        <div class="con">4551</div>
+
+    </div>
+</body>
+<script>
+    (function () {
+        var list = document.getElementById('list');
+        var abtns = list.getElementsByTagName('input');
+        var acons = list.getElementsByClassName('con');
+        var qq = list.getElementsByClassName('qq');
+        var bb = list.getElementsByClassName('bb');
+
+        for (var i = 0; i < abtns.length; i++) {
+            abtns[i].index = i;
+            abtns[i].onclick = function () {
+                for (var j = 0; j < abtns.length; j++) {
+                    abtns[j].className = '';
+                    acons[j].style.display = 'none';
+
+                }
+                this.className = 'active';
+
+                acons[this.index].style.display = 'block';
+
+            }
+        }
+    })();
+</script>
+
+</html>

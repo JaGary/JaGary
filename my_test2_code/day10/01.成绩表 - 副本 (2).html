@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>成绩表</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            margin-left: 200px;
+        }
+
+        table {
+            /* 边框线合并 */
+            border-collapse: collapse;
+            /* 合并单元格间的距离 */
+            border-spacing: 0;
+            margin-left: 200px;
+            margin-top: 20px;
+        }
+
+        thead tr {
+            border: 1px solid #ccc;
+        }
+
+        thead tr th {
+            border-right: 1px solid #ccc;
+        }
+
+        td {
+            width: 50px;
+            height: 30px;
+            border: 1px solid #ccc;
+            font-size: 11px;
+            padding: 5px 3px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>成绩表</h2>
+    <table id="tab">
+        <!-- <thead>
+            <tr>
+                <th align="center">学号</th>
+                <th>语文</th>
+                <th>数学</th>
+                <th>英语</th>
+                <th>总成绩</th>
+                <th>备注</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td align="center">1</td>
+                <td>105</td>
+                <td>62</td>
+                <td>118</td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody> -->
+    </table>
+    
+</body>
+<script>
+    (function () {
+        var tab = document.getElementById('tab');
+        
+        var html = '';//给一个空对象
+        var header = '';
+        var data = [{//数组
+            
+            numble: 1,
+            yuwen: 105,
+            shuxue: 62,
+            yingyu: 118,
+        }, {
+
+            numble: 2,
+            yuwen: 108,
+            shuxue: 80,
+            yingyu: 102,
+        }, {
+
+            numble: 3,
+            yuwen: 101,
+            shuxue: 69,
+            yingyu: 113,
+        }, {
+
+            numble: 4,
+            yuwen: 98,
+            shuxue: 102,
+            yingyu: 101,
+        }, {
+
+            numble: 5,
+            yuwen: 92,
+            shuxue: 86,
+            yingyu: 102,
+        }, {
+
+            numble: 6,
+            yuwen: 121,
+            shuxue: 98,
+            yingyu: 115,
+        }, {
+            numble: 7,
+            yuwen: 125,
+            shuxue: 108,
+            yingyu: 78,
+        }];
+
+        //计算总分
+        data.forEach(function (item) {
+            item.sum = item.yuwen + item.shuxue + item.yingyu;
+        });
+
+        //排序：用总分进行排名
+        data.sort(function (a, b) {
+            return b.sum - a.sum;
+        })
+        console.log(data);
+
+        //添加排名
+        data.forEach(function (item, index) {
+            item.rank = index + 1;
+        });
+
+        // console.log(data.item);
+
+        for (j in data) {
+            header = `<thead>
+                <tr>
+                    <th>排名</th>
+                    <th>语文</th>
+                    <th>数学</th>
+                    <th>英语</th>
+                    <th>总成绩</th>
+                    <th align="center">学号</th>
+                </tr>
+            </thead>`;
+            html += `
+            <tbody>
+                <tr data-guid="001">
+                    <td>${data[j].rank}</td>
+                    <td>${data[j].yuwen}</td>
+                    <td>${data[j].shuxue}</td>
+                    <td>${data[j].yingyu}</td>
+                    <td class="sum">${data[j].sum}</td>
+                    <td align="center">${data[j].numble}</td>
+                </tr>
+            </tbody>`;
+        }
+        tab.innerHTML = header + html;
+
+        function rank(type) {
+            data.sort(function (a, b) {
+                return b[type] - a[type]; //降序
+            })
+        }
+        rank('yuwen');
+        console.log('语文成绩最高:' + data[0].yuwen + '学号' + data[0].numble);
+        rank('shuxue');
+        console.log('数学成绩最高:' + data[0].shuxue + '学号' + data[0].numble);
+        rank('yingyu');
+        console.log('英语成绩最高:' + data[0].yingyu + '学号' + data[0].numble);
+    })();
+</script>
+
+</html>

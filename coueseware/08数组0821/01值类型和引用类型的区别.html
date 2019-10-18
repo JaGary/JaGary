@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>01值类型和引用类型的区别</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    /*
+        01值类型和引用类型的区别
+            * 值类型：number/string/boolean
+            * 引用类型：array、object
+            * 区别：
+    */
+
+    //值类型
+    //复制数据
+    var num = 66;
+    var num2 = num;
+    num2 = 88;
+    console.log(num, num2);//值类型的复制，复制成功
+
+    //引用类型
+    var arr1 = [1, 2, 3];
+    var arr2 = arr1;//如果是数组不要这样进行拷贝，这种叫做引用方式，以后修改了arr2会影响arr1
+    arr2.push(123);
+    console.log(arr1, arr2);//引用类型，复制失败
+
+
+</script>
+
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>window</title>
+    <style>
+        body {
+            height: 7000px;
+        }
+
+        #gotop {
+            width: 80px;
+            height: 80px;
+            background: green;
+            cursor: pointer;
+            position: fixed;
+            right: 50px;
+            bottom: 50px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <a href="#">回去</a> -->
+    <div id="gotop">回到顶部</div>
+</body>
+<script>
+    /*
+        BOM:浏览器对象模型，赋予我们操控窗口的能力：弹窗、窗口的关闭和打开、刷新页面、获取url、页面跳转、复制、粘贴、回退、前进……
+
+        window : { 是BOM最核心的对象，是很多子对象的顶层对象
+            属性：
+                * 浏览器窗口尺寸 innerWidth/innerHeight, //表示浏览器窗口”可视区域”尺寸 outerWidth/outerHeight //表示整个浏览器窗口的尺寸
+                * 滚动相关
+                    * scrollX(基本不用)/scrollY //获取浏览器窗口滚动条滚动过的距离
+
+            方法：
+                * scrollTo(x,y) //指定滚动位置 :回到顶部
+                * scrollBy(xnum,ynum) //设置基于当前位置滚动的距离，可以为负数
+            事件：
+                * onscroll 滚动事件，滚动的时候会触发
+            子对象：
+        }
+
+        13826108920
+
+        注意事项：
+                * 定义在全局环境下的变量都会成为window对象的属性
+                * 把变量定义在函数体里，可以有效减少全局环境下的变量冲突，避免污染全局环境
+                * window对象可以在代码中省略，如window.alert()可以写成alert();
+                * 在函数内部不用var声明的变量会成为全局变量，即window对象的属性
+                * 通过var在全局作用域下声明的变量用delete无法删除
+    */
+
+    // console.log(window.scrollY);
+    // window.onscroll = function () {
+    //     console.log(window.scrollY);
+    // }
+
+    (function () {
+        /*
+            需求：
+                * 滚动到300px的时候，回到顶部显示
+                * 点击回到顶部可以快速的回到顶部
+        */
+
+        var gotop = document.getElementById('gotop');
+
+        //滚动到300px的时候，回到顶部显示
+        window.onscroll = function () {
+            var scrollTop = window.scrollY;//获取垂直方向的滚动距离
+            if (scrollTop >= 300) {
+                gotop.style.display = 'block';
+            } else {
+                gotop.style.display = 'none';
+            }
+        }
+
+        gotop.onclick = function () {//快速回到顶部效果
+            window.scrollTo(0, 0);
+        }
+    })();
+</script>
+
+</html>

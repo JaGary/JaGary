@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>4位数字验证码的函数</title>
+</head>
+
+<body>
+    <h1>4位数字验证码的函数</h1>
+    <label for="">请输入验证码：</label><input type="text" id="yzm">
+    <input type="button" value="验证码" id="btn">
+    <input type="button" value="生成" id="sc">
+    <!-- <input type="button" value="提交" id="tj"> -->
+    <a href="" id="tj"
+        style="width:10px;height:10px;border:1px solid #ccc;color: #000 ;text-decoration: none;background-color:#ccc;">提交</a>
+    <p id="p1"></p>
+</body>
+<script>
+    (function () {
+        var yzm1 = document.getElementById('yzm');
+        var btn = document.getElementById('btn');
+        var tj = document.getElementById('tj');
+        var p1 = document.getElementById('p1');
+
+        sc.onclick = function () {
+            //表示从0-999选择整数
+            var num1 = parseInt(Math.random() * 1000);
+            var num2 = parseInt(Math.random() * 1000);
+            var num3 = parseInt(Math.random() * 1000);
+            var num4 = parseInt(Math.random() * 1000);
+            var num5 = parseInt(Math.random() * 1000);
+            //使用字符串方法拼接起来
+            num = num1 + num2 + num3 + num4;
+            btn.value = num;
+            // if (num.length <= 4) {
+            //     num = num1 + num2 + num3 + num4 + num5;
+            //     if (btn.value != yzm1.value) {
+            //         // btn.value = num;
+            //         tj.onclick = function () {
+            //             if (btn.value != yzm1.value) {
+            //                 alert('请输入正确的验证码');
+            //             }
+            //         }
+            //     } else {}
+            // }
+            //节点btn的value值=num;
+            btn.value = num;
+
+            if (btn.value != yzm1.value) {
+                // btn.value = num;
+                tj.onclick = function () {
+                    if (btn.value != yzm1.value) {
+                        alert('请输入正确的验证码');
+                    }
+                }
+            } else {}
+        }
+    })();
+</script>
+
+</html>

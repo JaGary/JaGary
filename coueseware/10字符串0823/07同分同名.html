@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>同分同名</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var score = [
+        {
+            sno: 1,
+            total: 188
+        }, {
+            sno: 2,
+            total: 190
+        }, {
+            sno: 3,
+            total: 188
+        }, {
+            sno: 4,
+            total: 176
+        }, {
+            sno: 5,
+            total: 158
+        }
+    ];
+
+    score.sort(function (a, b) {//降序
+        return b.total - a.total;
+    });
+
+    console.log(score);
+
+    score.forEach(function (item, index) {
+        item.rank = index + 1;
+    });
+
+    console.log(score);
+
+    for (var i = 0; i < score.length - 1; i++) {
+        if (score[i].total == score[i + 1].total) {
+            //后面和前面的相等
+            score[i + 1].rank = score[i].rank;
+        }
+    }
+    console.log(score);
+
+</script>
+
+</html>

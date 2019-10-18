@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>箭头函数</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    /*
+        格式：标识符=>表达式 省略了function、return关键字和大括号。
+
+            * 只有一个形参的时候，可以省略圆括号
+            * function都可以省略,在圆括号和花括号之间加上箭头 =>
+            * 如果只有一个语句，并且有return的时候，省略花括号和return
+    */
+
+    //传统写法:只有一个参数
+    // function show(a) {
+    //     return a + 5;
+    // }
+    let show = function (a) {// =>
+        return a + 5;
+    }
+
+    // let show = a => a + 5;
+    // console.log(show(2));
+
+    //ES6写法:只有一个参数
+    let show2 = a => a + 5;
+    console.log(show2(2));
+
+    //传统：多个参数
+    let show3 = function (a, b) {
+        return a + b;
+    }
+
+    //ES6：多个参数,不能省略圆括号
+    let show4 = (a, b) => a + b;
+    console.log(show4(2, 3));
+
+    //传统：没有参数
+    let show5 = function () {
+        return 666;
+    }
+
+    //ES6：没有参数
+    let show6 = () => 666;
+    console.log(show6());
+
+    //传统：多个语句
+    let show7 = function (a) {
+        let b = 5;
+        return a + b;
+    }
+
+    //ES6：多个语句
+    let show8 = a => {
+        let b = 5;
+        return a + b;
+    }
+
+    //反之:写ES6->传统
+
+    let show9 = a => (b, c) => a + b + c;
+    console.log(show9(1)(2, 3));
+
+    //传统：
+    let show10 = function (a) {
+        return function (b, c) {
+            return a + b + c;
+        }
+    }
+    console.log(show10(1)(2, 3));
+
+    //练习
+    let sum = a => b => (c, d) => ({ a, b, c, d });
+    console.log(sum(1)(2)(3, 4));//{a: 1, b: 2, c: 3, d: 4}
+
+    //传统
+    let sum2 = function (a) {
+        return function (b) {
+            return function (c, d) {
+                return { a, b, c, d };
+                // a, b, c, d
+                // return {
+                //     a: a,
+                //     b: b,
+                //     c: c,
+                //     d: d
+                // }
+            }
+        }
+    }
+    console.log(sum2(1)(2)(3, 4));
+
+
+    //实战运用
+    btn.onclick = function () {
+
+    }
+
+    btn.onclick = () => {
+
+    }
+
+    setInterval(function () {
+
+    }, 30);
+
+    setInterval(() => {
+
+    }, 30);
+
+    (function () {
+
+    })();
+
+    (() => {
+
+    })();
+
+    window.onload = function () {
+
+    }
+
+    window.onload = () => {
+
+    }
+
+    box.onmousedown = function (ev) {
+
+    }
+
+    box.onmousedowm = ev => {
+
+    }
+</script>
+
+</html>

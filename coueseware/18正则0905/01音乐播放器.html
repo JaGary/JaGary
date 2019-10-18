@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>音乐player</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        ul,
+        li {
+            list-style: none;
+        }
+
+        #box {
+            margin: 100px auto 0;
+            width: 260px;
+            height: 40px;
+            background-color: pink;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            position: relative;
+        }
+
+        #box #tex {
+            width: 200px;
+            height: 30px;
+        }
+
+        #box #btn {
+            width: 40px;
+            height: 30px;
+        }
+
+        #box #list {
+            width: 204px;
+            position: absolute;
+            top: 37px;
+            left: 4px;
+            box-sizing: border-box;
+            border: 1px solid #000;
+            border-top: none;
+            display: none;
+        }
+
+        #box #list li {
+            box-sizing: border-box;
+            width: 100%;
+            height: 28px;
+            font-size: 14px;
+            color: #999;
+            line-height: 28px;
+            background-color: #3333;
+            border-bottom: 1px dashed #fff;
+        }
+
+        #box #list li:last-child {
+            border-bottom: none;
+        }
+
+        #box #list .active {
+            background-color: #58bc58;
+            color: #000;
+        }
+
+        .ad {
+            width: 300px;
+            height: 200px;
+            margin: 150px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <input type="text" id="tex" placeholder="哈批歌单" autocomplete="off">
+        <input type="button" value="搜索" id="btn">
+        <ul id="list">
+            <li>鸡你太美</li>
+            <li>Bag Girl</li>
+            <li>艾轮窝克</li>
+            <li>你XX</li>
+            <li>lost rivers</li>
+        </ul>
+    </div>
+    <div class="ad">
+        <audio id="aud" controls="" autoplay="true" src="">
+            <source src="" type="">
+        </audio>
+    </div>
+</body>
+<script src="../common.js"></script>
+<script>
+    /*
+        当点击tex的时候，让list显示出来，然后再tex里面添加键盘事件，
+        当按下上下键的时候，让list里面的li轮着高亮，而且当下到最后一个li的时候，要重新回到第一个（上键同理）
+        然后当你点击外面的区域（document）和btn按钮的时候，让list又隐藏起来
+        当你点击btn的时候，还要获取li对应的下标，从而把arr里面对应的歌的路径放进video里面去
+    */
+
+    (function () {
+        //找节点
+        var list = getid('list');
+        var btn = getid('btn');
+        var tex = getid('tex');
+        var aud = getid('aud');
+        var isok = false;
+        var arr = [//存放歌单路径
+            'mp3/4a0b6f24db25f0a6c1eadad7062df25d.mp3',
+            'mp3/5f702de0a0808e21c66048363a478d2b.mp3',
+            'mp3/653c638e24580e2869184c592a370056.mp3',
+            'mp3/90387f0b1f4558c67fe72c77f39e5b62.mp3',
+            'mp3/be283811795b87e04c13d0b3712c1953.mp3'
+        ];
+
+        //1.当点击tex的时候，让list显示出来，然后再tex里面添加键盘事件
+        tex.onclick = function (ev) {
+            num = -1;//恢复到初始状态
+            removeClass();//排他
+            css(list, 'display', 'block');
+            isok = true;//证明下拉列表是展开的
+            ev.stopPropagation();//阻止冒泡，阻止引爆别人的事件
+        }
+
+        document.onclick = function () {
+            css(list, 'display', 'none');
+            isok = false;
+        }
+
+        //2.给li绑定事件：事件委托的方式
+        function removeClass() {//排他
+            for (var i = 0; i < list.children.length; i++) {
+                list.children[i].className = '';
+                list.children[i].index = i;
+            }
+        }
+        
+        list.onclick = function (ev) {
+            if (ev.target.tagName == 'LI') {
+                //排他
+                removeClass();
+                // console.log(ev.target.index);
+                ev.target.className = 'active';
+                aud.src = arr[ev.target.index];//添加音乐
+                tex.value = ev.target.innerHTML;
+                num = ev.target.index;
+            }
+            ev.stopPropagation();
+        }
+
+        list.onmouseover = function (ev) {//鼠标滑过高亮
+            if (ev.target.tagName == 'LI') {
+                //排他
+                removeClass();
+                ev.target.className = 'active';
+                num = ev.target.index;
+            }
+
+        }
+
+        function srue() {
+            //回车的时候确定歌曲
+            tex.value = list.children[num].innerHTML;
+            aud.src = arr[num];//添加音乐
+            css(list, 'display', 'none');
+        }
+
+        //3.按下上下键可以切换歌曲
+        var num = -1;
+        document.onkeydown = function (ev) {
+            if (isok) {
+                //展开的时候按下上下键才有意义
+                //下键
+                if (ev.keyCode == 40) {
+                    // console.log('下键');
+                    num++;
+                    if (num > list.children.length - 1) {//达到最后一个回到第一个li
+                        num = 0;
+                    }
+                    tab(num);
+                }
+                if (ev.keyCode == 38) {//上键
+
+                    num--;
+                    if (num < 0) {//达到最后一个回到第一个li
+                        num = list.children.length - 1;
+                    }
+                    tab(num);
+                }
+
+                if (ev.keyCode == 13) {
+                    srue();
+                }
+            }
+        }
+
+        function tab(num) {
+            //排他
+            removeClass();
+            list.children[num].className = 'active';
+        }
+
+    })();
+</script>
+
+</html>

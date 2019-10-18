@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>04数组和对象嵌套的数据</title>
+</head>
+
+<body>
+    <h1>04数组和对象嵌套的数据</h1>
+    <ul id="list">
+        <!-- <li>
+            <p>苹果15</p>
+            <p>￥：28888</p>
+        </li> -->
+    </ul>
+</body>
+<script>
+    (function () {
+
+        //04数组和对象嵌套的数据 [] {}  
+
+        var list = document.getElementById('list');
+        var html = '';//拼接字符串的
+        //[{},{}] 一般的数据都是做成这种格式
+        var arr1 = [//一个对象存储一个商品的相关数据
+            {
+                title: '苹果15',//标题
+                price: 28888,//价格
+                num: 100//库存量
+            }, {
+                title: '华为',
+                price: 38888,
+                num: 200
+            }
+        ];
+
+        for (var i in arr1) {
+            // console.log(arr1[i].title);
+            html += '<li>' +
+                '<p>' + arr1[i].title + '</p>' +
+                '<p>￥：' + arr1[i].price + '</p>' +
+                '</li>';
+        }
+        console.log(html);
+        list.innerHTML = html;//渲染数据
+
+        //[[],[]]
+        var arr2 = [
+            ['苹果15', 38888, 200],
+            ['苹果15', 38888, 200]
+        ];
+
+        //{[],[]} 
+        //{{},{}}
+    })();
+
+
+
+
+</script>
+
+</html>

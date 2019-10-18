@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>18默认参数设置</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    //传参：可以传，可以不传，不传的话有默认参数可以用
+
+    //踢足球：志杰(主角)、科盛(替补)
+
+    //第一种实现方案：
+    var obj1 = { // 配置参数
+        // name: '志杰',
+        num: 10
+    }
+
+    var obj2 = {//默认参数：这里的数据是最全的，用就是用这个数据
+        name: '科盛',
+        num: 10
+    }
+
+    // for (var key in obj1) {
+    //     obj2[key] = obj1[key];
+    // }
+
+    function extent(obj1, obj2) {
+        for (var key in obj1) {
+            obj2[key] = obj1[key];
+        }
+    }
+
+    // extent(obj1, obj2);//obj1：配置参数；obj2默认参数
+
+    // console.log(obj2.name);//?
+    // console.log(obj2);
+
+    //第二种方案：利用Object
+    Object.assign(obj2, obj1);//配置参数：obj1；默认参数：obj2，用默认参数：obj2
+    console.log(obj2);
+</script>
+
+</html>

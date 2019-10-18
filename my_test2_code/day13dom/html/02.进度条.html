@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>进度条</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #bar {
+            width: 70px;
+            height: 30px;
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="bar"></div>
+    <div id="abs"></div>
+</body>
+<script>
+    /*运动的原理：控制某个样式不断的改变，就有动画效果
+     * 进度条 width不断变大
+     * 盒子 left 不断变大：
+     * 渐隐渐现效果 opacity 不断的变化*/
+    // 三大家族的offset家族：
+    // * offset
+    //      * offsetLeft 获取盒子到有定位的父节点的left值
+    //      * offsetTop 获取盒子到有定位的父节点的top值
+    //      * offsetWidth 获取盒子的width值
+    //      * offsetHeight 获取盒子的height值
+    //      * offsetParent 获取有定位的父节点
+    // * scroll
+    // * client
+    (function () {
+        var bar = document.getElementById('bar');
+        var abs = document.getElementById('abs');
+
+        var speed = 20; //速度20，不带单位
+        //定时器
+        var timer = setInterval(function () {
+            var aLife = bar.offsetWidth + speed; //
+            if (aLife >= window.innerWidth) { //当向左距离大等于可视窗口的最大宽度时，停止执行定时器
+                aLife = window.innerWidth; //最大可距离左边宽度为可视窗口宽度
+                clearInterval(timer); //清除定时器
+            }
+            var acal = parseInt(aLife / window.innerWidth * 100); //进度条的百分比
+            abs.innerHTML = acal + '%'; //渲染
+            bar.style.width = aLife + 'px'; //渲染数据到页面
+        }, 30); //没30毫秒执行一次
+
+    })();
+</script>
+
+</html>

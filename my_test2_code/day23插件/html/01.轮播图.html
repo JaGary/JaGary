@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>轮播图</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #box {
+            width: 520px;
+            height: 280px;
+            margin: 100px auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #box .imglist {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+        }
+
+        #box .imglist li {
+            width: 100%;
+            height: 280px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            cursor: pointer;
+        }
+
+        #box .imglist li img {
+
+            width: 100%;
+            height: 100%;
+        }
+
+        .light {
+            width: 100%;
+            height: 20px;
+            position: absolute;
+            left: 0;
+            bottom: 10px;
+            text-align: center;
+        }
+
+        .light span {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 10px;
+            background: #fff;
+            text-align: center;
+            line-height: 20px;
+            margin-right: 5px;
+            cursor: pointer;
+            text-indent: -999px;
+        }
+
+        .light .active {
+            background: orangered;
+        }
+
+        .posibtn {
+            height: 20px;
+            color: red;
+
+        }
+
+        .prev {
+            position: absolute;
+            left: -5px;
+            top: 50%;
+            width: 20px;
+            border-radius: 0 50% 50% 0;
+            height: 20px;
+            background: blue;
+            text-align: center;
+            line-height: 20px;
+            cursor: pointer;
+            display: none;
+        }
+
+        .next {
+            position: absolute;
+            right: -5px;
+            top: 50%;
+            width: 20px;
+            border-radius: 50% 0 0 50%;
+            height: 20px;
+            background: blue;
+            text-align: center;
+            line-height: 20px;
+            cursor: pointer;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <!--图片列表-->
+        <div class="imglist">
+            <ul>
+                <!-- <li>
+                    <img src="../images/list1.jpg" alt="">
+                </li>
+                <li>
+                    <img src="../images/list3.jpg" alt="">
+                </li>
+                <li>
+                    <img src="../images/list4.webp" alt="">
+                </li>
+                <li>
+                    <img src="../images/list2.webp" alt="">
+                </li>
+                <li>
+                    <img src="../images/list5.jpg" alt="">
+                </li> -->
+            </ul>
+        </div>
+        <p class="light">
+            <!-- <span class="active">1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span> -->
+        </p>
+        <div class="posibtn">
+            <p class="prev">&lt;</p>
+            <p class="next">&gt;</p>
+        </div>
+    </div>
+</body>
+<script src="../js/common.js"></script>
+<script src="../js/imgCarousel.js"></script>
+<script>
+    imgCarousel({//调用并传参进去
+        //配置参数
+        ele:'box',//id
+        dataList:['../images/list1.jpg','../images/list3.jpg','../images/list5.jpg','../images/list4.webp','../images/list2.webp'],
+        time:2,//时间（可选）
+        ih:280,//高度（可选）
+        iw:520//宽度（可选）
+    })
+</script>
+</html>

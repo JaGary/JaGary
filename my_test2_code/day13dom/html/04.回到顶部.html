@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>回到顶部</title>
+    <style>
+        body {
+            height: 2000px;
+        }
+
+        #box {
+            width: 100px;
+            height: 50px;
+            border: 1px solid #ccc;
+            position: fixed;
+            right: -20px;
+            top: 300px;
+            display: none;
+            background-color: red;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">回到顶部</div>
+</body>
+<script>
+    /*
+    回到顶部：
+			 	* 滚动到300px的时候，显示回到顶部
+			 	* 点击回到顶部可以快速回到顶部
+
+			 	知识点：
+			 		window.scrollTo(x,y);让可视区滚动，x：水平方向滚动，y：垂直方向的滚动
+			 		window.scrollBy(x,y) :可以出现负数
+    */
+    var box = document.getElementById('box');
+
+    window.onscroll = function () { //滚动条事件
+        console.log(window.scrollY);
+        if (window.scrollY >= 500) { //当>=300时
+            box.style.display = 'block';
+        } else {
+            box.style.display = 'none';
+        }
+    }
+
+    //点击快速回到顶部
+    box.onclick = function () {
+        window.scrollTo(0, 0);//把可视区滚动到（0，0）位置
+    }
+
+    //第二种
+    //缓慢移动效果
+    // box.onclick = function () {
+    //     var scrollTop = scrollY;
+    //     var timer = setInterval(function () {
+    //         if (scrollTop >= 0) {
+    //             scrollTop -= 20;
+    //             window.scrollTo(0,scrollTop);
+    //         } else {
+    //             clearInterval(timer);
+    //         }
+    //     }, 20);
+    // }
+</script>
+
+</html>

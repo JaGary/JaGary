@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>随机点菜</title>
+</head>
+<body>
+    <h2>随机点菜</h2>
+    <input type="button" value="点菜" id="btn">
+    <p id="p1"></p>
+</body>
+<script>
+    (function(){
+        //找节点
+        var btn = document.getElementById('btn');
+        var p1 = document.getElementById('p1');
+        //声明数组菜单
+        var arr = ['辣子鸡','爆炒肥肠','鱼香肉丝','土豆焖鸡'];
+        //点击事件
+        btn.onclick = function(){
+            var col =parseInt(Math.random() *arr.length);
+            p1.innerHTML = '今天吃：'+arr[col];
+        }
+    })();
+</script>
+</html>

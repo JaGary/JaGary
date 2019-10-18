@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>04function的方法</title>
+</head>
+
+<body>
+    <input type="button" value="按钮" id="btn">
+</body>
+<script>
+    /*
+        bind() :函数的方法
+            用于将当前函数和指定对象绑定(改变this指向)，返回一个新的函数
+    */
+
+    function show() {
+        console.log(this);//window :this指向调用该函数的对象
+    }
+    show();
+
+    var btn = document.getElementById('btn');
+    btn.onclick = function () {
+        // console.log(this);//btn:this指向事件前面的对象
+        // var _this = this;//btn
+        setTimeout(function () {
+            // console.log(this);//? window ,需求：想让this指向btn，this指向错误，修正指向
+            // console.log(_this);//第一种修正指向的方法：利用外层this，传到定时器里面使用
+            console.log(this);
+        }.bind(this), 2000);//第二种修正指向的方法：里面bind修正指向，使得函数里面的this指向bind里面的对象
+    }
+
+    //定时器就是window的方法，window在调用定时器
+    /*
+        this:谁用就是指向谁
+            * A对B说：你给老子过来，看老子不打死你   老子：A
+            * B对A说：老子才不过去，有种你过来啊  老子：B
+    */
+</script>
+
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>jQuery左右滑动列表</title>
+        <link href="css/style.css" rel="stylesheet" type="text/css"/>
+        <script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+        <script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.js"></script>
+    </head>
+    <body>
+        
+        <div class="slide-content">
+            <div class="slide-title">jQuery左右滑动列表</div>
+            <div class="slide-item">
+                <div class="slide-item-box">
+                    <div class="hd">
+                        <a href="javascript:;" class="prev prev-bg"></a>
+                        <a href="javascript:;" class="next next-bg"></a>
+                    </div>
+                    <div class="bd slide-item-body">
+                        <ul class="clearfix" style="overflow:visible">
+                            <li>
+                                <a href="#">
+                                    <div class="new-img">
+                                        <img src="images/t1.png" alt="">
+                                    </div>
+                                    <div class="new-body">
+                                        <p class="new-body-title">jQuery左右滑动列表标题信息</p>
+                                        <p class="new-body-text">jQuery是一个快速、简洁的JavaScript框架，是继Prototype之后又一个优秀的JavaScript代码库（或JavaScript框架）。jQuery设计的宗旨是“write Less，Do More”，即倡导写更少的代码，做更多的事情。</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="new-img">
+                                        <img src="images/t2.png" alt="">
+                                    </div>
+                                    <div class="new-body">
+                                        <p class="new-body-title">jQuery左右滑动列表标题信息</p>
+                                        <p class="new-body-text">jQuery是一个快速、简洁的JavaScript框架，是继Prototype之后又一个优秀的JavaScript代码库（或JavaScript框架）。jQuery设计的宗旨是“write Less，Do More”，即倡导写更少的代码，做更多的事情。</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="new-img">
+                                        <img src="images/t3.png" alt="">
+                                    </div>
+                                    <div class="new-body">
+                                        <p class="new-body-title">jQuery左右滑动列表标题信息</p>
+                                        <p class="new-body-text">jQuery是一个快速、简洁的JavaScript框架，是继Prototype之后又一个优秀的JavaScript代码库（或JavaScript框架）。jQuery设计的宗旨是“write Less，Do More”，即倡导写更少的代码，做更多的事情。</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="new-img">
+                                        <img src="images/t4.png" alt="">
+                                    </div>
+                                    <div class="new-body">
+                                        <p class="new-body-title">jQuery左右滑动列表标题信息</p>
+                                        <p class="new-body-text">jQuery是一个快速、简洁的JavaScript框架，是继Prototype之后又一个优秀的JavaScript代码库（或JavaScript框架）。jQuery设计的宗旨是“write Less，Do More”，即倡导写更少的代码，做更多的事情。</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="new-img">
+                                        <img src="images/t5.png" alt="">
+                                    </div>
+                                    <div class="new-body">
+                                        <p class="new-body-title">jQuery左右滑动列表标题信息</p>
+                                        <p class="new-body-text">jQuery是一个快速、简洁的JavaScript框架，是继Prototype之后又一个优秀的JavaScript代码库（或JavaScript框架）。jQuery设计的宗旨是“write Less，Do More”，即倡导写更少的代码，做更多的事情。</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="new-img">
+                                        <img src="images/t6.png" alt="">
+                                    </div>
+                                    <div class="new-body">
+                                        <p class="new-body-title">jQuery左右滑动列表标题信息</p>
+                                        <p class="new-body-text">jQuery是一个快速、简洁的JavaScript框架，是继Prototype之后又一个优秀的JavaScript代码库（或JavaScript框架）。jQuery设计的宗旨是“write Less，Do More”，即倡导写更少的代码，做更多的事情。</p>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-links">
+                <a href="#">更多信息 > </a>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            jQuery(".slide-item-box").slide({
+                titCell: ".hd ul",
+                mainCell: ".bd ul",
+                autoPage: true,
+                effect: "leftLoop",
+                autoPlay: true,
+                scroll: 3,
+                vis: 3,
+                delayTime: 700,
+                trigger: "click"
+            })
+        </script>
+    </body>
+</html>

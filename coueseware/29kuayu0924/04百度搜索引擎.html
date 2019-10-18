@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>04百度搜索引擎</title>
+</head>
+
+<body>
+    <input type="text" id="word">
+    <ul id="list">
+        <!-- <li><a href="#">旅游</a></li> -->
+    </ul>
+</body>
+<script>
+    //https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?cb=getData&wd=html5
+
+    /*
+        1.请求次数过多；
+        2.生成过多script标签
+        https://www.baidu.com/s?wd=美食
+
+        jsonp原理：
+            * 动态创建script标签，设置src属性引入外部资源，注意函数名要设置好；(cb/callback)
+            * 在页面内声明一个全局的函数，名字和前面设置的函数名一致，这个时候就可以通过形参获取到外部数据(拿到数据渲染到页面)
+            * 解决请求次数过多和script标签过多的问题
+    */
+    let list = document.getElementById('list');
+    let script = null;
+    function show(data) {
+        //这个全局的函数体：获取外部数据并渲染
+        let html = data.s.map(item => {
+            return `<li><a target="_blank" href="https://www.baidu.com/s?wd=${item}">${item}</a></li>`;
+        }).join('');
+        list.innerHTML = html;//渲染完就删除删除script标签
+        document.documentElement.removeChild(script);
+    }
+
+    let word = document.getElementById('word');
+    var timer = null;
+    word.onkeyup = () => {//按需加载
+        if (word.value.trim()) {
+            //动态创建script标签，引入外部资源
+            clearTimeout(timer);// h ht htm html
+            timer = setTimeout(() => {
+                script = document.createElement('script');
+                script.src = 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?cb=show&wd=' + word.value;
+                document.documentElement.appendChild(script);
+            }, 800);
+        }
+    }
+</script>
+<!-- <script src="https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?cb=show&wd=旅游"></script> -->
+
+</html>

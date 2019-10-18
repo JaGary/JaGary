@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>随机颜色函数</title>
+</head>
+
+<body>
+    <!-- 随机颜色函数的封装 -->
+    <input type="button" id="btn" value="点击">
+    <p class="p1">随机颜色</p>
+</body>
+<script>
+    //随机颜色函数的封装
+    /*
+        0-9a-f
+        #111111 
+        # + '字符'  ----拼接
+    */
+
+    (function () {
+        var btn = document.getElementById('btn');
+        //记得取下标
+        //var pp = document.getElementsByClassName('p1')[0]; 
+        //或者调用时 pp[0].style.color = randomColor(16); //调用时取下标
+        var pp = document.getElementsByClassName('p1');
+         
+
+
+        function randomColor(n) {
+            var color =''; //存入结果
+            if (n == 16) {
+                var str = '0123456789abcdef';
+                color += '#';
+                for (var i = 0; i < 6; i++) {
+                    var index = parseInt(Math.random() * str.length);
+                    // var num = str[index];
+                    color += str[index];
+                }
+                return color;
+            }
+
+        }
+        btn.onclick = function () {
+            pp[0].style.color = randomColor(16); //调用时取下标
+        }
+    })();
+</script>
+
+</html>
